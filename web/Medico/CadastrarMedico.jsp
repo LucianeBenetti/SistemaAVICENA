@@ -10,8 +10,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script type="text/javascript" src="mascarasMedico.js"></script>
-        <link type="text/css" rel="stylesheet" href="MedicoCRUD.css">
-        <link type="text/css" rel="stylesheet" href="Medico/MedicoCRUD.css">
+        <link type="text/css" rel="stylesheet" href="CRUDMedico.css">
+        <link type="text/css" rel="stylesheet" href="Medico/CRUDMedico.css">
         <title>Cadastrar Medico</title>
     </head>
     <body class="body">

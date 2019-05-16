@@ -38,8 +38,9 @@ public class MedicoDAO {
             if (generatedKeys.next()) {
                 novoId = generatedKeys.getInt(1);
             }
-        } catch (SQLException e) {
-            System.out.println("Erro ao executar Query de Cadastro de M�dico! Causa: \n: " + e.getMessage());
+       } catch (SQLException e) {
+            System.out.println("Erro ao executar Query de Cadastro de Médico! Causa: \n: " + e.getMessage());
+
         } finally {
             ConexaoComBanco.closePreparedStatement(prepStmt);
             ConexaoComBanco.closeConnection(conn);
@@ -62,7 +63,7 @@ public class MedicoDAO {
                 sucessoDelete = true;
             }
         } catch (SQLException e) {
-            System.out.println("Erro ao executar Query de Exclus�o do M�dico! Causa: \n: " + e.getMessage());
+            System.out.println("Erro ao executar Query de Exclusão do Médico! Causa: \n: " + e.getMessage());
         } finally {
             ConexaoComBanco.closePreparedStatement(prepStmt);
             ConexaoComBanco.closeConnection(conn);
@@ -98,10 +99,10 @@ public class MedicoDAO {
                 medicos.add(medico);
 
             }
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+          } catch (SQLException e) {
+            System.out.println("Erro ao executar a Query de Consulta de Médicos !Causa: \n: " + e.getMessage());
         } finally {
-            ConexaoComBanco.closeStatement((Connection) prepStmt);
+            ConexaoComBanco.closeStatement(conn);
             ConexaoComBanco.closeConnection(conn);
         }
         return medico;
@@ -131,8 +132,8 @@ public class MedicoDAO {
             if (codigoRetorno == 1) {
                 sucessoAtualizar = true;
             }
-        } catch (SQLException ex) {
-            System.out.println("Erro ao executar Query de Atualiza��o do M�dico!Causa: \n: " + ex.getMessage());
+         } catch (SQLException e) {
+            System.out.println("Erro ao executar Query de Atualização do Médico! Causa: \n: " + e.getMessage());
         } finally {
             ConexaoComBanco.closePreparedStatement(prepStmt);
             ConexaoComBanco.closeConnection(conn);

@@ -119,7 +119,7 @@
                             <a class="dropdown-item" href="Medico/PesquisarMedicoPorCpf.jsp">Pesquisar Medico por CPF</a>
                             <a class="dropdown-item" href="Medico/CadastrarMedico.jsp">Cadastrar Medico</a>
                             <a class="dropdown-item" href="listarmedicos">Listar Todos os Medicos</a>
-                            <a class="dropdown-item" href="Medico/ExcluirMedico">Excluir Medico</a>
+                            <a class="dropdown-item" href="Medico/ExcluirMedico.jsp">Excluir Medico</a>
                         </div>
                     </li>
                      <li class="nav-item dropdown">
