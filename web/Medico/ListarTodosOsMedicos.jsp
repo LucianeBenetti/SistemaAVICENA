@@ -11,7 +11,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link type="text/css" rel="stylesheet" href="Medico/MedicoCRUD.css">
+        <link type="text/css" rel="stylesheet" href="Medico/CRUDMedico.css">
         <title>Todos os Médicos da Clínica Avicena</title>
     </head>
     <body class="body">

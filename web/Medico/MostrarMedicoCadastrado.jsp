@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link type="text/css" rel="stylesheet" href="Medico/MedicoCRUD.css">
+    <link type="text/css" rel="stylesheet" href="Medico/CRUDMedico.css">
     <title>Cliente Cadastrado</title>
 </head>
 <body class="body">

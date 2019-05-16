@@ -32,6 +32,10 @@
         <servlet-name>CrudMedico</servlet-name>
         <servlet-class>Servlets.Medico.CrudMedico</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PesquisarMedicoPorCpf</servlet-name>
+        <servlet-class>Servlets.Medico.PesquisarMedicoPorCpf</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CrudPaciente</servlet-name>
         <url-pattern>/crudpaciente</url-pattern>
@@ -66,6 +70,10 @@
     <servlet-mapping>
         <servlet-name>CrudMedico</servlet-name>
         <url-pattern>/crudmedico</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PesquisarMedicoPorCpf</servlet-name>
+        <url-pattern>/pesquisarmedicoporcpf</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

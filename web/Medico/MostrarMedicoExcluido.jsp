@@ -26,7 +26,7 @@
             <%}%>
 
             <div>
-                <form action="controledenavegacao" method="POST">
+                <form action="../controledenavegacao" method="POST">
                     <input type="hidden" id="avicena" name="avicena" value="avicena">
                     <input type="submit" value="Voltar">
                 </form>
