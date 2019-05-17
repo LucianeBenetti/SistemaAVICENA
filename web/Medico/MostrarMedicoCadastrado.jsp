@@ -15,9 +15,8 @@
     <br><br>
     <hr>
     <h1>O Medico foi cadastrado com os seguintes dados:</h1>
-
-    <div class="form1">
-        <form>
+    <form>
+        <div class="form1">      
 
             <fieldset><legend>Medico</legend>
                 <br>
@@ -32,7 +31,6 @@
                 </div>
                 <br>
                 <div style="width:82%">
-
                     <div style="float:left"> <input type="text" size="25" value="<%= request.getAttribute("celularwhats")%>" onkeyup="maskIt(this, event, '(##)####-####')"></div>    
                     <div style="float:right"> <input type="text" size="25" value="<%= request.getAttribute("celularmedico")%>" onkeyup="maskIt(this, event, '(##)####-####')"></div>
                 </div>
@@ -53,24 +51,20 @@
                     <div style="float:right"> <input type="text" size="25" value="<%= request.getAttribute("cnpjmedico")%>"></div>
                 </div>
                 <br><br>
-
             </fieldset>
+        </div>
+                 <div class="form2">  
+                 </div>
+    </form>
+    <br><br>
+    <form action="controledenavegacao" method="POST">
+        <input type="hidden" id="avicena" name="avicena" value="avicena">
+        <input type="submit" value="Voltar">
+    </form>
 
-            <br><br>
-
-            <div>
-                <form action="controledenavegacao" method="POST">
-                    <input type="hidden" id="avicena" name="avicena" value="avicena">
-                    <input type="submit" value="Voltar">
-                </form>
-            </div>
-    </div>
-
-</form> 
-
-<footer class="footer">                
-    &copy; Desenvolvido por Luciane Benetti e Marco Sena.
-</footer>
+    <footer class="footer">                
+        &copy; Desenvolvido por Luciane Benetti e Marco Sena.
+    </footer>
 
 </body>
 </html>

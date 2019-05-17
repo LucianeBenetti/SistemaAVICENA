@@ -11,7 +11,7 @@ import model.vo.Convenio.ConvenioVO;
 
 public class ConvenioDAO {
 
-    public int inserirConvenio(ConvenioVO convenio) {
+    public int inserir(ConvenioVO convenio) {
 
         int novoId = 0;
 
@@ -46,7 +46,7 @@ public class ConvenioDAO {
 
     }
 
-    public ConvenioVO consultarConvenioPorCnpj(String cnpjConvenio) {
+    public ConvenioVO pesquisarConvenioVOPorCnpj(String cnpjConvenio) {
 
         ConvenioVO convenio = null;
 
@@ -75,7 +75,7 @@ public class ConvenioDAO {
         return convenio;
     }
 
-    public boolean delete(String cnpjConvenio) {
+    public boolean excluir(String cnpjConvenio) {
         boolean sucessoDelete = false;
 
         String query = "DELETE from convenio where cnpjConvenio = ? ";
@@ -98,7 +98,7 @@ public class ConvenioDAO {
         return sucessoDelete;
     }
 
-    public boolean atualizar(ConvenioVO convenio, String cnpjConvenio) {
+    public boolean atualizarConvenioVO(ConvenioVO convenio) {
         boolean sucessoAtualizar = false;
 
         String query = "UPDATE convenio SET nomeConvenio=?, cnpjConvenio=?, valorConvenio=? " + " where cnpjConvenio = ?";
@@ -127,7 +127,7 @@ public class ConvenioDAO {
         return sucessoAtualizar;
     }
 
-    public ArrayList<ConvenioVO> listarTodos() {
+    public ArrayList<ConvenioVO> listarTodosOsConveniosVO() {
 
         ArrayList<ConvenioVO> listaConvenios = new ArrayList<ConvenioVO>();
 

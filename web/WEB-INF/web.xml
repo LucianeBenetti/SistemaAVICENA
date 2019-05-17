@@ -36,6 +36,10 @@
         <servlet-name>PesquisarMedicoPorCpf</servlet-name>
         <servlet-class>Servlets.Medico.PesquisarMedicoPorCpf</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AtualizarMedico</servlet-name>
+        <servlet-class>Servlets.Medico.AtualizarMedico</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CrudPaciente</servlet-name>
         <url-pattern>/crudpaciente</url-pattern>
@@ -74,6 +78,10 @@
     <servlet-mapping>
         <servlet-name>PesquisarMedicoPorCpf</servlet-name>
         <url-pattern>/pesquisarmedicoporcpf</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AtualizarMedico</servlet-name>
+        <url-pattern>/atualizarmedico</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

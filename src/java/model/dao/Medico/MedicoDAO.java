@@ -111,7 +111,7 @@ public class MedicoDAO {
     public boolean atualizarMedicoVO(MedicoVO medicoVO) {
         boolean sucessoAtualizar = false;
 
-        String query = "UPDATE medico SET nomeMedico=?, crm=?, celularMedico=?, celMensagemMedico=?, emailMedico=?, cpfMedico=?, cnpjMedico=?"
+        String query = "UPDATE medico SET nomeMedico=?, crm=?, celMensagemMedico=?, celularMedico=?, emailMedico=?, cpfMedico=?, cnpjMedico=?"
                 + " where cpfMedico = ?";
 
         Connection conn = ConexaoComBanco.getConnection();

@@ -116,7 +116,7 @@
                             Médicos
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="Medico/PesquisarMedicoPorCPF.jsp">Pesquisar Medico por CPF</a>
+                            <a class="dropdown-item" href="Medico/PesquisarMedicoPorCpf.jsp">Pesquisar Medico por CPF</a>
                             <a class="dropdown-item" href="Medico/CadastrarMedico.jsp">Cadastrar Medico</a>
                             <a class="dropdown-item" href="listarmedicos">Listar Todos os Medicos</a>
                             <a class="dropdown-item" href="Medico/ExcluirMedico.jsp">Excluir Medico</a>
