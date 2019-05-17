@@ -105,10 +105,10 @@
                             Convenios
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Pesquisar Convenio</a>
-                            <a class="dropdown-item" href="#">Cadastrar Convenio</a>
-                            <a class="dropdown-item" href="#">Listar Todas as Convenio</a>                             
-                            <a class="dropdown-item" href="#">Excluir Convenio</a>
+                            <a class="dropdown-item" href="Convenio/PesquisarConvenioPorCnpj.jsp">Pesquisar Convenio</a>
+                            <a class="dropdown-item" href="Convenio/CadastrarConvenio.jsp">Cadastrar Convenio</a>
+                            <a class="dropdown-item" href="listarconvenios">Listar Todas as Convenio</a>                             
+                            <a class="dropdown-item" href="Convenio/ExcluirConvenioPorCnpj.jsp">Excluir Convenio</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
