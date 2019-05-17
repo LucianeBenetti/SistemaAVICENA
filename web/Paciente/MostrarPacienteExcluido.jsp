@@ -21,7 +21,7 @@
 
                 if (obj1 != null) {%>
 
-            O paciente com CPF <input type="text" value="<%= request.getAttribute("cpfpaciente")%>"> 
+            O paciente com CPF <input type="text" readonly value="<%= request.getAttribute("cpfpaciente")%>"> 
             foi Excluído!
             <%}%>
 

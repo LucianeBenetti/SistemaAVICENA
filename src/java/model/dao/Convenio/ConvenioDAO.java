@@ -24,7 +24,7 @@ public class ConvenioDAO {
 
             prepStmt.setString(1, convenio.getNomeConvenio());
             prepStmt.setString(2, convenio.getCnpjConvenio());
-            prepStmt.setDouble(3, convenio.getValor());
+            prepStmt.setString(3, convenio.getValor());
 
             prepStmt.executeUpdate();
 
@@ -63,13 +63,13 @@ public class ConvenioDAO {
                 convenio.setCodigoConvenio(result.getInt(1));
                 convenio.setNomeConvenio(result.getString(2));
                 convenio.setCnpjConvenio(result.getString(3));
-                convenio.setValor(result.getDouble(4));
+                convenio.setValor(result.getString(4));
 
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         } finally {
-            ConexaoComBanco.closeStatement((Connection) prepStmt);
+            ConexaoComBanco.closePreparedStatement(prepStmt);
             ConexaoComBanco.closeConnection(conn);
         }
         return convenio;
@@ -90,7 +90,7 @@ public class ConvenioDAO {
                 sucessoDelete = true;
             }
         } catch (SQLException e) {
-            System.out.println("Erro ao executar Query de Exclus�o do Convenio! Causa: \n: " + e.getMessage());
+            System.out.println("Erro ao executar Query de Exclusão do Convênio! Causa: \n: " + e.getMessage());
         } finally {
             ConexaoComBanco.closePreparedStatement(prepStmt);
             ConexaoComBanco.closeConnection(conn);
@@ -110,7 +110,7 @@ public class ConvenioDAO {
 
             prepStmt.setString(1, convenio.getNomeConvenio());
             prepStmt.setString(2, convenio.getCnpjConvenio());
-            prepStmt.setDouble(3, convenio.getValor());
+            prepStmt.setString(3, convenio.getValor());
             prepStmt.setString(4, convenio.getCnpjConvenio());
 
             int codigoRetorno = prepStmt.executeUpdate();
@@ -119,7 +119,7 @@ public class ConvenioDAO {
                 sucessoAtualizar = true;
             }
         } catch (SQLException ex) {
-            System.out.println("Erro ao executar Query de Atualiza��o do Convenio!Causa: \n: " + ex.getMessage());
+            System.out.println("Erro ao executar Query de Atualização do Convenio!Causa: \n: " + ex.getMessage());
         } finally {
             ConexaoComBanco.closePreparedStatement(prepStmt);
             ConexaoComBanco.closeConnection(conn);
@@ -144,7 +144,7 @@ public class ConvenioDAO {
                 convenio.setCodigoConvenio(result.getInt(1));
                 convenio.setNomeConvenio(result.getString(2));
                 convenio.setCnpjConvenio(result.getString(3));
-                convenio.setValor(result.getDouble(4));
+                convenio.setValor(result.getString(4));
 
                 listaConvenios.add(convenio);
             }
@@ -171,13 +171,13 @@ public class ConvenioDAO {
                 convenio.setCodigoConvenio(result.getInt(1));
                 convenio.setNomeConvenio(result.getString(2));
                 convenio.setCnpjConvenio(result.getString(3));
-                convenio.setValor(result.getDouble(4));
+                convenio.setValor(result.getString(4));
 
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         } finally {
-            ConexaoComBanco.closeStatement((Connection) prepStmt);
+            ConexaoComBanco.closePreparedStatement(prepStmt);
             ConexaoComBanco.closeConnection(conn);
         }
         return convenio;

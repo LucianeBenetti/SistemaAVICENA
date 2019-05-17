@@ -1,4 +1,3 @@
-
 package Servlets.Medico;
 
 import controller.Medico.MedicoController;
@@ -11,9 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.vo.Medico.MedicoVO;
 
-
 public class CrudMedico extends HttpServlet {
- MedicoVO medicoVO;
+
+    MedicoVO medicoVO;
     MedicoController medicoController;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -25,7 +24,6 @@ public class CrudMedico extends HttpServlet {
         //String cpf = request.getParameter("cpfmedico");
 
         //System.out.println("O cpf é: " + cpf);
-
         ArrayList<String> variavel = new ArrayList<String>();
         variavel.add(var1);
         variavel.add(var2);
@@ -49,14 +47,14 @@ public class CrudMedico extends HttpServlet {
                         medicoVO.setEmailMedico(request.getParameter("email"));
                         medicoVO.setCpfMedico(request.getParameter("cpfmedico"));
                         medicoVO.setCnpjMedico(request.getParameter("cnpjmedico"));
-                                               
 
                         System.out.println(medicoVO);
 
                         medicoController = new MedicoController();
 
                         int novoId = medicoController.cadastrarMedicoVO(medicoVO);
-
+                        Boolean resultadoDoCadastro = false;
+                       
                         if (novoId > 0) {
 
                             request.setAttribute("idmedico", novoId);
@@ -67,15 +65,23 @@ public class CrudMedico extends HttpServlet {
                             request.setAttribute("email", medicoVO.getEmailMedico());
                             request.setAttribute("cpfmedico", medicoVO.getCpfMedico());
                             request.setAttribute("cnpjmedico", medicoVO.getCnpjMedico());
-                            
+
+                            resultadoDoCadastro = true;
+
+                            request.setAttribute("medicocadastrado", resultadoDoCadastro);
                             request.getRequestDispatcher("Medico/MostrarMedicoCadastrado.jsp").forward(request, response);
+                       
+                        }else {
+                            request.setAttribute("pacientevocadastrado", resultadoDoCadastro);
+                            request.getRequestDispatcher("Paciente/MostrarPacienteCadastrado.jsp").forward(request, response);
                         }
+                        
                         break;
 
                     case "excluir":
-                       
+
                         medicoVO = new MedicoVO();
-                        medicoVO.setCpfMedico(request.getParameter("cpfmedico"));                        
+                        medicoVO.setCpfMedico(request.getParameter("cpfmedico"));
 
                         medicoController = new MedicoController();
                         if (medicoController.excluirMedicoPorCpf(medicoVO.getCpfMedico())) {
@@ -94,6 +100,7 @@ public class CrudMedico extends HttpServlet {
             }
         }
     }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

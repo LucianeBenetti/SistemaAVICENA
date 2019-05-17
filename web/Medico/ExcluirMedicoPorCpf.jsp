@@ -12,16 +12,16 @@
         <script type="text/javascript" src="mascarasMedico.js"></script>
         <link type="text/css" rel="stylesheet" href="CRUDMedico.css">
         <link type="text/css" rel="stylesheet" href="Medico/CRUDMedico.css">
-        <title>Excluir Medico por CPF</title>
+        <title>Excluir Médico por CPF</title>
     </head>
     <body class="body">
 
         <div class="excluirCPF">
-            <h3>Excluir Medico por CPF!</h3>
+            <h3>Excluir Médico por CPF!</h3>
 
             <form method="post" action="../crudmedico">
 
-                <fieldset><legend>Digite o CPF do Medico que deseja excluir da base de dados:</legend>
+                <fieldset><legend>Digite o CPF do Médico que deseja excluir da base de dados:</legend>
                     <p><a>*</a>Campos de preenchimento obrigatório</p>                    
                     <input type="hidden" id="excluir" name="excluir" value="excluir">
                     CPF<a>*</a>: <br>

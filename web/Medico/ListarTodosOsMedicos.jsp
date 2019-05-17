@@ -51,7 +51,7 @@
                 }
             %>
         </table>      
-
+        <br><br>
         <form action="controledenavegacao" method="post">
             <input type="hidden" id="avicena" name="avicena" value="avicena">
             <input type="submit" value = "Voltar">

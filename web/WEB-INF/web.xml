@@ -44,6 +44,18 @@
         <servlet-name>CrudConvenio</servlet-name>
         <servlet-class>Servlets.Convenio.CrudConvenio</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ListarConvenios</servlet-name>
+        <servlet-class>Servlets.Convenio.ListarConvenios</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AtualizarConvenio</servlet-name>
+        <servlet-class>Servlets.Convenio.AtualizarConvenio</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PesquisarConvenioPorCnpj</servlet-name>
+        <servlet-class>Servlets.Convenio.PesquisarConvenioPorCnpj</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CrudPaciente</servlet-name>
         <url-pattern>/crudpaciente</url-pattern>
@@ -90,6 +102,18 @@
     <servlet-mapping>
         <servlet-name>CrudConvenio</servlet-name>
         <url-pattern>/crudconvenio</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListarConvenios</servlet-name>
+        <url-pattern>/listarconvenios</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AtualizarConvenio</servlet-name>
+        <url-pattern>/atualizarconvenio</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PesquisarConvenioPorCnpj</servlet-name>
+        <url-pattern>/pesquisarconvenioporcnpj</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

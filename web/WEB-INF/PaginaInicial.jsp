@@ -105,7 +105,7 @@
                             Convenios
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="Convenio/PesquisarConvenioPorCnpj.jsp">Pesquisar Convenio</a>
+                            <a class="dropdown-item" href="Convenio/PesquisarConvenioPorCnpj.jsp">Pesquisar Convenio por CNPJ</a>
                             <a class="dropdown-item" href="Convenio/CadastrarConvenio.jsp">Cadastrar Convenio</a>
                             <a class="dropdown-item" href="listarconvenios">Listar Todas as Convenio</a>                             
                             <a class="dropdown-item" href="Convenio/ExcluirConvenioPorCnpj.jsp">Excluir Convenio</a>
@@ -119,7 +119,7 @@
                             <a class="dropdown-item" href="Medico/PesquisarMedicoPorCpf.jsp">Pesquisar Medico por CPF</a>
                             <a class="dropdown-item" href="Medico/CadastrarMedico.jsp">Cadastrar Medico</a>
                             <a class="dropdown-item" href="listarmedicos">Listar Todos os Medicos</a>
-                            <a class="dropdown-item" href="Medico/ExcluirMedico.jsp">Excluir Medico</a>
+                            <a class="dropdown-item" href="Medico/ExcluirMedicoPorCpf.jsp">Excluir Medico</a>
                         </div>
                     </li>
                      <li class="nav-item dropdown">

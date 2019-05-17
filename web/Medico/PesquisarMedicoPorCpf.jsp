@@ -13,16 +13,16 @@
         <script type="text/javascript" src="Medico/mascarasMedico.js"></script>
         <link type="text/css" rel="stylesheet" href="CRUDMedico.css">
         <link type="text/css" rel="stylesheet" href="Medico/CRUDMedico.css">
-        <title>Pesquisa de Medicos por CPF</title>
+        <title>Pesquisa de Médicos por CPF</title>
     </head>
     <body class="body">
 
         <div class="consultaCPF">
-            <h2>Pesquisar Medico por CPF!</h2>
+            <h2>Pesquisar Médico por CPF!</h2>
 
             <form method="post" action="../pesquisarmedicoporcpf">
 
-                <fieldset><legend>Digite o CPF do Medico a ser consultado na base de dados</legend>
+                <fieldset><legend>Digite o CPF do Médico a ser consultado na base de dados</legend>
                     <p><a>*</a>Campos de preenchimento obrigatório</p>                    
 
                     CPF<a>*</a>:<br> 
@@ -42,7 +42,7 @@
         </div>
 
         <div class="resultadodaconsultaCPF">
-            <h2>Resultado da pesquisa de Medico por CPF:</h2>
+            <h2>Resultado da pesquisa de Médico por CPF:</h2>
 
             <%
                 Object obj = request.getAttribute("medicovoretornado");
@@ -51,13 +51,13 @@
                     Boolean MedicoVORetornado = (Boolean) obj;
 
                     if (!MedicoVORetornado) {%>                     
-            <input type="text" size="100" style="margin-left: 5px;" value="<% out.println("Medico não encontrado!"
-                               + " Tente novamente. Se o Medico não for cadastrado, por gentileza, cadastrá-lo!!");%>">               
+            <input type="text" size="100" style="margin-left: 5px;" value="<% out.println("Médico não encontrado!"
+                               + " Tente novamente. Se o Médico não for cadastrado, por gentileza, cadastrá-lo!!");%>">               
             <%} else {%>
 
             <form action="atualizarmedico" method="post">
 
-                <fieldset><legend>Dados do Medico</legend>
+                <fieldset><legend>Dados do Médico</legend>
                     Nome: <br>                       
                     <input type="text" name="nomemedico" size="77" value="<%= request.getAttribute("nomemedico")%>"><br><br>            
 

@@ -24,9 +24,6 @@ public class CrudPaciente extends HttpServlet {
 
         String var1 = request.getParameter("cadastrar");
         String var2 = request.getParameter("excluir");
-        //String cpf = request.getParameter("cpfpaciente");
-
-        //System.out.println("O cpf é: " + cpf);
 
         ArrayList<String> variavel = new ArrayList<String>();
         variavel.add(var1);
@@ -42,7 +39,7 @@ public class CrudPaciente extends HttpServlet {
                 switch (var) {
                     case "cadastrar":
 
-                     //   System.out.println("A variável é: " + variavel.get(i));
+                        //   System.out.println("A variável é: " + variavel.get(i));
                         pacienteVO = new PacienteVO();
                         pacienteVO.setNomePaciente(request.getParameter("nomepaciente"));
                         pacienteVO.setCelMensagemPaciente(request.getParameter("celularpaciente"));
@@ -64,6 +61,7 @@ public class CrudPaciente extends HttpServlet {
                         pacienteController = new PacienteController();
 
                         int novoId = pacienteController.cadastrarPacienteVO(pacienteVO);
+                        Boolean resultadoDoCadastro = false;
 
                         if (novoId > 0) {
 
@@ -82,15 +80,22 @@ public class CrudPaciente extends HttpServlet {
                             request.setAttribute("cidade", pacienteVO.getCidade());
                             request.setAttribute("uf", pacienteVO.getUf());
                             request.setAttribute("cep", pacienteVO.getCep());
+                            resultadoDoCadastro = true;
 
+                            request.setAttribute("pacientevocadastrado", resultadoDoCadastro);
+                            request.getRequestDispatcher("Paciente/MostrarPacienteCadastrado.jsp").forward(request, response);
+                     
+                        } else {
+                            request.setAttribute("pacientevocadastrado", resultadoDoCadastro);
                             request.getRequestDispatcher("Paciente/MostrarPacienteCadastrado.jsp").forward(request, response);
                         }
+
                         break;
 
                     case "excluir":
-                       
+
                         pacienteVO = new PacienteVO();
-                        pacienteVO.setCpfPaciente(request.getParameter("cpfpaciente"));                        
+                        pacienteVO.setCpfPaciente(request.getParameter("cpfpaciente"));
 
                         pacienteController = new PacienteController();
                         if (pacienteController.excluirPacientePorCpf(pacienteVO.getCpfPaciente())) {

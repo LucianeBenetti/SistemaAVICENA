@@ -35,7 +35,7 @@ public class EspecialidadeDAO {
         } catch (SQLException e) {
             System.out.println("Erro ao executar Query de Cadastro de Especialidade! Causa: \n: " + e.getMessage());
         } finally {
-            ConexaoComBanco.closePreparedStatement(prepStmt);
+           ConexaoComBanco.closePreparedStatement(prepStmt);
             ConexaoComBanco.closeConnection(conn);
         }
         return novoId;
@@ -87,7 +87,7 @@ public class EspecialidadeDAO {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         } finally {
-            ConexaoComBanco.closeStatement((Connection) prepStmt);
+            ConexaoComBanco.closePreparedStatement(prepStmt);
             ConexaoComBanco.closeConnection(conn);
         }
         return especialidade;
@@ -145,7 +145,7 @@ public class EspecialidadeDAO {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         } finally {
-            ConexaoComBanco.closeStatement((Connection) prepStmt);
+            ConexaoComBanco.closePreparedStatement(prepStmt);
             ConexaoComBanco.closeConnection(conn);
         }
         return especialidades;
@@ -198,7 +198,7 @@ public class EspecialidadeDAO {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         } finally {
-            ConexaoComBanco.closeStatement((Connection) prepStmt);
+            ConexaoComBanco.closePreparedStatement(prepStmt);
             ConexaoComBanco.closeConnection(conn);
         }
         return especialidade;

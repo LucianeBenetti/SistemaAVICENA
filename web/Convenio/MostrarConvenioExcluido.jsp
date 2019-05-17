@@ -1,6 +1,6 @@
 <%-- 
-    Document   : MostrarMedicoExcluido
-    Created on : 16/05/2019, 14:22:01
+    Document   : MostrarConvenioExcluido
+    Created on : 17/05/2019, 13:56:19
     Author     : 80130917
 --%>
 
@@ -9,7 +9,7 @@
 <html>
     <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link type="text/css" rel="stylesheet" href="Medico/CRUDMedico.css">
+        <link type="text/css" rel="stylesheet" href="Convenio/CRUDConvenio.css">
         <title>Resultado da exclusão</title>
     </head>
     <body class="body">
@@ -17,11 +17,11 @@
         <div class="resultadodaatualizacao">
             <h2>Resultado da exclusão:</h2>
             <%
-                Object obj1 = request.getAttribute("cpfmedico");
+                Object obj1 = request.getAttribute("cnpjconvenio");
 
                 if (obj1 != null) {%>
 
-            O medico com CPF <input type="text" readonly value="<%= request.getAttribute("cpfmedico")%>"> 
+            O convenio com CNPJ <input type="text" readonly value="<%= request.getAttribute("cnpjconvenio")%>"> 
             foi Excluído!
             <%}%>
 

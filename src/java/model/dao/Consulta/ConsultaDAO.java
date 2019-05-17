@@ -93,7 +93,7 @@ public class ConsultaDAO {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         } finally {
-            ConexaoComBanco.closeStatement((Connection) prepStmt);
+            ConexaoComBanco.closePreparedStatement(prepStmt);
             ConexaoComBanco.closeConnection(conn);
         }
         return consulta.toString();
@@ -217,7 +217,7 @@ public class ConsultaDAO {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         } finally {
-            ConexaoComBanco.closeStatement((Connection) prepStmt);
+            ConexaoComBanco.closePreparedStatement(prepStmt);
             ConexaoComBanco.closeConnection(conn);
         }
         return consulta;
@@ -251,8 +251,8 @@ public class ConsultaDAO {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         } finally {
-            ConexaoComBanco.closeStatement((Connection) prepStmt);
-            ConexaoComBanco.closeConnection(conn);
+           ConexaoComBanco.closePreparedStatement(prepStmt);
+           ConexaoComBanco.closeConnection(conn);
         }
         return consulta;
     }

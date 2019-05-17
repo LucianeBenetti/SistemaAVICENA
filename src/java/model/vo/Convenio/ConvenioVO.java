@@ -5,16 +5,16 @@ public class ConvenioVO {
     private int codigoConvenio;
     private String nomeConvenio;
     private String cnpjConvenio;
-    private double valor;
+    private String valor;
 
-    public ConvenioVO() {
-    }
-
-    public ConvenioVO(int codigoConvenio, String nomeConvenio, String cnpjConvenio, double valor) {
+    public ConvenioVO(int codigoConvenio, String nomeConvenio, String cnpjConvenio, String valor) {
         this.codigoConvenio = codigoConvenio;
         this.nomeConvenio = nomeConvenio;
         this.cnpjConvenio = cnpjConvenio;
         this.valor = valor;
+    }
+
+    public ConvenioVO() {
     }
 
     public int getCodigoConvenio() {
@@ -41,17 +41,17 @@ public class ConvenioVO {
         this.cnpjConvenio = cnpjConvenio;
     }
 
-    public double getValor() {
+    public String getValor() {
         return valor;
     }
 
-    public void setValor(double valor) {
+    public void setValor(String valor) {
         this.valor = valor;
     }
 
     @Override
     public String toString() {
-        return nomeConvenio;
+        return "ConvenioVO{" + "codigoConvenio=" + codigoConvenio + ", nomeConvenio=" + nomeConvenio + ", cnpjConvenio=" + cnpjConvenio + ", valor=" + valor + '}';
     }
 
 }

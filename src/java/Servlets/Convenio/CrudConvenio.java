@@ -1,4 +1,3 @@
-
 package Servlets.Convenio;
 
 import controller.Convenio.ConvenioController;
@@ -12,7 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import model.vo.Convenio.ConvenioVO;
 
 public class CrudConvenio extends HttpServlet {
- ConvenioVO convenioVO;
+
+    ConvenioVO convenioVO;
     ConvenioController convenioController;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -21,9 +21,6 @@ public class CrudConvenio extends HttpServlet {
 
         String var1 = request.getParameter("cadastrar");
         String var2 = request.getParameter("excluir");
-        //String cpf = request.getParameter("cpfconvenio");
-
-        //System.out.println("O cpf é: " + cpf);
 
         ArrayList<String> variavel = new ArrayList<String>();
         variavel.add(var1);
@@ -43,34 +40,43 @@ public class CrudConvenio extends HttpServlet {
                         convenioVO = new ConvenioVO();
                         convenioVO.setNomeConvenio(request.getParameter("nomeconvenio"));
                         convenioVO.setCnpjConvenio(request.getParameter("cnpjconvenio"));
-                        convenioVO.setValor(Double.parseDouble(request.getParameter("valor")));
+                        convenioVO.setValor(request.getParameter("valor"));
 
                         System.out.println(convenioVO);
 
                         convenioController = new ConvenioController();
 
                         int novoId = convenioController.cadastrarConvenioVO(convenioVO);
-
+                        Boolean resultadoDoCadastro = false;
+                      
                         if (novoId > 0) {
 
                             request.setAttribute("idconvenio", novoId);
                             request.setAttribute("nomeconvenio", convenioVO.getNomeConvenio());
                             request.setAttribute("cnpjconvenio", convenioVO.getCnpjConvenio());
                             request.setAttribute("valor", convenioVO.getValor());
-                            
+
+                            resultadoDoCadastro = true;
+
+                            request.setAttribute("conveniocadastrado", resultadoDoCadastro);
                             request.getRequestDispatcher("Convenio/MostrarConvenioCadastrado.jsp").forward(request, response);
+                      
+                        } else {
+                            request.setAttribute("pacientevocadastrado", resultadoDoCadastro);
+                            request.getRequestDispatcher("Paciente/MostrarPacienteCadastrado.jsp").forward(request, response);
                         }
+
                         break;
 
                     case "excluir":
-                       
+
                         convenioVO = new ConvenioVO();
-                        convenioVO.setCnpjConvenio(request.getParameter("cnpjconvenio"));                        
+                        convenioVO.setCnpjConvenio(request.getParameter("cnpjconvenio"));
 
                         convenioController = new ConvenioController();
                         if (convenioController.excluirConvenioPorCnpj(convenioVO.getCnpjConvenio())) {
 
-                            request.setAttribute("cpfconvenio", convenioVO.getCnpjConvenio());
+                            request.setAttribute("cnpjconvenio", convenioVO.getCnpjConvenio());
                             request.getRequestDispatcher("Convenio/MostrarConvenioExcluido.jsp").forward(request, response);
                         }
 
@@ -84,6 +90,7 @@ public class CrudConvenio extends HttpServlet {
             }
         }
     }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

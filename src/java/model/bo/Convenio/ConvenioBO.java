@@ -1,4 +1,3 @@
-
 package model.bo.Convenio;
 
 import java.util.ArrayList;
@@ -8,8 +7,8 @@ import model.vo.Convenio.ConvenioVO;
 import model.vo.Convenio.ConvenioVO;
 
 public class ConvenioBO {
-    
-   ConvenioDAO convenioDAO = new ConvenioDAO();
+
+    ConvenioDAO convenioDAO = new ConvenioDAO();
 
     public int cadastrarConvenioVO(ConvenioVO convenioVO) {
 

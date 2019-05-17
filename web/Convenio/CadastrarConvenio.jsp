@@ -12,12 +12,12 @@
         <script type="text/javascript" src="mascarasConvenio.js"></script>
         <link type="text/css" rel="stylesheet" href="CRUDConvenio.css">
         <link type="text/css" rel="stylesheet" href="Convenio/CRUDConvenio.css">
-        <title>Cadastrar Convenio</title>
+        <title>Cadastrar Convênio</title>
     </head>
     <body class="body">
         <hr>
-        <h1>Cadastro de Convenio</h1>
-        <h3>Por gentileza, preencher os dados do convenio a ser cadastrado:</h3> 
+        <h1>Cadastro de Convênio</h1>
+        <h3>Por gentileza, preencher os dados do convênio a ser cadastrado:</h3> 
         <form action="../crudconvenio" method="POST">
             <div class="form1">
                 <fieldset><legend>Convenio</legend>                    
@@ -44,14 +44,18 @@
                 <br><br>
             </div>
         </form>
-        <div class="form3">
+        <div class="form2">
+
+        </div>
+        <div>
             <form action="../controledenavegacao" method="post">
                 <input type="hidden" id="avicena" name="avicena" value="avicena">
                 <input type="submit" value = "Voltar">
             </form>   
-            <footer class="footer">                
-                &copy; Desenvolvido por Luciane Benetti e Marco Sena.
-            </footer>    
+        </div>
+        <footer class="footer">                
+            &copy; Desenvolvido por Luciane Benetti e Marco Sena.
+        </footer>    
 
     </body>
 </html>

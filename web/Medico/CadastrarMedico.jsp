@@ -12,15 +12,15 @@
         <script type="text/javascript" src="mascarasMedico.js"></script>
         <link type="text/css" rel="stylesheet" href="CRUDMedico.css">
         <link type="text/css" rel="stylesheet" href="Medico/CRUDMedico.css">
-        <title>Cadastrar Medico</title>
+        <title>Cadastrar Médico</title>
     </head>
     <body class="body">
         <hr>
-        <h1>Cadastro de Medico</h1>
+        <h1>Cadastro de Médico</h1>
         <h3>Por gentileza, preencher os dados do medico a ser cadastrado:</h3> 
         <form action="../crudmedico" method="POST">
             <div class="form1">
-                <fieldset><legend>Medico</legend>                    
+                <fieldset><legend>Médico</legend>                    
                     <a>*</a>Campos de preenchimento obrigatório <br><br>
                     <input type="hidden" id="cadastrar" name="cadastrar" value="cadastrar">
                     Nome<a>*</a>: <br>

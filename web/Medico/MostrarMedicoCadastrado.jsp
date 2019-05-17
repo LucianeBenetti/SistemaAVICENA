@@ -9,21 +9,29 @@
 <html>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link type="text/css" rel="stylesheet" href="Medico/CRUDMedico.css">
-    <title>Cliente Cadastrado</title>
+    <title>Médico Cadastrado</title>
 </head>
 <body class="body">
     <br><br>
     <hr>
-    <h1>O Medico foi cadastrado com os seguintes dados:</h1>
+    <%
+        Object obj1 = request.getAttribute("medicocadastrado");
+
+        if (obj1 != null) {
+            Boolean medicoCadastrado = (Boolean) obj1;
+
+            if (medicoCadastrado) {%> 
+
+    <h1>O Médico foi cadastrado com os seguintes dados:</h1>
     <form>
         <div class="form1">      
 
-            <fieldset><legend>Medico</legend>
+            <fieldset><legend>Médico</legend>
                 <br>
                 Identificação: <br>
-                <input type="text" size ="5" value="<%= request.getAttribute("idmedico")%>"><br><br>
+                <input type="text" readonly="" size ="5" value="<%= request.getAttribute("idmedico")%>"><br><br>
                 Nome: <br>
-                <input type="text" size ="67" value="<%= request.getAttribute("nomemedico")%>"><br><br>
+                <input type="text" readonly size ="67" value="<%= request.getAttribute("nomemedico")%>"><br><br>
 
                 <div style="width:67%">
                     <div style="float:left"> Celular Whats App<a>*</a>: </div>
@@ -31,15 +39,15 @@
                 </div>
                 <br>
                 <div style="width:82%">
-                    <div style="float:left"> <input type="text" size="25" value="<%= request.getAttribute("celularwhats")%>" onkeyup="maskIt(this, event, '(##)####-####')"></div>    
-                    <div style="float:right"> <input type="text" size="25" value="<%= request.getAttribute("celularmedico")%>" onkeyup="maskIt(this, event, '(##)####-####')"></div>
+                    <div style="float:left"> <input type="text" readonly size="25" value="<%= request.getAttribute("celularwhats")%>" onkeyup="maskIt(this, event, '(##)####-####')"></div>    
+                    <div style="float:right"> <input type="text" readonly size="25" value="<%= request.getAttribute("celularmedico")%>" onkeyup="maskIt(this, event, '(##)####-####')"></div>
                 </div>
                 <br><br>
                 e-mail:<br>
-                <input type="email" size="67" value="<%= request.getAttribute("email")%>"><br><br>
+                <input type="email" readonly size="67" value="<%= request.getAttribute("email")%>"><br><br>
 
                 CRM:<br>
-                <input type="crm" size="67" value="<%= request.getAttribute("crm")%>"><br><br>
+                <input type="crm" readonly size="67" value="<%= request.getAttribute("crm")%>"><br><br>
 
                 <div style="width:55%">
                     <div style="float:left"> CPF<a>*</a>: </div>
@@ -47,14 +55,21 @@
                 </div>
                 <br>
                 <div style="width:82%">
-                    <div style="float:left"> <input type="text" size="25" value="<%= request.getAttribute("cpfmedico")%>" onkeyup="maskIt(this, event, '###.###.###-##')"></div>    
-                    <div style="float:right"> <input type="text" size="25" value="<%= request.getAttribute("cnpjmedico")%>"></div>
+                    <div style="float:left"> <input type="text" readonly size="25" value="<%= request.getAttribute("cpfmedico")%>" onkeyup="maskIt(this, event, '###.###.###-##')"></div>    
+                    <div style="float:right"> <input type="text" readonly size="25" value="<%= request.getAttribute("cnpjmedico")%>"></div>
                 </div>
                 <br><br>
             </fieldset>
         </div>
-                 <div class="form2">  
-                 </div>
+        <div class="form2">  
+        </div>
+        <%} else {%>
+        <br> 
+        <h1>Resultado do cadastro do Médico:</h1>            
+        <br>             
+        <input type="text" readonly size="40" style="margin-left: 5px;" value="<% out.println("Médico já cadastrado na base de dados!");%>">
+        <%}%>
+        <%}%>
     </form>
     <br><br>
     <form action="controledenavegacao" method="POST">
