@@ -35,13 +35,13 @@ public class EspecialidadeDAO {
         } catch (SQLException e) {
             System.out.println("Erro ao executar Query de Cadastro de Especialidade! Causa: \n: " + e.getMessage());
         } finally {
-           ConexaoComBanco.closePreparedStatement(prepStmt);
+            ConexaoComBanco.closePreparedStatement(prepStmt);
             ConexaoComBanco.closeConnection(conn);
         }
         return novoId;
     }
 
-    public boolean deleteEspecialidadeVO(int codigoEspecialidade) {
+    public boolean excluirEspecialidadeVO(int codigoEspecialidade) {
         boolean sucessoDelete = false;
 
         String query = "DELETE from especialidade where codigoEspecialidade = ? ";
@@ -56,7 +56,7 @@ public class EspecialidadeDAO {
                 sucessoDelete = true;
             }
         } catch (SQLException e) {
-            System.out.println("Erro ao executar Query de Exclus�o do Especialidade! Causa: \n: " + e.getMessage());
+            System.out.println("Erro ao executar Query de Exclusão do Especialidade! Causa: \n: " + e.getMessage());
         } finally {
             ConexaoComBanco.closePreparedStatement(prepStmt);
             ConexaoComBanco.closeConnection(conn);
@@ -64,7 +64,7 @@ public class EspecialidadeDAO {
         return sucessoDelete;
     }
 
-    public EspecialidadeVO consultarEspecialidadeVONome(String nomeEspecialidade, String instituicao) {
+    public EspecialidadeVO pesquisarEspecialidadesVO(EspecialidadeVO especialidadePorNome) {
 
         String query = "SELECT *from especialidade " + " where nomeEspecialidade like ? and instituicao like ?";
 
@@ -72,8 +72,10 @@ public class EspecialidadeDAO {
         PreparedStatement prepStmt = ConexaoComBanco.getPreparedStatement(conn, query);
         EspecialidadeVO especialidade = null;
         try {
-            prepStmt.setString(1, '%' + nomeEspecialidade + '%');
-            prepStmt.setString(2, '%' + instituicao + '%');
+
+            prepStmt.setString(1, '%' + especialidadePorNome.getNomeEspecialidade() + '%');
+            prepStmt.setString(2, '%' + especialidadePorNome.getInstituicao() + '%');
+
             ResultSet result = prepStmt.executeQuery();
 
             while (result.next()) {
@@ -95,7 +97,7 @@ public class EspecialidadeDAO {
 
     public ArrayList<EspecialidadeVO> listarTodasEspecialidades() {
 
-        ArrayList<EspecialidadeVO> listaEspecialiades = new ArrayList<EspecialidadeVO>();
+        ArrayList<EspecialidadeVO> listaEspecialidades = new ArrayList<EspecialidadeVO>();
 
         String query = "select * from especialidade";
 
@@ -110,21 +112,75 @@ public class EspecialidadeDAO {
                 especialidade.setNomeEspecialidade(result.getString(2));
                 especialidade.setInstituicao(result.getString(3));
 
-                listaEspecialiades.add(especialidade);
+                listaEspecialidades.add(especialidade);
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return listaEspecialiades;
+        return listaEspecialidades;
     }
 
-    public ArrayList<EspecialidadeVO> consultarEspecialidadeNome(String nomeEspecialidade) {
+    public boolean atualizarEspecialidadeVO(EspecialidadeVO especialidade) {
+
+        boolean sucessoAtualizar = false;
+        String query = "UPDATE especialidade SET nomeEspecialidade=?, instituicao=? "
+                + " where codigoEspecialidade = ? ";
+
+        Connection conn = ConexaoComBanco.getConnection();
+        PreparedStatement prepStmt = ConexaoComBanco.getPreparedStatement(conn, query);
+
+        try {
+            prepStmt.setString(1, especialidade.getNomeEspecialidade());
+            prepStmt.setString(2, especialidade.getInstituicao());
+            prepStmt.setInt(3, especialidade.getCodigoEspecialidade());
+
+            int codigoRetorno = prepStmt.executeUpdate();
+
+            if (codigoRetorno == 1) {
+                sucessoAtualizar = true;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Erro ao executar Query de Atualiza��o do Especialidade! Causa: \n: " + ex.getMessage());
+        } finally {
+            ConexaoComBanco.closePreparedStatement(prepStmt);
+            ConexaoComBanco.closeConnection(conn);
+        }
+        return sucessoAtualizar;
+    }
+
+    public EspecialidadeVO pesquisarEspecialidadeVOPorId(int id) {
+        String query = "SELECT * FROM especialidade WHERE codigoEspecialidade = ? ";
+
+        Connection conn = ConexaoComBanco.getConnection();
+        PreparedStatement prepStmt = ConexaoComBanco.getPreparedStatement(conn, query);
+        EspecialidadeVO especialidade = null;
+        try {
+            prepStmt.setInt(1, id);
+            ResultSet result = prepStmt.executeQuery();
+
+            while (result.next()) {
+                especialidade = new EspecialidadeVO();
+                especialidade.setCodigoEspecialidade(result.getInt(1));
+                especialidade.setNomeEspecialidade(result.getString(2));
+                especialidade.setInstituicao(result.getString(3));
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            ConexaoComBanco.closePreparedStatement(prepStmt);
+            ConexaoComBanco.closeConnection(conn);
+        }
+        return especialidade;
+    }
+
+    public ArrayList<EspecialidadeVO> pesquisarEspecialidadeNome(String nomeEspecialidade) {
 
         String query = "SELECT *from especialidade " + " where nomeEspecialidade like ? ";
 
         Connection conn = ConexaoComBanco.getConnection();
         PreparedStatement prepStmt = ConexaoComBanco.getPreparedStatement(conn, query);
+        
         EspecialidadeVO especialidade = null;
         ArrayList<EspecialidadeVO> especialidades = new ArrayList<EspecialidadeVO>();
         try {
@@ -151,56 +207,5 @@ public class EspecialidadeDAO {
         return especialidades;
     }
 
-    public EspecialidadeVO atualizarEspecialidade(EspecialidadeVO especialidade, int codigoEspecialidade) {
-
-        boolean sucessoAtualizar = false;
-        String query = "UPDATE especialidade SET nomeEspecialidade=?, instituicao=? "
-                + " where codigoEspecialidade = ? ";
-
-        Connection conn = ConexaoComBanco.getConnection();
-        PreparedStatement prepStmt = ConexaoComBanco.getPreparedStatement(conn, query);
-
-        try {
-            prepStmt.setString(1, especialidade.getNomeEspecialidade());
-            prepStmt.setString(2, especialidade.getInstituicao());
-            prepStmt.setInt(3, especialidade.getCodigoEspecialidade());
-
-            int codigoRetorno = prepStmt.executeUpdate();
-
-            if (codigoRetorno == 1) {
-                sucessoAtualizar = true;
-            }
-        } catch (SQLException ex) {
-            System.out.println("Erro ao executar Query de Atualiza��o do Especialidade! Causa: \n: " + ex.getMessage());
-        } finally {
-            ConexaoComBanco.closePreparedStatement(prepStmt);
-            ConexaoComBanco.closeConnection(conn);
-        }
-        return especialidade;
-    }
-
-    public EspecialidadeVO consultarPorId(int id) {
-        String query = "SELECT * FROM especialidade WHERE codigoEspecialidade = ? ";
-
-        Connection conn = ConexaoComBanco.getConnection();
-        PreparedStatement prepStmt = ConexaoComBanco.getPreparedStatement(conn, query);
-        EspecialidadeVO especialidade = null;
-        try {
-            prepStmt.setInt(1, id);
-            ResultSet result = prepStmt.executeQuery();
-
-            while (result.next()) {
-                especialidade = new EspecialidadeVO();
-                especialidade.setCodigoEspecialidade(result.getInt(1));
-                especialidade.setNomeEspecialidade(result.getString(2));
-                especialidade.setInstituicao(result.getString(3));
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        } finally {
-            ConexaoComBanco.closePreparedStatement(prepStmt);
-            ConexaoComBanco.closeConnection(conn);
-        }
-        return especialidade;
-    }
+    
 }

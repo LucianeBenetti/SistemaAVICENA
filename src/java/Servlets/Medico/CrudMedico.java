@@ -72,8 +72,8 @@ public class CrudMedico extends HttpServlet {
                             request.getRequestDispatcher("Medico/MostrarMedicoCadastrado.jsp").forward(request, response);
                        
                         }else {
-                            request.setAttribute("pacientevocadastrado", resultadoDoCadastro);
-                            request.getRequestDispatcher("Paciente/MostrarPacienteCadastrado.jsp").forward(request, response);
+                            request.setAttribute("medicocadastrado", resultadoDoCadastro);
+                            request.getRequestDispatcher("Medico/MostrarMedicoCadastrado.jsp").forward(request, response);
                         }
                         
                         break;

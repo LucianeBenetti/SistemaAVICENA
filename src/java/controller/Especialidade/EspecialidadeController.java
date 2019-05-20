@@ -1,89 +1,50 @@
-
 package controller.Especialidade;
 
 import java.util.ArrayList;
 import java.util.List;
 import model.bo.Especialidade.EspecialidadeBO;
+import model.bo.Especialidade.EspecialidadeBO;
+import model.vo.Especialidade.EspecialidadeVO;
 import model.vo.Especialidade.EspecialidadeVO;
 
-
 public class EspecialidadeController {
-    
-EspecialidadeBO bo = new EspecialidadeBO();
 
-	public String salvar(EspecialidadeVO especialidade) {
+    EspecialidadeBO especialidadeBO = new EspecialidadeBO();
 
-		String validacao = validarEspecialidade(especialidade);
+    public int cadastrarEspecialidadeVO(EspecialidadeVO especialidadeVO) {
 
-		if (validacao == "") {
+        return especialidadeBO.cadastrarEspecialidadeVO(especialidadeVO);
+    }
 
-			if (bo.inserir(especialidade)) {
-				validacao = "Especialidade salva com sucesso!";
-			} else {
-				validacao = "Erro ao salvar especialidade!";
-			}
-		}
-		return validacao;
-	}
+    public ArrayList<EspecialidadeVO> listarTodasAsEspecialidadesVO() {
 
-	private String validarEspecialidade(EspecialidadeVO especialidade) {
+        return especialidadeBO.ListarTodasEspecialidadesVO();
 
-		String validacao = "";
-		if (especialidade.getNomeEspecialidade() == null) {
-			validacao = "Nome est� nulo!";
-		} else {
-			if (especialidade.getNomeEspecialidade().trim().equals("")
-					|| especialidade.getInstituicao().trim().equals("")) {
-				validacao += "- Nome e Institui��o s�o obrigat�rios. \n";
-			} else {
-				if (bo.consultarEspecialidadeVONome(especialidade.getNomeEspecialidade(),
-						especialidade.getInstituicao()) != null) {
-					validacao = "Especialidade j� cadastrada! Tente novamente.";
-				}
-			}
+    }
 
-		}
-		return validacao;
-	}
+    public EspecialidadeVO pesquisarEspecialidadeVOPorId(int codigoEspecialidade) {
 
-	public List<EspecialidadeVO> exibirEspecialidadePorNome(String nome) {
+        return especialidadeBO.pesquisarEspecialidadeVOPorId(codigoEspecialidade);
+    }
 
-		return bo.exibirEspecialidadePorNome(nome);
-	}
+    public Boolean atualizarEspecialidadeVO(EspecialidadeVO especialidadeVO) {
 
-	public EspecialidadeVO atualizar(EspecialidadeVO especialidade, int codigo) {
+        return especialidadeBO.atualizarEspecialidadeVO(especialidadeVO);
+    }
 
-		EspecialidadeVO especialidadeBuscada = bo.atualizar(especialidade, codigo);
+    public boolean excluirEspecialidadePorId(int codigoEspecialidade) {
 
-		return especialidadeBuscada;
+        return especialidadeBO.excluirEspecialidadePorId(codigoEspecialidade);
+    }
 
-	}
+    public EspecialidadeVO pesquisarEspecialidadesVO(EspecialidadeVO especialidadePorNome) {
 
-	public void excluirEspecialidadeVO(EspecialidadeVO especialidadeExcluida) {
+        return especialidadeBO.pesquisarEspecialidadesVO(especialidadePorNome);
+    }
 
-		bo.excluirEspecialidade(especialidadeExcluida);
+    public List<EspecialidadeVO> exibirEspecialidadePorNome(String nome) {
 
-	}
-
-	public List<EspecialidadeVO> listarTodasEspecialidades() {
-
-		return bo.listarTodasEspecialidades();
-	}
-
-	public ArrayList<EspecialidadeVO> consultarEspecialidade() {
-
-		return bo.buscarEspecilidades();
-	}
-
-	public List<EspecialidadeVO> exibirEspecialidadePorNome(EspecialidadeVO especialidade) {
-		// TODO Auto-generated method stub
-		return bo.exibirEspecialidadePorNome(especialidade);
-	}
-
-	public EspecialidadeVO consultarEspecialidadeVONome(String nomeEspecialidade, String instituicao) {
-		// TODO Auto-generated method stub
-		return bo.consultarEspecialidadeVONome(nomeEspecialidade, instituicao);
-
+		return especialidadeBO.exibirEspecialidadePorNome(nome);
 	}
 
 }

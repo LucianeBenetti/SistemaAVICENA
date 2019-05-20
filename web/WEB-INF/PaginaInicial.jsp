@@ -138,10 +138,10 @@
                             Especialidades
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Pesquisar Especialidade</a>
-                            <a class="dropdown-item" href="#">Cadastrar Especialidade</a>
-                            <a class="dropdown-item" href="#">Listar Todas as Especialidades</a>
-                            <a class="dropdown-item" href="#">Excluir Especialidade</a>
+                            <a class="dropdown-item" href="Especialidade/PesquisarEspecialidadePorNome.jsp">Pesquisar Especialidade</a>
+                            <a class="dropdown-item" href="Especialidade/CadastrarEspecialidade.jsp">Cadastrar Especialidade</a>
+                            <a class="dropdown-item" href="listarespecialidades">Listar Todas as Especialidades</a>
+                            <a class="dropdown-item" href="Especialidade/ExcluirEspecialidadePorId.jsp">Excluir Especialidade</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">

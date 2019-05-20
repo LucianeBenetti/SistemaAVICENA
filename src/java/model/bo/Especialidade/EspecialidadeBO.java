@@ -1,60 +1,64 @@
-
 package model.bo.Especialidade;
 
 import java.util.ArrayList;
 import java.util.List;
 import model.dao.Especialidade.EspecialidadeDAO;
+import model.dao.Especialidade.EspecialidadeDAO;
+import model.vo.Especialidade.EspecialidadeVO;
 import model.vo.Especialidade.EspecialidadeVO;
 
 public class EspecialidadeBO {
-    
 
-	EspecialidadeDAO dao = new EspecialidadeDAO();
+    EspecialidadeDAO especialidadeDAO = new EspecialidadeDAO();
 
-	public boolean inserir(EspecialidadeVO especialidade) {
+    public int cadastrarEspecialidadeVO(EspecialidadeVO especialidadeVO) {
 
-			int idGerado = dao.inserirEspecialidadeVO(especialidade);
-			return idGerado > 0;
-		
-	}
+        int novoId;
 
-	public List<EspecialidadeVO> exibirEspecialidadePorNome(String espNome) {
-		ArrayList<EspecialidadeVO> especialidades = dao.consultarEspecialidadeNome(espNome);
-		return especialidades;
-	}
+        if (especialidadeDAO.pesquisarEspecialidadesVO(especialidadeVO) != null) {
 
-	public EspecialidadeVO atualizar(EspecialidadeVO especialidade, int codigo) {
-		EspecialidadeVO especialidadeBuscada = dao.atualizarEspecialidade(especialidade, codigo);
+            novoId = 0;
+        } else {
+            novoId = especialidadeDAO.inserirEspecialidadeVO(especialidadeVO);
+        }
 
-		return especialidadeBuscada;
-	}
+        return novoId;
+    }
 
-	public boolean excluirEspecialidade(EspecialidadeVO especialidadeExcluida) {
+    public ArrayList<EspecialidadeVO> ListarTodasEspecialidadesVO() {
 
-		boolean sucesso = dao.deleteEspecialidadeVO(especialidadeExcluida.getCodigoEspecialidade());
-		return sucesso;
-	}
+        return especialidadeDAO.listarTodasEspecialidades();
+    }
 
-	public List<EspecialidadeVO> listarTodasEspecialidades() {
+    public EspecialidadeVO pesquisarEspecialidadeVOPorId(int IdEspecialidade) {
 
-		ArrayList<EspecialidadeVO> especialidades = dao.listarTodasEspecialidades();
-		return especialidades;
-	}
+        return especialidadeDAO.pesquisarEspecialidadeVOPorId(IdEspecialidade);
+    }
 
-	public ArrayList<EspecialidadeVO> buscarEspecilidades() {
-		ArrayList<EspecialidadeVO> especialidadeBuscada = dao.listarTodasEspecialidades();
-		return especialidadeBuscada;
-	}
+    public boolean atualizarEspecialidadeVO(EspecialidadeVO especialidadeVO) {
+        boolean atualizacao = false;
 
-	public List<EspecialidadeVO> exibirEspecialidadePorNome(EspecialidadeVO especialidade) {
-		ArrayList<EspecialidadeVO> especialidades = dao.consultarEspecialidadeNome(especialidade.getNomeEspecialidade());
-		
-		return especialidades;
-	}
+        if (especialidadeDAO.atualizarEspecialidadeVO(especialidadeVO)) {
 
-	public EspecialidadeVO consultarEspecialidadeVONome(String nomeEspecialidade, String instituicao) {
-		
-		return dao.consultarEspecialidadeVONome(nomeEspecialidade, instituicao);
-	}
+            atualizacao = true;
+        }
 
-}	
+        return atualizacao;
+    }
+
+    public boolean excluirEspecialidadePorId(int codigoEspecialidade) {
+        return especialidadeDAO.excluirEspecialidadeVO(codigoEspecialidade);
+    }
+
+    public EspecialidadeVO pesquisarEspecialidadesVO(EspecialidadeVO especialidadePorNome) {
+
+        return especialidadeDAO.pesquisarEspecialidadesVO(especialidadePorNome);
+
+    }
+
+    public List<EspecialidadeVO> exibirEspecialidadePorNome(String espNome) {
+        ArrayList<EspecialidadeVO> especialidades = especialidadeDAO.pesquisarEspecialidadeNome(espNome);
+        return especialidades;
+    }
+
+}

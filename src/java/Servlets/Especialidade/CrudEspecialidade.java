@@ -1,6 +1,6 @@
-package Servlets.Convenio;
+package Servlets.Especialidade;
 
-import controller.Convenio.ConvenioController;
+import controller.Especialidade.EspecialidadeController;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -8,12 +8,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.vo.Convenio.ConvenioVO;
+import model.vo.Especialidade.EspecialidadeVO;
 
-public class CrudConvenio extends HttpServlet {
+public class CrudEspecialidade extends HttpServlet {
 
-    ConvenioVO convenioVO;
-    ConvenioController convenioController;
+    EspecialidadeVO especialidadeVO;
+    EspecialidadeController especialidadeController;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -27,7 +27,7 @@ public class CrudConvenio extends HttpServlet {
         variavel.add(var2);
         System.out.println("O array é: " + variavel);
 
-        ConvenioVO convenioVO = null;
+        EspecialidadeVO especialidadeVO = null;
 
         for (int i = 0; i < variavel.size(); i++) {
             String var = variavel.get(i);
@@ -37,47 +37,46 @@ public class CrudConvenio extends HttpServlet {
                     case "cadastrar":
 
                         System.out.println("A variável é: " + variavel.get(i));
-                        convenioVO = new ConvenioVO();
-                        convenioVO.setNomeConvenio(request.getParameter("nomeconvenio"));
-                        convenioVO.setCnpjConvenio(request.getParameter("cnpjconvenio"));
-                        convenioVO.setValor(request.getParameter("valor"));
+                        especialidadeVO = new EspecialidadeVO();
+                        especialidadeVO.setNomeEspecialidade(request.getParameter("nomeespecialidade"));
+                        especialidadeVO.setInstituicao(request.getParameter("instituicaoespecialidade"));
 
-                        System.out.println(convenioVO);
+                        System.out.println(especialidadeVO);
 
-                        convenioController = new ConvenioController();
+                        especialidadeController = new EspecialidadeController();
 
-                        int novoId = convenioController.cadastrarConvenioVO(convenioVO);
+                        int novoId = especialidadeController.cadastrarEspecialidadeVO(especialidadeVO);
                         Boolean resultadoDoCadastro = false;
 
-                        if (novoId > 0) {
+                        if ((novoId > 0)&&(especialidadeVO.getNomeEspecialidade() != null)&&(especialidadeVO.getInstituicao()!= null)) {
 
-                            request.setAttribute("idconvenio", novoId);
-                            request.setAttribute("nomeconvenio", convenioVO.getNomeConvenio());
-                            request.setAttribute("cnpjconvenio", convenioVO.getCnpjConvenio());
-                            request.setAttribute("valor", convenioVO.getValor());
+                            request.setAttribute("idespecialidade", novoId);
+                            request.setAttribute("nomeespecialidade", especialidadeVO.getNomeEspecialidade());
+                            request.setAttribute("instituicaoespecialidade", especialidadeVO.getInstituicao());
+                            
 
                             resultadoDoCadastro = true;
 
-                            request.setAttribute("conveniocadastrado", resultadoDoCadastro);
-                            request.getRequestDispatcher("Convenio/MostrarConvenioCadastrado.jsp").forward(request, response);
+                            request.setAttribute("especialidadecadastrada", resultadoDoCadastro);
+                            request.getRequestDispatcher("Especialidade/MostrarEspecialidadeCadastrada.jsp").forward(request, response);
 
                         } else {
-                            request.setAttribute("conveniocadastrado", resultadoDoCadastro);
-                            request.getRequestDispatcher("Convenio/MostrarConvenioCadastrado.jsp").forward(request, response);
+                            request.setAttribute("especialidadecadastrada", resultadoDoCadastro);
+                            request.getRequestDispatcher("Especialidade/MostrarEspecialidadeCadastrada.jsp").forward(request, response);
                         }
 
                         break;
 
                     case "excluir":
 
-                        convenioVO = new ConvenioVO();
-                        convenioVO.setCnpjConvenio(request.getParameter("cnpjconvenio"));
+                        especialidadeVO = new EspecialidadeVO();
+                        especialidadeVO.setNomeEspecialidade(request.getParameter("codigoespecialidade"));
 
-                        convenioController = new ConvenioController();
-                        if (convenioController.excluirConvenioPorCnpj(convenioVO.getCnpjConvenio())) {
+                        especialidadeController = new EspecialidadeController();
+                        if (especialidadeController.excluirEspecialidadePorId(especialidadeVO.getCodigoEspecialidade())) {
 
-                            request.setAttribute("cnpjconvenio", convenioVO.getCnpjConvenio());
-                            request.getRequestDispatcher("Convenio/MostrarConvenioExcluido.jsp").forward(request, response);
+                            request.setAttribute("nomeespecialidade", especialidadeVO.getNomeEspecialidade());
+                            request.getRequestDispatcher("Especialidade/MostrarEspecialidadeExcluida.jsp").forward(request, response);
                         }
 
                         break;

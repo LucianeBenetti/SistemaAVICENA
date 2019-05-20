@@ -56,6 +56,18 @@
         <servlet-name>PesquisarConvenioPorCnpj</servlet-name>
         <servlet-class>Servlets.Convenio.PesquisarConvenioPorCnpj</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CrudEspecialidade</servlet-name>
+        <servlet-class>Servlets.Especialidade.CrudEspecialidade</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListarEspecialidades</servlet-name>
+        <servlet-class>Servlets.Especialidade.ListarEspecialidades</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PesquisarEspecialidadePorNome</servlet-name>
+        <servlet-class>Servlets.Especialidade.PesquisarEspecialidadePorNome</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CrudPaciente</servlet-name>
         <url-pattern>/crudpaciente</url-pattern>
@@ -114,6 +126,18 @@
     <servlet-mapping>
         <servlet-name>PesquisarConvenioPorCnpj</servlet-name>
         <url-pattern>/pesquisarconvenioporcnpj</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CrudEspecialidade</servlet-name>
+        <url-pattern>/crudespecialidade</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListarEspecialidades</servlet-name>
+        <url-pattern>/listarespecialidades</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PesquisarEspecialidadePorNome</servlet-name>
+        <url-pattern>/pesquisarespecialidadepornome</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
