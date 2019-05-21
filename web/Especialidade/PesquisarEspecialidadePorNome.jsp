@@ -53,7 +53,7 @@
                     Boolean EspecialidadeVORetornada = (Boolean) obj;
 
                     if (!EspecialidadeVORetornada) {%>                     
-            <input type="text" size="100" style="margin-left: 5px;" value="<% out.println("Especialidade não encontrada!"
+                   <input type="text" size="100" style="margin-left: 5px;" value="<% out.println("Especialidade não encontrada!"
                                + " Tente novamente. Se a Especialiade não for cadastrada, por gentileza, cadastrá-la!!");%>">               
             <%} else {%>
 
@@ -65,25 +65,25 @@
                             <th>Id</th>
                             <th>Nome</th> 
                             <th>Instituição</th> 
-
-                        </tr>            
-
+                        </tr>        
                         <%
                             ArrayList<EspecialidadeVO> especialidadesVO = (ArrayList<EspecialidadeVO>) request.getAttribute("especialidadesBuscadas");
-
                             for (EspecialidadeVO especialidadeVO : especialidadesVO) {%>   
-                        <tr>                            
+                        <tr>
                             <td><%= especialidadeVO.getCodigoEspecialidade()%></td>
                             <td><%= especialidadeVO.getNomeEspecialidade()%></td>
                             <td><%= especialidadeVO.getInstituicao()%></td>
-                        </tr>                   
-
-                        <%
-                            }
-                        %>
+                        </tr>     
+                        <% }     %>
                     </table>
                     <button id="visualizarDados">Buscar Dados</button>
-                    
+                    <br><br>
+                    ID: <br>
+                    <input type="text" name="codigoespecialidade"> <br><br>
+                    Nome: <br>
+                    <input type="text" name="nomeespecialidade"> <br><br>
+                    Instituicao:<br>
+                    <input type="text" name="instituicaoespecialidade"> <br><br>
                     <br><br>
 
                     <input type="submit" value="Atualizar Dados da Especialidade">

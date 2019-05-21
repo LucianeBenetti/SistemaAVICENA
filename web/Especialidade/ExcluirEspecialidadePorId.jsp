@@ -13,23 +13,21 @@
     <script type="text/javascript" src="mascarasEspecialidade.js"></script>
     <link type="text/css" rel="stylesheet" href="CRUDEspecialidade.css">
     <link type="text/css" rel="stylesheet" href="Especialidade/CRUDEspecialidade.css">
-    <title>Excluir Especialidade por ID</title>
+    <title>Excluir Especialidade</title>
 </head>
 <body class="body">
 
-    <div class="excluirCPF">
-        <h3>Excluir Especialidade por ID!</h3>
+    <div class="consultaNome">
+        <h2>Excluir Especialidade!</h2>
 
-        <form method="post" action="../pesquisarespecialidadepornome">
+        <form method="post" action="../pesquisarparaexcluir">
 
-            <fieldset><legend>Digite a Especialidade que deseja excluir da base de dados:</legend>
+            <fieldset><legend>Digite o nome da Especialidade a ser consultada na base de dados</legend>
                 <p><a>*</a>Campos de preenchimento obrigatório</p>                    
-                <input type="hidden" id="excluir" name="excluir" value="excluir">
-                CNPJ<a>*</a>: <br>
+
+                Nome<a>*</a>:<br> 
                 <input type="text" name="nomeespecialidade" required ><br><br>
-
-                <input type="submit" value = "Pesquisar Especialidade">                
-
+                <input type="submit" value = "Pesquisar Especialidade"> 
             </fieldset>
         </form>
         <br><br>
@@ -52,10 +50,10 @@
 
                 if (!EspecialidadeVORetornada) {%>                     
                <input type="text" size="100" style="margin-left: 5px;" value="<% out.println("Especialidade não encontrada!"
-                        + " Tente novamente. Se a Especialiade não for cadastrada, por gentileza, cadastrá-la!!");%>">               
+                               + " Tente novamente. Se a Especialiade não for cadastrada, por gentileza, cadastrá-la!!");%>">               
         <%} else {%>
 
-        <form action="crudepecialidade" method="post">
+        <form action="crudespecialidade" method="post">
 
             <fieldset><legend>Dados do Especialidade</legend>
                 <table id="tabelaEspecialidades">
@@ -63,33 +61,36 @@
                         <th>Id</th>
                         <th>Nome</th> 
                         <th>Instituição</th> 
-
-                    </tr>            
-
+                    </tr>        
                     <%
                         ArrayList<EspecialidadeVO> especialidadesVO = (ArrayList<EspecialidadeVO>) request.getAttribute("especialidadesBuscadas");
-
                         for (EspecialidadeVO especialidadeVO : especialidadesVO) {%>   
-                    <tr>                            
+                    <tr>
                         <td><%= especialidadeVO.getCodigoEspecialidade()%></td>
                         <td><%= especialidadeVO.getNomeEspecialidade()%></td>
                         <td><%= especialidadeVO.getInstituicao()%></td>
-                    </tr>                   
-
-                    <%
-                        }
-                    %>
+                    </tr>     
+                    <% }     %>
                 </table>
                 <button id="visualizarDados">Buscar Dados</button>
 
                 <br><br>
-
+                    ID: <br>
+                    <input type="text" readonly name="idespecialidade"> <br><br>
+                    Nome: <br>
+                    <input type="text" readonly name="nomeespecialidade"> <br><br>
+                    Instituicao:<br>
+                    <input type="text" readonly name="instituicaoespecialidade"> <br><br>
+                    <br><br>
+                <br><br>
+                <input type="hidden" id="excluir" name="excluir" value="excluir">
                 <input type="submit" value="Excluir Especialidade">
             </fieldset>
         </form><br><br>
         <%}
                 }%>      
-    </div>        
+    </div>            
+
 
     <footer class="footer">                
         &copy; Desenvolvido por Luciane Benetti e Marco Sena.

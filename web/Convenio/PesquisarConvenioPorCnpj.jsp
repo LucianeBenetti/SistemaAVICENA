@@ -67,7 +67,7 @@
                     <br>
                     <div style="width:80%">
 
-                        <div style="float:left"> <input type="text" name="cnpjconvenio" onkeyup="maskIt(this, event, '##.###.###/####-##')" value="<%= request.getAttribute("cnpjconvenio")%>" required size="31"></div>    
+                        <div style="float:left"><input type="text" name="cnpjconvenio" onkeyup="maskIt(this, event, '##.###.###/####-##')" value="<%= request.getAttribute("cnpjconvenio")%>" required size="31"></div>    
                         <div style="float:right"><input type="text" name="valor" onkeyup="maskIt(this, event, '###.###.###,##', true, {pre: 'R$', pos: ''})" value="<%= request.getAttribute("valor")%>" required size="31"></div>
                     </div>
                     <br><br>

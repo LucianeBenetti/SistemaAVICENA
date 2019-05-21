@@ -68,6 +68,14 @@
         <servlet-name>PesquisarEspecialidadePorNome</servlet-name>
         <servlet-class>Servlets.Especialidade.PesquisarEspecialidadePorNome</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PesquisarParaExcluir</servlet-name>
+        <servlet-class>Servlets.Especialidade.PesquisarParaExcluir</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AtualizarEspecialidade</servlet-name>
+        <servlet-class>Servlets.Especialidade.AtualizarEspecialidade</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CrudPaciente</servlet-name>
         <url-pattern>/crudpaciente</url-pattern>
@@ -138,6 +146,14 @@
     <servlet-mapping>
         <servlet-name>PesquisarEspecialidadePorNome</servlet-name>
         <url-pattern>/pesquisarespecialidadepornome</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PesquisarParaExcluir</servlet-name>
+        <url-pattern>/pesquisarparaexcluir</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AtualizarEspecialidade</servlet-name>
+        <url-pattern>/atualizarespecialidade</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

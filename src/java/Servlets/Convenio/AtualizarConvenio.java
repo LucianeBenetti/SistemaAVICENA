@@ -20,8 +20,7 @@ public class AtualizarConvenio extends HttpServlet {
         convenioVO.setNomeConvenio(request.getParameter("nomeconvenio"));
         convenioVO.setCnpjConvenio(request.getParameter("cnpjconvenio"));
         convenioVO.setValor(request.getParameter("valor"));
-       ;
-
+       
         ConvenioController conveniocontroller = new ConvenioController();
         boolean atualizado = conveniocontroller.atualizarConvenioVO(convenioVO);
         Boolean resultadoDaAtualizacao = false;
