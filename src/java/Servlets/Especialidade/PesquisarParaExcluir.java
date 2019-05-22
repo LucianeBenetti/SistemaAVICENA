@@ -1,4 +1,3 @@
-
 package Servlets.Especialidade;
 
 import controller.Especialidade.EspecialidadeController;
@@ -12,7 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import model.vo.Especialidade.EspecialidadeVO;
 
 public class PesquisarParaExcluir extends HttpServlet {
-EspecialidadeVO especialidadeVO = new EspecialidadeVO();
+
+    EspecialidadeVO especialidadeVO = new EspecialidadeVO();
     List<EspecialidadeVO> especialidadesBuscadas = null;
 
     @Override
@@ -23,9 +23,9 @@ EspecialidadeVO especialidadeVO = new EspecialidadeVO();
         EspecialidadeController especialidadecontroller = new EspecialidadeController();
         Boolean resultadoDaPesquisaPorNome = false;
         especialidadesBuscadas = especialidadecontroller.exibirEspecialidadePorNome(especialidadeVO.getNomeEspecialidade());
-             
-            System.out.println(especialidadeVO);
-        if (especialidadesBuscadas!= null){
+
+        System.out.println(especialidadeVO);
+        if (especialidadesBuscadas != null) {
 
             System.out.println(especialidadesBuscadas);
             request.setAttribute("especialidadesBuscadas", especialidadesBuscadas);

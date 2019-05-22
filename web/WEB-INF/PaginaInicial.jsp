@@ -152,7 +152,7 @@
                             <a class="dropdown-item" href="Especializacao/PesquisarEspecializacaoPorNome.jsp">Pesquisar Especializacao</a>
                             <a class="dropdown-item" href="buscarespecialidade">Cadastrar Especializacao</a>
                             <a class="dropdown-item" href="listarespecializacoes">Listar Todas as Especializacao</a>
-                            <a class="dropdown-item" href="Especializacao/ExcluirspecializacaoPorId.jsp">Excluir Especializacao</a>
+                            <a class="dropdown-item" href="Especializacao/ExcluirEspecializacaoPorId.jsp">Excluir Especializacao</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">

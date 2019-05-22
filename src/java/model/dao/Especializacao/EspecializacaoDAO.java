@@ -102,7 +102,7 @@ public class EspecializacaoDAO {
         } catch (SQLException ex) {
             System.out.println("Erro ao executar Query de Atualização da Especialização!Causa: \n: " + ex.getMessage());
         } finally {
-            ConexaoComBanco.closePreparedStatement(prepStmt);
+           ConexaoComBanco.closePreparedStatement(prepStmt);
             ConexaoComBanco.closeConnection(conn);
         }
         return especializacao;

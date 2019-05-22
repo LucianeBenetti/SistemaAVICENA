@@ -10,9 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.vo.Especializacao.EspecializacaoVO;
 
-public class PesquisarEspecializacaoPorNome extends HttpServlet {
+public class PesquisarParaExcluirEspecializacao extends HttpServlet {
 
-  
     EspecializacaoVO especializacaoVO = new EspecializacaoVO();
     List<EspecializacaoVO> especializacoesBuscadas = null;
 
@@ -40,6 +39,5 @@ public class PesquisarEspecializacaoPorNome extends HttpServlet {
             request.setAttribute("especializacaovoretornada", resultadoDaPesquisaPorNome);
             request.getRequestDispatcher("Especializacao/PesquisarEspecializacaoPorNome.jsp").forward(request, response);
         }
-
-    }
+}
 }
