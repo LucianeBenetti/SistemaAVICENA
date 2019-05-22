@@ -76,6 +76,26 @@
         <servlet-name>AtualizarEspecialidade</servlet-name>
         <servlet-class>Servlets.Especialidade.AtualizarEspecialidade</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ListarEspecializacoes</servlet-name>
+        <servlet-class>Servlets.Especializacao.ListarEspecializacoes</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BuscarMedico</servlet-name>
+        <servlet-class>Servlets.Especializacao.BuscarMedico</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BuscarEspecialidade</servlet-name>
+        <servlet-class>Servlets.Especializacao.BuscarEspecialidade</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CrudEspecializacao</servlet-name>
+        <servlet-class>Servlets.Especializacao.CrudEspecializacao</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PesquisarEspecializacaoPorNome</servlet-name>
+        <servlet-class>Servlets.Especializacao.PesquisarEspecializacaoPorNome</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CrudPaciente</servlet-name>
         <url-pattern>/crudpaciente</url-pattern>
@@ -154,6 +174,26 @@
     <servlet-mapping>
         <servlet-name>AtualizarEspecialidade</servlet-name>
         <url-pattern>/atualizarespecialidade</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListarEspecializacoes</servlet-name>
+        <url-pattern>/listarespecializacoes</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BuscarMedico</servlet-name>
+        <url-pattern>/buscarmedico</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BuscarEspecialidade</servlet-name>
+        <url-pattern>/buscarespecialidade</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CrudEspecializacao</servlet-name>
+        <url-pattern>/crudespecializacao</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PesquisarEspecializacaoPorNome</servlet-name>
+        <url-pattern>/pesquisarespecializacaopornome</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

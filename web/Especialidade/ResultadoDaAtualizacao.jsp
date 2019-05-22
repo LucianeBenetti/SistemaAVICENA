@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link type="text/css" rel="stylesheet" href="Especialidade/CRUDEspecialidade.css">
+        <link type="text/css" rel="stylesheet" href="Especialidade/EspecialidadeCRUD.css">
         <title>Resultado da Atualização</title>
     </head>
     <body class="body">        

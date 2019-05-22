@@ -18,7 +18,7 @@ public class EspecializacaoDAO {
     private EspecialidadeDAO especialidadeDAO = new EspecialidadeDAO();
     private MedicoDAO medicoDAO = new MedicoDAO();
 
-    public int inserirEspecializacao(EspecializacaoVO especializacao) {
+    public int inserirEspecializacaoVO(EspecializacaoVO especializacao) {
 
         int novoId = 0;
 
@@ -44,7 +44,7 @@ public class EspecializacaoDAO {
             }
 
         } catch (SQLException e) {
-            System.out.println("Erro ao executar o Cadastro do Especializac�o! Causa: \n: " + e.getMessage());
+            System.out.println("Erro ao executar o Cadastro da Especializacão! Causa: \n: " + e.getMessage());
 
         } finally {
             ConexaoComBanco.closePreparedStatement(prepStmt);
@@ -54,7 +54,7 @@ public class EspecializacaoDAO {
 
     }
 
-    public boolean delete(int codigoEspecializacao) {
+    public boolean excluirEspecializacaoVO(int codigoEspecializacao) {
         boolean sucessoDelete = false;
 
         String query = "DELETE from especializacao where codigoEspecializacao = ? ";
@@ -69,7 +69,7 @@ public class EspecializacaoDAO {
                 sucessoDelete = true;
             }
         } catch (SQLException e) {
-            System.out.println("Erro ao executar Query de Exclus�o do Especializac�o! Causa: \n: " + e.getMessage());
+            System.out.println("Erro ao executar Query de Exclusão da Especialização! Causa: \n: " + e.getMessage());
         } finally {
             ConexaoComBanco.closePreparedStatement(prepStmt);
             ConexaoComBanco.closeConnection(conn);
@@ -100,7 +100,7 @@ public class EspecializacaoDAO {
                 sucessoAtualizar = true;
             }
         } catch (SQLException ex) {
-            System.out.println("Erro ao executar Query de Atualiza��o do Especializac�o!Causa: \n: " + ex.getMessage());
+            System.out.println("Erro ao executar Query de Atualização da Especialização!Causa: \n: " + ex.getMessage());
         } finally {
             ConexaoComBanco.closePreparedStatement(prepStmt);
             ConexaoComBanco.closeConnection(conn);
@@ -144,7 +144,7 @@ public class EspecializacaoDAO {
         return listaEspecializacao;
     }
 
-    public ArrayList<EspecializacaoVO> listarTodasEspecializacoes() {
+    public ArrayList<EspecializacaoVO> listarTodasAsEspecializacoesVO() {
         String query = "SELECT * from especializacao";
         ArrayList<EspecializacaoVO> listaEspecializacao = new ArrayList<EspecializacaoVO>();
 
@@ -172,7 +172,7 @@ public class EspecializacaoDAO {
         return listaEspecializacao;
     }
 
-    public boolean existeEspecializacao(EspecializacaoVO especializacao) {
+    public boolean pesquisarEspecializacoesVO(EspecializacaoVO especializacao) {
 
         ArrayList<EspecializacaoVO> listaEspecializacao = new ArrayList<EspecializacaoVO>();
 
@@ -203,8 +203,6 @@ public class EspecializacaoDAO {
     }
 
     public ArrayList<EspecializacaoVO> existeEspecializacaoPorNome(String nomeMedico, String nomeEspecialidade) {
-
-        ArrayList<EspecializacaoVO> listaEspecializacao = new ArrayList<EspecializacaoVO>();
 
         String query = "SELECT esp.codigoEspecializacao, e.codigoEspecialidade, med.codigoMedico, esp.anoEspecializacao from especializacao esp"
                 + " inner join especialidade e on (esp.codigoEspecialidade = e.codigoEspecialidade)"
@@ -237,7 +235,7 @@ public class EspecializacaoDAO {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         } finally {
-           ConexaoComBanco.closePreparedStatement(prepStmt);
+            ConexaoComBanco.closePreparedStatement(prepStmt);
             ConexaoComBanco.closeConnection(conn);
         }
         return especializacoes;

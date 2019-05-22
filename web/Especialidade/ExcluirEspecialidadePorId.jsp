@@ -10,9 +10,8 @@
 <!DOCTYPE html>
 <html>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <script type="text/javascript" src="mascarasEspecialidade.js"></script>
-    <link type="text/css" rel="stylesheet" href="CRUDEspecialidade.css">
-    <link type="text/css" rel="stylesheet" href="Especialidade/CRUDEspecialidade.css">
+    <link type="text/css" rel="stylesheet" href="EspecialidadeCRUD.css">
+    <link type="text/css" rel="stylesheet" href="Especialidade/EspecialidadeCRUD.css">
     <title>Excluir Especialidade</title>
 </head>
 <body class="body">
@@ -50,7 +49,7 @@
 
                 if (!EspecialidadeVORetornada) {%>                     
                <input type="text" size="100" style="margin-left: 5px;" value="<% out.println("Especialidade não encontrada!"
-                               + " Tente novamente. Se a Especialiade não for cadastrada, por gentileza, cadastrá-la!!");%>">               
+                               + " Tente novamente. Se a Especialidade não for cadastrada, por gentileza, cadastrá-la!!");%>">               
         <%} else {%>
 
         <form action="crudespecialidade" method="post">

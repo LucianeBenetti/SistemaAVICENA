@@ -38,7 +38,7 @@ public class MedicoDAO {
             if (generatedKeys.next()) {
                 novoId = generatedKeys.getInt(1);
             }
-       } catch (SQLException e) {
+        } catch (SQLException e) {
             System.out.println("Erro ao executar Query de Cadastro de Médico! Causa: \n: " + e.getMessage());
 
         } finally {
@@ -99,10 +99,10 @@ public class MedicoDAO {
                 medicos.add(medico);
 
             }
-          } catch (SQLException e) {
+        } catch (SQLException e) {
             System.out.println("Erro ao executar a Query de Consulta de Médicos !Causa: \n: " + e.getMessage());
         } finally {
-            ConexaoComBanco.closeStatement(conn);
+            ConexaoComBanco.closePreparedStatement(prepStmt);
             ConexaoComBanco.closeConnection(conn);
         }
         return medico;
@@ -132,7 +132,7 @@ public class MedicoDAO {
             if (codigoRetorno == 1) {
                 sucessoAtualizar = true;
             }
-         } catch (SQLException e) {
+        } catch (SQLException e) {
             System.out.println("Erro ao executar Query de Atualização do Médico! Causa: \n: " + e.getMessage());
         } finally {
             ConexaoComBanco.closePreparedStatement(prepStmt);
@@ -203,7 +203,7 @@ public class MedicoDAO {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         } finally {
-            ConexaoComBanco.closeStatement((Connection) prepStmt);
+            ConexaoComBanco.closePreparedStatement(prepStmt);
             ConexaoComBanco.closeConnection(conn);
         }
         return medicos;
@@ -239,7 +239,7 @@ public class MedicoDAO {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         } finally {
-            ConexaoComBanco.closeStatement((Connection) prepStmt);
+            ConexaoComBanco.closePreparedStatement(prepStmt);
             ConexaoComBanco.closeConnection(conn);
         }
         return medico;

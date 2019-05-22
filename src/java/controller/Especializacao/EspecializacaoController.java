@@ -1,4 +1,3 @@
-
 package controller.Especializacao;
 
 import java.sql.Date;
@@ -11,82 +10,50 @@ import model.vo.Especializacao.EspecializacaoVO;
 import model.vo.Medico.MedicoVO;
 
 public class EspecializacaoController {
-    
-EspecializacaoBO bo = new EspecializacaoBO();
 
-	public String salvar(EspecializacaoVO especializacao) {
+    EspecializacaoBO especializacaoBO = new EspecializacaoBO();
 
-		String validacao = validarEspecializacao(especializacao);
+    public int cadastrarEspecializacaoVO(EspecializacaoVO especializacaoVO) {
 
-		if (validacao == "") {
+        return especializacaoBO.cadastrarEspecializacaoVO(especializacaoVO);
+    }
 
-			if (bo.inserir(especializacao)) {
-				validacao = "Especializa��o salva com sucesso!";
-			} else {
-				validacao = "Erro ao salvar especializa��o!";
-			}
-		}
-		return validacao;
-	}
+    public ArrayList<EspecialidadeVO> consultarEspecialidade(String nomeEspecializacao, String nomeMedico) {
 
-	private String validarEspecializacao(EspecializacaoVO especializacao) {
+        return null;
+    }
 
-		EspecialidadeVO especialidade = new EspecialidadeVO();
-		MedicoVO medico = new MedicoVO();
+    public boolean excluirEspecializacaoPorId(int codigoEspecializacao) {
 
-		String validacao = "";
-		if (especializacao.getAnoEspecializacao() == null) {
-			validacao = "O ano est� nulo!";
-		} else {
-			if (especializacao.getAnoEspecializacao().trim().equals("")) {
-				validacao += "- O preenchimento de todos os campos � obrigat�rio. Por gentileza, informar os dados corretos! \n";
-			} else {
-				if (bo.existeEspecializacao(especializacao)) {
-					validacao = "Especializa��o j� cadastrada! Tente novamente.";
-				}
-			}
+     return especializacaoBO.excluirEspecializacaoPorId(codigoEspecializacao);
 
-		}
-		return validacao;
-	}
+    }
 
-	public ArrayList<EspecialidadeVO> consultarEspecialidade(String nomeEspecializacao, String nomeMedico) {
+    public EspecializacaoVO atualizar(EspecializacaoVO especializacao, int codigoEspecializacao) {
+        EspecializacaoVO especializacaoBuscada = especializacaoBO.atualizar(especializacao, codigoEspecializacao);
 
-		return null;
-	}
+        return especializacaoBuscada;
 
-	public void excluirEspecializacao(EspecializacaoVO especializacaoExcluida) {
+    }
 
-		bo.excluirEspecializacao(especializacaoExcluida);
+    public ArrayList<EspecializacaoVO> listarEspecializacoesPorMedicoEspecialidade(MedicoVO medico,
+            EspecialidadeVO especialidade) {
+        return especializacaoBO.listarTodasEspecializacoesPorMedicoEspecialidade(medico, especialidade);
+    }
 
-	}
+    public ArrayList<EspecializacaoVO> listarTodasAsEspecializacoesVO() {
 
-	public EspecializacaoVO atualizar(EspecializacaoVO especializacao, int codigoEspecializacao) {
-		EspecializacaoVO especializacaoBuscada = bo.atualizar(especializacao, codigoEspecializacao);
+        return especializacaoBO.listarTodasAsEspecializacoesVO();
+    }
 
-		return especializacaoBuscada;
+    public List<EspecializacaoVO> existeEspecializacaoPorNome(String nomeMedico, String nomeEspecialidade) {
+        return especializacaoBO.existeEspecializacaoPorNome(nomeMedico, nomeEspecialidade);
 
-	}
+    }
 
-	public ArrayList<EspecializacaoVO> listarEspecializacoesPorMedicoEspecialidade(MedicoVO medico,
-			EspecialidadeVO especialidade) {
-		return bo.listarTodasEspecializacoesPorMedicoEspecialidade(medico, especialidade);
-	}
+    public boolean pesquisarEspecializacoesVO(EspecializacaoVO especializacao) {
 
-	public ArrayList<EspecializacaoVO> listarTodasEspecializacoes() {
-
-		return bo.listarTodasEspecializacoes();
-	}
-
-	public List<EspecializacaoVO> existeCadastro(String nomeMedico, String nomeEspecialidade) {
-		return bo.existeEspecializacaoPorNome(nomeMedico, nomeEspecialidade);
-
-	}
-
-	public boolean existeEspecializacao(EspecializacaoVO especializacao) {
-
-		return bo.existeEspecializacao(especializacao);
-	}
+        return especializacaoBO.pesquisarEspecializacoesVO(especializacao);
+    }
 
 }
-

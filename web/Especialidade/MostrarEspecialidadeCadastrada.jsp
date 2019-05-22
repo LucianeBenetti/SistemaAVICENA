@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link type="text/css" rel="stylesheet" href="Especialidade/CRUDEspecialidade.css">
+    <link type="text/css" rel="stylesheet" href="Especialidade/EspecialidadeCRUD.css">
     <title>Especialidade Cadastrada</title>
 </head>
 <body class="body">

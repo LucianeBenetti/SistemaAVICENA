@@ -85,14 +85,16 @@ public class MedicoVO {
         return cnpjMedico;
     }
 
+    @Override
+    public String toString() {
+        return "MedicoVO{" + "codigoMedico=" + codigoMedico + ", nomeMedico=" + nomeMedico + ", crm=" + crm + ", celMensagemMedico=" + celMensagemMedico + ", celularMedico=" + celularMedico + ", emailMedico=" + emailMedico + ", cpfMedico=" + cpfMedico + ", cnpjMedico=" + cnpjMedico + '}';
+    }
+
     public void setCnpjMedico(String cnpjMedico) {
         this.cnpjMedico = cnpjMedico;
     }
 
    
-    @Override
-    public String toString() {
-        return nomeMedico;
-    }
+   
 
 }

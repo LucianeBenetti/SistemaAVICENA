@@ -10,8 +10,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script type="text/javascript" src="mascarasEspecialidade.js"></script>
-        <link type="text/css" rel="stylesheet" href="CRUDEspecialidade.css">
-        <link type="text/css" rel="stylesheet" href="Especialidade/CRUDEspecialidade.css">
+        <link type="text/css" rel="stylesheet" href="EspecialidadeCRUD.css">
+        <link type="text/css" rel="stylesheet" href="Especialidade/EspecialidadeCRUD.css">
         <title>Cadastrar Especialidade</title>
     </head>
     <body class="body">

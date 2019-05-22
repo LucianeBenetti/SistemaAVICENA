@@ -102,7 +102,7 @@ a{
 }
 
 #tabelaEspecialidades tr td:last-child{
-  text-align: right;
+  text-align: center;
 }
 
 /**Cores**/
@@ -129,3 +129,14 @@ button#visualizarDados{
   display: block;
   color: black;
 }
+#tabelaListarTodas td,th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 6px;
+}  
+#tabelaListarTodas tr:nth-child(even){
+    background-color: beige;
+}
+#tabelaListarTodas tr:nth-child(odd){
+    background-color: burlywood;
+} 

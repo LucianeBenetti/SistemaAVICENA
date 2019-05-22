@@ -70,7 +70,7 @@ public class CrudEspecialidade extends HttpServlet {
                     case "excluir":
 
                         especialidadeVO = new EspecialidadeVO();
-                        especialidadeVO.setNomeEspecialidade(request.getParameter("codigoespecialidade"));
+                        especialidadeVO.setCodigoEspecialidade(Integer.parseInt(request.getParameter("codigoespecialidade")));
 
                         especialidadeController = new EspecialidadeController();
                         if (especialidadeController.excluirEspecialidadePorId(especialidadeVO.getCodigoEspecialidade())) {
