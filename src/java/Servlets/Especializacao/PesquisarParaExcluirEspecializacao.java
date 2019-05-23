@@ -19,13 +19,13 @@ public class PesquisarParaExcluirEspecializacao extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        especializacaoVO.setCodigoEspecializacao(Integer.parseInt(request.getParameter("idespecializacao")));
+        especializacaoVO.getMedicoVO().setNomeMedico(request.getParameter("nomemedico"));
         EspecializacaoController especializacaocontroller = new EspecializacaoController();
         Boolean resultadoDaPesquisaPorNome = false;
-        especializacoesBuscadas = especializacaocontroller.existeEspecializacaoPorNome(especializacaoVO.getMedicoVO().getNomeMedico(), especializacaoVO.getEspecialidadeVO().getNomeEspecialidade());
-             
-            System.out.println(especializacaoVO);
-        if (especializacoesBuscadas!= null){
+        especializacoesBuscadas = especializacaocontroller.pesquisarEspecializacaoPorNome(especializacaoVO.getMedicoVO().getNomeMedico());
+
+        System.out.println(especializacaoVO);
+        if (especializacoesBuscadas != null) {
 
             System.out.println(especializacoesBuscadas);
             request.setAttribute("especializacoesBuscadas", especializacoesBuscadas);
@@ -39,5 +39,5 @@ public class PesquisarParaExcluirEspecializacao extends HttpServlet {
             request.setAttribute("especializacaovoretornada", resultadoDaPesquisaPorNome);
             request.getRequestDispatcher("Especializacao/PesquisarEspecializacaoPorNome.jsp").forward(request, response);
         }
-}
+    }
 }

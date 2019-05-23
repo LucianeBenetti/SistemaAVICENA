@@ -9,32 +9,44 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link type="text/css" rel="stylesheet" href="Paciente/CRUDPaciente.css">
+        <link type="text/css" rel="stylesheet" href="Paciente/PacienteCRUD.css">
         <title> Resultado da exclusao</title>
     </head>
     <body class="body">
+        <div class="principal">
+            <div class="secao3">
+            </div>
+            <div class="cadastro">
 
-        <div class="resultadodaatualizacao">
-            <h2>Resultado da exclusao:</h2>
-            <%
-                Object obj1 = request.getAttribute("cpfpaciente");
+                <fieldset><legend>Resultado da exclusao:</legend>
 
-                if (obj1 != null) {%>
+                    <%
+                        Object obj1 = request.getAttribute("cpfpaciente");
 
-            O paciente com CPF <input type="text" readonly value="<%= request.getAttribute("cpfpaciente")%>"> 
-            foi Excluído!
-            <%}%>
+                        if (obj1 != null) {%>
 
-            <div>
-                <form action="controledenavegacao" method="POST">
-                    <input type="hidden" id="avicena" name="avicena" value="avicena">
-                    <input type="submit" value="Voltar">
-                </form>
+                    O paciente com CPF <input type="text" readonly value="<%= request.getAttribute("cpfpaciente")%>"> 
+                    foi Excluído!
+                    <%}%>
+                </fieldset>
+                <div class="secao4">
+
+                </div> 
+
+                <div>
+                    <form action="controledenavegacao" method="POST">
+                        <input type="hidden" id="avicena" name="avicena" value="avicena">
+                        <input type="submit" value="Voltar">
+                    </form>
+                </div>
+                <br><br>
             </div>
             <br><br>
+
         </div>
-        <br><br>
-
-
+                
+                   <footer class="footer">                
+            &copy; Desenvolvido por Luciane Benetti e Marco Sena.
+        </footer>
     </body>
 </html>

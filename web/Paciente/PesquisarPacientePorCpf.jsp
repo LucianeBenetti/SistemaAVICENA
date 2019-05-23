@@ -11,8 +11,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script type="text/javascript" src="mascarasPaciente.js"></script>
         <script type="text/javascript" src="Paciente/mascarasPaciente.js"></script>
-        <link type="text/css" rel="stylesheet" href="CRUDPaciente.css">
-        <link type="text/css" rel="stylesheet" href="Paciente/CRUDPaciente.css">
+        <link type="text/css" rel="stylesheet" href="PacienteCRUD.css">
+        <link type="text/css" rel="stylesheet" href="Paciente/PacienteCRUD.css">
         <title>Pesquisa de Pacientes por CPF</title>
     </head>
     <body class="body">

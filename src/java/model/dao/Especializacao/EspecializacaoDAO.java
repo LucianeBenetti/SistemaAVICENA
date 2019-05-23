@@ -202,22 +202,20 @@ public class EspecializacaoDAO {
         return existe;
     }
 
-    public ArrayList<EspecializacaoVO> existeEspecializacaoPorNome(String nomeMedico, String nomeEspecialidade) {
+    public ArrayList<EspecializacaoVO> pesquisarEspecializacaoPorNome(String nomeMedico) {
 
         String query = "SELECT esp.codigoEspecializacao, e.codigoEspecialidade, med.codigoMedico, esp.anoEspecializacao from especializacao esp"
                 + " inner join especialidade e on (esp.codigoEspecialidade = e.codigoEspecialidade)"
                 + " inner join medico med on (esp.codigoMedico = med.codigoMedico)"
                 + " where med.codigoMedico = ?"
-                + " and e.codigoEspecialidade = ?"
-                + " order by esp.codigoEspecialidade";
+                + " order by esp.codigoMedico ";
 
         Connection conn = ConexaoComBanco.getConnection();
         PreparedStatement prepStmt = ConexaoComBanco.getPreparedStatement(conn, query);
         ArrayList<EspecializacaoVO> especializacoes = new ArrayList<EspecializacaoVO>();
         try {
             prepStmt.setString(1, '%' + nomeMedico + '%');
-            prepStmt.setString(2, '%' + nomeEspecialidade + '%');
-
+     
             ResultSet result = prepStmt.executeQuery();
 
             while (result.next()) {

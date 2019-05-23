@@ -10,8 +10,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script type="text/javascript" src="mascarasPaciente.js"></script>
-        <link type="text/css" rel="stylesheet" href="CRUDPaciente.css">
-        <link type="text/css" rel="stylesheet" href="Paciente/CRUDPaciente.css">
+        <link type="text/css" rel="stylesheet" href="PacienteCRUD.css">
+        <link type="text/css" rel="stylesheet" href="Paciente/PacienteCRUD.css">
         <title>Cadastrar Paciente</title>
     </head>
     <body class="body">

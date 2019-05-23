@@ -149,7 +149,7 @@
                             Especializacao
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="Especializacao/PesquisarEspecializacaoPorNome.jsp">Pesquisar Especializacao</a>
+                            <a class="dropdown-item" href="pesquisarespecializacaopormedico">Pesquisar Especializacao</a>
                             <a class="dropdown-item" href="buscarespecialidade">Cadastrar Especializacao</a>
                             <a class="dropdown-item" href="listarespecializacoes">Listar Todas as Especializacao</a>
                             <a class="dropdown-item" href="Especializacao/ExcluirEspecializacaoPorId.jsp">Excluir Especializacao</a>

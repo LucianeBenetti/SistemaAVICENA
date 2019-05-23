@@ -1,22 +1,26 @@
+
 package Servlets.Especializacao;
 
+import controller.Especialidade.EspecialidadeController;
+import controller.Especializacao.EspecializacaoController;
 import controller.Medico.MedicoController;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.vo.Especialidade.EspecialidadeVO;
+import model.vo.Especializacao.EspecializacaoVO;
 import model.vo.Medico.MedicoVO;
 
-public class BuscarMedico extends HttpServlet {
+public class PesquisarEspecializacaoPorMedico extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        String buscarMedicos = request.getParameter("buscarMedicos");
 
         MedicoController medicoController = new MedicoController();
         ArrayList<MedicoVO> listaMedicosVO = new ArrayList<MedicoVO>();
@@ -24,10 +28,13 @@ public class BuscarMedico extends HttpServlet {
         listaMedicosVO = medicoController.listarTodosOsMedicosVO();
 
         if (listaMedicosVO != null) {
-         
-           request.setAttribute("listaMedicosVO", listaMedicosVO);
-           request.getRequestDispatcher("Especializacao/CadastrarEspecializacao.jsp").forward(request, response);
+
+            request.setAttribute("listaMedicosVO", listaMedicosVO);
+
         }
+
+            request.getRequestDispatcher("Especializacao/PesquisarEspecializacaoPorMedico.jsp").forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

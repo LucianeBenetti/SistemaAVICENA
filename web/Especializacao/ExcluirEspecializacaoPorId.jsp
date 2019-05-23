@@ -4,6 +4,7 @@
     Author     : 80130917
 --%>
 
+<%@page import="model.vo.Medico.MedicoVO"%>
 <%@page import="model.vo.Especializacao.EspecializacaoVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -16,28 +17,36 @@
 </head>
 <body class="body">
 
-    <div class="consultaNome">
-        <h2>Excluir Especialização!</h2>
+  <hr>
+        <h1>Pesquisa de Especialização</h1>
+        <h3>Por gentileza, selecionar o nome do Médico a ser pesquisado:</h3> 
 
-        <form method="post" action="../pesquisarparaexcluir">
+        <div class="form1">  
 
-            <fieldset><legend>Digite o nome da Especialização a ser consultada na base de dados</legend>
-                <p><a>*</a>Campos de preenchimento obrigatório</p>                    
+            <%
+                Object listaMedicos = request.getAttribute("listaMedicosVO");
+                if (listaMedicos != null) {
+                    ArrayList<MedicoVO> medicos = (ArrayList<MedicoVO>) listaMedicos;
 
-                Nome<a>*</a>:<br> 
-                <input type="text" name="nomeespecializacao" required ><br><br>
-                <input type="submit" value = "Pesquisar Especialização"> 
-            </fieldset>
-        </form>
-        <br><br>
-        <div>
-            <form action="../controledenavegacao" method="POST">
-                <input type="hidden" id="avicena" name="avicena" value="avicena">
-                <input type="submit" value="Voltar">
-            </form>
+            %>
+            <form action="mostrarespecializacaopesquisada" method="POST">
+                <fieldset>   
+                    <h4>Selecione o Médico</h4>
+                    <select name="medicoSelecionado" >
+                        <option selected disabled >Selecione um Médico</option>
+                        <% for (int i = 0; i < medicos.size(); i++) {%>
+                        <option value="<%=(medicos.get(i).getNomeMedico())%>"><%out.println(medicos.get(i).getNomeMedico());%></option>
+                        <%} %>  
+                    </select>
+                    <br /><br />
+                    <input type="submit" value = "Buscar Médico Selecionado">   
+                </fieldset>
+
+            </form>  
+            <%} %>  
+            <br><br>
         </div>
-    </div>
-
+            
     <div class="resultadodaconsultaNome">
         <h2>Resultado da pesquisa de Especialização por Nome</h2>
 
@@ -64,7 +73,7 @@
                         <th>Instituição</th>  
                     </tr>        
                     <%
-                        ArrayList<EspecializacaoVO> especializacoesVO = (ArrayList<EspecializacaoVO>) request.getAttribute("especializacaosBuscadas");
+                        ArrayList<EspecializacaoVO> especializacoesVO = (ArrayList<EspecializacaoVO>) request.getAttribute("especializacoesBuscadas");
                         for (EspecializacaoVO especializacaoVO : especializacoesVO) {%>   
                     <tr>
                         <td><%= especializacaoVO.getCodigoEspecializacao()%></td>

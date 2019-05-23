@@ -52,4 +52,10 @@ public class EspecializacaoVO {
         this.anoEspecializacao = anoEspecializacao;
     }
 
+    @Override
+    public String toString() {
+        return "EspecializacaoVO{" + "codigoEspecializacao=" + codigoEspecializacao + ", especialidadeVO=" + especialidadeVO + ", medicoVO=" + medicoVO + ", anoEspecializacao=" + anoEspecializacao + '}';
+    }
+    
+
 }

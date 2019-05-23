@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link type="text/css" rel="stylesheet" href="Paciente/CRUDPaciente.css">
+        <link type="text/css" rel="stylesheet" href="Paciente/PacienteCRUD.css">
         <title>Paciente Cadastrado</title>
     </head>
     <body class="body">
@@ -111,23 +111,36 @@
                 </fieldset>
             </div>
             <%} else {%>
-            <br> 
-            <h1>Resultado do cadastro do Paciente:</h1>            
-            <br>             
-            <input type="text" readonly size="40" style="margin-left: 5px;" value="<% out.println("Paciente já cadastrado na base de dados!");%>">
-                <%}%>
-            <%}%>
-        </form> 
-        <br><br>
-        <div>
-            <form action="controledenavegacao" method="POST">
-                <input type="hidden" id="avicena" name="avicena" value="avicena">
-                <input type="submit" value="Voltar">
-            </form>
-        </div>
-        <footer class="footer">                
-            &copy; Desenvolvido por Luciane Benetti e Marco Sena.
-        </footer>
+            <div class="principal">
+                <div class="secao3">
+                </div>
+                <div class="cadastro">
+                    <br> 
+                    <h1>Resultado do cadastro do Paciente:</h1>            
+                    <br>             
+                    <input type="text" readonly size="40" style="margin-left: 5px;" value="<% out.println("Paciente já cadastrado na base de dados!");%>">
+
+                    <%}%>
+
+                    <%}%>
+                    </form> 
+                    <br><br>
+
+                    <div class="secao4">
+
+                    </div>
+
+                    <div>
+                        <form action="controledenavegacao" method="POST">
+                            <input type="hidden" id="avicena" name="avicena" value="avicena">
+                            <input type="submit" value="Voltar">
+                        </form>
+                    </div>   
+                </div>     
+            </div>
+            <footer class="footer">                
+                &copy; Desenvolvido por Luciane Benetti e Marco Sena.
+            </footer>
 
     </body>
 </html>

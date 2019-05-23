@@ -81,10 +81,6 @@
         <servlet-class>Servlets.Especializacao.ListarEspecializacoes</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>BuscarMedico</servlet-name>
-        <servlet-class>Servlets.Especializacao.BuscarMedico</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>BuscarEspecialidade</servlet-name>
         <servlet-class>Servlets.Especializacao.BuscarEspecialidade</servlet-class>
     </servlet>
@@ -93,12 +89,20 @@
         <servlet-class>Servlets.Especializacao.CrudEspecializacao</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>PesquisarEspecializacaoPorNome</servlet-name>
-        <servlet-class>Servlets.Especializacao.PesquisarEspecializacaoPorNome</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>PesquisarParaExcluirEspecializacao</servlet-name>
         <servlet-class>Servlets.Especializacao.PesquisarParaExcluirEspecializacao</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BuscarMedico</servlet-name>
+        <servlet-class>Servlets.Especializacao.BuscarMedico</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PesquisarEspecializacaoPorMedico</servlet-name>
+        <servlet-class>Servlets.Especializacao.PesquisarEspecializacaoPorMedico</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MostrarEspecializacaoPesquisada</servlet-name>
+        <servlet-class>Servlets.Especializacao.MostrarEspecializacaoPesquisada</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CrudPaciente</servlet-name>
@@ -184,10 +188,6 @@
         <url-pattern>/listarespecializacoes</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>BuscarMedico</servlet-name>
-        <url-pattern>/buscarmedico</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>BuscarEspecialidade</servlet-name>
         <url-pattern>/buscarespecialidade</url-pattern>
     </servlet-mapping>
@@ -196,12 +196,16 @@
         <url-pattern>/crudespecializacao</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>PesquisarEspecializacaoPorNome</servlet-name>
-        <url-pattern>/pesquisarespecializacaopornome</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>PesquisarParaExcluirEspecializacao</servlet-name>
         <url-pattern>/pesquisarparaexcluirespecializacao</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PesquisarEspecializacaoPorMedico</servlet-name>
+        <url-pattern>/pesquisarespecializacaopormedico</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MostrarEspecializacaoPesquisada</servlet-name>
+        <url-pattern>/mostrarespecializacaopesquisada</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

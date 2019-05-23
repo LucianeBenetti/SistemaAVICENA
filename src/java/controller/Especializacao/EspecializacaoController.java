@@ -25,7 +25,7 @@ public class EspecializacaoController {
 
     public boolean excluirEspecializacaoPorId(int codigoEspecializacao) {
 
-     return especializacaoBO.excluirEspecializacaoPorId(codigoEspecializacao);
+        return especializacaoBO.excluirEspecializacaoPorId(codigoEspecializacao);
 
     }
 
@@ -36,18 +36,13 @@ public class EspecializacaoController {
 
     }
 
-    public ArrayList<EspecializacaoVO> listarEspecializacoesPorMedicoEspecialidade(MedicoVO medico,
-            EspecialidadeVO especialidade) {
-        return especializacaoBO.listarTodasEspecializacoesPorMedicoEspecialidade(medico, especialidade);
-    }
-
     public ArrayList<EspecializacaoVO> listarTodasAsEspecializacoesVO() {
 
         return especializacaoBO.listarTodasAsEspecializacoesVO();
     }
 
-    public List<EspecializacaoVO> existeEspecializacaoPorNome(String nomeMedico, String nomeEspecialidade) {
-        return especializacaoBO.existeEspecializacaoPorNome(nomeMedico, nomeEspecialidade);
+    public List<EspecializacaoVO> pesquisarEspecializacaoPorNome(String nomeMedico) {
+        return especializacaoBO.pesquisarEspecializacaoPorNome(nomeMedico);
 
     }
 
