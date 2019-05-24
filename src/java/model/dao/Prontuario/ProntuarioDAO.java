@@ -27,7 +27,7 @@ public class ProntuarioDAO {
 
         try {
 
-            prepStmt.setInt(1, prontuario.getConsulta().getCodigoConsulta());
+            prepStmt.setInt(1, prontuario.getConsultaVO().getCodigoConsulta());
             prepStmt.setString(2, prontuario.getMedicamento());
             prepStmt.setString(3, prontuario.getExame());
             prepStmt.setString(4, prontuario.getRegistro());
@@ -84,7 +84,7 @@ public class ProntuarioDAO {
 
                 prontuario.setCodigoProntuario(result.getInt(1));
                 ConsultaVO consulta = consultaDAO.consultarPorId(result.getInt(2));
-                prontuario.setConsulta(consulta);
+                prontuario.setConsultaVO(consulta);
                 prontuario.setMedicamento(result.getString(3));
                 prontuario.setExame(result.getString(4));
                 prontuario.setRegistro(result.getString(5));
@@ -110,7 +110,7 @@ public class ProntuarioDAO {
 
         try {
 
-            prepStmt.setInt(1, prontuario.getConsulta().getCodigoConsulta());
+            prepStmt.setInt(1, prontuario.getConsultaVO().getCodigoConsulta());
             prepStmt.setString(2, prontuario.getMedicamento());
             prepStmt.setString(3, prontuario.getExame());
             prepStmt.setString(4, prontuario.getRegistro());
@@ -130,7 +130,7 @@ public class ProntuarioDAO {
         return sucessoAtualizar;
     }
 
-    public ArrayList<ProntuarioVO> listarTodos() {
+    public ArrayList<ProntuarioVO> listarTodosOsProntuariosVO() {
 
         ArrayList<ProntuarioVO> listaProntuarios = new ArrayList<ProntuarioVO>();
         String query = " select * from prontuario ";
@@ -145,7 +145,7 @@ public class ProntuarioDAO {
 
                 prontuario.setCodigoProntuario(result.getInt(1));
                 ConsultaVO consulta = consultaDAO.consultarPorId(result.getInt(2));
-                prontuario.setConsulta(consulta);
+                prontuario.setConsultaVO(consulta);
                 prontuario.setMedicamento(result.getString(3));
                 prontuario.setExame(result.getString(4));
                 prontuario.setRegistro(result.getString(5));
@@ -179,7 +179,7 @@ public class ProntuarioDAO {
 
                 prontuario.setCodigoProntuario(result.getInt(1));
                 ConsultaVO consulta = consultaDAO.consultarPorId(result.getInt(2));
-                prontuario.setConsulta(consulta);
+                prontuario.setConsultaVO(consulta);
                 prontuario.setMedicamento(result.getString(3));
                 prontuario.setExame(result.getString(4));
                 prontuario.setRegistro(result.getString(5));

@@ -72,11 +72,14 @@ public class CrudConvenio extends HttpServlet {
 
                         convenioVO = new ConvenioVO();
                         convenioVO.setCnpjConvenio(request.getParameter("cnpjconvenio"));
-
+                        Boolean resultadoDaExclusao = false;
                         convenioController = new ConvenioController();
                         if (convenioController.excluirConvenioPorCnpj(convenioVO.getCnpjConvenio())) {
 
                             request.setAttribute("cnpjconvenio", convenioVO.getCnpjConvenio());
+                            request.getRequestDispatcher("Convenio/MostrarConvenioExcluido.jsp").forward(request, response);
+                        } else {
+                            request.setAttribute("cnpjconvenio", resultadoDaExclusao);
                             request.getRequestDispatcher("Convenio/MostrarConvenioExcluido.jsp").forward(request, response);
                         }
 

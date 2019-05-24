@@ -243,7 +243,7 @@ public class PacienteDAO {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         } finally {
-            ConexaoComBanco.closeStatement((Connection) prepStmt);
+          ConexaoComBanco.closePreparedStatement(prepStmt);
             ConexaoComBanco.closeConnection(conn);
         }
         return paciente;

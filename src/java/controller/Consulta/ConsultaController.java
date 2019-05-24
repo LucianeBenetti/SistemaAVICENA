@@ -47,9 +47,9 @@ ConsultaBO bo = new ConsultaBO();
 		return validacao;
 	}
 
-	public List<ConsultaVO> listarTodasConsultas() {
+	public ArrayList<ConsultaVO> listarTodasAsConsultasVO() {
 
-		return bo.listarTodasConsultas();
+		return bo.listarTodasAsConsultasVO();
 	}
 
 	public void excluirConsulta(ConsultaVO consultaExcluida) {

@@ -35,8 +35,8 @@ public class EspecializacaoBO {
         return especialiacoes;
     }
 
-    public List<EspecializacaoVO> pesquisarEspecializacaoPorNome(String nomeMedico) {
-        ArrayList<EspecializacaoVO> especializacoes = especializacaoDAO.pesquisarEspecializacaoPorNome(nomeMedico);
+    public List<EspecializacaoVO> pesquisarEspecializacaoPorIdDoMedico(int codigoMedico) {
+        ArrayList<EspecializacaoVO> especializacoes = especializacaoDAO.pesquisarEspecializacaoPorIdDoMedico(codigoMedico);
         return especializacoes;
     }
 

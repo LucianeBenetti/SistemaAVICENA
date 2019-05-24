@@ -61,9 +61,9 @@ public class CrudEspecializacao extends HttpServlet {
                         if ((novoId > 0) && (especializacaoVO.getEspecialidadeVO().getCodigoEspecialidade() != 0) && (especializacaoVO.getMedicoVO().getCodigoMedico() != 0)) {
 
                             request.setAttribute("idespecializacao", novoId);
-                            request.setAttribute("nomespecialidade", especializacaoVO.getEspecialidadeVO().getNomeEspecialidade());
+                            request.setAttribute("nomeespecialidade", especializacaoVO.getEspecialidadeVO().getNomeEspecialidade());
                             request.setAttribute("instituicaoespecialidade", especializacaoVO.getEspecialidadeVO().getInstituicao());
-                            request.setAttribute("nomemedico", especializacaoVO.getMedicoVO().getNomeMedico());
+                            request.setAttribute("nomeemedico", especializacaoVO.getMedicoVO().getNomeMedico());
                             request.setAttribute("anoespecializacao", especializacaoVO.getAnoEspecializacao());
 
                             resultadoDoCadastro = true;
@@ -82,15 +82,20 @@ public class CrudEspecializacao extends HttpServlet {
 
                         especializacaoVO = new EspecializacaoVO();
                         especializacaoVO.setCodigoEspecializacao(Integer.parseInt(request.getParameter("codigoespecializacao")));
-
+                        Boolean resultadoDaExclusao = false;
                         especializacaoController = new EspecializacaoController();
                         if (especializacaoController.excluirEspecializacaoPorId(especializacaoVO.getCodigoEspecializacao())) {
 
-                            request.setAttribute("nomespecialidade", especializacaoVO.getEspecialidadeVO().getNomeEspecialidade());
+                            request.setAttribute("nomeespecialidade", especializacaoVO.getEspecialidadeVO().getNomeEspecialidade());
                             request.setAttribute("instituicaoespecialidade", especializacaoVO.getEspecialidadeVO().getInstituicao());
-                            request.setAttribute("nommedico", especializacaoVO.getMedicoVO().getNomeMedico());
+                            request.setAttribute("nomemedico", especializacaoVO.getMedicoVO().getNomeMedico());
                             request.setAttribute("instituicaoespecializacao", especializacaoVO.getEspecialidadeVO().getInstituicao());
                             request.getRequestDispatcher("Especializacao/MostrarEspecializacaoExcluida.jsp").forward(request, response);
+                        } else {
+                            request.setAttribute("nomeespecialidade", resultadoDaExclusao);
+                            request.getRequestDispatcher("Especializacao/MostrarEspecializacaoExcluida.jsp").forward(request, response);
+                            request.setAttribute("nomemedico", especializacaoVO.getMedicoVO().getNomeMedico());
+
                         }
 
                         break;

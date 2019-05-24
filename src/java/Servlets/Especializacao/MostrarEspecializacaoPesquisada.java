@@ -27,18 +27,21 @@ public class MostrarEspecializacaoPesquisada extends HttpServlet {
         EspecializacaoVO especializacaoVO = new EspecializacaoVO();
         List<EspecializacaoVO> especializacoesBuscadas = null;
         MedicoVO medicoVO = new MedicoVO();
-
-        medicoVO.setNomeMedico(request.getParameter("medicoSelecioando"));
-        System.out.println(medicoVO.getNomeMedico());
-
-        // medicoVO.setNomeMedico(nomeMedico);
-        // System.out.println("medico: " + medicoVO);
-        especializacaoVO.setMedicoVO(medicoVO);
-
-        // System.out.println("especializaçao: " + especializacaoVO);
-        EspecializacaoController especializacaocontroller = new EspecializacaoController();
+        List<MedicoVO> listaMedicos = null;
         Boolean resultadoDaPesquisaPorNome = false;
-        especializacoesBuscadas = especializacaocontroller.pesquisarEspecializacaoPorNome(especializacaoVO.getMedicoVO().getNomeMedico());
+
+        medicoVO.setNomeMedico(request.getParameter("medicoSelecionado"));
+        MedicoController medicoController = new MedicoController();
+        listaMedicos = medicoController.listarTodosOsMedicosVO();
+
+        for (int i = 0; i < listaMedicos.size(); i++) {
+            if (medicoVO.getNomeMedico().equals(listaMedicos.get(i).getNomeMedico())) {
+                medicoVO.setCodigoMedico(listaMedicos.get(i).getCodigoMedico());
+                especializacaoVO.setMedicoVO(medicoVO);
+            }
+        }
+        EspecializacaoController especializacaocontroller = new EspecializacaoController();
+        especializacoesBuscadas = especializacaocontroller.pesquisarEspecializacaoPorIdDoMedico(especializacaoVO.getMedicoVO().getCodigoMedico());
 
         if (especializacoesBuscadas != null) {
 
@@ -47,12 +50,12 @@ public class MostrarEspecializacaoPesquisada extends HttpServlet {
 
             resultadoDaPesquisaPorNome = true;
             request.setAttribute("especializacaovoretornada", resultadoDaPesquisaPorNome);
-            request.getRequestDispatcher("Especializacao/PesquisarEspecializacaoPorNome.jsp").forward(request, response);
+            request.getRequestDispatcher("Especializacao/PesquisarEspecializacaoPorMedico.jsp").forward(request, response);
 
         } else {
             System.out.println("O especializacao não foi encontrada!");
             request.setAttribute("especializacaovoretornada", resultadoDaPesquisaPorNome);
-            request.getRequestDispatcher("Especializacao/PesquisarEspecializacaoPorNome.jsp").forward(request, response);
+            request.getRequestDispatcher("Especializacao/PesquisarEspecializacaoPorMedico.jsp").forward(request, response);
         }
         request.getRequestDispatcher("Especializacao/PesquisarEspecializacaoPorMedico.jsp").forward(request, response);
 

@@ -54,7 +54,7 @@ public class CrudMedico extends HttpServlet {
 
                         int novoId = medicoController.cadastrarMedicoVO(medicoVO);
                         Boolean resultadoDoCadastro = false;
-                       
+
                         if (novoId > 0) {
 
                             request.setAttribute("idmedico", novoId);
@@ -70,23 +70,26 @@ public class CrudMedico extends HttpServlet {
 
                             request.setAttribute("medicocadastrado", resultadoDoCadastro);
                             request.getRequestDispatcher("Medico/MostrarMedicoCadastrado.jsp").forward(request, response);
-                       
-                        }else {
+
+                        } else {
                             request.setAttribute("medicocadastrado", resultadoDoCadastro);
                             request.getRequestDispatcher("Medico/MostrarMedicoCadastrado.jsp").forward(request, response);
                         }
-                        
+
                         break;
 
                     case "excluir":
 
                         medicoVO = new MedicoVO();
                         medicoVO.setCpfMedico(request.getParameter("cpfmedico"));
-
+                        Boolean resultadoDaExclusao = false;
                         medicoController = new MedicoController();
                         if (medicoController.excluirMedicoPorCpf(medicoVO.getCpfMedico())) {
 
                             request.setAttribute("cpfmedico", medicoVO.getCpfMedico());
+                            request.getRequestDispatcher("Medico/MostrarMedicoExcluido.jsp").forward(request, response);
+                        } else {
+                            request.setAttribute("cpfmedico", resultadoDaExclusao);
                             request.getRequestDispatcher("Medico/MostrarMedicoExcluido.jsp").forward(request, response);
                         }
 

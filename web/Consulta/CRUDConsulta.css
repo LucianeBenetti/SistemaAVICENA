@@ -24,7 +24,7 @@ a{
     width: 50%; /*Ocupando 24% da largura total destinada para o corpo*/
     height: 400px; /*Altura de 500 pixels*/    
 }
-.consultaCPF {
+.consultaNome {
     background-color: lightblue; 
     padding: 0px;
     margin-top: 0px;/*Margen superior com 1 pixel*/
@@ -33,7 +33,7 @@ a{
     width:34%; /*Ocupando 24% da largura total destinada para o corpo*/
     height: 700px; /*Altura de 500 pixels*/
 }
-.resultadodaconsultaCPF {
+.resultadodaconsultaNome {
     background-color: lightblue;/*Cor de fundo*/    
     padding: 0px;/*Margen interna de 3 pixels*/
     margin-top: 0px;/*Margen superior com 1 pixel*/
@@ -59,13 +59,6 @@ a{
     width: 100%;/*Ocupando 74% da largura total destinada para o corpo*/
     height: 700px;/*Altura de 494 pixels*/
 }
-td,th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 6px;
-}  
-tr:nth-child(even){background-color: beige;}
-tr:nth-child(odd){background-color: burlywood;}  
 .footer {
     float: left; 
     width: 100%; 
@@ -85,6 +78,68 @@ tr:nth-child(odd){background-color: burlywood;}
     width: 51.5%; /*Ocupando 24% da largura total destinada para o corpo*/
     height: 400px; /*Altura de 500 pixels*/
 }
+#tabelaEspecialidades{
+  width:80%;
+  margin:0 auto;
+  border:0;
+  box-shadow: 0 5px 30px darkgrey;
+  border-spacing: 0;
+}
+
+#tabelaEspecialidades thead th{
+  font-weight: bold;
+  background-color: black;
+  color:white;
+  
+  padding:5px 10px;
+}
+
+#tabelaEspecialidades tr td{
+  padding:5px 10px;
+  text-align: center;
+  
+  cursor: pointer; /**importante para não mostrar cursor de texto**/
+}
+
+#tabelaEspecialidades tr td:last-child{
+  text-align: center;
+}
+
+/**Cores**/
+#tabelaEspecialidades tr:nth-child(odd){
+  background-color: #eee;
+}
+
+/**Cor quando passar por cima**/
+#tabelaEspecialidades tr:hover td{
+  background-color: #feffb7;
+}
+
+/**Cor quando selecionado**/
+#tabelaEspecialidades tr.selecionado td{
+  background-color: #aff7ff;
+}
+
+button#visualizarDados{
+  background-color: white;
+  border: 1px solid black;
+  width:50%;
+  margin: 10px auto;
+  padding:10px 0;
+  display: block;
+  color: black;
+}
+#tabelaListarTodas td,th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 6px;
+}  
+#tabelaListarTodas tr:nth-child(even){
+    background-color: beige;
+}
+#tabelaListarTodas tr:nth-child(odd){
+    background-color: burlywood;
+} 
 .secao3 {     
     float: left;/*propriedade indicando que a Área flutuará a direita*/
     margin-top: 0px;

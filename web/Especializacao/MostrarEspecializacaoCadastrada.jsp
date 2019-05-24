@@ -9,7 +9,7 @@
 <html>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link type="text/css" rel="stylesheet" href="Especializacao/CRUDEspecializacao.css">
-    <title>Especialização Cadastrada</title>
+    <title>Convênio Cadastrado</title>
 </head>
 <body class="body">
     <br><br>
@@ -23,7 +23,7 @@
 
             if (especializacaoCadastrada) {%> 
 
-    <h1>A especialização foi cadastrada com os seguintes dados:</h1>
+    <h1>O Convênio foi cadastrado com os seguintes dados:</h1>
     <form>
         <div class="form1">      
 
@@ -31,14 +31,13 @@
                 <br>
                 Identificação: <br>
                 <input type="text" readonly size ="5" value="<%= request.getAttribute("idespecializacao")%>"><br><br>
-                Médico: <br>
+                Nome Especialidade: <br>
+                <input type="text" readonly size ="67" value="<%= request.getAttribute("nomeespecialidade")%>"><br><br>
+
+                Nome Medico: <br>
                 <input type="text" readonly size ="67" value="<%= request.getAttribute("nomemedico")%>"><br><br>
-                Especialidade: <br>
-                <input type="text" readonly size ="67" value="<%= request.getAttribute("nomespecialidade")%>"><br><br>
-                Instituição: <br>
-                <input type="text" readonly size ="67" value="<%= request.getAttribute("instituicaoespecializacao")%>"><br><br>
-                Ano <br>
-                <input type="text" readonly size ="3" value="<%= request.getAttribute("anoespecializacao")%>"><br><br>
+
+                <br><br>
 
                 <br><br>
             </fieldset>
@@ -47,22 +46,34 @@
         </div>
 
         <%} else {%>
-        <br> 
-        <h1>Resultado do cadastro do Convênio:</h1>            
-        <br>             
-        <input type="text" readonly size="40" style="margin-left: 5px;" value="<% out.println("Especializacao já cadastrada na base de dados!");%>">
-        <%}%>
-        <%}%>
-    </form>
-    <br><br>
-    <form action="controledenavegacao" method="POST">
-        <input type="hidden" id="avicena" name="avicena" value="avicena">
-        <input type="submit" value="Voltar">
-    </form>
-
-    <footer class="footer">                
-        &copy; Desenvolvido por Luciane Benetti e Marco Sena.
-    </footer>
+        <div class="principal">
+            <div class="secao3">
+            </div>
+            <div class="cadastro">
+                <br> 
+                <h3>Resultado do cadastro da Especialização</h3>     
+                <fieldset><legend>Especialização</legend>
+                    <br>             
+                    <input type="text" readonly size="40" style="margin-left: 5px;" value="<% out.println("Especialização já cadastrada na base de dados!");%>">
+                    <%}%>
+                    <%}%>
+                    </form> 
+                    <br><br>
+                    <div class="secao4">
+                    </div>
+                </fieldset>
+                <br><br>
+                <div>
+                    <form action="controledenavegacao" method="POST">
+                        <input type="hidden" id="avicena" name="avicena" value="avicena">
+                        <input type="submit" value="Voltar">
+                    </form>
+                </div>   
+            </div>     
+        </div>
+        <footer class="footer">                
+            &copy; Desenvolvido por Luciane Benetti e Marco Sena.
+        </footer>
 
 </body>
 </html>

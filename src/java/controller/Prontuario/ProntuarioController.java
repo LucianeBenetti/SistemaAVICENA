@@ -10,9 +10,9 @@ public class ProntuarioController {
     
 	ProntuarioBO bo = new ProntuarioBO();
 
-	public List<ProntuarioVO> listarTodosProntuarios() {
+	public ArrayList<ProntuarioVO> listarTodosOsProntuariosVO() {
 		
-		return bo.listarProntuarios();
+		return bo.listarTodosOsProntuariosVO();
 	}
 
 	public String salvar(ProntuarioVO prontuario) {
@@ -64,7 +64,7 @@ public class ProntuarioController {
 
 	}
 
-	public List<ProntuarioVO> listarProntuariosDoPaciente(ConsultaVO consultaSelecionada) {
+	public List<ProntuarioVO> listarTodosOsProntuariosVO(ConsultaVO consultaSelecionada) {
 		
 		List<ProntuarioVO> prontuarios = new ArrayList<>();
 		if(consultaSelecionada != null && consultaSelecionada.getPacienteVO() != null) {

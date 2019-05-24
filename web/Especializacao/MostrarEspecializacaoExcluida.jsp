@@ -1,6 +1,6 @@
 <%-- 
-    Document   : MostrarPacienteExcluido
-    Created on : 15/05/2019, 16:37:30
+    Document   : MostrarEspecializacaoExcluida
+    Created on : 24/05/2019, 11:43:49
     Author     : 80130917
 --%>
 
@@ -9,26 +9,29 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link type="text/css" rel="stylesheet" href="Paciente/PacienteCRUD.css">
-        <title> Resultado da exclusao</title>
+        <link type="text/css" rel="stylesheet" href="Especializacao/CRUDEspecializacao.css">
+        <title>Resultado da exclusão</title>
     </head>
     <body class="body">
         <div class="principal">
             <div class="secao3">
             </div>
             <div class="cadastro">
-                <h3>Exclusão Paciente por CPF!</h3>
+                <h3>Exclusão de Especialização por Especialidade!</h3>
                 <fieldset><legend>Resultado da exclusao:</legend>
-
                     <%
-                        Object obj1 = request.getAttribute("cpfpaciente");
-
+                        Object obj1 = request.getAttribute("nomeespecialidade");
+                        Object obj2 = request.getAttribute("nomemedico");
                         if (obj1 != null) {
-                            Boolean pacienteExcluido = (Boolean) obj1;
-                            if (pacienteExcluido) {%>
+                            Boolean especializacaoExcluido = (Boolean) obj1;
+                            if (especializacaoExcluido) {%>
 
-                    O paciente com CPF <input type="text" readonly value="<%= request.getAttribute("cpfpaciente")%>"> 
-                    foi Excluído!
+                    O Especialidade com nome: <br>
+                    <input type="text" readonly value="<%= request.getAttribute("nomeespecialidade")%>"><br>
+                    do Médico: <br>
+                    <input type="text" readonly value="<%= request.getAttribute("nomemedico")%>"><br>
+
+                    foi Excluída! 
                     </div>
                     <%} else {%>
 
@@ -36,7 +39,7 @@
                     </div>
                     <div class="cadastro">
 
-                        <input type="text" readonly size="40" style="margin-left: 1px;" value="<% out.println("Paciente não pode ser excluído na base de dados!");%>">
+                        <input type="text" readonly size="40" value="<% out.println("Especialização não pode ser excluída na base de dados!");%>">
 
                         <%}%>
                         <%}%>
@@ -54,6 +57,5 @@
                     <br><br>
                     </div>
                     <br>
-                    <footer class="footer">&copy; Desenvolvido por Luciane Benetti e Marco Sena. </footer>
                     </body>
                     </html>

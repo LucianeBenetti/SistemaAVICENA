@@ -41,8 +41,8 @@ public class EspecializacaoController {
         return especializacaoBO.listarTodasAsEspecializacoesVO();
     }
 
-    public List<EspecializacaoVO> pesquisarEspecializacaoPorNome(String nomeMedico) {
-        return especializacaoBO.pesquisarEspecializacaoPorNome(nomeMedico);
+    public List<EspecializacaoVO> pesquisarEspecializacaoPorIdDoMedico(int codigoMedico) {
+        return especializacaoBO.pesquisarEspecializacaoPorIdDoMedico(codigoMedico);
 
     }
 

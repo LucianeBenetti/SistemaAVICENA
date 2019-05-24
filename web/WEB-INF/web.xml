@@ -104,6 +104,14 @@
         <servlet-name>MostrarEspecializacaoPesquisada</servlet-name>
         <servlet-class>Servlets.Especializacao.MostrarEspecializacaoPesquisada</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ListarConsultas</servlet-name>
+        <servlet-class>Servlets.Consulta.ListarConsultas</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListarProntuarios</servlet-name>
+        <servlet-class>Servlets.Prontuario.ListarProntuarios</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CrudPaciente</servlet-name>
         <url-pattern>/crudpaciente</url-pattern>
@@ -206,6 +214,14 @@
     <servlet-mapping>
         <servlet-name>MostrarEspecializacaoPesquisada</servlet-name>
         <url-pattern>/mostrarespecializacaopesquisada</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListarConsultas</servlet-name>
+        <url-pattern>/listarconsultas</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListarProntuarios</servlet-name>
+        <url-pattern>/listarprontuarios</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

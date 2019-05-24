@@ -59,7 +59,7 @@ public class ConsultaDAO {
             System.out.println("Erro ao executar o Cadastro do Consulta! Causa: \n: " + e.getMessage());
 
         } finally {
-            ConexaoComBanco.closePreparedStatement(prepStmt);
+          ConexaoComBanco.closePreparedStatement(prepStmt);
             ConexaoComBanco.closeConnection(conn);
         }
         return novoId;
@@ -93,7 +93,7 @@ public class ConsultaDAO {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         } finally {
-            ConexaoComBanco.closePreparedStatement(prepStmt);
+           ConexaoComBanco.closePreparedStatement(prepStmt);
             ConexaoComBanco.closeConnection(conn);
         }
         return consulta.toString();
@@ -116,7 +116,7 @@ public class ConsultaDAO {
         } catch (SQLException e) {
             System.out.println("Erro ao executar Query de Exclus�o do Consulta! Causa: \n: " + e.getMessage());
         } finally {
-            ConexaoComBanco.closePreparedStatement(prepStmt);
+           ConexaoComBanco.closePreparedStatement(prepStmt);
             ConexaoComBanco.closeConnection(conn);
         }
         return sucessoDelete;
@@ -153,13 +153,13 @@ public class ConsultaDAO {
         } catch (SQLException ex) {
             System.out.println("Erro ao executar Query de Atualiza��o do Consulta!Causa: \n: " + ex.getMessage());
         } finally {
-            ConexaoComBanco.closePreparedStatement(prepStmt);
+          ConexaoComBanco.closePreparedStatement(prepStmt);
             ConexaoComBanco.closeConnection(conn);
         }
         return sucessoAtualizar;
     }
 
-    public ArrayList<ConsultaVO> listarTodos() {
+    public ArrayList<ConsultaVO> listarTodasAsConsultasVO() {
 
         ArrayList<ConsultaVO> listaConsultas = new ArrayList<ConsultaVO>();
         String query = "select * from consulta";
@@ -217,7 +217,7 @@ public class ConsultaDAO {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         } finally {
-            ConexaoComBanco.closePreparedStatement(prepStmt);
+           ConexaoComBanco.closePreparedStatement(prepStmt);
             ConexaoComBanco.closeConnection(conn);
         }
         return consulta;
@@ -251,8 +251,8 @@ public class ConsultaDAO {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         } finally {
-           ConexaoComBanco.closePreparedStatement(prepStmt);
-           ConexaoComBanco.closeConnection(conn);
+         ConexaoComBanco.closePreparedStatement(prepStmt);
+            ConexaoComBanco.closeConnection(conn);
         }
         return consulta;
     }

@@ -9,9 +9,9 @@ import model.vo.Prontuario.ProntuarioVO;
 public class ProntuarioBO {
 ProntuarioDAO dao = new ProntuarioDAO();
 
-	public List<ProntuarioVO> listarProntuarios() {
+	public ArrayList<ProntuarioVO> listarTodosOsProntuariosVO() {
 
-		ArrayList<ProntuarioVO> prontuarios = dao.listarTodos();
+		ArrayList<ProntuarioVO> prontuarios = dao.listarTodosOsProntuariosVO();
 		return prontuarios;
 	}
 

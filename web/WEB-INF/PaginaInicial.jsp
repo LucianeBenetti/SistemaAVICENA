@@ -94,10 +94,10 @@
                             Consultas
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Pesquisar Consulta</a>
-                            <a class="dropdown-item" href="#">Cadastrar Consulta</a>
-                            <a class="dropdown-item" href="#">Listar Todas as Consultas</a>                             
-                            <a class="dropdown-item" href="#">Excluir Consulta</a>
+                            <a class="dropdown-item" href="Consulta/PesquisarConsultaPorPaciente.jsp">Pesquisar Consulta</a>
+                            <a class="dropdown-item" href="Consulta/CadastarConsultaPorPaciente.jsp">Cadastrar Consulta</a>
+                            <a class="dropdown-item" href="listarconsultas">Listar Todas as Consultas</a>                             
+                            <a class="dropdown-item" href="Consulta/ExcluirConsultaPorPaciente.jsp">Excluir Consulta</a>
                         </div>
                     </li>
                       <li class="nav-item dropdown">
@@ -127,10 +127,10 @@
                             Prontuario
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Pesquisar Prontuario</a>
-                            <a class="dropdown-item" href="#">Cadastrar Prontuario</a>
-                            <a class="dropdown-item" href="#">Listar Todos os Prontuario</a>
-                            <a class="dropdown-item" href="#">Excluir Prontuario</a>
+                            <a class="dropdown-item" href="Prontuario/PesquisarProntuarioPorCPF.jsp">Pesquisar Prontuario</a>
+                            <a class="dropdown-item" href="Prontuario/CadastrarProntuario.jsp">Cadastrar Prontuario</a>
+                            <a class="dropdown-item" href="listarprontuarios">Listar Todos os Prontuario</a>
+                            <a class="dropdown-item" href="Prontuario/ExcluirProntuarioPorCPF.jsp">Excluir Prontuario</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">

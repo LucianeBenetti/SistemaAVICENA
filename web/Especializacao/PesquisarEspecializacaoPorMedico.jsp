@@ -38,7 +38,7 @@
                     <select name="medicoSelecionado" >
                         <option selected disabled >Selecione um Médico</option>
                         <% for (int i = 0; i < medicos.size(); i++) {%>
-                        <option value="<%=(medicos.get(i).getNomeMedico())%>"><%out.println(medicos.get(i).getNomeMedico());%></option>
+                        <option name="medicoSelecionado" value="<%=(medicos.get(i).getNomeMedico())%>"><%out.println(medicos.get(i).getNomeMedico());%></option>
                         <%} %>  
                     </select>
                     <br /><br />
@@ -57,7 +57,7 @@
 
 
         </div>
-        <div class="resultadodaconsultaNome">
+        <div class="form2">
             <h2>Resultado da pesquisa de Especialização por Nome</h2>
 
             <%

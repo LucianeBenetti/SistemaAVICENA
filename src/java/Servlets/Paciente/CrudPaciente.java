@@ -39,7 +39,7 @@ public class CrudPaciente extends HttpServlet {
                 switch (var) {
                     case "cadastrar":
 
-                        //   System.out.println("A variável é: " + variavel.get(i));
+                        //System.out.println("A variável é: " + variavel.get(i));
                         pacienteVO = new PacienteVO();
                         pacienteVO.setNomePaciente(request.getParameter("nomepaciente"));
                         pacienteVO.setCelMensagemPaciente(request.getParameter("celularpaciente"));
@@ -84,7 +84,7 @@ public class CrudPaciente extends HttpServlet {
 
                             request.setAttribute("pacientevocadastrado", resultadoDoCadastro);
                             request.getRequestDispatcher("Paciente/MostrarPacienteCadastrado.jsp").forward(request, response);
-                     
+
                         } else {
                             request.setAttribute("pacientevocadastrado", resultadoDoCadastro);
                             request.getRequestDispatcher("Paciente/MostrarPacienteCadastrado.jsp").forward(request, response);
@@ -96,11 +96,14 @@ public class CrudPaciente extends HttpServlet {
 
                         pacienteVO = new PacienteVO();
                         pacienteVO.setCpfPaciente(request.getParameter("cpfpaciente"));
-
+                        Boolean resultadoDaExclusao = false;
                         pacienteController = new PacienteController();
                         if (pacienteController.excluirPacientePorCpf(pacienteVO.getCpfPaciente())) {
-
+                            resultadoDaExclusao = true;
                             request.setAttribute("cpfpaciente", pacienteVO.getCpfPaciente());
+                            request.getRequestDispatcher("Paciente/MostrarPacienteExcluido.jsp").forward(request, response);
+                        }else {
+                            request.setAttribute("cpfpaciente", resultadoDaExclusao);
                             request.getRequestDispatcher("Paciente/MostrarPacienteExcluido.jsp").forward(request, response);
                         }
 

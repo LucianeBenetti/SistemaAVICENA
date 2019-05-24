@@ -106,7 +106,6 @@
                         <div style="float:right"> <input type="text" readonly value="<%= request.getAttribute("cep")%>"> </div>
                     </div>                    
                     <br><br>
-
                     <br><br>
                 </fieldset>
             </div>

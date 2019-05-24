@@ -8,7 +8,7 @@ public class ProntuarioVO {
     private String medicamento;
     private String exame;
     private String registro;
-    private ConsultaVO consulta = new ConsultaVO();
+    private ConsultaVO consultaVO = new ConsultaVO();
 
     public ProntuarioVO() {
     }
@@ -52,12 +52,18 @@ public class ProntuarioVO {
         this.registro = registro;
     }
 
-    public ConsultaVO getConsulta() {
-        return consulta;
+    public ConsultaVO getConsultaVO() {
+        return consultaVO;
     }
 
-    public void setConsulta(ConsultaVO consulta) {
-        this.consulta = consulta;
+    public void setConsultaVO(ConsultaVO consultaVO) {
+        this.consultaVO = consultaVO;
     }
+
+    @Override
+    public String toString() {
+        return "ProntuarioVO{" + "codigoProntuario=" + codigoProntuario + ", medicamento=" + medicamento + ", exame=" + exame + ", registro=" + registro + ", consultaVO=" + consultaVO + '}';
+    }
+    
 
 }

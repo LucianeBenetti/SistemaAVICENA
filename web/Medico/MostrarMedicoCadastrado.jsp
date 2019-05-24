@@ -64,22 +64,39 @@
         <div class="form2">  
         </div>
         <%} else {%>
-        <br> 
-        <h1>Resultado do cadastro do Médico:</h1>            
-        <br>             
-        <input type="text" readonly size="40" style="margin-left: 5px;" value="<% out.println("Médico já cadastrado na base de dados!");%>">
-        <%}%>
-        <%}%>
-    </form>
-    <br><br>
-    <form action="controledenavegacao" method="POST">
-        <input type="hidden" id="avicena" name="avicena" value="avicena">
-        <input type="submit" value="Voltar">
-    </form>
+        <div class="principal">
+            <div class="secao3">
+            </div>
+            <div class="cadastro">
+                <br> 
+                <h3>Resultado do cadastro do Médico</h3>     
+                  <fieldset><legend>Médico</legend>
+                       
+                <br>             
+                <input type="text" readonly size="40" style="margin-left: 5px;" value="<% out.println("Médico já cadastrado na base de dados!");%>">
 
-    <footer class="footer">                
-        &copy; Desenvolvido por Luciane Benetti e Marco Sena.
-    </footer>
+                <%}%>
+
+                <%}%>
+                </form> 
+                <br><br>
+
+                <div class="secao4">
+
+                </div>
+                </fieldset>
+                <br><br>
+                <div>
+                    <form action="controledenavegacao" method="POST">
+                        <input type="hidden" id="avicena" name="avicena" value="avicena">
+                        <input type="submit" value="Voltar">
+                    </form>
+                </div>   
+            </div>     
+        </div>
+        <footer class="footer">                
+            &copy; Desenvolvido por Luciane Benetti e Marco Sena.
+        </footer>
 
 </body>
 </html>

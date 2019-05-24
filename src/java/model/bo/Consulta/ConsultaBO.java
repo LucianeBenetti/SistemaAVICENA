@@ -30,8 +30,8 @@ public class ConsultaBO {
 		return false;
 	}
 
-	public List<ConsultaVO> listarTodasConsultas() {
-		ArrayList<ConsultaVO> consultas = dao.listarTodos();
+	public ArrayList<ConsultaVO> listarTodasAsConsultasVO() {
+		ArrayList<ConsultaVO> consultas = dao.listarTodasAsConsultasVO();
 		return consultas;
 	}
 

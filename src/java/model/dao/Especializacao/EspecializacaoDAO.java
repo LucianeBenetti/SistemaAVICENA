@@ -102,7 +102,7 @@ public class EspecializacaoDAO {
         } catch (SQLException ex) {
             System.out.println("Erro ao executar Query de Atualização da Especialização!Causa: \n: " + ex.getMessage());
         } finally {
-           ConexaoComBanco.closePreparedStatement(prepStmt);
+            ConexaoComBanco.closePreparedStatement(prepStmt);
             ConexaoComBanco.closeConnection(conn);
         }
         return especializacao;
@@ -202,7 +202,7 @@ public class EspecializacaoDAO {
         return existe;
     }
 
-    public ArrayList<EspecializacaoVO> pesquisarEspecializacaoPorNome(String nomeMedico) {
+    public ArrayList<EspecializacaoVO> pesquisarEspecializacaoPorIdDoMedico(int codigoMedico) {
 
         String query = "SELECT esp.codigoEspecializacao, e.codigoEspecialidade, med.codigoMedico, esp.anoEspecializacao from especializacao esp"
                 + " inner join especialidade e on (esp.codigoEspecialidade = e.codigoEspecialidade)"
@@ -214,8 +214,8 @@ public class EspecializacaoDAO {
         PreparedStatement prepStmt = ConexaoComBanco.getPreparedStatement(conn, query);
         ArrayList<EspecializacaoVO> especializacoes = new ArrayList<EspecializacaoVO>();
         try {
-            prepStmt.setString(1, '%' + nomeMedico + '%');
-     
+            prepStmt.setInt(1, codigoMedico);
+
             ResultSet result = prepStmt.executeQuery();
 
             while (result.next()) {
