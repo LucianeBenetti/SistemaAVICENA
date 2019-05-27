@@ -30,7 +30,7 @@ a{
     margin-top: 0px;/*Margen superior com 1 pixel*/
     margin-right: 0px;
     float: left;/*propriedade indicando que a Área flutuará a esquerda*/
-    width:34%; /*Ocupando 24% da largura total destinada para o corpo*/
+    width:30%; /*Ocupando 24% da largura total destinada para o corpo*/
     height: 700px; /*Altura de 500 pixels*/
 }
 .resultadodaconsultaNome {
@@ -40,7 +40,7 @@ a{
     margin-right: 8%;
     float: right;/*propriedade indicando que a Área flutuará a direita*/
     margin-left: 1%;
-    width: 55%;/*Ocupando 74% da largura total destinada para o corpo*/
+    width: 56%;/*Ocupando 74% da largura total destinada para o corpo*/
     height: 700px;/*Altura de 494 pixels*/
 }
 .resultadodaatualizacao{

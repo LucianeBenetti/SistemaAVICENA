@@ -112,6 +112,14 @@
         <servlet-name>ListarProntuarios</servlet-name>
         <servlet-class>Servlets.Prontuario.ListarProntuarios</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PesquisarMedicoParaExcluir</servlet-name>
+        <servlet-class>Servlets.Especializacao.PesquisarMedicoParaExcluir</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PesquisarMedicoEspecialidadeParaCadastrar</servlet-name>
+        <servlet-class>Servlets.Especializacao.PesquisarMedicoEspecialidadeParaCadastrar</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CrudPaciente</servlet-name>
         <url-pattern>/crudpaciente</url-pattern>
@@ -222,6 +230,14 @@
     <servlet-mapping>
         <servlet-name>ListarProntuarios</servlet-name>
         <url-pattern>/listarprontuarios</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PesquisarMedicoParaExcluir</servlet-name>
+        <url-pattern>/pesquisarmedicoparaexcluir</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PesquisarMedicoEspecialidadeParaCadastrar</servlet-name>
+        <url-pattern>/pesquisarmedicoespecialidadeparacadastrar</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

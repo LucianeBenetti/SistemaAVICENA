@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Servlets.Especializacao;
 
 import controller.Especializacao.EspecializacaoController;
@@ -15,10 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.vo.Especializacao.EspecializacaoVO;
 
-/**
- *
- * @author 80130917
- */
 public class CrudEspecializacao extends HttpServlet {
 
     EspecializacaoVO especializacaoVO;
@@ -47,8 +38,8 @@ public class CrudEspecializacao extends HttpServlet {
 
                         System.out.println("A variável é: " + variavel.get(i));
                         especializacaoVO = new EspecializacaoVO();
-                        especializacaoVO.getEspecialidadeVO().setCodigoEspecialidade(Integer.parseInt(request.getParameter("idespecialidade")));
-                        especializacaoVO.getMedicoVO().setCodigoMedico(Integer.parseInt(request.getParameter("idmedico")));
+                        especializacaoVO.getEspecialidadeVO().setCodigoEspecialidade(Integer.parseInt(request.getParameter("codigoespecialidade")));
+                        especializacaoVO.getMedicoVO().setCodigoMedico(Integer.parseInt(request.getParameter("codigomedico")));
                         especializacaoVO.setAnoEspecializacao(request.getParameter("anoespecializacao"));
 
                         System.out.println(especializacaoVO);
@@ -60,14 +51,16 @@ public class CrudEspecializacao extends HttpServlet {
 
                         if ((novoId > 0) && (especializacaoVO.getEspecialidadeVO().getCodigoEspecialidade() != 0) && (especializacaoVO.getMedicoVO().getCodigoMedico() != 0)) {
 
-                            request.setAttribute("idespecializacao", novoId);
+                            request.setAttribute("codigoespecializacao", novoId);
                             request.setAttribute("nomeespecialidade", especializacaoVO.getEspecialidadeVO().getNomeEspecialidade());
                             request.setAttribute("instituicaoespecialidade", especializacaoVO.getEspecialidadeVO().getInstituicao());
-                            request.setAttribute("nomeemedico", especializacaoVO.getMedicoVO().getNomeMedico());
+                            request.setAttribute("nomemedico", especializacaoVO.getMedicoVO().getNomeMedico());
                             request.setAttribute("anoespecializacao", especializacaoVO.getAnoEspecializacao());
 
                             resultadoDoCadastro = true;
-
+                            System.out.print(resultadoDoCadastro);
+                            System.out.println("Servlets.Especializacao )" + especializacaoVO);
+                            
                             request.setAttribute("especializacaocadastrada", resultadoDoCadastro);
                             request.getRequestDispatcher("Especializacao/MostrarEspecializacaoCadastrada.jsp").forward(request, response);
 

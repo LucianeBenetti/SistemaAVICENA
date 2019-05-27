@@ -30,7 +30,7 @@
             <fieldset><legend>Especializacao</legend>
                 <br>
                 Identificação: <br>
-                <input type="text" readonly size ="5" value="<%= request.getAttribute("idespecializacao")%>"><br><br>
+                <input type="text" readonly size ="5" value="<%= request.getAttribute("codigoespecializacao")%>"><br><br>
                 Nome Especialidade: <br>
                 <input type="text" readonly size ="67" value="<%= request.getAttribute("nomeespecialidade")%>"><br><br>
 

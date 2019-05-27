@@ -1,6 +1,6 @@
+
 package Servlets.Especializacao;
 
-import controller.Especialidade.EspecialidadeController;
 import controller.Medico.MedicoController;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,36 +9,24 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.vo.Especialidade.EspecialidadeVO;
 import model.vo.Medico.MedicoVO;
 
-public class BuscarEspecialidade extends HttpServlet {
+public class PesquisarMedicoParaExcluir extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
-        String buscarEspecialidades = request.getParameter("buscarEspecialidades");
-
-        EspecialidadeController especialidadeController = new EspecialidadeController();
-        ArrayList<EspecialidadeVO> listaEspecialidadesVO = new ArrayList<EspecialidadeVO>();
-
-        listaEspecialidadesVO = especialidadeController.listarTodasAsEspecialidadesVO();
-
-        if (listaEspecialidadesVO != null) {
-            request.setAttribute("listaEspecialidadesVO", listaEspecialidadesVO);
-        }
-
-        MedicoController medicoController = new MedicoController();
+         MedicoController medicoController = new MedicoController();
         ArrayList<MedicoVO> listaMedicosVO = new ArrayList<MedicoVO>();
 
         listaMedicosVO = medicoController.listarTodosOsMedicosVO();
 
         if (listaMedicosVO != null) {
-            request.setAttribute("listaMedicosVO", listaMedicosVO);
-        }
 
-        request.getRequestDispatcher("Especializacao/CadastrarEspecializacao.jsp").forward(request, response);
+            request.setAttribute("listaMedicosVO", listaMedicosVO);
+
+        }
+            request.getRequestDispatcher("Especializacao/ExcluirEspecializacaoPorMedico.jsp").forward(request, response);
 
     }
 

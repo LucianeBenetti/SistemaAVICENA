@@ -1,28 +1,26 @@
 <%-- 
-    Document   : PesquisarEspecializacaoPorNome
-    Created on : 22/05/2019, 15:38:22
+    Document   : ExcluirEspecializacoPorId
+    Created on : 22/05/2019, 14:34:25
     Author     : 80130917
 --%>
 
-<%@page import="model.vo.Especialidade.EspecialidadeVO"%>
 <%@page import="model.vo.Medico.MedicoVO"%>
 <%@page import="model.vo.Especializacao.EspecializacaoVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script type="text/javascript" src="selecionarLinhaTabela.js"></script>
         <link type="text/css" rel="stylesheet" href="CRUDEspecializacao.css">
         <link type="text/css" rel="stylesheet" href="Especializacao/CRUDEspecializacao.css">
-        <title>Pesquisa de Especializações por Médico</title>
+        <title>Exclusão de Especializações por Médico</title>
     </head>
     <body class="body">
 
         <div class="consultaNome">
-            <h2>Pesquisa de Especialização</h2>
-            <form action="mostrarespecializacaopesquisada" method="POST">
+            <h2>Exclusão de Especialização</h2>
+            <form action="pesquisarparaexcluirespecializacao" method="POST">
 
                 <%
                     Object listaMedicos = request.getAttribute("listaMedicosVO");
@@ -66,7 +64,7 @@
                                + " Tente novamente. Se a Especialização não for cadastrada, por gentileza, cadastrá-la!!");%>">               
             <%} else {%>
 
-            <form action="atualizarespecializacao" method="post">
+            <form action="crudespecializacao" method="post">
 
                 <fieldset><legend>Dados do Especialização</legend>
                     <table id="tabelaEspecializacao">
@@ -100,10 +98,10 @@
                     Instituicao:<br>
                     <input type="text" name="instituicaoespecializacao" size="80" readonly> <br><br>
                     Ano:<br>
-                    <input type="text" name="anoespecializacao" size="8"> <br><br>
+                    <input type="text" name="anoespecializacao" size="8" readonly> <br><br>
                     <br><br>
 
-                    <input type="submit" value="Atualizar Dados da Especialização">
+                    <input type="submit" value="Excluir Dados da Especialização">
                 </fieldset>
             </form><br><br>
             <%}

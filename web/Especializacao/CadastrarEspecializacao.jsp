@@ -4,6 +4,7 @@
     Author     : 80130917
 --%>
 
+<%@page import="model.vo.Especializacao.EspecializacaoVO"%>
 <%@page import="model.vo.Especialidade.EspecialidadeVO"%>
 <%@page import="model.vo.Medico.MedicoVO"%>
 <%@page import="java.util.ArrayList"%>
@@ -20,20 +21,21 @@
     <h1>Cadastro de Especialização</h1>
     <h3>Por gentileza, selecionar os dados do especialização a ser cadastrada:</h3> 
 
-      <div class="form1">
-            <%
-                Object listaMedicos = request.getAttribute("listaMedicosVO");
-                if (listaMedicos != null) {
-                    ArrayList<MedicoVO> medicos = (ArrayList<MedicoVO>) listaMedicos;
-                  
-            %>
-            <fieldset>   
-                <h4>Selecione o Médico</h4>
+    <div class="form1">
+        <%
+            Object listaMedicos = request.getAttribute("listaMedicosVO");
+            if (listaMedicos != null) {
+                ArrayList<MedicoVO> medicos = (ArrayList<MedicoVO>) listaMedicos;
+
+        %>
+        <fieldset>   
+            <h4>Selecione o Médico</h4>
+            <form action="pesquisarmedicoespecialidadeparacadastrar" method="POST">
+
                 <select name="medicoSelecionado" >
                     <option selected disabled >Selecione um Médico</option>
                     <% for (int i = 0; i < medicos.size(); i++) {%>
-                    <option value="medicoSelecioando" ><%out.println(medicos.get(i).getNomeMedico());%></option>
-
+                    <option name="medicoSelecionado" value="<%=(medicos.get(i).getNomeMedico())%>"><%out.println(medicos.get(i).getNomeMedico());%></option>
                     <%} %>  
                 </select>
 
@@ -46,41 +48,57 @@
                 <select name="especialidadeSelecionada" >
                     <option selected disabled >Selecione uma Especialidade</option>
                     <% for (int i = 0; i < especialidades.size(); i++) {%>
-                    <option value="especialidadeSelecionada" ><%out.println(especialidades.get(i).getNomeEspecialidade());%></option>
+                    <option name="especialidadeSelecionada" value="<%=(especialidades.get(i).getNomeEspecialidade())%>"><%out.println(especialidades.get(i).getNomeEspecialidade());%></option>
 
                     <%}%>  
+                    <%}%>
                 </select>
                 <br /><br />
-                <input type="submit" value = "Buscar Dados Selecionados">   
-            </fieldset>
+                <input type="submit" value = "Buscar Dados Selecionados">  
+            </form>
+        </fieldset>
+        <%}%>      
 
-        </div>
+    </div>
 
     <div class="form2">
-        <form action="../crudespecializacao" method="POST">
-            <fieldset>                    
+      
+            <%
+                Object listaMedicosEspecialidades = request.getAttribute("listaMedicosEspecialidadesVO");
+                if (listaMedicosEspecialidades != null) {
+                    ArrayList<EspecializacaoVO> especializacoes = (ArrayList<EspecializacaoVO>) listaMedicosEspecialidades;
+            %>
+
+            <fieldset>      
+                  <form action="crudespecializacao" method="POST">
                 <a>*</a>Campos de preenchimento obrigatório <br><br>
                 <input type="hidden" id="cadastrar" name="cadastrar" value="cadastrar">
-                Médico<a>*</a>: <br>
-                <input type="text" name="nomemedico" readonly size="80" value=""><br><br>
-                Id Medico: <br>
-                <input type="text" name="idmedico" readonly size="3" value=""><br><br>
-                
-                Especialidade<a>*</a>: <br>
-                <input type="text" name="nomeespecialidade" readonly size="80" value=""><br><br>
-                 Id Medico: <br>
-                <input type="text" name="idespecialidade" readonly size="3" value=""><br><br>
-                Instituição<a>*</a>: <br>         
-                <input type="text" name="instituicaoespecialidade" readonly size="80" value=""><br><br>
-                Ano<a>*</a>: <br>
-                <input type="text" name="anoespecializacao" required size="80"><br><br>
 
+                <% for (int i = 0; i < especializacoes.size(); i++) {%>
+                Id Medico: <br>
+                <input type="text" name="codigomedico" readonly size="3" value="<%=(especializacoes.get(i).getMedicoVO().getCodigoMedico())%>"><br><br>
+                Nome do Médico: <br>
+                <input type="text" name="nomemedico" readonly size="80" value="<%=(especializacoes.get(i).getMedicoVO().getNomeMedico())%>"><br><br>
+
+                Id Especialidade <br>
+                <input type="text" name="codigoespecialidade" readonly size="3" value="<%=(especializacoes.get(i).getEspecialidadeVO().getCodigoEspecialidade())%>"><br><br>
+                Nome da Especialidade: <br>
+                <input type="text" name="nomeespecialidade" readonly size="80" value="<%=(especializacoes.get(i).getEspecialidadeVO().getNomeEspecialidade())%>"><br><br>
+
+                Instituição: <br>         
+                <input type="text" name="instituicaoespecialidade" readonly size="80" value="<%=(especializacoes.get(i).getEspecialidadeVO().getInstituicao())%>"><br><br>
+                Ano<a>*</a>: <br>
+                <input type="text" name="anoespecializacao" required size="8"><br><br>
+                <%}%>  
                 <br><br>
                 <input type="reset" value="Limpar Campos">
                 <input type="submit" value = "Cadastrar Especialidade">    
-            </fieldset>
         </form>
-        <%}%>  <%}%> 
+
+            </fieldset>
+            <%}%> 
+
+
     </div>
 
     <div>

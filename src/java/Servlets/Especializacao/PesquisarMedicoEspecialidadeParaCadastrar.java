@@ -5,41 +5,57 @@ import controller.Medico.MedicoController;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.vo.Especialidade.EspecialidadeVO;
+import model.vo.Especializacao.EspecializacaoVO;
 import model.vo.Medico.MedicoVO;
 
-public class BuscarEspecialidade extends HttpServlet {
+public class PesquisarMedicoEspecialidadeParaCadastrar extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String buscarEspecialidades = request.getParameter("buscarEspecialidades");
+        EspecializacaoVO especializacaoVO = new EspecializacaoVO();
+        ArrayList<EspecializacaoVO> listaEspecializacoes = new ArrayList<EspecializacaoVO>();
 
-        EspecialidadeController especialidadeController = new EspecialidadeController();
-        ArrayList<EspecialidadeVO> listaEspecialidadesVO = new ArrayList<EspecialidadeVO>();
+        MedicoVO medicoVO = new MedicoVO();
+        EspecialidadeVO especialidadeVO = new EspecialidadeVO();
 
-        listaEspecialidadesVO = especialidadeController.listarTodasAsEspecialidadesVO();
+        List<EspecialidadeVO> listaEspecialidades = null;
+        List<MedicoVO> listaMedicos = null;
 
-        if (listaEspecialidadesVO != null) {
-            request.setAttribute("listaEspecialidadesVO", listaEspecialidadesVO);
-        }
-
+        medicoVO.setNomeMedico(request.getParameter("medicoSelecionado"));
         MedicoController medicoController = new MedicoController();
-        ArrayList<MedicoVO> listaMedicosVO = new ArrayList<MedicoVO>();
+        listaMedicos = medicoController.listarTodosOsMedicosVO();
 
-        listaMedicosVO = medicoController.listarTodosOsMedicosVO();
-
-        if (listaMedicosVO != null) {
-            request.setAttribute("listaMedicosVO", listaMedicosVO);
+        for (int i = 0; i < listaMedicos.size(); i++) {
+            if (medicoVO.getNomeMedico().equals(listaMedicos.get(i).getNomeMedico())) {
+                medicoVO.setCodigoMedico(listaMedicos.get(i).getCodigoMedico());
+                especializacaoVO.setMedicoVO(medicoVO);
+            }
         }
 
-        request.getRequestDispatcher("Especializacao/CadastrarEspecializacao.jsp").forward(request, response);
+        especialidadeVO.setNomeEspecialidade(request.getParameter("especialidadeSelecionada"));
+        EspecialidadeController especialidadeController = new EspecialidadeController();
+        listaEspecialidades = especialidadeController.listarTodasAsEspecialidadesVO();
 
+        for (int i = 0; i < listaEspecialidades.size(); i++) {
+            if (especialidadeVO.getNomeEspecialidade().equals(listaEspecialidades.get(i).getNomeEspecialidade())) {
+                especialidadeVO.setCodigoEspecialidade(listaEspecialidades.get(i).getCodigoEspecialidade());
+                especialidadeVO.setInstituicao(listaEspecialidades.get(i).getInstituicao());
+
+                especializacaoVO.setEspecialidadeVO(especialidadeVO);
+
+                listaEspecializacoes.add(especializacaoVO);
+            }
+        }
+        request.setAttribute("listaMedicosEspecialidadesVO", listaEspecializacoes);
+        request.getRequestDispatcher("Especializacao/CadastrarEspecializacao.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
