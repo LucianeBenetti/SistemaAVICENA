@@ -1,14 +1,19 @@
 package Servlets.Especializacao;
 
+import controller.Especialidade.EspecialidadeController;
 import controller.Especializacao.EspecializacaoController;
+import controller.Medico.MedicoController;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.vo.Especialidade.EspecialidadeVO;
 import model.vo.Especializacao.EspecializacaoVO;
+import model.vo.Medico.MedicoVO;
 
 public class CrudEspecializacao extends HttpServlet {
 
@@ -25,9 +30,37 @@ public class CrudEspecializacao extends HttpServlet {
         ArrayList<String> variavel = new ArrayList<String>();
         variavel.add(var1);
         variavel.add(var2);
-        System.out.println("O array é: " + variavel);
 
-        EspecializacaoVO especializacaoVO = null;
+        EspecializacaoVO especializacaoVO = new EspecializacaoVO();
+        ArrayList<EspecializacaoVO> listaEspecializacoes = new ArrayList<EspecializacaoVO>();
+
+        MedicoVO medicoVO = new MedicoVO();
+        EspecialidadeVO especialidadeVO = new EspecialidadeVO();
+
+        List<EspecialidadeVO> listaEspecialidades = null;
+        List<MedicoVO> listaMedicos = null;
+
+        medicoVO.setNomeMedico(request.getParameter("nomemedico"));
+        MedicoController medicoController = new MedicoController();
+        listaMedicos = medicoController.listarTodosOsMedicosVO();
+
+        for (int i = 0; i < listaMedicos.size(); i++) {
+            if (medicoVO.getNomeMedico().equals(listaMedicos.get(i).getNomeMedico())) {
+                medicoVO.setCodigoMedico(listaMedicos.get(i).getCodigoMedico());
+                especializacaoVO.setMedicoVO(medicoVO);
+            }
+        }
+        especialidadeVO.setNomeEspecialidade(request.getParameter("nomeespecialidade"));
+        EspecialidadeController especialidadeController = new EspecialidadeController();
+        listaEspecialidades = especialidadeController.listarTodasAsEspecialidadesVO();
+
+        for (int i = 0; i < listaEspecialidades.size(); i++) {
+            if (especialidadeVO.getNomeEspecialidade().equals(listaEspecialidades.get(i).getNomeEspecialidade())) {
+                especialidadeVO.setCodigoEspecialidade(listaEspecialidades.get(i).getCodigoEspecialidade());
+                especialidadeVO.setInstituicao(listaEspecialidades.get(i).getInstituicao());
+                especializacaoVO.setEspecialidadeVO(especialidadeVO);
+            }
+        }
 
         for (int i = 0; i < variavel.size(); i++) {
             String var = variavel.get(i);
@@ -37,9 +70,10 @@ public class CrudEspecializacao extends HttpServlet {
                     case "cadastrar":
 
                         System.out.println("A variável é: " + variavel.get(i));
-                        especializacaoVO = new EspecializacaoVO();
-                        especializacaoVO.getEspecialidadeVO().setCodigoEspecialidade(Integer.parseInt(request.getParameter("codigoespecialidade")));
-                        especializacaoVO.getMedicoVO().setCodigoMedico(Integer.parseInt(request.getParameter("codigomedico")));
+                      //  especializacaoVO = new EspecializacaoVO();
+
+                        especializacaoVO.getEspecialidadeVO().getCodigoEspecialidade();
+                        especializacaoVO.getMedicoVO().getCodigoMedico();
                         especializacaoVO.setAnoEspecializacao(request.getParameter("anoespecializacao"));
 
                         System.out.println(especializacaoVO);
@@ -60,7 +94,7 @@ public class CrudEspecializacao extends HttpServlet {
                             resultadoDoCadastro = true;
                             System.out.print(resultadoDoCadastro);
                             System.out.println("Servlets.Especializacao )" + especializacaoVO);
-                            
+
                             request.setAttribute("especializacaocadastrada", resultadoDoCadastro);
                             request.getRequestDispatcher("Especializacao/MostrarEspecializacaoCadastrada.jsp").forward(request, response);
 
@@ -100,6 +134,7 @@ public class CrudEspecializacao extends HttpServlet {
                 }
             }
         }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
