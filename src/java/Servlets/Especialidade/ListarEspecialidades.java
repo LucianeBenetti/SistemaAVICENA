@@ -22,7 +22,6 @@ public class ListarEspecialidades extends HttpServlet {
         if (especialidadesVO != null) {
             request.setAttribute("especialidades", especialidadesVO);
             request.getRequestDispatcher("Especialidade/ListarTodasAsEspecialidades.jsp").forward(request, response);
-            System.out.print(especialidadesVO);
         }
     }
 

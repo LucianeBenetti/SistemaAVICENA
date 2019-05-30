@@ -44,7 +44,6 @@
                     <div style="float:right"> <input type="text" readonly size="25" value="<%= request.getAttribute("valor")%>" onkeyup="maskIt(this, event, '###.###.###,##', true, {pre: 'R$', pos: ''})"></div>
                 </div>
                 <br><br>
-
                 <br><br>
             </fieldset>
         </div>
@@ -58,20 +57,20 @@
             <div class="cadastro">
                 <br> 
                 <h3>Resultado do cadastro do Convênio</h3>     
-                  <fieldset><legend>Convênio</legend>
-                       
-                <br>             
-                <input type="text" readonly size="40" style="margin-left: 5px;" value="<% out.println("Convênio já cadastrado na base de dados!");%>">
+                <fieldset><legend>Convênio</legend>
 
-                <%}%>
+                    <br>             
+                    <input type="text" readonly size="40" style="margin-left: 5px;" value="<% out.println("Convênio já cadastrado na base de dados!");%>">
 
-                <%}%>
-                </form> 
-                <br><br>
+                    <%}%>
 
-                <div class="secao4">
+                    <%}%>
+                    </form> 
+                    <br><br>
 
-                </div>
+                    <div class="secao4">
+
+                    </div>
                 </fieldset>
                 <br><br>
                 <div>

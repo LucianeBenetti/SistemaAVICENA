@@ -40,7 +40,6 @@
                     <br /><br />
                     <input type="submit" value = "Buscar Médico Selecionado">   
                 </fieldset>
-
             </form>  
             <%} %>  
             <br><br>

@@ -35,9 +35,7 @@
                 <input type="text" readonly size ="67" value="<%= request.getAttribute("nomeespecialidade")%>"><br><br>
                 Instituição: <br>
                 <input type="text" readonly size ="67" value="<%= request.getAttribute("instituicaoespecialidade")%>"><br><br>
-
                 <br><br>
-
                 <br><br>
             </fieldset>
         </div>
@@ -45,26 +43,26 @@
         </div>
 
         <%} else {%>
-        <div class="principal">
+         <div class="principal">
             <div class="secao3">
             </div>
             <div class="cadastro">
                 <br> 
                 <h3>Resultado do cadastro da Especialidade</h3>     
-                  <fieldset><legend>Especialidade</legend>
-                       
-                <br>             
-                <input type="text" readonly size="40" style="margin-left: 5px;" value="<% out.println("Especialidade já cadastrada na base de dados!");%>">
+                <fieldset><legend>Especialidade</legend>
 
-                <%}%>
+                    <br>             
+                    <input type="text" readonly size="40" style="margin-left: 5px;" value="<% out.println("Especialidade já cadastrada na base de dados!");%>">
 
-                <%}%>
-                </form> 
-                <br><br>
+                    <%}%>
 
-                <div class="secao4">
+                    <%}%>
+                    </form> 
+                    <br><br>
 
-                </div>
+                    <div class="secao4">
+
+                    </div>
                 </fieldset>
                 <br><br>
                 <div>

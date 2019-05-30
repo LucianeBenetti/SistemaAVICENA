@@ -41,8 +41,6 @@ public class CrudEspecialidade extends HttpServlet {
                         especialidadeVO.setNomeEspecialidade(request.getParameter("nomeespecialidade"));
                         especialidadeVO.setInstituicao(request.getParameter("instituicaoespecialidade"));
 
-                        System.out.println(especialidadeVO);
-
                         especialidadeController = new EspecialidadeController();
 
                         int novoId = especialidadeController.cadastrarEspecialidadeVO(especialidadeVO);
@@ -73,8 +71,8 @@ public class CrudEspecialidade extends HttpServlet {
                         Boolean resultadoDaExclusao = false;
                         especialidadeController = new EspecialidadeController();
                         if (especialidadeController.excluirEspecialidadePorId(especialidadeVO.getCodigoEspecialidade())) {
-
-                            request.setAttribute("nomeespecialidade", especialidadeVO.getNomeEspecialidade());
+                                                  
+                            request.setAttribute("codigoespecialidade", especialidadeVO.getCodigoEspecialidade());
                             request.getRequestDispatcher("Especialidade/MostrarEspecialidadeExcluida.jsp").forward(request, response);
                         } else {
                             request.setAttribute("nomeespecialidade", resultadoDaExclusao);

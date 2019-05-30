@@ -28,6 +28,10 @@
                 ArrayList<MedicoVO> medicos = (ArrayList<MedicoVO>) listaMedicos;
 
         %>
+        <%  Object listaEspecialidades = request.getAttribute("listaEspecialidadesVO");
+            if (listaEspecialidades != null) {
+                ArrayList<EspecialidadeVO> especialidades = (ArrayList<EspecialidadeVO>) listaEspecialidades;
+        %>
         <fieldset>   
             <h4>Selecione o Médico</h4>
             <form action="pesquisarmedicoespecialidadeparacadastrar" method="POST">
@@ -40,37 +44,34 @@
                 </select>
 
                 <h4>Selecione a Especialidade do Médico</h4>
-                <%
-                    Object listaEspecialidades = request.getAttribute("listaEspecialidadesVO");
-                    if (listaEspecialidades != null) {
-                        ArrayList<EspecialidadeVO> especialidades = (ArrayList<EspecialidadeVO>) listaEspecialidades;
-                %>
+
                 <select name="especialidadeSelecionada" >
                     <option selected disabled >Selecione uma Especialidade</option>
                     <% for (int i = 0; i < especialidades.size(); i++) {%>
                     <option name="especialidadeSelecionada" value="<%=(especialidades.get(i).getNomeEspecialidade())%>"><%out.println(especialidades.get(i).getNomeEspecialidade());%></option>
 
-                    <%}%>  
+
                     <%}%>
                 </select>
                 <br /><br />
                 <input type="submit" value = "Buscar Dados Selecionados">  
             </form>
         </fieldset>
-        <%}%>      
+        <%}%>  
+        <%}%>  
 
     </div>
 
     <div class="form2">
-      
-            <%
-                Object listaMedicosEspecialidades = request.getAttribute("listaMedicosEspecialidadesVO");
-                if (listaMedicosEspecialidades != null) {
-                    ArrayList<EspecializacaoVO> especializacoes = (ArrayList<EspecializacaoVO>) listaMedicosEspecialidades;
-            %>
 
-            <fieldset>      
-                  <form action="crudespecializacao" method="POST">
+        <%
+            Object listaMedicosEspecialidades = request.getAttribute("listaMedicosEspecialidadesVO");
+            if (listaMedicosEspecialidades != null) {
+                ArrayList<EspecializacaoVO> especializacoes = (ArrayList<EspecializacaoVO>) listaMedicosEspecialidades;
+        %>
+
+        <fieldset>      
+            <form action="crudespecializacao" method="POST">
                 <a>*</a>Campos de preenchimento obrigatório <br><br>
                 <input type="hidden" id="cadastrar" name="cadastrar" value="cadastrar">
 
@@ -92,11 +93,11 @@
                 <%}%>  
                 <br><br>
                 <input type="reset" value="Limpar Campos">
-                <input type="submit" value = "Cadastrar Especialidade">    
-        </form>
+                <input type="submit" value = "Cadastrar Especialização">    
+            </form>
 
-            </fieldset>
-            <%}%> 
+        </fieldset>
+        <%}%> 
 
 
     </div>

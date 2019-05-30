@@ -65,15 +65,11 @@ public class CrudEspecializacao extends HttpServlet {
             if (var != null) {
                 switch (var) {
                     case "cadastrar":
-
-                        System.out.println("A variável é: " + variavel.get(i));
                       //  especializacaoVO = new EspecializacaoVO();
 
                         especializacaoVO.getEspecialidadeVO().getCodigoEspecialidade();
                         especializacaoVO.getMedicoVO().getCodigoMedico();
                         especializacaoVO.setAnoEspecializacao(request.getParameter("anoespecializacao"));
-
-                        System.out.println(especializacaoVO);
 
                         especializacaoController = new EspecializacaoController();
 

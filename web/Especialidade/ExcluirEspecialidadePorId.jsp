@@ -10,6 +10,7 @@
 <!DOCTYPE html>
 <html>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="Especialidade/selecionarLinhaTabela.js"></script>
     <link type="text/css" rel="stylesheet" href="EspecialidadeCRUD.css">
     <link type="text/css" rel="stylesheet" href="Especialidade/EspecialidadeCRUD.css">
     <title>Excluir Especialidade</title>
@@ -48,46 +49,46 @@
                 Boolean EspecialidadeVORetornada = (Boolean) obj;
 
                 if (!EspecialidadeVORetornada) {%>                     
-               <input type="text" size="100" style="margin-left: 5px;" value="<% out.println("Especialidade não encontrada!"
-                               + " Tente novamente. Se a Especialidade não for cadastrada, por gentileza, cadastrá-la!!");%>">               
+        <input type="text" size="100" style="margin-left: 5px;" value="<% out.println("Especialidade não encontrada!"
+                           + " Tente novamente. Se a Especialidade não for cadastrada, por gentileza, cadastrá-la!!");%>">               
         <%} else {%>
 
-        <form action="crudespecialidade" method="post">
+      <form name="atualizarespecialidade" action="crudespecialidade" method="post">
 
-            <fieldset><legend>Dados do Especialidade</legend>
-                <table id="tabelaEspecialidades">
-                    <tr>
-                        <th>Id</th>
-                        <th>Nome</th> 
-                        <th>Instituição</th> 
-                    </tr>        
-                    <%
-                        ArrayList<EspecialidadeVO> especialidadesVO = (ArrayList<EspecialidadeVO>) request.getAttribute("especialidadesBuscadas");
-                        for (EspecialidadeVO especialidadeVO : especialidadesVO) {%>   
-                    <tr>
-                        <td><%= especialidadeVO.getCodigoEspecialidade()%></td>
-                        <td><%= especialidadeVO.getNomeEspecialidade()%></td>
-                        <td><%= especialidadeVO.getInstituicao()%></td>
-                    </tr>     
-                    <% }     %>
-                </table>
-                <button id="visualizarDados">Buscar Dados</button>
+                <fieldset><legend>Dados do Especialidade</legend>
+                    <table id="tabelaEspecialidades">
+                        <tr>
+                            <th>Id</th>
+                            <th>Nome</th> 
+                            <th>Instituição</th> 
+                        </tr>        
+                        <%
+                            ArrayList<EspecialidadeVO> especialidadesVO = (ArrayList<EspecialidadeVO>) request.getAttribute("especialidadesBuscadas");
+                            for (EspecialidadeVO especialidadeVO : especialidadesVO) {%>   
+                        <tr onclick="clickLinhaTabela(this)" style="cursor:pointer">
+                            <td><%= especialidadeVO.getCodigoEspecialidade()%></td>
+                            <td><%= especialidadeVO.getNomeEspecialidade()%></td>
+                            <td><%= especialidadeVO.getInstituicao()%></td>
+                        </tr>     
+                        <% }     %>
+                    </table>
 
                 <br><br>
-                    ID: <br>
-                    <input type="text" readonly name="idespecialidade"> <br><br>
-                    Nome: <br>
-                    <input type="text" readonly name="nomeespecialidade"> <br><br>
-                    Instituicao:<br>
-                    <input type="text" readonly name="instituicaoespecialidade"> <br><br>
-                    <br><br>
+                ID: <br>
+                <input type="text" readonly name="codigoespecialidade" size="4"> <br><br>
+                Nome: <br>
+                <input type="text" readonly name="nomeespecialidade" size="80"> <br><br>
+                Instituicao:<br>
+                <input type="text" readonly name="instituicaoespecialidade" size="80"> <br><br>
                 <br><br>
+                <br><br>
+                
                 <input type="hidden" id="excluir" name="excluir" value="excluir">
                 <input type="submit" value="Excluir Especialidade">
             </fieldset>
         </form><br><br>
         <%}
-                }%>      
+            }%>      
     </div>            
 
 

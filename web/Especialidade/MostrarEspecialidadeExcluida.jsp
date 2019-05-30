@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link type="text/css" rel="stylesheet" href="Convenio/CRUDEspecialidade.css">
+        <link type="text/css" rel="stylesheet" href="Especialidade/EspecialidadeCRUD.css">
         <title>Resultado da exclusão</title>
     </head>
     <body class="body">
@@ -20,14 +20,13 @@
                 <h3>Exclusão de Escpecialidade por Nome!</h3>
                 <fieldset><legend>Resultado da exclusao:</legend>
                     <%
-                        Object obj1 = request.getAttribute("nomeespecialidade");
+                        Object obj1 = request.getAttribute("codigoespecialidade");
 
                         if (obj1 != null) {
-                            Boolean especialidadeExcluida = (Boolean) obj1;
-                            if (especialidadeExcluida) {%>
+                            Integer especialidadeExcluida = (Integer) obj1;
+                            if (especialidadeExcluida != null) {%>
 
-                    A especialidade com nome <input type="text" readonly value="<%= request.getAttribute("nomeespecialidade")%>"> 
-                    foi Excluída! 
+                    A especialidade foi Excluída com sucesso! 
                     </div>
                     <%} else {%>
 

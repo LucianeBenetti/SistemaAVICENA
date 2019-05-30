@@ -10,15 +10,17 @@ import javax.servlet.http.HttpServletResponse;
 import model.vo.Especialidade.EspecialidadeVO;
 
 public class AtualizarEspecialidade extends HttpServlet {
-EspecialidadeVO especialidadeVO = new EspecialidadeVO();
+
+    EspecialidadeVO especialidadeVO = new EspecialidadeVO();
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        especialidadeVO.setCodigoEspecialidade(Integer.parseInt(request.getParameter("codigoespecialidade")));
         especialidadeVO.setNomeEspecialidade(request.getParameter("nomeespecialidade"));
         especialidadeVO.setInstituicao(request.getParameter("instituicaoespecialidade"));
-  
+    
         EspecialidadeController especialidadecontroller = new EspecialidadeController();
         boolean atualizado = especialidadecontroller.atualizarEspecialidadeVO(especialidadeVO);
         Boolean resultadoDaAtualizacao = false;
@@ -30,6 +32,7 @@ EspecialidadeVO especialidadeVO = new EspecialidadeVO();
         } else {
             request.setAttribute("atualizacao", resultadoDaAtualizacao);
         }
+        System.out.println(resultadoDaAtualizacao);
         request.getRequestDispatcher("Especialidade/ResultadoDaAtualizacao.jsp").forward(request, response);
 
     }

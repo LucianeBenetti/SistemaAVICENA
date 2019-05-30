@@ -27,7 +27,6 @@ public class PesquisarParaExcluir extends HttpServlet {
         System.out.println("especialidade: " + especialidadeVO);
         if (especialidadesBuscadas != null) {
 
-            System.out.println(especialidadesBuscadas);
             request.setAttribute("especialidadesBuscadas", especialidadesBuscadas);
 
             resultadoDaPesquisaPorNome = true;

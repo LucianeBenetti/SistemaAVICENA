@@ -18,6 +18,8 @@ public class EspecializacaoBO {
         } else {
             novoId = especializacaoDAO.inserirEspecializacaoVO(especializacaoVO);
         }
+        
+        System.out.println("BO " + novoId);
         return novoId;
     }
 
@@ -43,5 +45,5 @@ public class EspecializacaoBO {
     public boolean pesquisarEspecializacoesVO(EspecializacaoVO especializacao) {
         return especializacaoDAO.pesquisarEspecializacoesVO(especializacao);
     }
-
+    
 }

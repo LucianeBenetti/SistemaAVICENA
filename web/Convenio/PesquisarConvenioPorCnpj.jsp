@@ -25,7 +25,7 @@
                 <fieldset><legend>Digite o CNPJ do Convênio a ser consultado na base de dados</legend>
                     <p><a>*</a>Campos de preenchimento obrigatório</p>                    
 
-                    CPF<a>*</a>:<br> 
+                    CNPJ<a>*</a>:<br> 
                     <input type="text" name="cnpjconvenio" required onkeyup="maskIt(this, event, '##.###.###/####-##')"><br><br>
                     <input type="submit" value = "Pesquisar Convenio">                
 

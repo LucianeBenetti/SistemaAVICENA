@@ -78,7 +78,6 @@ public class MedicoDAO {
         Connection conn = ConexaoComBanco.getConnection();
         PreparedStatement prepStmt = ConexaoComBanco.getPreparedStatement(conn, query);
         MedicoVO medico = null;
-        ArrayList<MedicoVO> medicos = new ArrayList<MedicoVO>();
 
         try {
             prepStmt.setString(1, cpfMedico);
@@ -95,8 +94,6 @@ public class MedicoDAO {
                 medico.setEmailMedico(result.getString(6));
                 medico.setCpfMedico(result.getString(7));
                 medico.setCnpjMedico(result.getString(8));
-
-                medicos.add(medico);
 
             }
         } catch (SQLException e) {

@@ -174,8 +174,6 @@ public class EspecializacaoDAO {
 
     public boolean pesquisarEspecializacoesVO(EspecializacaoVO especializacao) {
 
-        ArrayList<EspecializacaoVO> listaEspecializacao = new ArrayList<EspecializacaoVO>();
-
         String query = " SELECT count(esp.codigoEspecializacao) from especializacao esp "
                 + " inner join especialidade e on (esp.codigoEspecialidade = e.codigoEspecialidade) "
                 + " inner join medico med on (esp.codigoMedico = med.codigoMedico) "
@@ -199,6 +197,7 @@ public class EspecializacaoDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        System.out.println("DAO: " + existe);
         return existe;
     }
 
