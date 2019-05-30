@@ -25,25 +25,15 @@ function selLinha(linha, multiplos) {
 
 /**
  Exemplo de como capturar os dados
- **/
+ **/ 
 var btnVisualizar = document.getElementById("visualizarDados");
 
-btnVisualizar.addEventListener("click", function () {
-    var selecionados = tabela.getElementsByClassName("selecionado");
-    //Verificar se eestá selecionado
-    if (selecionados.length < 1) {
-        alert("Selecione pelo menos uma linha");
-        return false;
-    }
-
-    var dados = "";
-
-    for (var i = 0; i < selecionados.length; i++) {
-        var selecionado = selecionados[i];
-        selecionado = selecionado.getElementsByTagName("td");
-        dados += "ID: " + selecionado[0].innerHTML + " - Nome: " + selecionado[1].innerHTML + " - Instituição: " + selecionado[2].innerHTML + "\n";
-    }
-
-    alert(dados);
-});
+function clickLinhaTabela(row) {
+    var cod=row.cells[0].innerText;
+    var especialidade=row.cells[1].innerText;
+    var instituicao=row.cells[2].innerText;;
+    document.atualizarespecialidade.codigoespecialidade.value=cod;
+    document.atualizarespecialidade.nomeespecialidade.value=especialidade;
+    document.atualizarespecialidade.instituicaoespecialidade.value=instituicao;
+}
 

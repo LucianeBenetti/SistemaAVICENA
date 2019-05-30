@@ -32,11 +32,8 @@ public class CrudEspecializacao extends HttpServlet {
         variavel.add(var2);
 
         EspecializacaoVO especializacaoVO = new EspecializacaoVO();
-        ArrayList<EspecializacaoVO> listaEspecializacoes = new ArrayList<EspecializacaoVO>();
-
         MedicoVO medicoVO = new MedicoVO();
         EspecialidadeVO especialidadeVO = new EspecialidadeVO();
-
         List<EspecialidadeVO> listaEspecialidades = null;
         List<MedicoVO> listaMedicos = null;
 
