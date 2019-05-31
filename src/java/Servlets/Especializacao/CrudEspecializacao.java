@@ -31,6 +31,14 @@ public class CrudEspecializacao extends HttpServlet {
         variavel.add(var1);
         variavel.add(var2);
 
+//        MedicoVO medicoVO = new MedicoVO();
+//        EspecialidadeVO especialidadeVO = new EspecialidadeVO();
+//
+//        medicoVO.setNomeMedico(request.getParameter("nomemedico"));
+//        especialidadeVO.setNomeEspecialidade(request.getParameter("nomeespecialidade"));
+//        especialidadeVO.setInstituicao(request.getParameter("instituicaoespecialidade"));
+
+        
         EspecializacaoVO especializacaoVO = new EspecializacaoVO();
         MedicoVO medicoVO = new MedicoVO();
         EspecialidadeVO especialidadeVO = new EspecialidadeVO();
@@ -57,18 +65,17 @@ public class CrudEspecializacao extends HttpServlet {
                 especialidadeVO.setInstituicao(listaEspecialidades.get(i).getInstituicao());
                 especializacaoVO.setEspecialidadeVO(especialidadeVO);
             }
-        }
-
+        };
         for (int i = 0; i < variavel.size(); i++) {
             String var = variavel.get(i);
 
             if (var != null) {
                 switch (var) {
                     case "cadastrar":
-                      //  especializacaoVO = new EspecializacaoVO();
-
-                        especializacaoVO.getEspecialidadeVO().getCodigoEspecialidade();
-                        especializacaoVO.getMedicoVO().getCodigoMedico();
+                  
+                        especializacaoVO.setMedicoVO(medicoVO);
+                        especializacaoVO.setEspecialidadeVO(especialidadeVO);
+                        especializacaoVO.setEspecialidadeVO(especialidadeVO);
                         especializacaoVO.setAnoEspecializacao(request.getParameter("anoespecializacao"));
 
                         especializacaoController = new EspecializacaoController();

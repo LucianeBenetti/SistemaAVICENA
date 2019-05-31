@@ -1,4 +1,4 @@
-var tabela = document.getElementById("tabelaEspecializacoes");
+var tabela = document.getElementById("tabelaEspecializacao");
 var linhas = tabela.getElementsByTagName("tr");
 
 for (var i = 0; i < linhas.length; i++) {
@@ -6,7 +6,7 @@ for (var i = 0; i < linhas.length; i++) {
     linha.addEventListener("click", function () {
         //Adicionar ao atual
         selLinha(this, false); //Selecione apenas um
-   });
+    });
 }
 
 /**
@@ -28,22 +28,20 @@ function selLinha(linha, multiplos) {
  **/
 var btnVisualizar = document.getElementById("visualizarDados");
 
-btnVisualizar.addEventListener("click", function () {
-    var selecionados = tabela.getElementsByClassName("selecionado");
-    //Verificar se eestá selecionado
-    if (selecionados.length < 1) {
-        alert("Selecione pelo menos uma linha");
-        return false;
-    }
-
-    var dados = "";
-
-    for (var i = 0; i < selecionados.length; i++) {
-        var selecionado = selecionados[i];
-        selecionado = selecionado.getElementsByTagName("td");
-        dados += "ID: " + selecionado[0].innerHTML + " - Nome: " + selecionado[1].innerHTML + " - Instituição: " + selecionado[2].innerHTML + "\n";
-    }
-
-    alert(dados);
-});
+function clickLinhaTabela(row) {
+    var cod = row.cells[0].innerText;
+    codigomedico = row.cells[1].innerText;
+    var medico = row.cells[2].innerText;
+    codigoespecialidade = row.cells[3].innerText;
+    var especialidade = row.cells[4].innerText;
+    var instituicao = row.cells[5].innerText;
+    var ano = row.cells[6].innerText;
+    document.atualizarespecializacao.codigoespecializacao.value = cod;
+    document.atualizarespecializacao.codigomedico.value = codigomedico;
+    document.atualizarespecializacao.nomemedico.value = medico;
+    document.atualizarespecializacao.codigoespecialidade.value = codigoespecialidade;
+    document.atualizarespecializacao.nomeespecialidade.value = especialidade;
+    document.atualizarespecializacao.instituicaoespecialidade.value = instituicao;
+    document.atualizarespecializacao.anooespecializacao.value = ano;
+}
 

@@ -9,7 +9,7 @@
 <html>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link type="text/css" rel="stylesheet" href="Especializacao/CRUDEspecializacao.css">
-    <title>Convênio Cadastrado</title>
+    <title>Especialização Cadastrado</title>
 </head>
 <body class="body">
     <br><br>
@@ -23,11 +23,11 @@
 
             if (especializacaoCadastrada) {%> 
 
-    <h1>O Convênio foi cadastrado com os seguintes dados:</h1>
+    <h1>A Especialização foi cadastrada com os seguintes dados:</h1>
     <form>
         <div class="form1">      
 
-            <fieldset><legend>Especializacao</legend>
+            <fieldset><legend>Especialização</legend>
                 <br>
                 Identificação: <br>
                 <input type="text" readonly size ="5" value="<%= request.getAttribute("codigoespecializacao")%>"><br><br>

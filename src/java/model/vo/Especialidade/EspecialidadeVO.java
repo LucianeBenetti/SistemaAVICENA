@@ -41,7 +41,9 @@ public class EspecialidadeVO {
 
     @Override
     public String toString() {
-        return nomeEspecialidade;
+        return "EspecialidadeVO{" + "codigoEspecialidade=" + codigoEspecialidade + ", nomeEspecialidade=" + nomeEspecialidade + ", instituicao=" + instituicao + '}';
     }
+    
+    
 
 }

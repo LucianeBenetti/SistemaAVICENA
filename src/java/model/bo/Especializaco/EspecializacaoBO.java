@@ -13,12 +13,12 @@ public class EspecializacaoBO {
 
     public int cadastrarEspecializacaoVO(EspecializacaoVO especializacaoVO) {
         int novoId;
-        if (especializacaoDAO.pesquisarEspecializacoesVO(especializacaoVO) != true) {
-            novoId = 0;
-        } else {
-            novoId = especializacaoDAO.inserirEspecializacaoVO(especializacaoVO);
-        }
-        
+//        if (especializacaoDAO.pesquisarEspecializacoesVO(especializacaoVO) != true) {
+//            novoId = 0;
+//        } else {
+        novoId = especializacaoDAO.inserirEspecializacaoVO(especializacaoVO);
+        //  }
+
         System.out.println("BO " + novoId);
         return novoId;
     }
@@ -27,23 +27,25 @@ public class EspecializacaoBO {
         return especializacaoDAO.excluirEspecializacaoVO(codigoEspecializacao);
     }
 
-    public EspecializacaoVO atualizar(EspecializacaoVO especializacao, int codigoEspecializacao) {
-        EspecializacaoVO especializacaoBuscada = especializacaoDAO.atualizarEspecializacao(especializacao, especializacao.getCodigoEspecializacao());
-        return especializacaoBuscada;
-    }
-
     public ArrayList<EspecializacaoVO> listarTodasAsEspecializacoesVO() {
-        ArrayList<EspecializacaoVO> especialiacoes = especializacaoDAO.listarTodasAsEspecializacoesVO();
+        ArrayList<EspecializacaoVO> especialiacoes = especializacaoDAO.listarTodasEspecializacoesVO();
         return especialiacoes;
     }
 
     public List<EspecializacaoVO> pesquisarEspecializacaoPorIdDoMedico(int codigoMedico) {
-        ArrayList<EspecializacaoVO> especializacoes = especializacaoDAO.pesquisarEspecializacaoPorIdDoMedico(codigoMedico);
+        ArrayList<EspecializacaoVO> especializacoes = especializacaoDAO.listarEspecializacoesDoMedicoPorEspecialidade(codigoMedico);
         return especializacoes;
     }
 
     public boolean pesquisarEspecializacoesVO(EspecializacaoVO especializacao) {
-        return especializacaoDAO.pesquisarEspecializacoesVO(especializacao);
+        return especializacaoDAO.existeEspecializacaoVO(especializacao);
     }
-    
+
+    public EspecializacaoVO atualizarEspecializacaoVO(EspecializacaoVO especializacao, int codigoEspecializacao) {
+        EspecializacaoVO especializacaoAtualizada = especializacaoDAO.atualizarEspecializacaoVO(especializacao,especializacao.getCodigoEspecializacao());
+
+        return especializacaoAtualizada;
+
+    }
+
 }

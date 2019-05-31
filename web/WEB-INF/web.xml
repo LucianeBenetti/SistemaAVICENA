@@ -65,10 +65,6 @@
         <servlet-class>Servlets.Especialidade.ListarEspecialidades</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>PesquisarEspecialidadePorNome</servlet-name>
-        <servlet-class>Servlets.Especialidade.PesquisarEspecialidadePorNome</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>PesquisarParaExcluir</servlet-name>
         <servlet-class>Servlets.Especialidade.PesquisarParaExcluir</servlet-class>
     </servlet>
@@ -119,6 +115,14 @@
     <servlet>
         <servlet-name>PesquisarMedicoEspecialidadeParaCadastrar</servlet-name>
         <servlet-class>Servlets.Especializacao.PesquisarMedicoEspecialidadeParaCadastrar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PesquisarEspecialidade</servlet-name>
+        <servlet-class>Servlets.Especialidade.PesquisarEspecialidade</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AtualizarEspecializacao</servlet-name>
+        <servlet-class>Servlets.Especializacao.AtualizarEspecializacao</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CrudPaciente</servlet-name>
@@ -188,10 +192,6 @@
         <url-pattern>/listarespecialidades</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>PesquisarEspecialidadePorNome</servlet-name>
-        <url-pattern>/pesquisarespecialidadepornome</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>PesquisarParaExcluir</servlet-name>
         <url-pattern>/pesquisarparaexcluir</url-pattern>
     </servlet-mapping>
@@ -238,6 +238,14 @@
     <servlet-mapping>
         <servlet-name>PesquisarMedicoEspecialidadeParaCadastrar</servlet-name>
         <url-pattern>/pesquisarmedicoespecialidadeparacadastrar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PesquisarEspecialidade</servlet-name>
+        <url-pattern>/pesquisarespecialidade</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AtualizarEspecializacao</servlet-name>
+        <url-pattern>/atualizarespecializacao</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

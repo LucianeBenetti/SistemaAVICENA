@@ -3,19 +3,16 @@ package Servlets.Especialidade;
 import controller.Especialidade.EspecialidadeController;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.JOptionPane;
 import model.vo.Especialidade.EspecialidadeVO;
 
-public class PesquisarEspecialidadePorNome extends HttpServlet {
+public class PesquisarEspecialidade extends HttpServlet {
 
     EspecialidadeVO especialidadeVO = new EspecialidadeVO();
-    List<EspecialidadeVO> especialidadesBuscadas = null;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -23,16 +20,15 @@ public class PesquisarEspecialidadePorNome extends HttpServlet {
 
         especialidadeVO.setNomeEspecialidade(request.getParameter("nomeespecialidade"));
         EspecialidadeController especialidadecontroller = new EspecialidadeController();
+        List<EspecialidadeVO> especialidadesBuscadas = especialidadecontroller.exibirEspecialidadePorNome(especialidadeVO.getNomeEspecialidade());
         Boolean resultadoDaPesquisaPorNome = false;
-        especialidadesBuscadas = especialidadecontroller.exibirEspecialidadePorNome(especialidadeVO.getNomeEspecialidade());
 
         System.out.println("Servlets.Especialidade: " + especialidadesBuscadas);
-        
-        if (especialidadesBuscadas != null) {
 
-            request.setAttribute("especialidadesBuscadas", especialidadesBuscadas);
-
+        if (!especialidadesBuscadas.isEmpty()) {
+            
             resultadoDaPesquisaPorNome = true;
+            request.setAttribute("especialidadesBuscadas", especialidadesBuscadas);
             request.setAttribute("especialidadevoretornada", resultadoDaPesquisaPorNome);
             request.getRequestDispatcher("Especialidade/PesquisarEspecialidadePorNome.jsp").forward(request, response);
 
@@ -41,6 +37,7 @@ public class PesquisarEspecialidadePorNome extends HttpServlet {
             request.setAttribute("especialidadevoretornada", resultadoDaPesquisaPorNome);
             request.getRequestDispatcher("Especialidade/PesquisarEspecialidadePorNome.jsp").forward(request, response);
         }
+
         System.out.println("Resultado: " + resultadoDaPesquisaPorNome);
     }
 }

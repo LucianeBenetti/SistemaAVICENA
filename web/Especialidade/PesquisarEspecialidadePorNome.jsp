@@ -12,7 +12,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script type="text/javascript" src="Especialidade/selecionarLinhaTabela.js"></script>
-         <link type="text/css" rel="stylesheet" href="EspecialidadeCRUD.css">
+        <link type="text/css" rel="stylesheet" href="EspecialidadeCRUD.css">
         <link type="text/css" rel="stylesheet" href="Especialidade/EspecialidadeCRUD.css">
         <title>Pesquisa de Especialidades por Nome</title>
     </head>
@@ -21,7 +21,7 @@
         <div class="consultaNome">
             <h2>Pesquisar Especialidade por Nome!</h2>
 
-            <form method="post" action="../pesquisarespecialidadepornome">
+            <form method="post" action="../pesquisarespecialidade">
 
                 <fieldset><legend>Digite o nome da Especialidade a ser consultada na base de dados</legend>
                     <p><a>*</a>Campos de preenchimento obrigatório</p>                    
@@ -44,17 +44,16 @@
         <div class="resultadodaconsultaNome">
             <h2>Resultado da pesquisa de Especialidade por Nome</h2>
 
-             <%
+            <%
                 Object obj = request.getAttribute("especialidadevoretornada");
 
                 if (obj != null) {
-                    Boolean EspecialidadeVORetornada = (Boolean) obj;
-
-                    if (!EspecialidadeVORetornada) {%>                     
-            <input type="text" size="100" style="margin-left: 5px;" value="<% out.println("Especialidade não encontrada!"
+                    Boolean especialidadeVORetornada = (Boolean) obj;
+                    if (!especialidadeVORetornada) {%>                     
+                   <input type="text" size="100" style="margin-left: 5px;" value="<% out.println("Especialidade não encontrada!"
                                + " Tente novamente. Se a Especialidade não for cadastrada, por gentileza, cadastrá-lo!!");%>">               
             <%} else {%>
-            
+
             <form name="atualizarespecialidade" action="atualizarespecialidade" method="post">
 
                 <fieldset><legend>Dados do Especialidade</legend>
@@ -74,7 +73,7 @@
                         </tr>     
                         <% }     %>
                     </table>
-                    
+
                     <br><br>
                     ID: <br>
                     <input type="text" name="codigoespecialidade" size="4"> <br><br>

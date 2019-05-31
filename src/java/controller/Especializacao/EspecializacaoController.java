@@ -26,9 +26,9 @@ public class EspecializacaoController {
 
     }
 
-    public EspecializacaoVO atualizar(EspecializacaoVO especializacao, int codigoEspecializacao) {
-        EspecializacaoVO especializacaoBuscada = especializacaoBO.atualizar(especializacao, codigoEspecializacao);
-        return especializacaoBuscada;
+    public EspecializacaoVO atualizarEspecializacaoVO(EspecializacaoVO especializacao, int codigoEspecializacao) {
+       
+        return especializacaoBO.atualizarEspecializacaoVO(especializacao, codigoEspecializacao);
 
     }
 
@@ -44,5 +44,6 @@ public class EspecializacaoController {
     public boolean pesquisarEspecializacoesVO(EspecializacaoVO especializacao) {
         return especializacaoBO.pesquisarEspecializacoesVO(especializacao);
     }
- 
+
+
 }

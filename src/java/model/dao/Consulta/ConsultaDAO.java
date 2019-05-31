@@ -81,7 +81,7 @@ public class ConsultaDAO {
             while (result.next()) {
 
                 consulta.setCodigoConsulta(result.getInt(1));
-                EspecializacaoVO especializacaoVO = especializacaoDAO.consultarPorId(result.getInt(2));
+                EspecializacaoVO especializacaoVO = especializacaoDAO.consultarEspecializacaoVOPorId(result.getInt(2));
                 consulta.setEspecializacaoVO(especializacaoVO);
                 PacienteVO pacienteVO = pacienteDAO.consultarPorId(result.getInt(3));
                 consulta.setPacienteVO(pacienteVO);
@@ -173,7 +173,7 @@ public class ConsultaDAO {
                 ConsultaVO consulta = new ConsultaVO();
 
                 consulta.setCodigoConsulta(result.getInt(1));
-                EspecializacaoVO especializacaoVO = especializacaoDAO.consultarPorId(result.getInt(2));
+                EspecializacaoVO especializacaoVO = especializacaoDAO.consultarEspecializacaoVOPorId(result.getInt(2));
                 consulta.setEspecializacaoVO(especializacaoVO);
                 PacienteVO pacienteVO = pacienteDAO.consultarPorId(result.getInt(3));
                 consulta.setPacienteVO(pacienteVO);
@@ -205,7 +205,7 @@ public class ConsultaDAO {
             while (result.next()) {
 
                 consulta.setCodigoConsulta(result.getInt(1));
-                EspecializacaoVO especializacaoVO = especializacaoDAO.consultarPorId(result.getInt(2));
+                EspecializacaoVO especializacaoVO = especializacaoDAO.consultarEspecializacaoVOPorId(result.getInt(2));
                 consulta.setEspecializacaoVO(especializacaoVO);
                 PacienteVO pacienteVO = pacienteDAO.consultarPorId(result.getInt(3));
                 consulta.setPacienteVO(pacienteVO);
@@ -239,7 +239,7 @@ public class ConsultaDAO {
             while (result.next()) {
 
                 consulta.setCodigoConsulta(result.getInt(1));
-                EspecializacaoVO especializacaoVO = especializacaoDAO.consultarPorId(result.getInt(2));
+                EspecializacaoVO especializacaoVO = especializacaoDAO.consultarEspecializacaoVOPorId(result.getInt(2));
                 consulta.setEspecializacaoVO(especializacaoVO);
                 PacienteVO pacienteVO = pacienteDAO.consultarPorId(result.getInt(3));
                 consulta.setPacienteVO(pacienteVO);

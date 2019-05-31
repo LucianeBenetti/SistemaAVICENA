@@ -44,7 +44,7 @@ public class EspecializacaoDAO {
             }
 
         } catch (SQLException e) {
-            System.out.println("Erro ao executar o Cadastro da Especializacão! Causa: \n: " + e.getMessage());
+            System.out.println("Erro ao executar o Cadastro do Especializac�o! Causa: \n: " + e.getMessage());
 
         } finally {
             ConexaoComBanco.closePreparedStatement(prepStmt);
@@ -69,7 +69,7 @@ public class EspecializacaoDAO {
                 sucessoDelete = true;
             }
         } catch (SQLException e) {
-            System.out.println("Erro ao executar Query de Exclusão da Especialização! Causa: \n: " + e.getMessage());
+            System.out.println("Erro ao executar Query de Exclus�o do Especializac�o! Causa: \n: " + e.getMessage());
         } finally {
             ConexaoComBanco.closePreparedStatement(prepStmt);
             ConexaoComBanco.closeConnection(conn);
@@ -77,8 +77,10 @@ public class EspecializacaoDAO {
         return sucessoDelete;
     }
 
-    public EspecializacaoVO atualizarEspecializacao(EspecializacaoVO especializacao, int codigoEspecializacao) {
+    public EspecializacaoVO atualizarEspecializacaoVO(EspecializacaoVO especializacao, int codigoEspecializacao) {
 
+        System.out.println("model.dao.Especializacao: " + especializacao);
+         System.out.println("model.dao.Especializacao: " + codigoEspecializacao);
         boolean sucessoAtualizar = false;
 
         String query = "UPDATE especializacao SET codigoEspecialidade=?, codigoMedico=?, anoEspecializacao=? "
@@ -100,29 +102,28 @@ public class EspecializacaoDAO {
                 sucessoAtualizar = true;
             }
         } catch (SQLException ex) {
-            System.out.println("Erro ao executar Query de Atualização da Especialização!Causa: \n: " + ex.getMessage());
+            System.out.println("Erro ao executar Query de Atualiza��o do Especializac�o!Causa: \n: " + ex.getMessage());
         } finally {
             ConexaoComBanco.closePreparedStatement(prepStmt);
             ConexaoComBanco.closeConnection(conn);
         }
+        System.out.println("model.dao " + sucessoAtualizar);
         return especializacao;
     }
 
-    public ArrayList<EspecializacaoVO> listarEspecializacoesDoMedicoPorEspecialidade(int codigoEspecialidade, int codigoMedico) {
+    public ArrayList<EspecializacaoVO> listarEspecializacoesDoMedicoPorEspecialidade(int codigoMedico) {
         ArrayList<EspecializacaoVO> listaEspecializacao = new ArrayList<EspecializacaoVO>();
 
         String query = " SELECT codigoEspecializacao, e.codigoEspecialidade, med.codigoMedico, anoEspecializacao from especializacao esp"
                 + " inner join especialidade e on (esp.codigoEspecialidade = e.codigoEspecialidade) "
                 + " inner join medico med on (esp.codigoMedico = med.codigoMedico) "
-                + " where e.codigoEspecialidade = ? "
                 + " and med.codigoMedico = ? "
-                + " order by esp.codigoEspecializacao ";
+                + " order by esp.codigoMedico ";
 
         Connection conn = ConexaoComBanco.getConnection();
         PreparedStatement prepStmt = ConexaoComBanco.getPreparedStatement(conn, query);
         try {
-            prepStmt.setInt(1, codigoEspecialidade);
-            prepStmt.setInt(2, codigoMedico);
+            prepStmt.setInt(1, codigoMedico);
             ResultSet result = prepStmt.executeQuery();
 
             while (result.next()) {
@@ -144,7 +145,7 @@ public class EspecializacaoDAO {
         return listaEspecializacao;
     }
 
-    public ArrayList<EspecializacaoVO> listarTodasAsEspecializacoesVO() {
+    public ArrayList<EspecializacaoVO> listarTodasEspecializacoesVO() {
         String query = "SELECT * from especializacao";
         ArrayList<EspecializacaoVO> listaEspecializacao = new ArrayList<EspecializacaoVO>();
 
@@ -172,7 +173,9 @@ public class EspecializacaoDAO {
         return listaEspecializacao;
     }
 
-    public boolean pesquisarEspecializacoesVO(EspecializacaoVO especializacao) {
+    public boolean existeEspecializacaoVO(EspecializacaoVO especializacao) {
+
+        ArrayList<EspecializacaoVO> listaEspecializacao = new ArrayList<EspecializacaoVO>();
 
         String query = " SELECT count(esp.codigoEspecializacao) from especializacao esp "
                 + " inner join especialidade e on (esp.codigoEspecialidade = e.codigoEspecialidade) "
@@ -197,23 +200,26 @@ public class EspecializacaoDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        System.out.println("DAO: " + existe);
         return existe;
     }
 
-    public ArrayList<EspecializacaoVO> pesquisarEspecializacaoPorIdDoMedico(int codigoMedico) {
+    public ArrayList<EspecializacaoVO> existeEspecializacaoPorNome(String nomeMedico, String nomeEspecialidade) {
+
+        ArrayList<EspecializacaoVO> listaEspecializacao = new ArrayList<EspecializacaoVO>();
 
         String query = "SELECT esp.codigoEspecializacao, e.codigoEspecialidade, med.codigoMedico, esp.anoEspecializacao from especializacao esp"
                 + " inner join especialidade e on (esp.codigoEspecialidade = e.codigoEspecialidade)"
                 + " inner join medico med on (esp.codigoMedico = med.codigoMedico)"
                 + " where med.codigoMedico = ?"
-                + " order by esp.codigoMedico ";
+                + " and e.codigoEspecialidade = ?"
+                + " order by esp.codigoEspecialidade";
 
         Connection conn = ConexaoComBanco.getConnection();
         PreparedStatement prepStmt = ConexaoComBanco.getPreparedStatement(conn, query);
         ArrayList<EspecializacaoVO> especializacoes = new ArrayList<EspecializacaoVO>();
         try {
-            prepStmt.setInt(1, codigoMedico);
+            prepStmt.setString(1, '%' + nomeMedico + '%');
+            prepStmt.setString(2, '%' + nomeEspecialidade + '%');
 
             ResultSet result = prepStmt.executeQuery();
 
@@ -238,7 +244,7 @@ public class EspecializacaoDAO {
         return especializacoes;
     }
 
-    public EspecializacaoVO consultarPorId(int id) {
+    public EspecializacaoVO consultarEspecializacaoVOPorId(int id) {
 
         String query = "SELECT * FROM especializacao WHERE codigoEspecializacao = ? ";
 

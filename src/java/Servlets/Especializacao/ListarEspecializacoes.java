@@ -22,7 +22,7 @@ public class ListarEspecializacoes extends HttpServlet {
         if (especializacoesVO != null) {
             request.setAttribute("especializacoes", especializacoesVO);
             request.getRequestDispatcher("Especializacao/ListarTodasAsEspecializacoes.jsp").forward(request, response);
-            System.out.print(especializacoesVO);
+         
         }
     }
 
