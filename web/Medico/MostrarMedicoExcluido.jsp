@@ -17,28 +17,28 @@
             <div class="secao3">
             </div>
             <div class="cadastro">
-               <h3>Exclusão Médico por CNPJ!</h3>
+                <h3>Exclusão Médico por CNPJ!</h3>
                 <fieldset><legend>Resultado da exclusao:</legend>
-                <%
-                    Object obj1 = request.getAttribute("cpfmedico");
+                    <%
+                        Object obj1 = request.getAttribute("medicoexcluido");
 
-                    if (obj1 != null) {
-                        Boolean medicoExcluido = (Boolean) obj1;
-                        if (medicoExcluido) {%>
+                        if (obj1 != null) {
+                            Boolean medicoExcluido = (Boolean) obj1;
+                            if (medicoExcluido) {%>
 
-                O medico com CNPJ <input type="text" readonly value="<%= request.getAttribute("cpfmedico")%>"> 
-                foi Excluído! 
-                </div>
-                <%} else {%>
+                    O medico foi excluído com sucesso! 
+                </fieldset>
+            </div>
+            <%} else {%>
 
             <div class="secao3">
             </div>
             <div class="cadastro">
+                <fieldset>
+                    <% out.println("Médico não pode ser excluído na base de dados!");%>
 
-                <input type="text" readonly size="40" value="<% out.println("Médico não pode ser excluído na base de dados!");%>">
-
-                <%}%>
-                <%}%>
+                    <%}%>
+                    <%}%>
                 </fieldset>
                 <div class="secao4">
                 </div> 

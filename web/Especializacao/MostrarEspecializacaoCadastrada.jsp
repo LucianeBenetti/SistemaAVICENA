@@ -54,7 +54,7 @@
                 <h3>Resultado do cadastro da Especialização</h3>     
                 <fieldset><legend>Especialização</legend>
                     <br>             
-                    <input type="text" readonly size="40" style="margin-left: 5px;" value="<% out.println("Especialização já cadastrada na base de dados!");%>">
+                    <% out.println("Especialização já cadastrada na base de dados!");%>
                     <%}%>
                     <%}%>
                     </form> 

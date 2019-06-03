@@ -115,20 +115,20 @@
                 </div>
                 <div class="cadastro">
                     <br> 
-                    <h1>Resultado do cadastro do Paciente:</h1>            
-                    <br>             
-                    <input type="text" readonly size="40" style="margin-left: 5px;" value="<% out.println("Paciente já cadastrado na base de dados!");%>">
 
-                    <%}%>
+                    <h1>Resultado do cadastro do Paciente:</h1>     
+                    <fieldset>
+                        <br>             
+                        <% out.println("Paciente já cadastrado na base de dados!");%>
 
-                    <%}%>
-                    </form> 
+                        <%}%>
+                        <%}%>
+                        <br><br>
+                        </form> 
+                        <div class="secao4">
+                        </div>
+                    </fieldset>
                     <br><br>
-
-                    <div class="secao4">
-
-                    </div>
-
                     <div>
                         <form action="controledenavegacao" method="POST">
                             <input type="hidden" id="avicena" name="avicena" value="avicena">

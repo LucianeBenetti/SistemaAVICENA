@@ -29,14 +29,15 @@
                             if (especializacaoExcluida != null) {%>
 
                     A especializacao foi Excluída com sucesso! 
+                </fieldset>
             </div>
             <%} else {%>
 
             <div class="secao3">
             </div>
             <div class="cadastro">
-
-                <input type="text" readonly size="40" value="<% out.println("Especializacao não pode ser excluída na base de dados!");%>">
+                <fieldset>
+            <% out.println("Especializacao não pode ser excluída na base de dados!");%>
 
                 <%}%>
                 <%}%>

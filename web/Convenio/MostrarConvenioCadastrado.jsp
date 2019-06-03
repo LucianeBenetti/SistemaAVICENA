@@ -60,16 +60,14 @@
                 <fieldset><legend>Convênio</legend>
 
                     <br>             
-                    <input type="text" readonly size="40" style="margin-left: 5px;" value="<% out.println("Convênio já cadastrado na base de dados!");%>">
+                    <% out.println("Convênio já cadastrado na base de dados!");%>
 
                     <%}%>
-
                     <%}%>
                     </form> 
                     <br><br>
-
+                 
                     <div class="secao4">
-
                     </div>
                 </fieldset>
                 <br><br>

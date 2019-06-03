@@ -73,7 +73,7 @@
                   <fieldset><legend>Médico</legend>
                        
                 <br>             
-                <input type="text" readonly size="40" style="margin-left: 5px;" value="<% out.println("Médico já cadastrado na base de dados!");%>">
+                <% out.println("Médico já cadastrado na base de dados!");%>
 
                 <%}%>
 

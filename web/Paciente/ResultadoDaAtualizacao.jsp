@@ -13,7 +13,7 @@
         <title>Resultado da Atualização</title>
     </head>
     <body class="body">       
-        
+
         <div class="principal">
             <div class="secao3">
             </div>
@@ -21,20 +21,20 @@
                 <h2>Resultado da atualização:</h2>
                 <fieldset><legend>Paciente</legend>
 
-                <%
-                    Object obj1 = request.getAttribute("atualizacao");
+                    <%
+                        Object obj1 = request.getAttribute("atualizacao");
 
-                    if (obj1 != null) {
-                        Boolean pacienteAtualizado = (Boolean) obj1;
+                        if (obj1 != null) {
+                            Boolean pacienteAtualizado = (Boolean) obj1;
 
-                        if (pacienteAtualizado) {%>                     
-                <input type="text" size="40" readonly style="margin-left: 5px;" value="<% out.println("Dados do Paciente atualizados com sucesso!!");%>">               
-                <%} else {%>
-                <input type="text" size="40" readonly style="margin-left: 5px;" value="<% out.println("Não foi possível atuaizar os dados do Paciente!! Tente novamente");%>">
+                            if (pacienteAtualizado) {%>                     
+                    <% out.println("Dados do Paciente atualizados com sucesso!!");%>               
+                    <%} else {%>
+                    <% out.println("Não foi possível atuaizar os dados do Paciente!! Tente novamente");%>
 
-                <%}
-                }%>            
-                  <br><br>
+                    <%}
+                    }%>            
+                    <br><br>
 
                     <div class="secao4">
 
@@ -49,8 +49,8 @@
                 </div>   
             </div>     
         </div>
-            <footer class="footer">                
-                &copy; Desenvolvido por Luciane Benetti e Marco Sena.
-            </footer>        
+        <footer class="footer">                
+            &copy; Desenvolvido por Luciane Benetti e Marco Sena.
+        </footer>        
     </body>
 </html>

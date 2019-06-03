@@ -21,39 +21,41 @@
                 <fieldset><legend>Resultado da exclusao:</legend>
 
                     <%
-                        Object obj1 = request.getAttribute("cpfpaciente");
+                        Object obj1 = request.getAttribute("pacienteexcluido");
 
                         if (obj1 != null) {
                             Boolean pacienteExcluido = (Boolean) obj1;
                             if (pacienteExcluido) {%>
 
-                    O paciente com CPF <input type="text" readonly value="<%= request.getAttribute("cpfpaciente")%>"> 
-                    foi Excluído!
-                    </div>
-                    <%} else {%>
+                    Paciente foi excluído com sucesso!
+                </fieldset>
+            </div>
+            <%} else {%>
 
-                    <div class="secao3">
-                    </div>
-                    <div class="cadastro">
+            <div class="secao3">
+            </div>
 
-                        <input type="text" readonly size="40" style="margin-left: 1px;" value="<% out.println("Paciente não pode ser excluído na base de dados!");%>">
+            <div class="cadastro">
+                <fieldset>
+                    <% out.println("Paciente não pode ser excluído na base de dados!");%>
 
-                        <%}%>
-                        <%}%>
-                        </fieldset>
-                        <div class="secao4">
-                        </div> 
-
-                        <div>
-                            <form action="controledenavegacao" method="POST">
-                                <input type="hidden" id="avicena" name="avicena" value="avicena">
-                                <input type="submit" value="Voltar">
-                            </form>
-                        </div>
-                    </div>
+                    <%}%>
+                    <%}%>
                     <br><br>
-                    </div>
-                    <br>
-                    <footer class="footer">&copy; Desenvolvido por Luciane Benetti e Marco Sena. </footer>
-                    </body>
-                    </html>
+
+                    <div class="secao4">
+                    </div> 
+                </fieldset>
+                <div>
+                    <form action="controledenavegacao" method="POST">
+                        <input type="hidden" id="avicena" name="avicena" value="avicena">
+                        <input type="submit" value="Voltar">
+                    </form>
+                </div>
+            </div>
+            <br><br>
+        </div>
+        <br>
+        <footer class="footer">&copy; Desenvolvido por Luciane Benetti e Marco Sena. </footer>
+    </body>
+</html>

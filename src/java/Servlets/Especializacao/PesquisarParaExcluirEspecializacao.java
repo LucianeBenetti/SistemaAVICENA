@@ -40,7 +40,7 @@ public class PesquisarParaExcluirEspecializacao extends HttpServlet {
         EspecializacaoController especializacaocontroller = new EspecializacaoController();
         especializacoesBuscadas = especializacaocontroller.pesquisarEspecializacaoPorIdDoMedico(especializacaoVO.getMedicoVO().getCodigoMedico());
 
-        if (especializacoesBuscadas != null) {
+        if (especializacoesBuscadas.size() > 0) {
 
             System.out.println("buscada: " + especializacoesBuscadas);
             request.setAttribute("especializacoesBuscadas", especializacoesBuscadas);

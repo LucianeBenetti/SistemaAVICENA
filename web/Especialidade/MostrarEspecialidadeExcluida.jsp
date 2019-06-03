@@ -26,31 +26,32 @@
                             Integer especialidadeExcluida = (Integer) obj1;
                             if (especialidadeExcluida != null) {%>
 
-                    A especialidade foi Excluída com sucesso! 
+                    A especialidade foi Excluída com sucesso!
+                </fieldset>
             </div>
             <%} else {%>
 
             <div class="secao3">
             </div>
             <div class="cadastro">
+                <fieldset
+                    <% out.println("Especialidade não pode ser excluída na base de dados!");%>
 
-                <input type="text" readonly size="40" value="<% out.println("Especialidade não pode ser excluída na base de dados!");%>">
+                    <%}%>
+                    <%}%>
+            </fieldset>
+            <div class="secao4">
+            </div> 
 
-                <%}%>
-                <%}%>
-                </fieldset>
-                <div class="secao4">
-                </div> 
-
-                <div>
-                    <form action="controledenavegacao" method="POST">
-                        <input type="hidden" id="avicena" name="avicena" value="avicena">
-                        <input type="submit" value="Voltar">
-                    </form>
-                </div>
+            <div>
+                <form action="controledenavegacao" method="POST">
+                    <input type="hidden" id="avicena" name="avicena" value="avicena">
+                    <input type="submit" value="Voltar">
+                </form>
             </div>
-            <br><br>
         </div>
-        <br>
-    </body>
+        <br><br>
+    </div>
+    <br>
+</body>
 </html>

@@ -17,32 +17,34 @@
             <div class="secao3">
             </div>
             <div class="cadastro">
-               <h3>Exclusão Convênio por CNPJ!</h3>
+                <h3>Exclusão Convênio por CNPJ!</h3>
                 <fieldset><legend>Resultado da exclusao:</legend>
-                <%
-                    Object obj1 = request.getAttribute("cnpjconvenio");
+                    <%
+                        Object obj1 = request.getAttribute("convenioexcluido");
 
-                    if (obj1 != null) {
-                        Boolean convenioExcluido = (Boolean) obj1;
-                        if (convenioExcluido) {%>
+                        if (obj1 != null) {
+                            Boolean convenioExcluido = (Boolean) obj1;
+                            if (convenioExcluido) {%>
 
-                O convenio com CNPJ <input type="text" readonly value="<%= request.getAttribute("cnpjconvenio")%>"> 
-                foi Excluído! 
-                </div>
-                <%} else {%>
+                    O convenio foi excluído com sucesso! 
+                </fieldset>
+            </div>
+
+            <%} else {%>
 
             <div class="secao3">
             </div>
             <div class="cadastro">
+                <fieldset>
+                    Convênio não pode ser excluído da base de dados!"
 
-                <input type="text" readonly size="40" value="<% out.println("Convênio não pode ser excluído na base de dados!");%>">
-
-                <%}%>
-                <%}%>
+                    <%}%>
+                    <%}%>
+                    <br><br>
+                    <div class="secao4">
+                    </div> 
                 </fieldset>
-                <div class="secao4">
-                </div> 
-
+                    <br><br>
                 <div>
                     <form action="controledenavegacao" method="POST">
                         <input type="hidden" id="avicena" name="avicena" value="avicena">

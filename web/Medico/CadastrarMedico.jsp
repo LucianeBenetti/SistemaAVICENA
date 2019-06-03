@@ -39,7 +39,7 @@
                     <br><br>
 
                     e-mail:<br>
-                    <input type="email" name="email" size="83">
+                    <input type="email" name="email" size="83"><br><br>
                     CRM: <br>
                     <input type="crm" name="crm" size="83">
 

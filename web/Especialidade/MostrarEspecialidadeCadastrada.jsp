@@ -52,7 +52,7 @@
                 <fieldset><legend>Especialidade</legend>
 
                     <br>             
-                    <input type="text" readonly size="40" style="margin-left: 5px;" value="<% out.println("Especialidade já cadastrada na base de dados!");%>">
+                   <% out.println("Especialidade já cadastrada na base de dados!");%>
 
                     <%}%>
 

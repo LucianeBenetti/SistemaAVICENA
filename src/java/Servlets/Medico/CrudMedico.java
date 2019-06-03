@@ -85,7 +85,9 @@ public class CrudMedico extends HttpServlet {
                         Boolean resultadoDaExclusao = false;
                         medicoController = new MedicoController();
                         if (medicoController.excluirMedicoPorCpf(medicoVO.getCpfMedico())) {
-
+                            
+                            resultadoDaExclusao = true;
+                            request.setAttribute("medicoexcluido", resultadoDaExclusao);
                             request.setAttribute("cpfmedico", medicoVO.getCpfMedico());
                             request.getRequestDispatcher("Medico/MostrarMedicoExcluido.jsp").forward(request, response);
                         } else {
