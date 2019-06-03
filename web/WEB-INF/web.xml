@@ -124,6 +124,18 @@
         <servlet-name>AtualizarEspecializacao</servlet-name>
         <servlet-class>Servlets.Especializacao.AtualizarEspecializacao</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CrudConsulta</servlet-name>
+        <servlet-class>Servlets.Consulta.CrudConsulta</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PesquisarPacienteParaConsulta</servlet-name>
+        <servlet-class>Servlets.Consulta.PesquisarPacienteParaConsulta</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PesquisarConvenio</servlet-name>
+        <servlet-class>Servlets.Consulta.PesquisarConvenio</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CrudPaciente</servlet-name>
         <url-pattern>/crudpaciente</url-pattern>
@@ -246,6 +258,18 @@
     <servlet-mapping>
         <servlet-name>AtualizarEspecializacao</servlet-name>
         <url-pattern>/atualizarespecializacao</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CrudConsulta</servlet-name>
+        <url-pattern>/crudconsulta</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PesquisarPacienteParaConsulta</servlet-name>
+        <url-pattern>/pesquisarpacienteparaconsulta</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PesquisarConvenio</servlet-name>
+        <url-pattern>/pesquisarconvenio</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

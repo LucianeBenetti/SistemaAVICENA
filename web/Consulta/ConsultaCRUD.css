@@ -12,8 +12,8 @@ a{
     margin-top: 0px;/*Margen superior com 1 pixel*/
     margin-right: -1px;
     float: left;/*propriedade indicando que a Área flutuará a esquerda*/
-    width: 48%; /*Ocupando 24% da largura total destinada para o corpo*/
-    height: 400px; /*Altura de 500 pixels*/   
+    width: 40%; /*Ocupando 24% da largura total destinada para o corpo*/
+    height: 300px; /*Altura de 500 pixels*/   
 }
 .form2 {  
     background-color: lightblue; 
@@ -21,7 +21,7 @@ a{
     margin-top: 0px;/*Margen superior com 1 pixel*/
     margin-right: -1px;
     float: right;/*propriedade indicando que a Área flutuará a esquerda*/
-    width: 50%; /*Ocupando 24% da largura total destinada para o corpo*/
+    width: 40%; /*Ocupando 24% da largura total destinada para o corpo*/
     height: 400px; /*Altura de 500 pixels*/    
 }
 .consultaNome {
@@ -75,7 +75,7 @@ a{
     margin-top: 0px;/*Margen superior com 1 pixel*/
     margin-left: -1;
     float: left;/*propriedade indicando que a Área flutuará a esquerda*/
-    width: 51.5%; /*Ocupando 24% da largura total destinada para o corpo*/
+    width: 40%; /*Ocupando 24% da largura total destinada para o corpo*/
     height: 400px; /*Altura de 500 pixels*/
 }
 #tabelaEspecialidades{

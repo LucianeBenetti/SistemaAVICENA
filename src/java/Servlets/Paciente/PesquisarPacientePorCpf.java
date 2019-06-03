@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.vo.Paciente.PacienteVO;
 
 public class PesquisarPacientePorCpf extends HttpServlet {
@@ -41,6 +42,7 @@ public class PesquisarPacientePorCpf extends HttpServlet {
             request.setAttribute("cep", pacienteVO.getCep());
 
             resultadoDaPesquisaPorCpf = true;
+         
             request.setAttribute("pacientevoretornado", resultadoDaPesquisaPorCpf);
             request.getRequestDispatcher("Paciente/PesquisarPacientePorCpf.jsp").forward(request, response);
 

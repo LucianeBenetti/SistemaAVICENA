@@ -95,7 +95,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="Consulta/PesquisarConsultaPorPaciente.jsp">Pesquisar Consulta</a>
-                            <a class="dropdown-item" href="Consulta/CadastarConsultaPorPaciente.jsp">Cadastrar Consulta</a>
+                            <a class="dropdown-item" href="Consulta/CadastrarConsulta.jsp">Cadastrar Consulta</a>
                             <a class="dropdown-item" href="listarconsultas">Listar Todas as Consultas</a>                             
                             <a class="dropdown-item" href="Consulta/ExcluirConsultaPorPaciente.jsp">Excluir Consulta</a>
                         </div>
