@@ -25,7 +25,7 @@ public class PesquisarEspecialidade extends HttpServlet {
 
         System.out.println("Servlets.Especialidade: " + especialidadesBuscadas);
 
-        if (!especialidadesBuscadas.isEmpty()) {
+        if (especialidadesBuscadas != null) {
             
             resultadoDaPesquisaPorNome = true;
             request.setAttribute("especialidadesBuscadas", especialidadesBuscadas);

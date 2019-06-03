@@ -30,9 +30,9 @@ var btnVisualizar = document.getElementById("visualizarDados");
 
 function clickLinhaTabela(row) {
     var cod = row.cells[0].innerText;
-    codigomedico = row.cells[1].innerText;
+    var codigomedico = row.cells[1].innerText;
     var medico = row.cells[2].innerText;
-    codigoespecialidade = row.cells[3].innerText;
+    var codigoespecialidade = row.cells[3].innerText;
     var especialidade = row.cells[4].innerText;
     var instituicao = row.cells[5].innerText;
     var ano = row.cells[6].innerText;
@@ -42,6 +42,6 @@ function clickLinhaTabela(row) {
     document.atualizarespecializacao.codigoespecialidade.value = codigoespecialidade;
     document.atualizarespecializacao.nomeespecialidade.value = especialidade;
     document.atualizarespecializacao.instituicaoespecialidade.value = instituicao;
-    document.atualizarespecializacao.anooespecializacao.value = ano;
+    document.atualizarespecializacao.anoespecializacao.value = ano;
 }
 

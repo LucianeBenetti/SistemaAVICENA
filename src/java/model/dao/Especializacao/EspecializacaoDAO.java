@@ -142,6 +142,7 @@ public class EspecializacaoDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        System.out.println("Ano " + listaEspecializacao);
         return listaEspecializacao;
     }
 

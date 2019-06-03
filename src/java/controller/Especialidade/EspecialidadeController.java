@@ -22,9 +22,9 @@ public class EspecialidadeController {
 
     }
 
-    public EspecialidadeVO pesquisarEspecialidadeVOPorId(int codigoEspecialidade) {
+    public ArrayList<EspecialidadeVO> pesquisarEspecialidadePorId(int codigoEspecialidade) {
 
-        return especialidadeBO.pesquisarEspecialidadeVOPorId(codigoEspecialidade);
+        return especialidadeBO.pesquisarEspecialidadePorId(codigoEspecialidade);
     }
 
     public Boolean atualizarEspecialidadeVO(EspecialidadeVO especialidadeVO) {

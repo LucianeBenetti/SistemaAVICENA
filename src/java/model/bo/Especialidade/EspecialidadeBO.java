@@ -30,9 +30,9 @@ public class EspecialidadeBO {
         return especialidadeDAO.listarTodasEspecialidades();
     }
 
-    public EspecialidadeVO pesquisarEspecialidadeVOPorId(int IdEspecialidade) {
+    public ArrayList<EspecialidadeVO> pesquisarEspecialidadePorId(int IdEspecialidade) {
 
-        return especialidadeDAO.pesquisarEspecialidadeVOPorId(IdEspecialidade);
+        return especialidadeDAO.pesquisarEspecialidadePorId(IdEspecialidade);
     }
 
     public boolean atualizarEspecialidadeVO(EspecialidadeVO especialidadeVO) {

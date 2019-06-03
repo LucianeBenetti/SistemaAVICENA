@@ -28,9 +28,9 @@
                         Boolean pacienteAtualizado = (Boolean) obj1;
 
                         if (pacienteAtualizado) {%>                     
-                <input type="text" size="40" style="margin-left: 5px;" value="<% out.println("Dados do Paciente atualizados com sucesso!!");%>">               
+                <input type="text" size="40" readonly style="margin-left: 5px;" value="<% out.println("Dados do Paciente atualizados com sucesso!!");%>">               
                 <%} else {%>
-                <input type="text" size="40" style="margin-left: 5px;" value="<% out.println("Não foi possível atuaizar os dados do Paciente!! Tente novamente");%>">
+                <input type="text" size="40" readonly style="margin-left: 5px;" value="<% out.println("Não foi possível atuaizar os dados do Paciente!! Tente novamente");%>">
 
                 <%}
                 }%>            

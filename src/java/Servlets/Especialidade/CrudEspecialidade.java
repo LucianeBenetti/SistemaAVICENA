@@ -71,7 +71,8 @@ public class CrudEspecialidade extends HttpServlet {
                         Boolean resultadoDaExclusao = false;
                         especialidadeController = new EspecialidadeController();
                         if (especialidadeController.excluirEspecialidadePorId(especialidadeVO.getCodigoEspecialidade())) {
-                                                  
+                           
+                            resultadoDaExclusao = true;
                             request.setAttribute("codigoespecialidade", especialidadeVO.getCodigoEspecialidade());
                             request.getRequestDispatcher("Especialidade/MostrarEspecialidadeExcluida.jsp").forward(request, response);
                         } else {

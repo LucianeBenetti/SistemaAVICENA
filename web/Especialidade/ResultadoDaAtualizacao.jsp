@@ -25,9 +25,9 @@
                             Boolean especialidadeAtualizado = (Boolean) obj1;
 
                             if (especialidadeAtualizado) {%>                     
-                    <input type="text" size="40" style="margin-left: 5px;" value="<% out.println("Dados da Especialidade atualizados com sucesso!!");%>">               
+                    <input type="text" size="40" readonly style="margin-left: 5px;" value="<% out.println("Dados da Especialidade atualizados com sucesso!!");%>">               
                     <%} else {%>
-                    <input type="text" size="40" style="margin-left: 5px;" value="<% out.println("Não foi possível atualizar os dados do Especialidade!! Tente novamente");%>">
+                    <input type="text" size="40" readonly style="margin-left: 5px;" value="<% out.println("Não foi possível atualizar os dados do Especialidade!! Tente novamente");%>">
 
                     <%}
                 }%>            

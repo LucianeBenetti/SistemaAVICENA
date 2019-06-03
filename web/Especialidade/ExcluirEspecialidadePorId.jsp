@@ -49,40 +49,38 @@
                 Boolean EspecialidadeVORetornada = (Boolean) obj;
 
                 if (!EspecialidadeVORetornada) {%>                     
-        <input type="text" size="100" style="margin-left: 5px;" value="<% out.println("Especialidade não encontrada!"
-                           + " Tente novamente. Se a Especialidade não for cadastrada, por gentileza, cadastrá-la!!");%>">               
+               <input type="text" size="100" style="margin-left: 5px;" value="<% out.println("Especialidade não encontrada!"
+                    + " Tente novamente. Se a Especialidade não for cadastrada, por gentileza, cadastrá-la!!");%>">               
         <%} else {%>
 
-      <form name="atualizarespecialidade" action="crudespecialidade" method="post">
-
-                <fieldset><legend>Dados do Especialidade</legend>
-                    <table id="tabelaEspecialidades">
-                        <tr>
-                            <th>Id</th>
-                            <th>Nome</th> 
-                            <th>Instituição</th> 
-                        </tr>        
-                        <%
-                            ArrayList<EspecialidadeVO> especialidadesVO = (ArrayList<EspecialidadeVO>) request.getAttribute("especialidadesBuscadas");
-                            for (EspecialidadeVO especialidadeVO : especialidadesVO) {%>   
-                        <tr onclick="clickLinhaTabela(this)" style="cursor:pointer">
-                            <td><%= especialidadeVO.getCodigoEspecialidade()%></td>
-                            <td><%= especialidadeVO.getNomeEspecialidade()%></td>
-                            <td><%= especialidadeVO.getInstituicao()%></td>
-                        </tr>     
-                        <% }     %>
-                    </table>
+        <form name="atualizarespecialidade" action="crudespecialidade" method="post">
+            <fieldset><legend>Dados do Especialidade</legend>
+                <table id="tabelaEspecialidades">
+                    <tr>
+                        <th>Id</th>
+                        <th>Nome</th> 
+                        <th>Instituição</th> 
+                    </tr>        
+                    <%
+                        ArrayList<EspecialidadeVO> especialidadesVO = (ArrayList<EspecialidadeVO>) request.getAttribute("especialidadesBuscadas");
+                        for (EspecialidadeVO especialidadeVO : especialidadesVO) {%>   
+                    <tr onclick="clickLinhaTabela(this)">
+                        <td><%= especialidadeVO.getCodigoEspecialidade()%></td>
+                        <td><%= especialidadeVO.getNomeEspecialidade()%></td>
+                        <td><%= especialidadeVO.getInstituicao()%></td>
+                    </tr>     
+                    <% }     %>
+                </table>
 
                 <br><br>
                 ID: <br>
-                <input type="text" readonly name="codigoespecialidade" size="4"> <br><br>
+                <input type="text" name="codigoespecialidade" size="4" readonly> <br><br>
                 Nome: <br>
-                <input type="text" readonly name="nomeespecialidade" size="80"> <br><br>
+                <input type="text" name="nomeespecialidade" size="80" readonly> <br><br>
                 Instituicao:<br>
-                <input type="text" readonly name="instituicaoespecialidade" size="80"> <br><br>
+                <input type="text" name="instituicaoespecialidade" size="80" readonly> <br><br>
                 <br><br>
-                <br><br>
-                
+
                 <input type="hidden" id="excluir" name="excluir" value="excluir">
                 <input type="submit" value="Excluir Especialidade">
             </fieldset>

@@ -21,15 +21,15 @@ public class PesquisarParaExcluir extends HttpServlet {
 
         especialidadeVO.setNomeEspecialidade(request.getParameter("nomeespecialidade"));
         EspecialidadeController especialidadecontroller = new EspecialidadeController();
+        List<EspecialidadeVO> especialidadesBuscadas = especialidadecontroller.exibirEspecialidadePorNome(especialidadeVO.getNomeEspecialidade());
         Boolean resultadoDaPesquisaPorNome = false;
-        especialidadesBuscadas = especialidadecontroller.exibirEspecialidadePorNome(especialidadeVO.getNomeEspecialidade());
 
-        System.out.println("especialidade: " + especialidadeVO);
+        System.out.println("Servlets.Especialidade: " + especialidadesBuscadas);
+
         if (especialidadesBuscadas != null) {
-
-            request.setAttribute("especialidadesBuscadas", especialidadesBuscadas);
-
+            
             resultadoDaPesquisaPorNome = true;
+            request.setAttribute("especialidadesBuscadas", especialidadesBuscadas);
             request.setAttribute("especialidadevoretornada", resultadoDaPesquisaPorNome);
             request.getRequestDispatcher("Especialidade/ExcluirEspecialidadePorId.jsp").forward(request, response);
 
@@ -39,5 +39,6 @@ public class PesquisarParaExcluir extends HttpServlet {
             request.getRequestDispatcher("Especialidade/ExcluirEspecialidadePorId.jsp").forward(request, response);
         }
 
+        System.out.println("Resultado: " + resultadoDaPesquisaPorNome);
     }
 }

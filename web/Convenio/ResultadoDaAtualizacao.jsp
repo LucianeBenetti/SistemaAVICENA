@@ -26,9 +26,9 @@
                             Boolean convenioAtualizado = (Boolean) obj1;
 
                             if (convenioAtualizado) {%>                     
-                    <input type="text" size="40" style="margin-left: 5px;" value="<% out.println("Dados do Convênio atualizados com sucesso!!");%>">               
+                    <input type="text" size="40" readonly style="margin-left: 5px;" value="<% out.println("Dados do Convênio atualizados com sucesso!!");%>">               
                     <%} else {%>
-                    <input type="text" size="40" style="margin-left: 5px;" value="<% out.println("Não foi possível atualizar os dados do Convênio!! Tente novamente");%>">
+                    <input type="text" size="40" readonly style="margin-left: 5px;" value="<% out.println("Não foi possível atualizar os dados do Convênio!! Tente novamente");%>">
 
                     <%}
                 }%>            

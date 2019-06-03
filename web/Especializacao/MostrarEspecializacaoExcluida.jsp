@@ -4,6 +4,8 @@
     Author     : 80130917
 --%>
 
+<%@page import="model.vo.Especializacao.EspecializacaoVO"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -20,42 +22,37 @@
                 <h3>Exclusão de Especialização por Especialidade!</h3>
                 <fieldset><legend>Resultado da exclusao:</legend>
                     <%
-                        Object obj1 = request.getAttribute("nomeespecialidade");
-                        Object obj2 = request.getAttribute("nomemedico");
+                        Object obj1 = request.getAttribute("codigoespecializacaoVO");
+
                         if (obj1 != null) {
-                            Boolean especializacaoExcluido = (Boolean) obj1;
-                            if (especializacaoExcluido) {%>
+                            Integer especializacaoExcluida = (Integer) obj1;
+                            if (especializacaoExcluida != null) {%>
 
-                    O Especialidade com nome: <br>
-                    <input type="text" readonly value="<%= request.getAttribute("nomeespecialidade")%>"><br>
-                    do Médico: <br>
-                    <input type="text" readonly value="<%= request.getAttribute("nomemedico")%>"><br>
+                    A especializacao foi Excluída com sucesso! 
+            </div>
+            <%} else {%>
 
-                    foi Excluída! 
-                    </div>
-                    <%} else {%>
+            <div class="secao3">
+            </div>
+            <div class="cadastro">
 
-                    <div class="secao3">
-                    </div>
-                    <div class="cadastro">
+                <input type="text" readonly size="40" value="<% out.println("Especializacao não pode ser excluída na base de dados!");%>">
 
-                        <input type="text" readonly size="40" value="<% out.println("Especialização não pode ser excluída na base de dados!");%>">
+                <%}%>
+                <%}%>
+                </fieldset>
+                <div class="secao4">
+                </div> 
 
-                        <%}%>
-                        <%}%>
-                        </fieldset>
-                        <div class="secao4">
-                        </div> 
-
-                        <div>
-                            <form action="controledenavegacao" method="POST">
-                                <input type="hidden" id="avicena" name="avicena" value="avicena">
-                                <input type="submit" value="Voltar">
-                            </form>
-                        </div>
-                    </div>
-                    <br><br>
-                    </div>
-                    <br>
-                    </body>
-                    </html>
+                <div>
+                    <form action="controledenavegacao" method="POST">
+                        <input type="hidden" id="avicena" name="avicena" value="avicena">
+                        <input type="submit" value="Voltar">
+                    </form>
+                </div>
+            </div>
+            <br><br>
+        </div>
+        <br>
+    </body>
+</html>

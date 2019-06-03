@@ -66,7 +66,7 @@
                         <%
                             ArrayList<EspecialidadeVO> especialidadesVO = (ArrayList<EspecialidadeVO>) request.getAttribute("especialidadesBuscadas");
                             for (EspecialidadeVO especialidadeVO : especialidadesVO) {%>   
-                        <tr onclick="clickLinhaTabela(this)" style="cursor:pointer">
+                        <tr onclick="clickLinhaTabela(this)">
                             <td><%= especialidadeVO.getCodigoEspecialidade()%></td>
                             <td><%= especialidadeVO.getNomeEspecialidade()%></td>
                             <td><%= especialidadeVO.getInstituicao()%></td>
