@@ -8,12 +8,12 @@ a{
 }
 .form1 {    
     background-color: lightblue; 
-    padding: 5px;
+    padding: 0px;
     margin-top: 0px;/*Margen superior com 1 pixel*/
-    margin-right: -1px;
+    margin-right: 0px;
     float: left;/*propriedade indicando que a Área flutuará a esquerda*/
-    width: 40%; /*Ocupando 24% da largura total destinada para o corpo*/
-    height: 300px; /*Altura de 500 pixels*/   
+    width: 38%; /*Ocupando 24% da largura total destinada para o corpo*/
+    height: 400px; /*Altura de 500 pixels*/   
 }
 .form2 {  
     background-color: lightblue; 
@@ -21,7 +21,7 @@ a{
     margin-top: 0px;/*Margen superior com 1 pixel*/
     margin-right: -1px;
     float: right;/*propriedade indicando que a Área flutuará a esquerda*/
-    width: 40%; /*Ocupando 24% da largura total destinada para o corpo*/
+    width: 50%; /*Ocupando 24% da largura total destinada para o corpo*/
     height: 400px; /*Altura de 500 pixels*/    
 }
 .consultaNome {
@@ -64,8 +64,8 @@ a{
     width: 100%; 
     background-color:cadetblue; 
     text-align: center; 
-    padding: 2px; 
-    margin-top: 200px; 
+    padding: 8px; 
+    margin-top: 400px; 
     margin-left: 0%; 
     bottom: 0px;
 }

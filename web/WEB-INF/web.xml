@@ -129,12 +129,12 @@
         <servlet-class>Servlets.Consulta.CrudConsulta</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>PesquisarPacienteParaConsulta</servlet-name>
-        <servlet-class>Servlets.Consulta.PesquisarPacienteParaConsulta</servlet-class>
+        <servlet-name>PesquisarDadosParaConsulta</servlet-name>
+        <servlet-class>Servlets.Consulta.PesquisarDadosParaConsulta</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>PesquisarConvenio</servlet-name>
-        <servlet-class>Servlets.Consulta.PesquisarConvenio</servlet-class>
+        <servlet-name>PesquisarMedicoEspecialidadeConvenioConsulta</servlet-name>
+        <servlet-class>Servlets.Consulta.PesquisarMedicoEspecialidadeConvenioConsulta</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CrudPaciente</servlet-name>
@@ -264,12 +264,12 @@
         <url-pattern>/crudconsulta</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>PesquisarPacienteParaConsulta</servlet-name>
-        <url-pattern>/pesquisarpacienteparaconsulta</url-pattern>
+        <servlet-name>PesquisarDadosParaConsulta</servlet-name>
+        <url-pattern>/pesquisardadosparaconsulta</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>PesquisarConvenio</servlet-name>
-        <url-pattern>/pesquisarconvenio</url-pattern>
+        <servlet-name>PesquisarMedicoEspecialidadeConvenioConsulta</servlet-name>
+        <url-pattern>/pesquisarmedicoespecialidadeconvenioconsulta</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

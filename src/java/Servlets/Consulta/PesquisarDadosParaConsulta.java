@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.vo.Paciente.PacienteVO;
 
-public class PesquisarPacienteParaConsulta extends HttpServlet {
+public class PesquisarDadosParaConsulta extends HttpServlet {
 
     PacienteVO pacienteVO = new PacienteVO();
 
