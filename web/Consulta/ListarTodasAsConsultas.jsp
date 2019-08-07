@@ -11,12 +11,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link type="text/css" rel="stylesheet" href="Consulta/ConsultaCRUD.css">
+        <link type="text/css" rel="stylesheet" href="Consulta/CRUDConsulta.css">
+        <link type="text/css" rel="stylesheet" href="CRUDConsulta.css">
         <title>Todos os Consultas da Clínica Avicena</title>
     </head>
     <body class="body">
 
-        <h1>Lista dos Cobsultas cadastrados na clínica AVICENA</h1><br> 
+        <h1>Lista das Consultas cadastrados na clínica AVICENA</h1><br> 
 
         <table id="tabelaListarTodas">
             <tr>

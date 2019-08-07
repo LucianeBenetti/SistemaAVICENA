@@ -24,59 +24,63 @@
             <h2>Cadastrar Consulta!</h2>
 
             <fieldset><legend>Digite o CPF do Paciente</legend>
-                <form method="post" action="pesquisardadosparaconsulta">
+                <div>
+                    <form method="post" action="../pesquisardadosparaconsulta">
 
-                    <p><a>*</a>Campos de preenchimento obrigatório</p>                    
+                        <p><a>*</a>Campos de preenchimento obrigatório</p>                    
 
-                    CPF<a>*</a>:<br> 
-                    <input type="text" name="cpfpaciente" required onkeyup="maskIt(this, event, '###.###.###-##')">
-                    <input type="submit" value="Buscar Paciente">
-                </form>
-                <form action="crudconsulta" method="post">
-                    Nome: <br>                       
-                    <input type="text" readonly name="nomepaciente" size="50" value="<%= request.getAttribute("nomepaciente")%>"><br><br>            
-                    Convênio <br>                       
-                    <input type="text" readonly name="convenioconsulta" size="50" value="<%= request.getAttribute("convenioSelecionado")%>"><br><br>
-                    Médico <br>                       
-                    <input type="text" readonly name="medicoconsulta" size="50" value=""><br><br> 
-                    Especialidade <br>                       
-                    <input type="text" readonly  name="especialidadeconsulta" size="50" value=""><br><br> 
+                        CPF<a>*</a>:<br> 
+                        <input type="text" name="cpfpaciente" required onkeyup="maskIt(this, event, '###.###.###-##')">
+                        <input type="submit" value="Buscar Paciente">
+                        
+                    </form>
+                </div>
+            </fieldset>
+            <fieldset>
+             <form action="crudconsulta" method="post">
+                Nome: <br>                       
+                <input type="text" readonly name="nomepaciente" size="50" value="<%= request.getAttribute("nomepaciente")%>"><br><br>            
+                Convênio <br>                       
+                <input type="text" readonly name="convenioconsulta" size="50" value="<%= request.getAttribute("convenioSelecionado")%>"><br><br>
+                Médico <br>                       
+                <input type="text" readonly name="medicoconsulta" size="50" value=""><br><br> 
+                Especialidade <br>                       
+                <input type="text" readonly  name="especialidadeconsulta" size="50" value=""><br><br> 
 
-                    <div style="width:55%">
-                        <div style="float:left"> Data<a>*</a>: </div>
-                        <div style="float:right"> Horário<a>*</a>: </div>
-                    </div>
-                    <br>
-                    <div style="width:80%">
-                        <div style="float:left"> <input type="text" name="dataconsulta" size="20" required></div>    
-                        <select style="width:180px; margin-left: 30px;" name="horaconsulta" required><option selected disabled>Selecione um horário</option><br><br>
-                            <option>08:00</option>
-                            <option>08:30</option>
-                            <option>09:00</option>
-                            <option>09:30</option>
-                            <option>10:00</option>
-                            <option>10:30</option>
-                            <option>11:00</option>
-                            <option>11:30</option>
-                            <option>13:30</option>
-                            <option>14:00</option>
-                            <option>14:30</option>
-                            <option>15:00</option>
-                            <option>15:30</option>
-                            <option>16:00</option>
-                            <option>16:30</option>
-                            <option>17:00</option>
-                            <option>17:30</option>                                                                 
-                        </select><br><br> 
-                    </div><br><br>   
-                    <input type="submit" value="Cadastrar Consulta">
-                </form><br><br>    
+                <div style="width:55%">
+                    <div style="float:left"> Data<a>*</a>: </div>
+                    <div style="float:right"> Horário<a>*</a>: </div>
+                </div>
+                <br>
+                <div style="width:80%">
+                    <div style="float:left"> <input type="text" name="dataconsulta" size="20" required></div>    
+                    <select style="width:180px; margin-left: 30px;" name="horaconsulta" required><option selected disabled>Selecione um horário</option><br><br>
+                        <option>08:00</option>
+                        <option>08:30</option>
+                        <option>09:00</option>
+                        <option>09:30</option>
+                        <option>10:00</option>
+                        <option>10:30</option>
+                        <option>11:00</option>
+                        <option>11:30</option>
+                        <option>13:30</option>
+                        <option>14:00</option>
+                        <option>14:30</option>
+                        <option>15:00</option>
+                        <option>15:30</option>
+                        <option>16:00</option>
+                        <option>16:30</option>
+                        <option>17:00</option>
+                        <option>17:30</option>                                                                 
+                    </select><br><br> 
+                </div><br><br>   
+                <input type="submit" value="Cadastrar Consulta">
+            </form><br><br>    
             </fieldset> 
         </div>
         <div>
-
             <%
-                Object obj = request.getAttribute("listaMedicosEspecialidadesVO");
+                Object obj = request.getAttribute("especializacaovoretornada");
                 ArrayList<EspecializacaoVO> especializacoesVO = (ArrayList<EspecializacaoVO>) obj;
                 if (especializacoesVO != null) {%>
 
