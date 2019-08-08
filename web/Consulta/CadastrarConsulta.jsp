@@ -49,17 +49,18 @@
                 <fieldset>
                     <input type="hidden" name="codigoespecializacao" size="4" readonly>
                     Nome: <br>                       
-                    <input type="text" readonly name="nomepaciente" size="50" value="<%= request.getAttribute("nomepaciente")%>"><br><br>            
+                    <input type="text" readonly name="nomepaciente" size="50" required value="<%= request.getAttribute("nomepaciente")%>"><br><br>  
+                    <input type="hidden" name="codigopaciente" value="<%= request.getAttribute("codigopaciente")%>">
                     Convênio <br>                       
-                    <input type="text" readonly name="nomeconvenio" size="50"><br><br>
+                    <input type="text" readonly name="nomeconvenio" required size="50"><br><br>
                     <input type="hidden" readonly name="codigoconvenio" size="50">
                     <input type="hidden" readonly name="valorconvenio" size="50">
                     <input type="hidden"  name="codigomedico" size="4" readonly>
                     Nome do Médico: <br>
-                    <input type="text" name="nomemedico" size="50" readonly> <br><br>
+                    <input type="text" name="nomemedico" required size="50" readonly> <br><br>
                     <input type="hidden" name="codigoespecialidade" size="4" readonly>
                     Nome da Especialidade: <br>
-                    <input type="text" name="nomeespecialidade" size="50" readonly> <br><br>
+                    <input type="text" name="nomeespecialidade" required size="50" readonly> <br><br>
                     <input type="hidden" name="instituicao" size="50" readonly>
                     <input type="hidden" name="ano" size="8"> 
                     <div style="width:55%">
@@ -89,7 +90,6 @@
                             <option>17:30</option>                                                                 
                         </select><br><br> 
                         <input type="checkbox" id="click" onclick="clickCheckbox(this)"> Necessita de atenção especial?
-
                         <textarea disabled name="atencaoEspecial" id="tornarVisivel">
                             
                         </textarea>
