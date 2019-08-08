@@ -14,9 +14,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <script type="text/javascript" src="Consulta/selecionarLinhaTabela.js"></script>
-        <link type="text/css" rel="stylesheet" href="CRUDConsulta.css">
-        <link type="text/css" rel="stylesheet" href="Consulta/CRUDConsulta.css">
+        <script type="text/javascript" src="Consulta/selecionarTabelaEspecializacao.js"></script>
+        <link type="text/css" rel="stylesheet" href="ConsultaCRUD.css">
+        <link type="text/css" rel="stylesheet" href="Consulta/ConsultaCRUD.css">
         <title>Cadastrar Consulta</title>
     </head>
     <body class="body">
@@ -32,55 +32,67 @@
                         CPF<a>*</a>:<br> 
                         <input type="text" name="cpfpaciente" required onkeyup="maskIt(this, event, '###.###.###-##')">
                         <input type="submit" value="Buscar Paciente">
-                        
+
                     </form>
                 </div>
             </fieldset>
-            <fieldset>
-             <form action="crudconsulta" method="post">
-                Nome: <br>                       
-                <input type="text" readonly name="nomepaciente" size="50" value="<%= request.getAttribute("nomepaciente")%>"><br><br>            
-                Convênio <br>                       
-                <input type="text" readonly name="convenioconsulta" size="50" value="<%= request.getAttribute("convenioSelecionado")%>"><br><br>
-                Médico <br>                       
-                <input type="text" readonly name="medicoconsulta" size="50" value=""><br><br> 
-                Especialidade <br>                       
-                <input type="text" readonly  name="especialidadeconsulta" size="50" value=""><br><br> 
-
-                <div style="width:55%">
-                    <div style="float:left"> Data<a>*</a>: </div>
-                    <div style="float:right"> Horário<a>*</a>: </div>
-                </div>
-                <br>
-                <div style="width:80%">
-                    <div style="float:left"> <input type="text" name="dataconsulta" size="20" required></div>    
-                    <select style="width:180px; margin-left: 30px;" name="horaconsulta" required><option selected disabled>Selecione um horário</option><br><br>
-                        <option>08:00</option>
-                        <option>08:30</option>
-                        <option>09:00</option>
-                        <option>09:30</option>
-                        <option>10:00</option>
-                        <option>10:30</option>
-                        <option>11:00</option>
-                        <option>11:30</option>
-                        <option>13:30</option>
-                        <option>14:00</option>
-                        <option>14:30</option>
-                        <option>15:00</option>
-                        <option>15:30</option>
-                        <option>16:00</option>
-                        <option>16:30</option>
-                        <option>17:00</option>
-                        <option>17:30</option>                                                                 
-                    </select><br><br> 
-                </div><br><br>   
-                <input type="submit" value="Cadastrar Consulta">
-            </form><br><br>    
-            </fieldset> 
+            <form name="crudconsulta" action="crudconsulta" method="post">
+                <fieldset>
+                    <input type="hidden" name="codigoespecializacao" size="4" readonly>
+                    Nome: <br>                       
+                    <input type="text" readonly name="nomepaciente" size="50" value="<%= request.getAttribute("nomepaciente")%>"><br><br>            
+                    Convênio <br>                       
+                    <input type="text" readonly name="nomeconvenio" size="50"><br><br>
+                    <input type="hidden" readonly name="codigoconvenio" size="50">
+                    <input type="hidden" readonly name="valorconvenio" size="50">
+                    <input type="hidden"  name="codigomedico" size="4" readonly>
+                    Nome do Médico: <br>
+                    <input type="text" name="nomemedico" size="50" readonly> <br><br>
+                    <input type="hidden" name="codigoespecialidade" size="4" readonly>
+                    Nome da Especialidade: <br>
+                    <input type="text" name="nomeespecialidade" size="50" readonly> <br><br>
+                    <input type="hidden" name="instituicao" size="50" readonly>
+                    <input type="hidden" name="ano" size="8"> 
+                    <div style="width:55%">
+                        <div style="float:left"> Data<a>*</a>: </div>
+                        <div style="float:right"> Horário<a>*</a>: </div>
+                    </div>
+                    <br>
+                    <div style="width:80%">
+                        <div style="float:left"> <input type="text" name="dataconsulta" size="20" required></div>    
+                        <select style="width:180px; margin-left: 30px;" name="horaconsulta" required><option selected disabled>Selecione um horário</option><br><br>
+                            <option>08:00</option>
+                            <option>08:30</option>
+                            <option>09:00</option>
+                            <option>09:30</option>
+                            <option>10:00</option>
+                            <option>10:30</option>
+                            <option>11:00</option>
+                            <option>11:30</option>
+                            <option>13:30</option>
+                            <option>14:00</option>
+                            <option>14:30</option>
+                            <option>15:00</option>
+                            <option>15:30</option>
+                            <option>16:00</option>
+                            <option>16:30</option>
+                            <option>17:00</option>
+                            <option>17:30</option>                                                                 
+                        </select><br><br> 
+                        <input type="checkbox" name="atencaoEspecial"> Necessita de atenção especial?
+                        <textarea name ="atencaoEspecial">
+                            
+                        </textarea>
+                    </div><br><br>   
+                    <input type="submit" value="Cadastrar Consulta">
+                    <br><br>    
+                </fieldset> 
+            </form>
         </div>
-        <div>
+        <div class="resultadodaconsulta">
+
             <%
-                Object obj = request.getAttribute("especializacaovoretornada");
+                Object obj = request.getAttribute("listaEspecializacoes");
                 ArrayList<EspecializacaoVO> especializacoesVO = (ArrayList<EspecializacaoVO>) obj;
                 if (especializacoesVO != null) {%>
 
@@ -88,10 +100,8 @@
                 <table id="tabelaConsulta">
                     <tr>
                         <th>Id</th>
-                        <th>Nome</th> 
+                        <th>Nome do Médico</th> 
                         <th>Especialidade</th> 
-                        <th>Instituição</th> 
-                        <th>Ano</th> 
                     </tr>        
                     <% for (EspecializacaoVO especializacaoVO : especializacoesVO) {%>  
 
@@ -101,51 +111,54 @@
                         <td><%= especializacaoVO.getMedicoVO().getNomeMedico()%></td>
                         <td hidden><%= especializacaoVO.getEspecialidadeVO().getCodigoEspecialidade()%></td>
                         <td><%= especializacaoVO.getEspecialidadeVO().getNomeEspecialidade()%></td>
-                        <td><%= especializacaoVO.getEspecialidadeVO().getInstituicao()%></td>
-                        <td><%= especializacaoVO.getAnoEspecializacao()%></td>
+                        <td hidden><%= especializacaoVO.getEspecialidadeVO().getInstituicao()%></td>
+                        <td hidden><%= especializacaoVO.getAnoEspecializacao()%></td>
                     </tr>     
                     <% }     %>
                     <% }     %>
 
                 </table>
 
+
                 <br><br>
 
-                </div>
-                <div>
+            </fieldset>
+        </form>
 
-                    <%
-                        Object objconvenio = request.getAttribute("convenios");
-                        ArrayList<ConvenioVO> conveniosVO = (ArrayList<ConvenioVO>) objconvenio;
-                        if (conveniosVO != null) {%>
+        <br><br>
 
-                    <fieldset><legend>Lista de Convênios</legend>
-                        <table id="tabelaConsulta">
-                            <tr>
-                                <th>Id</th>
-                                <th>Nome</th> 
-                                <th>Valor</th> 
-                            </tr>        
-                            <%
+        <%
+            Object objconvenio = request.getAttribute("convenios");
+            ArrayList<ConvenioVO> conveniosVO = (ArrayList<ConvenioVO>) objconvenio;
+            if (conveniosVO != null) {%>
 
-                                for (ConvenioVO convenioVO : conveniosVO) {%>   
-                            <tr onclick="clickLinhaTabela(this)">
-                                <td><%= convenioVO.getCodigoConvenio()%></td>
-                                <td><%= convenioVO.getNomeConvenio()%></td>
-                                <td><%= convenioVO.getValor()%></td>
-                            </tr>     
-                            <% }     %>
-                            <% }%>
+        <fieldset><legend>Lista de Convênios</legend>
+            <table id="tabelaConsulta">
+                <tr>
+                    <th>Id</th>
+                    <th>Nome do Convênio</th> 
+                    <th>Valor (R$)</th> 
+                </tr>        
+                <%
 
-                        </table>
+                    for (ConvenioVO convenioVO : conveniosVO) {%>   
+                <tr onclick="clickLinhaTabelaConvenio(this)">
+                    <td><%= convenioVO.getCodigoConvenio()%></td>
+                    <td><%= convenioVO.getNomeConvenio()%></td>
+                    <td><%= convenioVO.getValor()%></td>
+                </tr>     
+                <% }     %>
+                <% }%>
 
-                        <br><br>
-                        </div>           
+            </table>
+        </fieldset>
+        <br><br>
+    </div>           
 
 
-                        <footer class="footer">                
-                            &copy; Desenvolvido por Luciane Benetti e Marco Sena.
-                        </footer>
+    <footer class="footer">                
+        &copy; Desenvolvido por Luciane Benetti e Marco Sena.
+    </footer>
 
-                        </body>
-                        </html>
+</body>
+</html>

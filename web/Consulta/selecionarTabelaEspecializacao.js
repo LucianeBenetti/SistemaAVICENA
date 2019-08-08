@@ -29,19 +29,28 @@ function selLinha(linha, multiplos) {
 var btnVisualizar = document.getElementById("visualizarDados");
 
 function clickLinhaTabela(row) {
-    var cod = row.cells[0].innerText;
+    var codigoespecializacao = row.cells[0].innerText;
     var codigomedico = row.cells[1].innerText;
-    var medico = row.cells[2].innerText;
+    var nomemedico = row.cells[2].innerText;
     var codigoespecialidade = row.cells[3].innerText;
-    var especialidade = row.cells[4].innerText;
+    var nomeespecialidade = row.cells[4].innerText;
     var instituicao = row.cells[5].innerText;
     var ano = row.cells[6].innerText;
-    document.atualizarespecializacao.codigoespecializacao.value = cod;
-    document.atualizarespecializacao.codigomedico.value = codigomedico;
-    document.atualizarespecializacao.nomemedico.value = medico;
-    document.atualizarespecializacao.codigoespecialidade.value = codigoespecialidade;
-    document.atualizarespecializacao.nomeespecialidade.value = especialidade;
-    document.atualizarespecializacao.instituicaoespecialidade.value = instituicao;
-    document.atualizarespecializacao.anoespecializacao.value = ano;
+    document.crudconsulta.codigoespecializacao.value = codigoespecializacao;
+    document.crudconsulta.codigomedico.value = codigomedico;
+    document.crudconsulta.nomemedico.value = nomemedico;
+    document.crudconsulta.codigoespecialidade.value = codigoespecialidade;
+    document.crudconsulta.nomeespecialidade.value = nomeespecialidade;
+    document.crudconsulta.instituicao.value = instituicao;
+    document.crudconsulta.ano.value = ano;
 }
+
+function clickLinhaTabelaConvenio(row) {
+    var codigoconvenio = row.cells[0].innerText;
+    var nomeconvenio = row.cells[1].innerText;
+    var valorconvenio = row.cells[2].innerText;
+    document.crudconsulta.codigoconvenio.value = codigoconvenio;
+    document.crudconsulta.nomeconvenio.value = nomeconvenio;
+    document.crudconsulta.valorconvenio.value = valorconvenio;
+   }
 

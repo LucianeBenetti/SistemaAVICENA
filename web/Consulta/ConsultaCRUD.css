@@ -78,7 +78,7 @@ a{
     width: 40%; /*Ocupando 24% da largura total destinada para o corpo*/
     height: 400px; /*Altura de 500 pixels*/
 }
-#tabelaEspecialidades{
+#tabelaConsulta{
   width:80%;
   margin:0 auto;
   border:0;
@@ -86,27 +86,27 @@ a{
   border-spacing: 0;
 }
 
-#tabelaEspecialidades thead th{
+#tabelaConsulta thead th{
   font-weight: bold;
   background-color: black;
   color:white;
-  
+  text-align: center;
   padding:5px 10px;
 }
 
-#tabelaEspecialidades tr td{
+#tabelaConsulta tr td{
   padding:5px 10px;
   text-align: center;
   
   cursor: pointer; /**importante para não mostrar cursor de texto**/
 }
 
-#tabelaEspecialidades tr td:last-child{
+#tabelaConsulta tr td:last-child{
   text-align: center;
 }
 
 /**Cores**/
-#tabelaEspecialidades tr:nth-child(odd){
+#tabelaConsulta tr:nth-child(odd){
   background-color: #eee;
 }
 
@@ -116,7 +116,7 @@ a{
 }
 
 /**Cor quando selecionado**/
-#tabelaEspecialidades tr.selecionado td{
+#tabelaConsulta tr.selecionado td{
   background-color: #aff7ff;
 }
 
@@ -170,4 +170,14 @@ button#visualizarDados{
     margin-left: 0%;
     margin-top: 2%;
     margin-bottom: 1%;
+}
+.resultadodaconsulta {
+    background-color: lightblue;/*Cor de fundo*/    
+    padding: 0px;/*Margen interna de 3 pixels*/
+    margin-top: 0px;/*Margen superior com 1 pixel*/
+    margin-right: 8%;
+    float: right;/*propriedade indicando que a Área flutuará a direita*/
+    margin-left: 1%;
+    width: 40%;/*Ocupando 74% da largura total destinada para o corpo*/
+    height: 700px;/*Altura de 494 pixels*/
 }

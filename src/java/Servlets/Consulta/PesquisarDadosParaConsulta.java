@@ -2,6 +2,7 @@ package Servlets.Consulta;
 
 import controller.Convenio.ConvenioController;
 import controller.Especialidade.EspecialidadeController;
+import controller.Especializacao.EspecializacaoController;
 import controller.Medico.MedicoController;
 import controller.Paciente.PacienteController;
 import java.io.IOException;
@@ -26,44 +27,30 @@ public class PesquisarDadosParaConsulta extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         EspecializacaoVO especializacaoVO = new EspecializacaoVO();
-        ArrayList<EspecializacaoVO> listaEspecializacoes = new ArrayList<EspecializacaoVO>();
+        List<EspecializacaoVO> listaEspecializacoes = null;
+        Boolean resultadoDaPesquisaPorNome = false;
 
-        MedicoVO medicoVO = new MedicoVO();
-        EspecialidadeVO especialidadeVO = new EspecialidadeVO();
+        EspecializacaoController especializacaoController = new EspecializacaoController();
+        listaEspecializacoes = especializacaoController.listarTodasAsEspecializacoesVO();
 
-        List<EspecialidadeVO> listaEspecialidades = null;
-        List<MedicoVO> listaMedicos = null;
+        if (listaEspecializacoes.size() > 0) {
+            System.out.println("buscada: " + listaEspecializacoes);
+            request.setAttribute("listaEspecializacoes", listaEspecializacoes);
+            resultadoDaPesquisaPorNome = true;
+            request.setAttribute("especializacaovoretornada", resultadoDaPesquisaPorNome);
 
-        MedicoController medicoController = new MedicoController();
-        listaMedicos = medicoController.listarTodosOsMedicosVO();
-
-        for (int i = 0; i < listaMedicos.size(); i++) {
-            medicoVO.setCodigoMedico(listaMedicos.get(i).getCodigoMedico());
-            especializacaoVO.setMedicoVO(medicoVO);
-        }
-
-        EspecialidadeController especialidadeController = new EspecialidadeController();
-        listaEspecialidades = especialidadeController.listarTodasAsEspecialidadesVO();
-
-        for (int i = 0; i < listaEspecialidades.size(); i++) {
-            especialidadeVO.setCodigoEspecialidade(listaEspecialidades.get(i).getCodigoEspecialidade());
-            especialidadeVO.setInstituicao(listaEspecialidades.get(i).getInstituicao());
-
-            especializacaoVO.setEspecialidadeVO(especialidadeVO);
-
-            listaEspecializacoes.add(especializacaoVO);
-          
-
+        } else {
+            System.out.println("O especializacao não foi encontrada!");
+            request.setAttribute("especializacaovoretornada", resultadoDaPesquisaPorNome);
         }
 
         ConvenioController convenioController = new ConvenioController();
         ArrayList<ConvenioVO> conveniosVO = convenioController.listarTodosOsConveniosVO();
 
-        request.setAttribute("listaMedicosEspecialidadesVO", listaEspecializacoes);
         request.setAttribute("convenios", conveniosVO);
-      
+
         pacienteVO.setCpfPaciente(request.getParameter("cpfpaciente"));
         PacienteController pacientecontroller = new PacienteController();
         Boolean resultadoDaPesquisaPorCpf = false;
@@ -75,7 +62,7 @@ public class PesquisarDadosParaConsulta extends HttpServlet {
             request.setAttribute("nomepaciente", pacienteVO.getNomePaciente());
             request.setAttribute("pacientevoretornado", resultadoDaPesquisaPorCpf);
             request.getRequestDispatcher("Consulta/CadastrarConsulta.jsp").forward(request, response);
-   
+
         } else {
             System.out.println("O paciente não foi encontrado!");
             request.setAttribute("pacientevoretornado", resultadoDaPesquisaPorCpf);

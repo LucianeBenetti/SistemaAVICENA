@@ -13,17 +13,19 @@ public class ConsultaVO {
     private ConvenioVO convenioVO;
     private Date dataConsulta;
     private String horarioConsulta;
+    private String atencaoEspecial;
 
     public ConsultaVO() {
     }
 
-    public ConsultaVO(int codigoConsulta, EspecializacaoVO especializacaoVO, PacienteVO pacienteVO, ConvenioVO convenioVO, Date dataConsulta, String horarioConsulta) {
+    public ConsultaVO(int codigoConsulta, EspecializacaoVO especializacaoVO, PacienteVO pacienteVO, ConvenioVO convenioVO, Date dataConsulta, String horarioConsulta, String atencaoEspecial) {
         this.codigoConsulta = codigoConsulta;
         this.especializacaoVO = especializacaoVO;
         this.pacienteVO = pacienteVO;
         this.convenioVO = convenioVO;
         this.dataConsulta = dataConsulta;
         this.horarioConsulta = horarioConsulta;
+        this.atencaoEspecial = atencaoEspecial;
     }
 
     public int getCodigoConsulta() {
@@ -74,4 +76,18 @@ public class ConsultaVO {
         this.horarioConsulta = horarioConsulta;
     }
 
+    public String getAtencaoEspecial() {
+        return atencaoEspecial;
+    }
+
+    public void setAtencaoEspecial(String atencaoEspecial) {
+        this.atencaoEspecial = atencaoEspecial;
+    }
+
+    @Override
+    public String toString() {
+        return "ConsultaVO{" + "codigoConsulta=" + codigoConsulta + ", especializacaoVO=" + especializacaoVO + ", pacienteVO=" + pacienteVO + ", convenioVO=" + convenioVO + ", dataConsulta=" + dataConsulta + ", horarioConsulta=" + horarioConsulta + ", atencaoEspecial=" + atencaoEspecial + '}';
+    }
+
+    
 }

@@ -75,7 +75,7 @@
 
                     <br><br>
                     ID: <br>
-                    <input type="text" name="codigoespecialidade" size="4"> <br><br>
+                    <input type="text" readonly="" name="codigoespecialidade" size="4"> <br><br>
                     Nome: <br>
                     <input type="text" name="nomeespecialidade" size="80"> <br><br>
                     Instituicao:<br>

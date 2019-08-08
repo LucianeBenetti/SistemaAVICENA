@@ -132,10 +132,6 @@
         <servlet-name>PesquisarDadosParaConsulta</servlet-name>
         <servlet-class>Servlets.Consulta.PesquisarDadosParaConsulta</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>PesquisarMedicoEspecialidadeConvenioConsulta</servlet-name>
-        <servlet-class>Servlets.Consulta.PesquisarMedicoEspecialidadeConvenioConsulta</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>CrudPaciente</servlet-name>
         <url-pattern>/crudpaciente</url-pattern>
@@ -266,10 +262,6 @@
     <servlet-mapping>
         <servlet-name>PesquisarDadosParaConsulta</servlet-name>
         <url-pattern>/pesquisardadosparaconsulta</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>PesquisarMedicoEspecialidadeConvenioConsulta</servlet-name>
-        <url-pattern>/pesquisarmedicoespecialidadeconvenioconsulta</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
