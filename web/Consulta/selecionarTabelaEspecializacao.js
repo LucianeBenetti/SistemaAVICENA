@@ -53,4 +53,16 @@ function clickLinhaTabelaConvenio(row) {
     document.crudconsulta.nomeconvenio.value = nomeconvenio;
     document.crudconsulta.valorconvenio.value = valorconvenio;
    }
+   
+ function clickCheckbox() {
+  // Get the checkbox
+  var checkBox = document.getElementById("click");
+  var txtArea = document.getElementById("tornarVisivel")
+  // If the checkbox is checked, display the output text
+  if (checkBox.checked == true){
+    txtArea.disabled = false;
+  } else {
+    txtArea.disabled = true;
+  }
+}
 

@@ -27,8 +27,8 @@ public class ConsultaDAO {
 
         int novoId = 0;
 
-        String sql = "INSERT INTO consulta (codigoEspecializacao, codigoPaciente, codigoConvenio, dataConsulta, horarioConsulta)"
-                + " VALUES (?,?,?,?,?)";
+        String sql = "INSERT INTO consulta (codigoEspecializacao, codigoPaciente, codigoConvenio, dataConsulta, atencaoEspecial, horarioConsulta)"
+                + " VALUES (?,?,?,?,?,?)";
 
         Connection conn = ConexaoComBanco.getConnection();
         PreparedStatement prepStmt = ConexaoComBanco.getPreparedStatement(conn, sql, Statement.RETURN_GENERATED_KEYS);
@@ -44,7 +44,8 @@ public class ConsultaDAO {
             prepStmt.setInt(2, consulta.getPacienteVO().getCodigoPaciente());
             prepStmt.setInt(3, consulta.getConvenioVO().getCodigoConvenio());
             prepStmt.setDate(4, dataSQL);
-            prepStmt.setString(5, consulta.getHorarioConsulta());
+            prepStmt.setString(5, consulta.getAtencaoEspecial());
+            prepStmt.setString(6, consulta.getHorarioConsulta());
 
             prepStmt.executeUpdate();
 
@@ -88,7 +89,8 @@ public class ConsultaDAO {
                 ConvenioVO convenioVO = convenioDAO.consultarPorId(result.getInt(4));
                 consulta.setConvenioVO(convenioVO);
                 consulta.setDataConsulta(result.getDate(5));
-                consulta.setHorarioConsulta(result.getString(6));
+                consulta.setAtencaoEspecial(result.getString(6));
+                consulta.setHorarioConsulta(result.getString(7));
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -125,7 +127,7 @@ public class ConsultaDAO {
     public boolean atualizar(ConsultaVO consulta, int codigoConsulta) {
         boolean sucessoAtualizar = false;
 
-        String query = "UPDATE consulta SET codigoEspecializacao=?, codigoPaciente=?, codigoConvenio=?, dataConsulta=?, horarioConsulta=?"
+        String query = "UPDATE consulta SET codigoEspecializacao=?, codigoPaciente=?, codigoConvenio=?, dataConsulta=?, atencaoEspecial=?, horarioConsulta=?"
                 + " where codigoConsulta = ? ";
 
         Connection conn = ConexaoComBanco.getConnection();
@@ -142,8 +144,9 @@ public class ConsultaDAO {
             prepStmt.setInt(2, consulta.getPacienteVO().getCodigoPaciente());
             prepStmt.setInt(3, consulta.getConvenioVO().getCodigoConvenio());
             prepStmt.setDate(4, dataSQL);
-            prepStmt.setString(5, consulta.getHorarioConsulta());
-            prepStmt.setInt(6, consulta.getCodigoConsulta());
+            prepStmt.setString(5, consulta.getAtencaoEspecial());
+            prepStmt.setString(6, consulta.getHorarioConsulta());
+            prepStmt.setInt(7, consulta.getCodigoConsulta());
 
             int codigoRetorno = prepStmt.executeUpdate();
 
@@ -180,7 +183,8 @@ public class ConsultaDAO {
                 ConvenioVO convenioVO = convenioDAO.consultarPorId(result.getInt(4));
                 consulta.setConvenioVO(convenioVO);
                 consulta.setDataConsulta(result.getDate(5));
-                consulta.setHorarioConsulta(result.getString(6));
+                consulta.setAtencaoEspecial(result.getString(6));
+                consulta.setHorarioConsulta(result.getString(7));
 
                 listaConsultas.add(consulta);
             }
@@ -212,7 +216,8 @@ public class ConsultaDAO {
                 ConvenioVO convenioVO = convenioDAO.consultarPorId(result.getInt(4));
                 consulta.setConvenioVO(convenioVO);
                 consulta.setDataConsulta(result.getDate(5));
-                consulta.setHorarioConsulta(result.getString(6));
+                consulta.setAtencaoEspecial(result.getString(6));
+                consulta.setHorarioConsulta(result.getString(7));
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -246,7 +251,8 @@ public class ConsultaDAO {
                 ConvenioVO convenioVO = convenioDAO.consultarPorId(result.getInt(4));
                 consulta.setConvenioVO(convenioVO);
                 consulta.setDataConsulta(result.getDate(5));
-                consulta.setHorarioConsulta(result.getString(6));
+                consulta.setAtencaoEspecial(result.getString(6));
+                consulta.setHorarioConsulta(result.getString(7));
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

@@ -67,32 +67,32 @@
                 <fieldset><legend>Endereço</legend>
                     <br>
                     <div style="width:100%">
-                        <div style="float:left"> Rua<a>*</a>: </div>
-                        <div style="float:right"> Num<a>*</a>: </div>
+                        <div style="float:left"> Rua: </div>
+                        <div style="float:right"> Num: </div>
                     </div>  
                     <br>
                     <div style="width:100%">
-                        <div style="float:left"> <input type="text" name="logradouro" required size="80"></div>    
-                        <div style="float:right"> <input type="text" name="numlogradouro" required size="3"></div>
+                        <div style="float:left"> <input type="text" name="logradouro" size="80"></div>    
+                        <div style="float:right"> <input type="text" name="numlogradouro" size="3"></div>
                     </div>  
                     <br><br>
                     Complemento: <br>
                     <input type="text" name="complemento" size="90"><br><br>
 
                     <div style="width:62%">
-                        <div style="float:left"> Bairro<a>*</a>: </div>
-                        <div style="float:right"> Cidade<a>*</a>: </div>
+                        <div style="float:left"> Bairro: </div>
+                        <div style="float:right"> Cidade: </div>
                     </div>
                     <br>
                     <div style="width:100%">
-                        <div style="float:left"> <input type="text" name="bairro" size="40" required></div>    
-                        <div style="float:right"> <input type="text" name="cidade" size="40" required></div>
+                        <div style="float:left"> <input type="text" name="bairro" size="40"></div>    
+                        <div style="float:right"> <input type="text" name="cidade" size="40"></div>
                     </div>                    
 
                     <br><br>
 
-                    UF<a>*</a>: <br>
-                    <select style="width:150px;" name="uf" required><option selected disabled>Selecione um estado</option><br><br>
+                    UF: <br>
+                    <select style="width:150px;" name="uf"><option selected disabled>Selecione um estado</option><br><br>
                         <option>AC</option>
                         <option>AL</option>
                         <option>AP</option>

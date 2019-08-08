@@ -181,3 +181,8 @@ button#visualizarDados{
     width: 40%;/*Ocupando 74% da largura total destinada para o corpo*/
     height: 700px;/*Altura de 494 pixels*/
 }
+textArea{
+    width:400px;
+    height:100px;
+    border: 2px solid #990000;
+}

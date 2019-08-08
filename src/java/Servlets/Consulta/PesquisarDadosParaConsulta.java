@@ -66,7 +66,7 @@ public class PesquisarDadosParaConsulta extends HttpServlet {
         } else {
             System.out.println("O paciente não foi encontrado!");
             request.setAttribute("pacientevoretornado", resultadoDaPesquisaPorCpf);
-            request.getRequestDispatcher("Consulta/CadastrarConsulta.jsp").forward(request, response);
+            request.getRequestDispatcher("WEB-INF/PaginaInicial.jsp").forward(request, response);
         }
 
     }

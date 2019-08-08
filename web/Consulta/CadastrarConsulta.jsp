@@ -14,9 +14,18 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript" src="mascarasConsulta.js"></script>
         <script type="text/javascript" src="Consulta/selecionarTabelaEspecializacao.js"></script>
         <link type="text/css" rel="stylesheet" href="ConsultaCRUD.css">
         <link type="text/css" rel="stylesheet" href="Consulta/ConsultaCRUD.css">
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
+        <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+        <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+        <script>
+            $(function () {
+                 $("#calendario").datepicker({dateFormat: 'dd/mm/yy'});
+            });
+        </script>
         <title>Cadastrar Consulta</title>
     </head>
     <body class="body">
@@ -59,7 +68,7 @@
                     </div>
                     <br>
                     <div style="width:80%">
-                        <div style="float:left"> <input type="text" name="dataconsulta" size="20" required></div>    
+                        <div style="float:left"> <input type="text" name="dataconsulta" id="calendario" size="20" required></div>    
                         <select style="width:180px; margin-left: 30px;" name="horaconsulta" required><option selected disabled>Selecione um horário</option><br><br>
                             <option>08:00</option>
                             <option>08:30</option>
@@ -79,8 +88,9 @@
                             <option>17:00</option>
                             <option>17:30</option>                                                                 
                         </select><br><br> 
-                        <input type="checkbox" name="atencaoEspecial"> Necessita de atenção especial?
-                        <textarea name ="atencaoEspecial">
+                        <input type="checkbox" id="click" onclick="clickCheckbox(this)"> Necessita de atenção especial?
+
+                        <textarea disabled name="atencaoEspecial" id="tornarVisivel">
                             
                         </textarea>
                     </div><br><br>   
