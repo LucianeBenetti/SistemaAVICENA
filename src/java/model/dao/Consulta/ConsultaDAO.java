@@ -23,7 +23,7 @@ public class ConsultaDAO {
     private ConvenioDAO convenioDAO = new ConvenioDAO();
     private PacienteDAO pacienteDAO = new PacienteDAO();
 
-    public int inserirConsulta(ConsultaVO consulta) {
+    public int cadastrarConsulta(ConsultaVO consulta) {
 
         int novoId = 0;
 
@@ -35,18 +35,17 @@ public class ConsultaDAO {
 
         try {
 
-            Calendar c = Calendar.getInstance();
-            c.setTime(consulta.getDataConsulta());
-            //java.sql.Date			
-            Date dataSQL = new Date(c.getTimeInMillis());
+//            Calendar c = Calendar.getInstance();
+//            c.setTime(consulta.getDataConsulta());
+//            //java.sql.Date			
+//            Date dataSQL = new Date(c.getTimeInMillis());
 
             prepStmt.setInt(1, consulta.getEspecializacaoVO().getCodigoEspecializacao());
             prepStmt.setInt(2, consulta.getPacienteVO().getCodigoPaciente());
             prepStmt.setInt(3, consulta.getConvenioVO().getCodigoConvenio());
-            prepStmt.setDate(4, dataSQL);
+            prepStmt.setString(4, consulta.getDataConsulta());
             prepStmt.setString(5, consulta.getAtencaoEspecial());
             prepStmt.setString(6, consulta.getHorarioConsulta());
-
             prepStmt.executeUpdate();
 
             ResultSet generatedKeys = prepStmt.getGeneratedKeys();
@@ -63,6 +62,7 @@ public class ConsultaDAO {
           ConexaoComBanco.closePreparedStatement(prepStmt);
             ConexaoComBanco.closeConnection(conn);
         }
+        System.out.println("cadastrado "  + novoId);
         return novoId;
 
     }
@@ -88,7 +88,7 @@ public class ConsultaDAO {
                 consulta.setPacienteVO(pacienteVO);
                 ConvenioVO convenioVO = convenioDAO.consultarPorId(result.getInt(4));
                 consulta.setConvenioVO(convenioVO);
-                consulta.setDataConsulta(result.getDate(5));
+                consulta.setDataConsulta(result.getString(5));
                 consulta.setAtencaoEspecial(result.getString(6));
                 consulta.setHorarioConsulta(result.getString(7));
             }
@@ -135,15 +135,10 @@ public class ConsultaDAO {
 
         try {
 
-            Calendar c = Calendar.getInstance();
-            c.setTime(consulta.getDataConsulta());
-            //java.sql.Date			
-            Date dataSQL = new Date(c.getTimeInMillis());
-
             prepStmt.setInt(1, consulta.getEspecializacaoVO().getCodigoEspecializacao());
             prepStmt.setInt(2, consulta.getPacienteVO().getCodigoPaciente());
             prepStmt.setInt(3, consulta.getConvenioVO().getCodigoConvenio());
-            prepStmt.setDate(4, dataSQL);
+            prepStmt.setString(4, consulta.getDataConsulta());
             prepStmt.setString(5, consulta.getAtencaoEspecial());
             prepStmt.setString(6, consulta.getHorarioConsulta());
             prepStmt.setInt(7, consulta.getCodigoConsulta());
@@ -182,7 +177,7 @@ public class ConsultaDAO {
                 consulta.setPacienteVO(pacienteVO);
                 ConvenioVO convenioVO = convenioDAO.consultarPorId(result.getInt(4));
                 consulta.setConvenioVO(convenioVO);
-                consulta.setDataConsulta(result.getDate(5));
+                consulta.setDataConsulta(result.getString(5));
                 consulta.setAtencaoEspecial(result.getString(6));
                 consulta.setHorarioConsulta(result.getString(7));
 
@@ -215,7 +210,7 @@ public class ConsultaDAO {
                 consulta.setPacienteVO(pacienteVO);
                 ConvenioVO convenioVO = convenioDAO.consultarPorId(result.getInt(4));
                 consulta.setConvenioVO(convenioVO);
-                consulta.setDataConsulta(result.getDate(5));
+                consulta.setDataConsulta(result.getString(5));
                 consulta.setAtencaoEspecial(result.getString(6));
                 consulta.setHorarioConsulta(result.getString(7));
             }
@@ -228,7 +223,7 @@ public class ConsultaDAO {
         return consulta;
     }
 
-    public ConsultaVO consultarDataHorario(Date dataConsulta, String horarioConsulta) {
+    public ConsultaVO consultarDataHorario(String dataConsulta, String horarioConsulta) {
         ConsultaVO consulta = new ConsultaVO();
 
         String query = "SELECT * from consulta " + " where dataConsulta = ? and horarioConsulta = ? ";
@@ -237,7 +232,7 @@ public class ConsultaDAO {
         PreparedStatement prepStmt = ConexaoComBanco.getPreparedStatement(conn, query);
         try {
 
-            prepStmt.setDate(1, dataConsulta);
+            prepStmt.setString(1, dataConsulta);
             prepStmt.setString(2, horarioConsulta);
             ResultSet result = prepStmt.executeQuery();
 
@@ -250,7 +245,7 @@ public class ConsultaDAO {
                 consulta.setPacienteVO(pacienteVO);
                 ConvenioVO convenioVO = convenioDAO.consultarPorId(result.getInt(4));
                 consulta.setConvenioVO(convenioVO);
-                consulta.setDataConsulta(result.getDate(5));
+                consulta.setDataConsulta(result.getString(5));
                 consulta.setAtencaoEspecial(result.getString(6));
                 consulta.setHorarioConsulta(result.getString(7));
             }

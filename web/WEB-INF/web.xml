@@ -132,6 +132,10 @@
         <servlet-name>PesquisarDadosParaConsulta</servlet-name>
         <servlet-class>Servlets.Consulta.PesquisarDadosParaConsulta</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CadastrarConsulta</servlet-name>
+        <servlet-class>Servlets.Consulta.CadastrarConsulta</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CrudPaciente</servlet-name>
         <url-pattern>/crudpaciente</url-pattern>
@@ -262,6 +266,10 @@
     <servlet-mapping>
         <servlet-name>PesquisarDadosParaConsulta</servlet-name>
         <url-pattern>/pesquisardadosparaconsulta</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CadastrarConsulta</servlet-name>
+        <url-pattern>/cadastrarconsulta</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

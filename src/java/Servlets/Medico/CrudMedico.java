@@ -21,9 +21,7 @@ public class CrudMedico extends HttpServlet {
 
         String var1 = request.getParameter("cadastrar");
         String var2 = request.getParameter("excluir");
-        //String cpf = request.getParameter("cpfmedico");
 
-        //System.out.println("O cpf é: " + cpf);
         ArrayList<String> variavel = new ArrayList<String>();
         variavel.add(var1);
         variavel.add(var2);

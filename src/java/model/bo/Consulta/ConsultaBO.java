@@ -12,43 +12,39 @@ import model.vo.Consulta.ConsultaVO;
 
 public class ConsultaBO { 
     
-   ConsultaDAO dao = new ConsultaDAO();
-
-	public boolean inserir(ConsultaVO consulta) {
-
-		Calendar c = Calendar.getInstance();
-		c.setTime(consulta.getDataConsulta());
-		Date dataSQL = new Date(c.getTimeInMillis());
-		if (dao.consultarDataHorario(dataSQL, consulta.getHorarioConsulta()) == null) {
-
-			JOptionPane.showMessageDialog(null, "Consulta j� cadastrada! Tente novamente.");
-			
-		} else {
-			int idGerado = dao.inserirConsulta(consulta);
-			return idGerado > 0;
-		}
-		return false;
+   ConsultaDAO consultaDAO = new ConsultaDAO();
+   
+    public int cadastrarConsultaVO(ConsultaVO consultaVO) {
+        int novoId; 
+            if (consultaDAO.consultarDataHorario(consultaVO.getDataConsulta(), consultaVO.getHorarioConsulta()) == null) {
+                novoId = 0;
+            } else {
+                novoId = consultaDAO.cadastrarConsulta(consultaVO);
+            }
+		return novoId;
 	}
 
 	public ArrayList<ConsultaVO> listarTodasAsConsultasVO() {
-		ArrayList<ConsultaVO> consultas = dao.listarTodasAsConsultasVO();
+		ArrayList<ConsultaVO> consultas = consultaDAO.listarTodasAsConsultasVO();
 		return consultas;
 	}
 
 	public boolean excluirConsulta(ConsultaVO consultaExcluida) {
-		boolean sucesso = dao.delete(consultaExcluida.getCodigoConsulta());
+		boolean sucesso = consultaDAO.delete(consultaExcluida.getCodigoConsulta());
 		return sucesso;
 
 	}
 
 	public boolean atualizarConsulta(ConsultaVO consulta, int codigoConsulta) {
 
-		return dao.atualizar(consulta, codigoConsulta);
+		return consultaDAO.atualizar(consulta, codigoConsulta);
 	}
 
-	public ConsultaVO consultarDataHorario(Date dataSQL, String horarioConsulta) {
+	public ConsultaVO consultarDataHorario(String data, String horarioConsulta) {
 		// TODO Auto-generated method stub
-		return dao.consultarDataHorario(dataSQL, horarioConsulta);
+		return consultaDAO.consultarDataHorario(data, horarioConsulta);
 	}
+
+     
 
 }

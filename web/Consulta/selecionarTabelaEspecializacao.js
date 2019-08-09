@@ -36,22 +36,22 @@ function clickLinhaTabela(row) {
     var nomeespecialidade = row.cells[4].innerText;
     var instituicao = row.cells[5].innerText;
     var ano = row.cells[6].innerText;
-    document.crudconsulta.codigoespecializacao.value = codigoespecializacao;
-    document.crudconsulta.codigomedico.value = codigomedico;
-    document.crudconsulta.nomemedico.value = nomemedico;
-    document.crudconsulta.codigoespecialidade.value = codigoespecialidade;
-    document.crudconsulta.nomeespecialidade.value = nomeespecialidade;
-    document.crudconsulta.instituicao.value = instituicao;
-    document.crudconsulta.ano.value = ano;
+    document.cadastrarconsulta.codigoespecializacao.value = codigoespecializacao;
+    document.cadastrarconsulta.codigomedico.value = codigomedico;
+    document.cadastrarconsulta.nomemedico.value = nomemedico;
+    document.cadastrarconsulta.codigoespecialidade.value = codigoespecialidade;
+    document.cadastrarconsulta.nomeespecialidade.value = nomeespecialidade;
+    document.cadastrarconsulta.instituicao.value = instituicao;
+    document.cadastrarconsulta.ano.value = ano;
 }
 
 function clickLinhaTabelaConvenio(row) {
     var codigoconvenio = row.cells[0].innerText;
     var nomeconvenio = row.cells[1].innerText;
     var valorconvenio = row.cells[2].innerText;
-    document.crudconsulta.codigoconvenio.value = codigoconvenio;
-    document.crudconsulta.nomeconvenio.value = nomeconvenio;
-    document.crudconsulta.valorconvenio.value = valorconvenio;
+    document.cadastrarconsulta.codigoconvenio.value = codigoconvenio;
+    document.cadastrarconsulta.nomeconvenio.value = nomeconvenio;
+    document.cadastrarconsulta.valorconvenio.value = valorconvenio;
    }
    
  function clickCheckbox() {

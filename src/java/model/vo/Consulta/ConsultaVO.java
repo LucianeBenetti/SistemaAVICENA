@@ -11,21 +11,29 @@ public class ConsultaVO {
     private EspecializacaoVO especializacaoVO;
     private PacienteVO pacienteVO;
     private ConvenioVO convenioVO;
-    private Date dataConsulta;
-    private String horarioConsulta;
+    private String dataConsulta;
     private String atencaoEspecial;
+    private String horarioConsulta;
 
     public ConsultaVO() {
     }
 
-    public ConsultaVO(int codigoConsulta, EspecializacaoVO especializacaoVO, PacienteVO pacienteVO, ConvenioVO convenioVO, Date dataConsulta, String horarioConsulta, String atencaoEspecial) {
+    public ConsultaVO(int codigoConsulta, EspecializacaoVO especializacaoVO, PacienteVO pacienteVO, ConvenioVO convenioVO, String dataConsulta, String atencaoEspecial, String horarioConsulta) {
         this.codigoConsulta = codigoConsulta;
         this.especializacaoVO = especializacaoVO;
         this.pacienteVO = pacienteVO;
         this.convenioVO = convenioVO;
         this.dataConsulta = dataConsulta;
-        this.horarioConsulta = horarioConsulta;
         this.atencaoEspecial = atencaoEspecial;
+        this.horarioConsulta = horarioConsulta;
+    }
+
+    public String getDataConsulta() {
+        return dataConsulta;
+    }
+
+    public void setDataConsulta(String dataConsulta) {
+        this.dataConsulta = dataConsulta;
     }
 
     public int getCodigoConsulta() {
@@ -60,14 +68,6 @@ public class ConsultaVO {
         this.convenioVO = convenioVO;
     }
 
-    public Date getDataConsulta() {
-        return dataConsulta;
-    }
-
-    public void setDataConsulta(Date dataConsulta) {
-        this.dataConsulta = dataConsulta;
-    }
-
     public String getHorarioConsulta() {
         return horarioConsulta;
     }
@@ -89,5 +89,4 @@ public class ConsultaVO {
         return "ConsultaVO{" + "codigoConsulta=" + codigoConsulta + ", especializacaoVO=" + especializacaoVO + ", pacienteVO=" + pacienteVO + ", convenioVO=" + convenioVO + ", dataConsulta=" + dataConsulta + ", horarioConsulta=" + horarioConsulta + ", atencaoEspecial=" + atencaoEspecial + '}';
     }
 
-    
 }

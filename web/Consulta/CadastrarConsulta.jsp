@@ -45,7 +45,7 @@
                     </form>
                 </div>
             </fieldset>
-            <form name="crudconsulta" action="crudconsulta" method="post">
+            <form name="cadastrarconsulta" action="cadastrarconsulta" method="post">
                 <fieldset>
                     <input type="hidden" name="codigoespecializacao" size="4" readonly>
                     Nome: <br>                       
@@ -90,9 +90,7 @@
                             <option>17:30</option>                                                                 
                         </select><br><br> 
                         <input type="checkbox" id="click" onclick="clickCheckbox(this)"> Necessita de atenção especial?
-                        <textarea disabled name="atencaoEspecial" id="tornarVisivel">
-                            
-                        </textarea>
+                        <textarea disabled name="atencaoEspecial" id="tornarVisivel"></textarea>
                     </div><br><br>   
                     <input type="submit" value="Cadastrar Consulta">
                     <br><br>    
@@ -126,22 +124,15 @@
                     </tr>     
                     <% }     %>
                     <% }     %>
-
                 </table>
-
-
                 <br><br>
-
             </fieldset>
         </form>
-
         <br><br>
-
         <%
             Object objconvenio = request.getAttribute("convenios");
             ArrayList<ConvenioVO> conveniosVO = (ArrayList<ConvenioVO>) objconvenio;
             if (conveniosVO != null) {%>
-
         <fieldset><legend>Lista de Convênios</legend>
             <table id="tabelaConsulta">
                 <tr>
@@ -150,7 +141,6 @@
                     <th>Valor (R$)</th> 
                 </tr>        
                 <%
-
                     for (ConvenioVO convenioVO : conveniosVO) {%>   
                 <tr onclick="clickLinhaTabelaConvenio(this)">
                     <td><%= convenioVO.getCodigoConvenio()%></td>
@@ -159,16 +149,12 @@
                 </tr>     
                 <% }     %>
                 <% }%>
-
             </table>
         </fieldset>
         <br><br>
     </div>           
-
-
     <footer class="footer">                
         &copy; Desenvolvido por Luciane Benetti e Marco Sena.
     </footer>
-
 </body>
 </html>

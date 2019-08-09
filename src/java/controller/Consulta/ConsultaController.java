@@ -10,64 +10,57 @@ import model.vo.Consulta.ConsultaVO;
 
 public class ConsultaController {
     
-ConsultaBO bo = new ConsultaBO();
+ConsultaBO consultaBO = new ConsultaBO();
 
-	public String salvar(ConsultaVO consulta) {
-		String validacao = validarConsulta(consulta);
+    public int cadastrarConsultaVO(ConsultaVO consultaVO) {
+       return consultaBO.cadastrarConsultaVO(consultaVO);    
+    }
 
-		if (validacao == "") {
 
-			if (bo.inserir(consulta)) {
-				validacao = "Consulta salva com sucesso!";
-			} else {
-				validacao = "Erro ao salvar consulta!";
-			}
-		}
-		return validacao;
-	}
 
-	private String validarConsulta(ConsultaVO consulta) {
-		String validacao = "";
-		if (consulta.getDataConsulta() == null) {
-			validacao = "Data est� nula!";
-		} else {
-			if (consulta.getDataConsulta().equals("") || consulta.getHorarioConsulta().equals("")) {
-				validacao += " - Data  e Horario s�o obrigat�rios. \n";
-			} else {
-				// java.sql.Date
-				Calendar c = Calendar.getInstance();
-				c.setTime(consulta.getDataConsulta());
-				Date dataSQL = new Date(c.getTimeInMillis());
-				java.util.Date hoje = Calendar.getInstance().getTime();
-				if (dataSQL.before(hoje)) {
-					validacao = "Data n�o pode ser inferior ou igual a data atual.";
-				}
-			}
-		}
-		return validacao;
-	}
+//	private String validarConsulta(ConsultaVO consulta) {
+//		String validacao = "";
+//		if (consulta.getDataConsulta() == null) {
+//			validacao = "Data est� nula!";
+//		} else {
+//			if (consulta.getDataConsulta().equals("") || consulta.getHorarioConsulta().equals("")) {
+//				validacao += " - Data  e Horario s�o obrigat�rios. \n";
+//			} else {
+//				// java.sql.Date
+//				Calendar c = Calendar.getInstance();
+//				c.setTime(consulta.getDataConsulta());
+//				Date dataSQL = new Date(c.getTimeInMillis());
+//				java.util.Date hoje = Calendar.getInstance().getTime();
+//				if (dataSQL.before(hoje)) {
+//					validacao = "Data n�o pode ser inferior ou igual a data atual.";
+//				}
+//			}
+//		}
+//		return validacao;
+//	}
 
-	public ArrayList<ConsultaVO> listarTodasAsConsultasVO() {
+    public ArrayList<ConsultaVO> listarTodasAsConsultasVO() {
+        return consultaBO.listarTodasAsConsultasVO();
+       }
 
-		return bo.listarTodasAsConsultasVO();
-	}
+//	public void excluirConsulta(ConsultaVO consultaExcluida) {
+//		bo.excluirConsulta(consultaExcluida);
+//
+//	}
+//
+//	public String atualizarConsulta(ConsultaVO consulta, int codigoConsulta) {
+//		String validacao = validarConsulta(consulta);
+//		if (validacao == "") {
+//
+//			if (bo.atualizarConsulta(consulta, codigoConsulta)) {
+//				validacao = "Consulta salvo com sucesso!";
+//			} else {
+//				validacao = "Erro ao salvar consulta!";
+//			}
+//		}
+//		return validacao;
+//	}
 
-	public void excluirConsulta(ConsultaVO consultaExcluida) {
-		bo.excluirConsulta(consultaExcluida);
-
-	}
-
-	public String atualizarConsulta(ConsultaVO consulta, int codigoConsulta) {
-		String validacao = validarConsulta(consulta);
-		if (validacao == "") {
-
-			if (bo.atualizarConsulta(consulta, codigoConsulta)) {
-				validacao = "Consulta salvo com sucesso!";
-			} else {
-				validacao = "Erro ao salvar consulta!";
-			}
-		}
-		return validacao;
-	}
+   
 
 }
