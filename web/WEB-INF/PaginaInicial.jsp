@@ -97,7 +97,7 @@
                             <a class="dropdown-item" href="Consulta/PesquisarConsultaPorPaciente.jsp">Pesquisar Consulta</a>
                             <a class="dropdown-item" href="Consulta/CadastrarConsulta.jsp">Cadastrar Consulta</a>
                             <a class="dropdown-item" href="listarconsultas">Listar Todas as Consultas</a>                             
-                            <a class="dropdown-item" href="Consulta/ExcluirConsultaPorPaciente.jsp">Excluir Consulta</a>
+                            <a class="dropdown-item" href="pesquisarconsultaparaexcluir">Excluir Consulta</a>
                         </div>
                     </li>
                       <li class="nav-item dropdown">
