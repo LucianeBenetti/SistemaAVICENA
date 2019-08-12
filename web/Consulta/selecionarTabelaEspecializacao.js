@@ -64,5 +64,33 @@ function clickLinhaTabelaConvenio(row) {
   } else {
     txtArea.disabled = true;
   }
+  
 }
 
+function clickExcluirConsulta(){
+    var codigoconsulta = row.cells[0].innerText;
+    var codogopaciente = row.cells[1].innerText;
+    var nomepaciente = row.cells[2].innerText;
+    var dataconsulta = row.cell[3].innerText;
+    var horarioconsulta = row.cell[4].innerText;
+    var codigoespecializacao = row.cells[5].innerText;
+    var codigomedico = row.cells[6].innerText;
+    var nomemedico = row.cells[7].innerText;
+    var codigoespecialidade = row.cells[8].innerText;
+    var nomeespecialidade = row.cells[9].innerText;
+    var codigoconvenio = row.cells[10].innerText;
+    var nomeconvenio = row.cells[11].innerText;
+    document.cadastrarconsulta.codigoconsulta.value = codigoconsulta;
+    document.cadastrarconsulta.codogopaciente.value = codogopaciente;
+    document.cadastrarconsulta.nomepaciente.value = nomepaciente;
+    document.cadastrarconsulta.dataconsulta.value = dataconsulta;
+    document.cadastrarconsulta.horarioconsulta.value = horarioconsulta;
+    document.cadastrarconsulta.codigoespecializacao.value = codigoespecializacao;
+    document.cadastrarconsulta.codigomedico.value = codigomedico;
+    document.cadastrarconsulta.nomemedico.value = nomemedico;
+    document.cadastrarconsulta.codigoespecialidade.value = codigoespecialidade;
+    document.cadastrarconsulta.nomeespecialidade.value = nomeespecialidade;
+    document.cadastrarconsulta.codigoconvenio.value = codigoconvenio;
+    document.cadastrarconsulta.nomeconvenio.value = nomeconvenio;
+   
+}

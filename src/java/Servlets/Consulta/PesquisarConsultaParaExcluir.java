@@ -13,30 +13,45 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.vo.Convenio.ConvenioVO;
 import model.vo.Consulta.ConsultaVO;
+import model.vo.Paciente.PacienteVO;
 
 public class PesquisarConsultaParaExcluir extends HttpServlet {
+
+    PacienteVO pacienteVO = new PacienteVO();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        ConsultaVO consultaVO = new ConsultaVO();
-        List<ConsultaVO> listaConsultas = null;
-        Boolean resultadoDaPesquisaDeConsultas = false;
+        pacienteVO.setCpfPaciente(request.getParameter("cpfpaciente"));
+        PacienteController pacientecontroller = new PacienteController();
+        Boolean resultadoDaPesquisaPorCpf = false;
+        pacienteVO = pacientecontroller.pesquisarPacienteVOPorCpf(pacienteVO.getCpfPaciente());
 
-        ConsultaController consultaController = new ConsultaController();
-        listaConsultas = consultaController.listarTodasAsConsultasVO();
+        if (pacienteVO != null) {
 
-        if (listaConsultas.size() > 0) {
-            request.setAttribute("listaConsultas", listaConsultas);
-            resultadoDaPesquisaDeConsultas = true;
-            request.setAttribute("consultavoretornada", resultadoDaPesquisaDeConsultas);
+            ConsultaVO consultaVO = new ConsultaVO();
+            consultaVO.setPacienteVO(pacienteVO);
+            List<ConsultaVO> listaConsultas = null;
+            Boolean resultadoDaPesquisaDeConsultas = false;
 
-        } else {
-            System.out.println("O consulta não foi encontrada!");
-            request.setAttribute("consultavoretornada", resultadoDaPesquisaDeConsultas);
+            ConsultaController consultaController = new ConsultaController();
+            listaConsultas = consultaController.listarConsultasVOPorID(pacienteVO.getCodigoPaciente());
+
+            if (listaConsultas.size() > 0) {
+                request.setAttribute("listaconsultas", listaConsultas);
+                resultadoDaPesquisaDeConsultas = true;
+                request.setAttribute("consultavoretornada", resultadoDaPesquisaDeConsultas);
+                resultadoDaPesquisaPorCpf = true;
+                request.setAttribute("codigopaciente", pacienteVO.getCodigoPaciente());
+                request.setAttribute("nomepaciente", pacienteVO.getNomePaciente());
+                request.setAttribute("pacientevoretornado", resultadoDaPesquisaPorCpf);
+            } else {
+                System.out.println("O consulta não foi encontrada!");
+                request.setAttribute("consultavoretornada", resultadoDaPesquisaDeConsultas);
+            }
+            request.getRequestDispatcher("Consulta/ExcluirConsulta.jsp").forward(request, response);
         }
-        request.getRequestDispatcher("Consulta/ExcluirConsulta.jsp").forward(request, response);
     }
 
     @Override

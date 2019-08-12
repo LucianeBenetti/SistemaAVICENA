@@ -1,6 +1,6 @@
 <%-- 
-    Document   : ExcluirConsulta]
-    Created on : 12/08/2019, 15:47:49
+    Document   : ExcluirConsulta
+    Created on : 09/08/2019, 15:19:10
     Author     : 80130917
 --%>
 
@@ -10,36 +10,45 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <script type="text/javascript" src="mascarasConsulta.js"></script>
-        <script type="text/javascript" src="Consulta/selecionarTabelaEspecializacao.js"></script>
-        <link type="text/css" rel="stylesheet" href="ConsultaCRUD.css">
-        <link type="text/css" rel="stylesheet" href="Consulta/ConsultaCRUD.css">
-    </head>
-    <body class="body">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="mascarasConsulta.js"></script>
+    <script type="text/javascript" src="Consulta/selecionarTabelaEspecializacao.js"></script>
+    <link type="text/css" rel="stylesheet" href="ConsultaCRUD.css">
+    <link type="text/css" rel="stylesheet" href="Consulta/ConsultaCRUD.css"
+</head>
+<body></body>
+<body class="body">
+    <h2>Exclusão de Consulta</h2>
 
-        <div class="form1">
-            <h2>Excluir Consulta!</h2>
+    <div class="form1">
+        <h2>Excluir Consulta!</h2>
 
-            <fieldset><legend>Digite o CPF do Paciente</legend>
-                <div>
-                    <form method="post" action="../pesquisarconsultaparaexcluir">
+        <fieldset><legend>Digite o CPF do Paciente</legend>
+            <div>
+                <form method="post" action="../pesquisarconsultapraexcluir">
 
-                        <p><a>*</a>Campos de preenchimento obrigatório</p>                    
+                    <p><a>*</a>Campos de preenchimento obrigatório</p>                    
 
-                        CPF<a>*</a>:<br> 
-                        <input type="text" name="cpfpaciente" required onkeyup="maskIt(this, event, '###.###.###-##')">
-                        <input type="submit" value="Buscar Paciente">
+                    CPF<a>*</a>:<br> 
+                    <input type="text" name="cpfpaciente" required onkeyup="maskIt(this, event, '###.###.###-##')">
+                    <input type="submit" value="Buscar Paciente">
 
-                    </form>
-                </div>
-            </fieldset>
-        </div>
+                </form>
+            </div>
+        </fieldset>
+        <%
+            Object obj = request.getAttribute("consultavoretornada");
+            Boolean ConsultaVORetornada = (Boolean) obj;
+            if (!ConsultaVORetornada) {%>                     
+        <input type="text" size="100" style="margin-left: 5px;" value="<% out.println("Consulta não encontrada!");%>">               
+        <%} else {%>
+
         <form name="cadastrarconsulta" action="excluirconsulta" method="post">
             <%
-                Object consultas = request.getAttribute("listaconsultas");
+                Object consultas = request.getAttribute("listaConsultas");
                 ArrayList<ConsultaVO> consultasVO = (ArrayList<ConsultaVO>) consultas;
                 if (consultasVO != null) {%>
+
             <fieldset><legend>Selecione a Consulta a ser excluida</legend>
                 <table id="tabelaConsulta">
                     <tr>
@@ -53,28 +62,27 @@
                     </tr>        
                     <% for (ConsultaVO consultaVO : consultasVO) {%>  
 
-                    <tr onclick="clickExcluirConsulta(this)">
+                    <tr onclick="clickLinhaTabela(this)">
                         <td><%= consultaVO.getCodigoConsulta()%></td>
-                        <td hidden><%= consultaVO.getPacienteVO().getCodigoPaciente()%></td>
                         <td><%= consultaVO.getPacienteVO().getNomePaciente()%></td>
                         <td ><%= consultaVO.getDataConsulta()%></td>
                         <td ><%= consultaVO.getHorarioConsulta()%></td>
                         <td hidden><%= consultaVO.getEspecializacaoVO().getCodigoEspecializacao()%></td>
-                        <td hidden><%= consultaVO.getEspecializacaoVO().getMedicoVO().getCodigoMedico()%></td>
                         <td><%= consultaVO.getEspecializacaoVO().getMedicoVO().getNomeMedico()%></td>
-                        <td hidden><%= consultaVO.getEspecializacaoVO().getEspecialidadeVO().getCodigoEspecialidade()%></td>
                         <td><%= consultaVO.getEspecializacaoVO().getEspecialidadeVO().getNomeEspecialidade()%></td>
-                        <td hidden><%= consultaVO.getConvenioVO().getCodigoConvenio()%></td>
                         <td><%= consultaVO.getConvenioVO().getNomeConvenio()%></td>
                     </tr>     
                     <% }  %>
+                    <% }%>
                 </table>
                 <br><br>
             </fieldset>
+
             <br><br>
             <input type="hidden" name="codigoconsulta" size="4" readonly>
             Nome: <br>                       
             <input type="text" readonly name="nomepaciente" size="50" required><br><br>  
+            <input type="hidden" name="codigopaciente">
             <div style="width:25%">
                 <div style="float:left"> Data: </div>
                 <div style="float:right"> Horário: </div>
@@ -95,14 +103,13 @@
                 <input type="hidden" id="excluir" name="excluir" value="excluir">
                 <input type="submit" value="Excluir Consulta">
                 </fieldset>
-               
+                </form><br><br>
                 <%  }%>      
-            </div>     
-             </form><br><br>
+            </div>            
             <footer class="footer">                
                 &copy; Desenvolvido por Luciane Benetti e Marco Sena.
             </footer>
 
+            </body>
+            </html>
 
-    </body>
-</html>

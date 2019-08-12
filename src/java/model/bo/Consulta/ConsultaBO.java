@@ -45,6 +45,10 @@ public class ConsultaBO {
 		return consultaDAO.consultarDataHorario(data, horarioConsulta);
 	}
 
+    public List<ConsultaVO> listarConsultasVOPorID(int codigoPaciente) {
+        return consultaDAO.consultarPorPaciente(codigoPaciente);
+    }
+
      
 
 }

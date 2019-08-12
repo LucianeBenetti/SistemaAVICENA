@@ -1,4 +1,3 @@
-
 package controller.Consulta;
 
 import java.sql.Date;
@@ -9,14 +8,12 @@ import model.bo.Consulta.ConsultaBO;
 import model.vo.Consulta.ConsultaVO;
 
 public class ConsultaController {
-    
-ConsultaBO consultaBO = new ConsultaBO();
+
+    ConsultaBO consultaBO = new ConsultaBO();
 
     public int cadastrarConsultaVO(ConsultaVO consultaVO) {
-       return consultaBO.cadastrarConsultaVO(consultaVO);    
+        return consultaBO.cadastrarConsultaVO(consultaVO);
     }
-
-
 
 //	private String validarConsulta(ConsultaVO consulta) {
 //		String validacao = "";
@@ -38,10 +35,9 @@ ConsultaBO consultaBO = new ConsultaBO();
 //		}
 //		return validacao;
 //	}
-
     public ArrayList<ConsultaVO> listarTodasAsConsultasVO() {
         return consultaBO.listarTodasAsConsultasVO();
-       }
+    }
 
 //	public void excluirConsulta(ConsultaVO consultaExcluida) {
 //		bo.excluirConsulta(consultaExcluida);
@@ -60,7 +56,8 @@ ConsultaBO consultaBO = new ConsultaBO();
 //		}
 //		return validacao;
 //	}
-
-   
+    public List<ConsultaVO> listarConsultasVOPorID(int codigoPaciente) {
+        return consultaBO.listarConsultasVOPorID (codigoPaciente);
+    }
 
 }
