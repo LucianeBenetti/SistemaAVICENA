@@ -1,4 +1,3 @@
-
 package model.bo.Consulta;
 
 import java.sql.Date;
@@ -9,46 +8,45 @@ import javax.swing.JOptionPane;
 import model.dao.Consulta.ConsultaDAO;
 import model.vo.Consulta.ConsultaVO;
 
+public class ConsultaBO {
 
-public class ConsultaBO { 
-    
-   ConsultaDAO consultaDAO = new ConsultaDAO();
-   
+    ConsultaDAO consultaDAO = new ConsultaDAO();
+
     public int cadastrarConsultaVO(ConsultaVO consultaVO) {
-        int novoId; 
-            if (consultaDAO.consultarDataHorario(consultaVO.getDataConsulta(), consultaVO.getHorarioConsulta()) == null) {
-                novoId = 0;
-            } else {
-                novoId = consultaDAO.cadastrarConsulta(consultaVO);
-            }
-		return novoId;
-	}
+        int novoId;
+        if (consultaDAO.consultarDataHorario(consultaVO.getDataConsulta(), consultaVO.getHorarioConsulta()) != 0) {
+            novoId = 0;
+        } else {
+            novoId = consultaDAO.cadastrarConsulta(consultaVO);
+        }
+        return novoId;
+    }
 
-	public ArrayList<ConsultaVO> listarTodasAsConsultasVO() {
-		ArrayList<ConsultaVO> consultas = consultaDAO.listarTodasAsConsultasVO();
-		return consultas;
-	}
+    public ArrayList<ConsultaVO> listarTodasAsConsultasVO() {
+        ArrayList<ConsultaVO> consultas = consultaDAO.listarTodasAsConsultasVO();
+        return consultas;
+    }
 
-	public boolean excluirConsulta(ConsultaVO consultaExcluida) {
-		boolean sucesso = consultaDAO.delete(consultaExcluida.getCodigoConsulta());
-		return sucesso;
+    public boolean excluirConsultaPorId(int codigoConsulta) {
+        boolean sucesso = consultaDAO.excluirConsultaPorId(codigoConsulta);
+        return sucesso;
 
-	}
+    }
 
-	public boolean atualizarConsulta(ConsultaVO consulta, int codigoConsulta) {
+    public boolean atualizarConsulta(ConsultaVO consultaVO, int codigoConsulta) {
+        boolean sucesso = false;
+        if (consultaDAO.consultarDataHorario(consultaVO.getDataConsulta(), consultaVO.getHorarioConsulta()) == 0) {
+             consultaDAO.atualizarConsulta(consultaVO, codigoConsulta);
+            return sucesso = true;
+            
+        } else {
+           return sucesso;
+        }
 
-		return consultaDAO.atualizar(consulta, codigoConsulta);
-	}
-
-	public ConsultaVO consultarDataHorario(String data, String horarioConsulta) {
-		// TODO Auto-generated method stub
-		return consultaDAO.consultarDataHorario(data, horarioConsulta);
-	}
+    }
 
     public List<ConsultaVO> listarConsultasVOPorID(int codigoPaciente) {
         return consultaDAO.consultarPorPaciente(codigoPaciente);
     }
-
-     
 
 }

@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link type="text/css" rel="stylesheet" href="Consulta/ConsultaCRUD.css">
+    <link type="text/css" rel="stylesheet" href="Consulta/CRUDConsulta.css">
     <title>Consulta Cadastrada</title>
 </head>
 <body class="body">

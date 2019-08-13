@@ -100,7 +100,7 @@ public class ConsultaDAO {
         return listaConsultas;
     }
 
-    public boolean delete(int codigoConsulta) {
+    public boolean excluirConsultaPorId(int codigoConsulta) {
         boolean sucessoDelete = false;
 
         String query = "DELETE from consulta where codigoConsulta = ? ";
@@ -123,7 +123,7 @@ public class ConsultaDAO {
         return sucessoDelete;
     }
 
-    public boolean atualizar(ConsultaVO consulta, int codigoConsulta) {
+    public boolean atualizarConsulta(ConsultaVO consulta, int codigoConsulta) {
         boolean sucessoAtualizar = false;
 
         String query = "UPDATE consulta SET codigoEspecializacao=?, codigoPaciente=?, codigoConvenio=?, dataConsulta=?, atencaoEspecial=?, horarioConsulta=?"
@@ -153,6 +153,7 @@ public class ConsultaDAO {
             ConexaoComBanco.closePreparedStatement(prepStmt);
             ConexaoComBanco.closeConnection(conn);
         }
+        
         return sucessoAtualizar;
     }
 
@@ -222,7 +223,7 @@ public class ConsultaDAO {
         return consulta;
     }
 
-    public ConsultaVO consultarDataHorario(String dataConsulta, String horarioConsulta) {
+    public int consultarDataHorario(String dataConsulta, String horarioConsulta) {
         ConsultaVO consulta = new ConsultaVO();
 
         String query = "SELECT * from consulta " + " where dataConsulta = ? and horarioConsulta = ? ";
@@ -254,7 +255,7 @@ public class ConsultaDAO {
             ConexaoComBanco.closePreparedStatement(prepStmt);
             ConexaoComBanco.closeConnection(conn);
         }
-        return consulta;
+        return consulta.getCodigoConsulta();
     }
 
 }

@@ -11,10 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.vo.Usuario.UsuarioVO;
 
-/**
- *
- * @author 80119050
- */
 public class ControleDeNavegacao extends HttpServlet {
 
     

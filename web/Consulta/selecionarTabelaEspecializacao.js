@@ -1,6 +1,5 @@
 var tabela = document.getElementById("tabelaConsulta");
 var linhas = tabela.getElementsByTagName("tr");
-
 for (var i = 0; i < linhas.length; i++) {
     var linha = linhas[i];
     linha.addEventListener("click", function () {
@@ -27,7 +26,6 @@ function selLinha(linha, multiplos) {
  Exemplo de como capturar os dados
  **/
 var btnVisualizar = document.getElementById("visualizarDados");
-
 function clickLinhaTabela(row) {
     var codigoespecializacao = row.cells[0].innerText;
     var codigomedico = row.cells[1].innerText;
@@ -52,45 +50,53 @@ function clickLinhaTabelaConvenio(row) {
     document.cadastrarconsulta.codigoconvenio.value = codigoconvenio;
     document.cadastrarconsulta.nomeconvenio.value = nomeconvenio;
     document.cadastrarconsulta.valorconvenio.value = valorconvenio;
-   }
-   
- function clickCheckbox() {
-  // Get the checkbox
-  var checkBox = document.getElementById("click");
-  var txtArea = document.getElementById("tornarVisivel")
-  // If the checkbox is checked, display the output text
-  if (checkBox.checked == true){
-    txtArea.disabled = false;
-  } else {
-    txtArea.disabled = true;
-  }
-  
 }
 
-function clickExcluirConsulta(){
+function clickCheckbox() {
+// Get the checkbox
+    var checkBox = document.getElementById("click");
+    var txtArea = document.getElementById("tornarVisivel")
+    // If the checkbox is checked, display the output text
+    if (checkBox.checked == true) {
+        txtArea.disabled = false;
+    } else {
+        txtArea.disabled = true;
+    }
+
+}
+function clickExcluirConsulta(row) {
     var codigoconsulta = row.cells[0].innerText;
-    var codogopaciente = row.cells[1].innerText;
+    var nomepaciente = row.cells[1].innerText;
+    var nomemedico = row.cells[2].innerText;
+    var nomeespecialidade = row.cells[3].innerText;
+    var nomeconvenio = row.cells[4].innerText;
+    /* var dataconsulta = row.cell[5].innerText;
+     var horarioconsulta = row.cell[6].innerText; */
+    document.excluirconsulta.codigoconsulta.value = codigoconsulta;
+    document.excluirconsulta.nomepaciente.value = nomepaciente;
+    document.excluirconsulta.nomemedico.value = nomemedico;
+    document.excluirconsulta.nomeespecialidade.value = nomeespecialidade;
+    document.excluirconsulta.nomeconvenio.value = nomeconvenio;
+    /*  document.excluirconsulta.dataconsulta.value = dataconsulta;
+     document.excluirconsulta.horarioconsulta.value = horarioconsulta;*/
+}
+
+function clickAtualizarConsulta(row) {
+    var codigoconsulta = row.cells[0].innerText;
+    var codigopaciente = row.cells[1].innerText;
     var nomepaciente = row.cells[2].innerText;
-    var dataconsulta = row.cell[3].innerText;
-    var horarioconsulta = row.cell[4].innerText;
-    var codigoespecializacao = row.cells[5].innerText;
-    var codigomedico = row.cells[6].innerText;
-    var nomemedico = row.cells[7].innerText;
-    var codigoespecialidade = row.cells[8].innerText;
-    var nomeespecialidade = row.cells[9].innerText;
-    var codigoconvenio = row.cells[10].innerText;
-    var nomeconvenio = row.cells[11].innerText;
-    document.cadastrarconsulta.codigoconsulta.value = codigoconsulta;
-    document.cadastrarconsulta.codogopaciente.value = codogopaciente;
-    document.cadastrarconsulta.nomepaciente.value = nomepaciente;
-    document.cadastrarconsulta.dataconsulta.value = dataconsulta;
-    document.cadastrarconsulta.horarioconsulta.value = horarioconsulta;
-    document.cadastrarconsulta.codigoespecializacao.value = codigoespecializacao;
-    document.cadastrarconsulta.codigomedico.value = codigomedico;
-    document.cadastrarconsulta.nomemedico.value = nomemedico;
-    document.cadastrarconsulta.codigoespecialidade.value = codigoespecialidade;
-    document.cadastrarconsulta.nomeespecialidade.value = nomeespecialidade;
-    document.cadastrarconsulta.codigoconvenio.value = codigoconvenio;
-    document.cadastrarconsulta.nomeconvenio.value = nomeconvenio;
-   
+    var codigoespecializacao = row.cells[3].innerText;
+    var nomemedico = row.cells[4].innerText;
+    var nomeespecialidade = row.cells[5].innerText;
+    var codigoconvenio = row.cells[6].innerText;
+    var nomeconvenio = row.cells[7].innerText;
+    document.atualizarconsulta.codigoconsulta.value = codigoconsulta;
+    document.atualizarconsulta.codigopaciente.value = codigopaciente;
+    document.atualizarconsulta.nomepaciente.value = nomepaciente;
+    document.atualizarconsulta.codigoespecializacao.value = codigoespecializacao;
+    document.atualizarconsulta.nomemedico.value = nomemedico;
+    document.atualizarconsulta.nomeespecialidade.value = nomeespecialidade;
+    document.atualizarconsulta.codigoconvenio.value = codigoconvenio;
+    document.atualizarconsulta.nomeconvenio.value = nomeconvenio;
+
 }

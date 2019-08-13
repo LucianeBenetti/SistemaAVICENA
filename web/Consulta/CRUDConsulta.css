@@ -13,7 +13,7 @@ a{
     margin-right: 0px;
     float: left;/*propriedade indicando que a Área flutuará a esquerda*/
     width: 38%; /*Ocupando 24% da largura total destinada para o corpo*/
-    height: 400px; /*Altura de 500 pixels*/   
+    height: 200px; /*Altura de 500 pixels*/   
 }
 .form2 {  
     background-color: lightblue; 
@@ -37,10 +37,10 @@ a{
     background-color: lightblue;/*Cor de fundo*/    
     padding: 0px;/*Margen interna de 3 pixels*/
     margin-top: 0px;/*Margen superior com 1 pixel*/
-    margin-right: 8%;
+    margin-right: 0%;
     float: right;/*propriedade indicando que a Área flutuará a direita*/
     margin-left: 1%;
-    width: 55%;/*Ocupando 74% da largura total destinada para o corpo*/
+    width: 59%;/*Ocupando 74% da largura total destinada para o corpo*/
     height: 700px;/*Altura de 494 pixels*/
 }
 .resultadodaatualizacao{
@@ -71,12 +71,12 @@ a{
 }
 .form3{
     background-color: lightblue; 
-    padding: 5px;
+    padding: 0px;
     margin-top: 0px;/*Margen superior com 1 pixel*/
-    margin-left: -1;
+    margin-left: 0px;
     float: left;/*propriedade indicando que a Área flutuará a esquerda*/
-    width: 40%; /*Ocupando 24% da largura total destinada para o corpo*/
-    height: 400px; /*Altura de 500 pixels*/
+    width: 38%; /*Ocupando 24% da largura total destinada para o corpo*/
+    height: 200px; /*Altura de 500 pixels*/
 }
 #tabelaConsulta{
   width:80%;
@@ -178,7 +178,7 @@ button#visualizarDados{
     margin-right: 8%;
     float: right;/*propriedade indicando que a Área flutuará a direita*/
     margin-left: 1%;
-    width: 40%;/*Ocupando 74% da largura total destinada para o corpo*/
+    width: 50%;/*Ocupando 74% da largura total destinada para o corpo*/
     height: 700px;/*Altura de 494 pixels*/
 }
 textArea{

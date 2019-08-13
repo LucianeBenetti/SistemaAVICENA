@@ -16,14 +16,14 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script type="text/javascript" src="mascarasConsulta.js"></script>
         <script type="text/javascript" src="Consulta/selecionarTabelaEspecializacao.js"></script>
-        <link type="text/css" rel="stylesheet" href="ConsultaCRUD.css">
-        <link type="text/css" rel="stylesheet" href="Consulta/ConsultaCRUD.css">
+        <link type="text/css" rel="stylesheet" href="CRUDConsulta.css">
+        <link type="text/css" rel="stylesheet" href="Consulta/CRUDConsulta.css">
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
         <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
         <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
         <script>
             $(function () {
-                 $("#calendario").datepicker({dateFormat: 'dd/mm/yy'});
+                $("#calendario").datepicker({dateFormat: 'dd/mm/yy'});
             });
         </script>
         <title>Cadastrar Consulta</title>
@@ -51,11 +51,6 @@
                     Nome: <br>                       
                     <input type="text" readonly name="nomepaciente" size="50" required value="<%= request.getAttribute("nomepaciente")%>"><br><br>  
                     <input type="hidden" name="codigopaciente" value="<%= request.getAttribute("codigopaciente")%>">
-                    Convênio <br>                       
-                    <input type="text" readonly name="nomeconvenio" required size="50"><br><br>
-                    <input type="hidden" readonly name="codigoconvenio" size="50">
-                    <input type="hidden" readonly name="valorconvenio" size="50">
-                    <input type="hidden"  name="codigomedico" size="4" readonly>
                     Nome do Médico: <br>
                     <input type="text" name="nomemedico" required size="50" readonly> <br><br>
                     <input type="hidden" name="codigoespecialidade" size="4" readonly>
@@ -63,6 +58,11 @@
                     <input type="text" name="nomeespecialidade" required size="50" readonly> <br><br>
                     <input type="hidden" name="instituicao" size="50" readonly>
                     <input type="hidden" name="ano" size="8"> 
+                    Convênio <br>                       
+                    <input type="text" readonly name="nomeconvenio" required size="50"><br><br>
+                    <input type="hidden" readonly name="codigoconvenio" size="50">
+                    <input type="hidden" readonly name="valorconvenio" size="50">
+                    <input type="hidden"  name="codigomedico" size="4" readonly>
                     <div style="width:55%">
                         <div style="float:left"> Data<a>*</a>: </div>
                         <div style="float:right"> Horário<a>*</a>: </div>
@@ -104,36 +104,35 @@
                 ArrayList<EspecializacaoVO> especializacoesVO = (ArrayList<EspecializacaoVO>) obj;
                 if (especializacoesVO != null) {%>
 
-            <fieldset><legend>Dados de Médicos por Especialidade</legend>
-                <table id="tabelaConsulta">
-                    <tr>
-                        <th>Id</th>
-                        <th>Nome do Médico</th> 
-                        <th>Especialidade</th> 
-                    </tr>        
-                    <% for (EspecializacaoVO especializacaoVO : especializacoesVO) {%>  
+            <h2>Dados de Médicos por Especialidade</h2>
+            <table id="tabelaConsulta">
+                <tr>
+                    <th>Id</th>
+                    <th>Nome do Médico</th> 
+                    <th>Especialidade</th> 
+                </tr>        
+                <% for (EspecializacaoVO especializacaoVO : especializacoesVO) {%>  
 
-                    <tr onclick="clickLinhaTabela(this)">
-                        <td><%= especializacaoVO.getCodigoEspecializacao()%></td>
-                        <td hidden><%= especializacaoVO.getMedicoVO().getCodigoMedico()%></td>
-                        <td><%= especializacaoVO.getMedicoVO().getNomeMedico()%></td>
-                        <td hidden><%= especializacaoVO.getEspecialidadeVO().getCodigoEspecialidade()%></td>
-                        <td><%= especializacaoVO.getEspecialidadeVO().getNomeEspecialidade()%></td>
-                        <td hidden><%= especializacaoVO.getEspecialidadeVO().getInstituicao()%></td>
-                        <td hidden><%= especializacaoVO.getAnoEspecializacao()%></td>
-                    </tr>     
-                    <% }     %>
-                    <% }     %>
-                </table>
-                <br><br>
-            </fieldset>
-        </form>
-        <br><br>
-        <%
-            Object objconvenio = request.getAttribute("convenios");
-            ArrayList<ConvenioVO> conveniosVO = (ArrayList<ConvenioVO>) objconvenio;
-            if (conveniosVO != null) {%>
-        <fieldset><legend>Lista de Convênios</legend>
+                <tr onclick="clickLinhaTabela(this)">
+                    <td><%= especializacaoVO.getCodigoEspecializacao()%></td>
+                    <td hidden><%= especializacaoVO.getMedicoVO().getCodigoMedico()%></td>
+                    <td><%= especializacaoVO.getMedicoVO().getNomeMedico()%></td>
+                    <td hidden><%= especializacaoVO.getEspecialidadeVO().getCodigoEspecialidade()%></td>
+                    <td><%= especializacaoVO.getEspecialidadeVO().getNomeEspecialidade()%></td>
+                    <td hidden><%= especializacaoVO.getEspecialidadeVO().getInstituicao()%></td>
+                    <td hidden><%= especializacaoVO.getAnoEspecializacao()%></td>
+                </tr>     
+                <% }     %>
+                <% }     %>
+            </table>
+            <br><br>
+            </form>
+            <br><br>
+            <%
+                Object objconvenio = request.getAttribute("convenios");
+                ArrayList<ConvenioVO> conveniosVO = (ArrayList<ConvenioVO>) objconvenio;
+                if (conveniosVO != null) {%>
+            <h2>Lista de Convênios</h2>
             <table id="tabelaConsulta">
                 <tr>
                     <th>Id</th>
@@ -150,11 +149,11 @@
                 <% }     %>
                 <% }%>
             </table>
-        </fieldset>
-        <br><br>
-    </div>           
-    <footer class="footer">                
-        &copy; Desenvolvido por Luciane Benetti e Marco Sena.
-    </footer>
-</body>
+
+            <br><br>
+        </div>           
+        <footer class="footer">                
+            &copy; Desenvolvido por Luciane Benetti e Marco Sena.
+        </footer>
+    </body>
 </html>
