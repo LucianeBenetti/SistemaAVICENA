@@ -44,7 +44,6 @@ public class ControleDeNavegacao extends HttpServlet {
                         break;
                         
                     case "avicena":
-                       //  System.out.println("A variável é: " + variaveis.get(i));
                         request.getRequestDispatcher("WEB-INF/PaginaInicial.jsp").forward(request, response);
                         break;
 

@@ -3,21 +3,22 @@ package model.bo.Prontuario;
 import java.util.ArrayList;
 import java.util.List;
 import model.dao.Prontuario.ProntuarioDAO;
+import model.vo.Consulta.ConsultaVO;
 import model.vo.Prontuario.ProntuarioVO;
 
 
 public class ProntuarioBO {
-ProntuarioDAO dao = new ProntuarioDAO();
+ProntuarioDAO prontuarioDAO = new ProntuarioDAO();
 
 	public ArrayList<ProntuarioVO> listarTodosOsProntuariosVO() {
 
-		ArrayList<ProntuarioVO> prontuarios = dao.listarTodosOsProntuariosVO();
+		ArrayList<ProntuarioVO> prontuarios = prontuarioDAO.listarTodosOsProntuariosVO();
 		return prontuarios;
 	}
 
 	public boolean inserir(ProntuarioVO prontuario) {
 
-		int idGerado = dao.inserir(prontuario);
+		int idGerado = prontuarioDAO.inserir(prontuario);
 
 		return idGerado > 0;
 
@@ -25,16 +26,21 @@ ProntuarioDAO dao = new ProntuarioDAO();
 
 	public boolean excluirProntuario(ProntuarioVO prontuarioExcluido) {
 
-		boolean sucesso = dao.delete(prontuarioExcluido.getCodigoProntuario());
+		boolean sucesso = prontuarioDAO.delete(prontuarioExcluido.getCodigoProntuario());
 		return sucesso;
 	}
 
 	public boolean atualizar(ProntuarioVO prontuario, int codigoProntuario) {
 		
-		return  dao.atualizar(prontuario, codigoProntuario);
+		return  prontuarioDAO.atualizar(prontuario, codigoProntuario);
 	}
 
-	public List<ProntuarioVO> listarProntuariosDoPaciente(int codigoPaciente) {
-		return dao.listarProntuariosDoPaciente(codigoPaciente);
+	public List<ProntuarioVO> listarProntuariosDoPaciente(ConsultaVO consultaVO) {
+            List<ProntuarioVO> prontuarios = new ArrayList<>();
+		if(consultaVO != null && consultaVO.getPacienteVO() != null) {
+			prontuarios = prontuarioDAO.listarProntuariosDoPaciente(consultaVO.getPacienteVO().getCodigoPaciente());
+		}
+           
+		return prontuarios;
 	}
 }

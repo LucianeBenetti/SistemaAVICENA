@@ -148,6 +148,10 @@
         <servlet-name>AtualizarConsulta</servlet-name>
         <servlet-class>Servlets.Consulta.AtualizarConsulta</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PesquisarDadosParaCadastrarProntuario</servlet-name>
+        <servlet-class>Servlets.Prontuario.PesquisarDadosParaCadastrarProntuario</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CrudPaciente</servlet-name>
         <url-pattern>/crudpaciente</url-pattern>
@@ -294,6 +298,10 @@
     <servlet-mapping>
         <servlet-name>AtualizarConsulta</servlet-name>
         <url-pattern>/atualizarconsulta</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PesquisarDadosParaCadastrarProntuario</servlet-name>
+        <url-pattern>/pesquisardadosparacadastrarprontuario</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

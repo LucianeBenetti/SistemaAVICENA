@@ -151,7 +151,8 @@
             </table>
 
             <br><br>
-        </div>           
+        </div>    
+            
         <footer class="footer">                
             &copy; Desenvolvido por Luciane Benetti e Marco Sena.
         </footer>

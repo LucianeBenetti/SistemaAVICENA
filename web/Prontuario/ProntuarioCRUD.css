@@ -8,12 +8,12 @@ a{
 }
 .form1 {    
     background-color: lightblue; 
-    padding: 5px;
+    padding: 0px;
     margin-top: 0px;/*Margen superior com 1 pixel*/
-    margin-right: -1px;
+    margin-right: 0px;
     float: left;/*propriedade indicando que a Área flutuará a esquerda*/
-    width: 48%; /*Ocupando 24% da largura total destinada para o corpo*/
-    height: 400px; /*Altura de 500 pixels*/   
+    width: 38%; /*Ocupando 24% da largura total destinada para o corpo*/
+    height: 200px; /*Altura de 500 pixels*/   
 }
 .form2 {  
     background-color: lightblue; 
@@ -37,10 +37,10 @@ a{
     background-color: lightblue;/*Cor de fundo*/    
     padding: 0px;/*Margen interna de 3 pixels*/
     margin-top: 0px;/*Margen superior com 1 pixel*/
-    margin-right: 8%;
+    margin-right: 0%;
     float: right;/*propriedade indicando que a Área flutuará a direita*/
     margin-left: 1%;
-    width: 55%;/*Ocupando 74% da largura total destinada para o corpo*/
+    width: 59%;/*Ocupando 74% da largura total destinada para o corpo*/
     height: 700px;/*Altura de 494 pixels*/
 }
 .resultadodaatualizacao{
@@ -64,21 +64,21 @@ a{
     width: 100%; 
     background-color:cadetblue; 
     text-align: center; 
-    padding: 2px; 
-    margin-top: 200px; 
+    padding: 8px; 
+    margin-top: 400px; 
     margin-left: 0%; 
     bottom: 0px;
 }
 .form3{
     background-color: lightblue; 
-    padding: 5px;
+    padding: 0px;
     margin-top: 0px;/*Margen superior com 1 pixel*/
-    margin-left: -1;
+    margin-left: 0px;
     float: left;/*propriedade indicando que a Área flutuará a esquerda*/
-    width: 51.5%; /*Ocupando 24% da largura total destinada para o corpo*/
-    height: 400px; /*Altura de 500 pixels*/
+    width: 38%; /*Ocupando 24% da largura total destinada para o corpo*/
+    height: 200px; /*Altura de 500 pixels*/
 }
-#tabelaEspecialidades{
+#tabelaConsulta{
   width:80%;
   margin:0 auto;
   border:0;
@@ -86,27 +86,27 @@ a{
   border-spacing: 0;
 }
 
-#tabelaEspecialidades thead th{
+#tabelaConsulta thead th{
   font-weight: bold;
   background-color: black;
   color:white;
-  
+  text-align: center;
   padding:5px 10px;
 }
 
-#tabelaEspecialidades tr td{
+#tabelaConsulta tr td{
   padding:5px 10px;
   text-align: center;
   
   cursor: pointer; /**importante para não mostrar cursor de texto**/
 }
 
-#tabelaEspecialidades tr td:last-child{
+#tabelaConsulta tr td:last-child{
   text-align: center;
 }
 
 /**Cores**/
-#tabelaEspecialidades tr:nth-child(odd){
+#tabelaConsulta tr:nth-child(odd){
   background-color: #eee;
 }
 
@@ -116,7 +116,7 @@ a{
 }
 
 /**Cor quando selecionado**/
-#tabelaEspecialidades tr.selecionado td{
+#tabelaConsulta tr.selecionado td{
   background-color: #aff7ff;
 }
 
@@ -171,4 +171,18 @@ button#visualizarDados{
     margin-top: 2%;
     margin-bottom: 1%;
 }
-
+.resultadodaconsulta {
+    background-color: lightblue;/*Cor de fundo*/    
+    padding: 0px;/*Margen interna de 3 pixels*/
+    margin-top: 0px;/*Margen superior com 1 pixel*/
+    margin-right: 8%;
+    float: right;/*propriedade indicando que a Área flutuará a direita*/
+    margin-left: 1%;
+    width: 50%;/*Ocupando 74% da largura total destinada para o corpo*/
+    height: 700px;/*Altura de 494 pixels*/
+}
+textArea{
+    width:400px;
+    height:100px;
+    border: 2px solid #990000;
+}

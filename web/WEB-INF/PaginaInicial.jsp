@@ -1,36 +1,18 @@
-<%-- 
-    Document   : PaginaInicial
-    Created on : 08/03/2019, 10:56:51
-    Author     : 80119050
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>  
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link type="text/css" rel="stylesheet" href="PaginaInicial.css">
-    
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">  
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-      
-    <title>Sistema AVICENA</title>
-    
-    <style>
-        /* Make the image fully responsive */  
-      .carousel-inner{margin: 0 auto;       
-      }
-      .carousel-inner img {max-width: 100%;    
-      }
-      
-      .container{float:top}
-      .menu{float: bottom}
-    </style>    
-    
+    <head>  
+        <meta charset= "utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+        <title>Sistema AVICENA</title>
+
+
     <div class="container">    
 
         <div id="demo" class="carousel slide" data-ride="carousel">
@@ -63,134 +45,137 @@
                 <span class="carousel-control-next-icon"></span>
             </a>
         </div>
-
     </div>
-    
+
 </head>
 
 <body>
-    
-    <div class="menu">   
 
-        <nav class="navbar navbar-expand-sm navbar-dark justify-content-center" style="background-color: cadetblue;">
-            <a class="navbar-brand">
-                <img src="icon2.png" alt="logo" style="width:60px; height: 40px;">
-            </a>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Pacientes
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="Paciente/PesquisarPacientePorCpf.jsp">Pesquisar Paciente Por CPF</a>
-                            <a class="dropdown-item" href="Paciente/CadastrarPaciente.jsp">Cadastrar Paciente</a>
-                            <a class="dropdown-item" href="listarpacientes">Listar Todos os Pacientes</a>
-                            <a class="dropdown-item" href="Paciente/ExcluirPacientePorCpf.jsp">Excluir Paciente</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Consultas
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="Consulta/PesquisarConsultaPorPaciente.jsp">Pesquisar Consulta</a>
-                            <a class="dropdown-item" href="Consulta/CadastrarConsulta.jsp">Cadastrar Consulta</a>
-                            <a class="dropdown-item" href="listarconsultas">Listar Todas as Consultas</a>                             
-                            <a class="dropdown-item" href="Consulta/ExcluirConsulta.jsp">Excluir Consulta</a>
-                        </div>
-                    </li>
-                      <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Convenios
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="Convenio/PesquisarConvenioPorCnpj.jsp">Pesquisar Convenio por CNPJ</a>
-                            <a class="dropdown-item" href="Convenio/CadastrarConvenio.jsp">Cadastrar Convenio</a>
-                            <a class="dropdown-item" href="listarconvenios">Listar Todas as Convenio</a>                             
-                            <a class="dropdown-item" href="Convenio/ExcluirConvenioPorCnpj.jsp">Excluir Convenio</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Médicos
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="Medico/PesquisarMedicoPorCpf.jsp">Pesquisar Medico por CPF</a>
-                            <a class="dropdown-item" href="Medico/CadastrarMedico.jsp">Cadastrar Medico</a>
-                            <a class="dropdown-item" href="listarmedicos">Listar Todos os Medicos</a>
-                            <a class="dropdown-item" href="Medico/ExcluirMedicoPorCpf.jsp">Excluir Medico</a>
-                        </div>
-                    </li>
-                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Prontuario
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="Prontuario/PesquisarProntuarioPorCPF.jsp">Pesquisar Prontuario</a>
-                            <a class="dropdown-item" href="Prontuario/CadastrarProntuario.jsp">Cadastrar Prontuario</a>
-                            <a class="dropdown-item" href="listarprontuarios">Listar Todos os Prontuario</a>
-                            <a class="dropdown-item" href="Prontuario/ExcluirProntuarioPorCPF.jsp">Excluir Prontuario</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Especialidades
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="Especialidade/PesquisarEspecialidadePorNome.jsp">Pesquisar Especialidade</a>
-                            <a class="dropdown-item" href="Especialidade/CadastrarEspecialidade.jsp">Cadastrar Especialidade</a>
-                            <a class="dropdown-item" href="listarespecialidades">Listar Todas as Especialidades</a>
-                            <a class="dropdown-item" href="Especialidade/ExcluirEspecialidadePorId.jsp">Excluir Especialidade</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Especializacao
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="pesquisarespecializacaopormedico">Pesquisar Especializacao</a>
-                            <a class="dropdown-item" href="buscarespecialidade">Cadastrar Especializacao</a>
-                            <a class="dropdown-item" href="listarespecializacoes">Listar Todas as Especializacao</a>
-                            <a class="dropdown-item" href="pesquisarmedicoparaexcluir">Excluir Especializacao</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Sobre
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Responsáveis Técnicos</a>
-                            <a class="dropdown-item" href="#">Informações do Sistema</a>
-                            <a class="dropdown-item" href="#">Contatos</a>
-                           
-                        </div>
-                    </li>
-                    <li>
-                        <form action="controledenavegacao" method="POST">
-                            <input type="hidden" id="sair" name="sair" value="sair">
-                            <input type="submit" value="Sair" class="sair">
-                        </form>
-                        
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </div>
+    <nav class="navbar navbar-expand-sm navbar-dark justify-content-center" style= "background-color: #7986cb; 
+         font-size: 20px; color: #ffffff; ">
+        <a class="navbar-brand">
+            <img src="icon2.png" alt="logo" style="width:50px; height: 30px;">
+        </a>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Pacientes
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="Paciente/CadastrarPaciente.jsp">Cadastrar Paciente</a>
+                        <a class="dropdown-item" href="Paciente/PesquisarPacientePorCpf.jsp">Pesquisar/Alterar Paciente</a>
+                        <a class="dropdown-item" href="Paciente/ExcluirPacientePorCpf.jsp">Excluir Paciente</a>
+                        <a class="dropdown-item" href="listarpacientes">Listar Todos</a>
 
-    
-    <div class="corpo">
-        <br><br><br>
-        <h3 class="titulo">Sistema AVICENA - Especialidades Médicas</h3>
-        
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Consultas
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="Consulta/CadastrarConsulta.jsp">Cadastrar Consulta</a>
+                        <a class="dropdown-item" href="Consulta/PesquisarConsultaPorPaciente.jsp">Pesquisar/Alerar Consulta</a>
+                        <a class="dropdown-item" href="Consulta/ExcluirConsulta.jsp">Excluir Consulta</a>
+                        <a class="dropdown-item" href="listarconsultas">Listar Todas</a>                             
+
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Convênios
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="Convenio/CadastrarConvenio.jsp">Cadastrar Convenio</a>
+                        <a class="dropdown-item" href="Convenio/PesquisarConvenioPorCnpj.jsp">Pesquisar/Alterar Convenio</a>
+                        <a class="dropdown-item" href="Convenio/ExcluirConvenioPorCnpj.jsp">Excluir Convenio</a>
+                        <a class="dropdown-item" href="listarconvenios">Listar Todos</a>                             
+
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Médicos
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="Medico/CadastrarMedico.jsp">Cadastrar Médico</a>
+                        <a class="dropdown-item" href="Medico/PesquisarMedicoPorCpf.jsp">Pesquisar/Alterar Médico</a>
+                        <a class="dropdown-item" href="Medico/ExcluirMedicoPorCpf.jsp">Excluir Médico</a>
+                        <a class="dropdown-item" href="listarmedicos">Listar Todos</a>
+
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Prontuário
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="Prontuario/CadastrarProntuario.jsp">Cadastrar Prontuário</a>
+                        <a class="dropdown-item" href="Prontuario/PesquisarProntuarioPorCPF.jsp">Pesquisar/Alterar Prontuário</a>
+                        <a class="dropdown-item" href="Prontuario/ExcluirProntuarioPorCPF.jsp">Excluir Prontuário</a>
+                        <a class="dropdown-item" href="listarprontuarios">Listar Todos</a>
+
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Especialidades
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="Especialidade/CadastrarEspecialidade.jsp">Cadastrar Especialidade</a>
+                        <a class="dropdown-item" href="Especialidade/PesquisarEspecialidadePorNome.jsp">Pesquisar/Altear Especialidade</a>
+                        <a class="dropdown-item" href="Especialidade/ExcluirEspecialidadePorId.jsp">Excluir Especialidade</a>  
+                        <a class="dropdown-item" href="listarespecialidades">Listar Todas as Especialidades</a>
+
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Especialização
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="buscarespecialidade">Cadastrar Especialização</a>
+                        <a class="dropdown-item" href="pesquisarespecializacaopormedico">Pesquisar/Alterar Especialização</a>
+                        <a class="dropdown-item" href="pesquisarmedicoparaexcluir">Excluir Especialização</a>
+                        <a class="dropdown-item" href="listarespecializacoes">Listar Todas</a>
+
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Sobre
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Responsáveis Técnicos</a>
+                        <a class="dropdown-item" href="#">Informações do Sistema</a>
+                        <a class="dropdown-item" href="#">Contatos</a>
+
+                    </div>
+                </li>
+                <li>
+                    <form action="controledenavegacao" method="POST">
+                        <input type="hidden" id="sair" name="sair" value="sair">
+                        <input type="submit" value="Sair" style="border:none; background-color: #7986cb; color: white; padding: 8px;">
+                    </form>
+
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container" style="text-align: center">
+
+        <h3>Sistema AVICENA - Especialidades Médicas</h3>
+
 
     </div>       
-                            
-        <footer class="footer">                
-            &copy; Desenvolvido por Luciane Benetti e Marco Sena.
-        </footer>
 
- 
+    <div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0px; margin-top: 20%; background-color: #7986cb; 
+         padding: 1px; color: white; ">
+        <p>&copy; Desenvolvido por Luciane Benetti e Marco Sena.</p>
+    </div>
+
+
 </body>
-
 </html>

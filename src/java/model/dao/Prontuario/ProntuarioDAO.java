@@ -190,6 +190,7 @@ public class ProntuarioDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+             System.out.println("model.bo.Prontuario. " + listaProntuarios);
         return listaProntuarios;
     }
 

@@ -11,7 +11,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link type="text/css" rel="stylesheet" href="Prontuario/CRUDProntuario.css">
+        <link type="text/css" rel="stylesheet" href="Prontuario/ProntuarioCRUD.css">
         <title>Todos os Prontuários da Clínica Avicena</title>
     </head>
     <body class="body">
