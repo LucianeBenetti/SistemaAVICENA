@@ -12,7 +12,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link type="text/css" rel="stylesheet" href="Consulta/CRUDConsulta.css">
-        <link type="text/css" rel="stylesheet" href="Consulta.css">
+        <link type="text/css" rel="stylesheet" href="ConsultaCRUD.css">
         <title>Todos os Consultas da Clínica Avicena</title>
     </head>
     <body class="body">
