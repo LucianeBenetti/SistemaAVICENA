@@ -23,11 +23,12 @@ public class UsuarioBO {
     public UsuarioVO pesquisarUsuarioVO(UsuarioVO usuarioVO) {
 
         UsuarioVO usuario = usuarioDAO.pesquisarUsuarioVO(usuarioVO);
-        if (usuario.getCodigoUsuario() == 0) {
-            return null;
-        } else {
-            return usuario;
+        try {
+            if (usuario.getCodigoUsuario() != 0) {
+            }
+        } catch (Exception e) {
+            e.getMessage();
         }
+        return usuario;
     }
-
 }

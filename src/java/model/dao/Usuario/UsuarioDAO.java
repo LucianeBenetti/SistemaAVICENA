@@ -70,45 +70,4 @@ public class UsuarioDAO {
         }
         return usuario;
     }
-
-//    public UsuarioVO validarUsuarioVO(UsuarioVO usuarioVO) {
-//
-//        System.out.println("O nome é: " + usuarioVO.getLogin());
-//        System.out.println("a senha é: " + usuarioVO.getSenha());
-//        String query = "SELECT * FROM usuario" + " where login = ? and senha = ?";
-//
-//        Connection conn = ConexaoComBanco.getConnection();
-//        PreparedStatement prepStmt = ConexaoComBanco.getPreparedStatement(conn, query);
-//        UsuarioVO usuario = new UsuarioVO();
-//        try {
-//
-//            prepStmt.setString(1, usuarioVO.getLogin());
-//            prepStmt.setString(2, usuarioVO.getSenha());
-//            ResultSet result = prepStmt.executeQuery();
-//
-//            while (result.next()) {
-//                
-//                
-//                usuario.setCodigoUsuario(result.getInt("codigoUsuario"));
-//                usuario.setLogin(result.getString("login"));
-//                usuario.setSenha(result.getString("senha"));
-//                System.out.println("O iD é: " + usuario.getCodigoUsuario());
-//                System.out.println("O nome é: " + usuario.getLogin());
-//                System.out.println("A senha é: " + usuario.getSenha());
-//
-//            }
-//                        System.out.println("O iD é: " + usuarioVO.getCodigoUsuario());
-//                        System.out.println("O nome é: " + usuarioVO.getLogin());
-//                        System.out.println("A senha é: " + usuarioVO.getSenha());
-//
-//        } catch (SQLException e) {
-//            System.out.println("Erro ao executar a Query de Consulta de funcionarios!Causa: \n: " + e.getMessage());
-//        } finally {
-//            ConexaoComBanco.closeStatement(conn);
-//            ConexaoComBanco.closeConnection(conn);
-//        }
-//
-//        return usuario;
-//    }
-
 }

@@ -27,12 +27,9 @@ public class Usuario extends HttpServlet {
         UsuarioController usuarioController;
         UsuarioVO usuarioVO;
 
-//        System.out.println("O nome é: " + nome);
-//        System.out.println("a senha é: " + senha);
         ArrayList<String> variaveis = new ArrayList<>();
         variaveis.add(var1);
         variaveis.add(var2);
-        //System.out.println("O array é: " + variaveis);       
 
         for (int i = 0; i < variaveis.size(); i++) {
             String variavelDeControle = variaveis.get(i);
@@ -40,7 +37,6 @@ public class Usuario extends HttpServlet {
             if (variavelDeControle != null) {
                 switch (variavelDeControle) {
                     case "cadastrar":
-                        //System.out.println("A variável é: " + variaveis.get(i));
                         usuarioVO = new UsuarioVO();
                         usuarioVO.setLogin(nome);
                         usuarioVO.setSenha(senha);
@@ -71,7 +67,6 @@ public class Usuario extends HttpServlet {
                         usuarioVO.setSenha(senha);
 
                         usuarioController = new UsuarioController();
-                        //System.out.println("A variável é: " + variaveis.get(i));
                         UsuarioVO usuarioValidado = usuarioController.pesquisarUsuarioVO(usuarioVO);
                         if (usuarioValidado != null) {
                             request.setAttribute("login", usuarioVO.getLogin());
@@ -80,7 +75,7 @@ public class Usuario extends HttpServlet {
                         } else {
                             Boolean validacao = false;
                             request.setAttribute("usuariovalidado", validacao);
-                            request.getRequestDispatcher("Index.jsp").forward(request, response);
+                            request.getRequestDispatcher("CadastrarUsuario.jsp").forward(request, response);
                         }
 
                         break;
