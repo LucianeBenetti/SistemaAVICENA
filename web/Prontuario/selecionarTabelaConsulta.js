@@ -78,8 +78,8 @@ function clickLinhaTabelaConsulta(row) {
     var nomeespecialidade = row.cells[5].innerText;
     var codigoconvenio = row.cells[6].innerText;
     var nomeconvenio = row.cells[7].innerText;
-    var dataconsulta = row.cell[8].innerText;
-    var horarioconsulta = row.cell[9].innerText;
+    var dataconsulta = row.cells[8].innerText;
+    var horarioconsulta = row.cells[9].innerText;
     document.cadastrarprontuario.codigoconsulta.value = codigoconsulta;
     document.cadastrarprontuario.codigopaciente.value = codigopaciente;
     document.cadastrarprontuario.nomepaciente.value = nomepaciente;
