@@ -17,6 +17,7 @@ public class GerarRelatorioConsultasPorConvenio extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         response.setContentType("text/html;charset=UTF-8");
         JFileChooser jfc = new JFileChooser();
         jfc.setDialogTitle("Salvar relatório como...");
