@@ -33,7 +33,7 @@
                     <br>
                     <div style="width:100%">
 
-                        <div style="float:left"> <input type="text" name="celularpaciente" required size="35" onkeyup="maskIt(this, event, '(##)####-####')"></div>    
+                        <div style="float:left"> <input type="text" name="celularpaciente" required size="35" onkeyup="maskIt(this, event, '(##)#####-####')"></div>    
                         <div style="float:right"> <input type="text" name="foneresidencial" size="35" onkeyup="maskIt(this, event, '(##)####-####')"></div>
                     </div>
                     <br><br>

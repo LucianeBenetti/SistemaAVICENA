@@ -21,8 +21,8 @@
 
         <div class="container" style="padding: 10px" >
 
-            <div class="form" style="background-color: #b0bec5; padding: 20px; width: 50%; 
-                 border-radius: 25px; margin-left: 25%; ">
+            <div class="form" style="background-color: #b0bec5; padding: 20px; width: 50%;  
+                 border-radius: 15px; margin-left: 25%; ">
 
                 <p style="text-align: center; font-weight: bold">Faça o Login para acessar o sistema Avicena!</p>
 

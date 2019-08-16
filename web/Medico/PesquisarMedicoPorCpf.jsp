@@ -68,8 +68,8 @@
                     <br>
                     <div style="width:80%">
 
-                        <div style="float:left"> <input type="text" name="celularwhats" onkeyup="maskIt(this, event, '(##)####-####')" value="<%= request.getAttribute("celularwhats")%>" required size="31"></div>    
-                        <div style="float:right"><input type="text" name="celularmedico" onkeyup="maskIt(this, event, '(##)####-####')" value="<%= request.getAttribute("celularmedico")%>"size="31"></div>
+                        <div style="float:left"> <input type="text" name="celularwhats" onkeyup="maskIt(this, event, '(##)#####-####')" value="<%= request.getAttribute("celularwhats")%>" required size="31"></div>    
+                        <div style="float:right"><input type="text" name="celularmedico" onkeyup="maskIt(this, event, '(##)#####-####')" value="<%= request.getAttribute("celularmedico")%>"size="31"></div>
                     </div>
                     <br><br>
                     e-mail: <br>

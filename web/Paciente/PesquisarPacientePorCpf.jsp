@@ -68,7 +68,7 @@
                     <br>
                     <div style="width:80%">
 
-                        <div style="float:left"> <input type="text" name="celmenpaciente" onkeyup="maskIt(this, event, '(##)####-####')" value="<%= request.getAttribute("celmenpaciente")%>" required size="31"></div>    
+                        <div style="float:left"> <input type="text" name="celmenpaciente" onkeyup="maskIt(this, event, '(##)#####-####')" value="<%= request.getAttribute("celmenpaciente")%>" required size="31"></div>    
                         <div style="float:right"><input type="text" name="foneresidencial" onkeyup="maskIt(this, event, '(##)####-####')" value="<%= request.getAttribute("foneresidencial")%>"size="31"></div>
                     </div>
                     <br><br>

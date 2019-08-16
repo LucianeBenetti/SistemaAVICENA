@@ -52,7 +52,9 @@ public class PesquisarDadosParaCadastrarProntuario extends HttpServlet {
                     resultadoDaPesquisaPorCpf = true;
                     request.setAttribute("codigopaciente", pacienteVO.getCodigoPaciente());
                     request.setAttribute("nomepaciente", pacienteVO.getNomePaciente());
-                     request.setAttribute("pacientevoretornado", resultadoDaPesquisaPorCpf);
+                
+                    
+                    request.setAttribute("pacientevoretornado", resultadoDaPesquisaPorCpf);
 //                    resultadoDaPesquisaDeProntuarios = true;
 //                    request.setAttribute("listaprontuarios", listaProntuarios);
                 } else {

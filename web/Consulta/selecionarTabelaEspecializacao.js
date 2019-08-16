@@ -70,15 +70,15 @@ function clickExcluirConsulta(row) {
     var nomemedico = row.cells[2].innerText;
     var nomeespecialidade = row.cells[3].innerText;
     var nomeconvenio = row.cells[4].innerText;
-    /* var dataconsulta = row.cell[5].innerText;
-     var horarioconsulta = row.cell[6].innerText; */
+    var dataconsulta = row.cells[5].innerText;
+    var horarioconsulta = row.cells[6].innerText;
     document.excluirconsulta.codigoconsulta.value = codigoconsulta;
     document.excluirconsulta.nomepaciente.value = nomepaciente;
     document.excluirconsulta.nomemedico.value = nomemedico;
     document.excluirconsulta.nomeespecialidade.value = nomeespecialidade;
     document.excluirconsulta.nomeconvenio.value = nomeconvenio;
-    /*  document.excluirconsulta.dataconsulta.value = dataconsulta;
-     document.excluirconsulta.horarioconsulta.value = horarioconsulta;*/
+    document.excluirconsulta.dataconsulta.value = dataconsulta;
+    document.excluirconsulta.horarioconsulta.value = horarioconsulta;
 }
 
 function clickAtualizarConsulta(row) {

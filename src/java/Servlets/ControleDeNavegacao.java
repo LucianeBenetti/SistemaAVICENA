@@ -20,7 +20,7 @@ public class ControleDeNavegacao extends HttpServlet {
         
         String var1 = request.getParameter("sair");
         String var2 = request.getParameter("sairdocadastro");
-        String var3 = request.getParameter("avicena");
+        String var3 = request.getParameter("voltarpaginainicial");
         
         ArrayList<String> variaveis = new ArrayList<>();
         variaveis.add(var1);
@@ -43,7 +43,7 @@ public class ControleDeNavegacao extends HttpServlet {
                         request.getRequestDispatcher("Index.jsp").forward(request, response);
                         break;
                         
-                    case "avicena":
+                    case "voltarpaginainicial":
                         request.getRequestDispatcher("WEB-INF/PaginaInicial.jsp").forward(request, response);
                         break;
 

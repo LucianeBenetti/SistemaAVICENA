@@ -28,12 +28,16 @@ function selLinha(linha, multiplos) {
 var btnVisualizar = document.getElementById("visualizarDados");
 
 function clickLinhaTabelaProntuario(row) {
-    var codigoconvenio = row.cells[0].innerText;
-    var nomeconvenio = row.cells[1].innerText;
-    var valorconvenio = row.cells[2].innerText;
-    document.cadastrarconsulta.codigoconvenio.value = codigoconvenio;
-    document.cadastrarconsulta.nomeconvenio.value = nomeconvenio;
-    document.cadastrarconsulta.valorconvenio.value = valorconvenio;
+    var codigoprontuario = row.cells[0].innerText;
+    var codigoconsulta = row.cells[1].innerText;
+    var medicamentos = row.cells[2].innerText;
+    var exames = row.cells[3].innerText;
+    var registro = row.cells[4].innerText;
+    document.cadastrarprontuario.codigoprontuario.value = codigoprontuario;
+    document.cadastrarprontuario.codigoconsulta.value = codigoconsulta;
+    document.cadastrarprontuario.medicamentos.value = medicamentos;
+    document.cadastrarprontuario.exames.value = exames;
+    document.cadastrarprontuario.registro.value = registro;
 }
 
 function clickCheckbox() {
@@ -54,15 +58,15 @@ function clickExcluirProntuario(row) {
     var nomemedico = row.cells[2].innerText;
     var nomeespecialidade = row.cells[3].innerText;
     var nomeconvenio = row.cells[4].innerText;
-    /* var dataconsulta = row.cell[5].innerText;
-     var horarioconsulta = row.cell[6].innerText; */
+    var dataconsulta = row.cells[5].innerText;
+    var horarioconsulta = row.cells[6].innerText;
     document.excluirconsulta.codigoconsulta.value = codigoconsulta;
     document.excluirconsulta.nomepaciente.value = nomepaciente;
     document.excluirconsulta.nomemedico.value = nomemedico;
     document.excluirconsulta.nomeespecialidade.value = nomeespecialidade;
     document.excluirconsulta.nomeconvenio.value = nomeconvenio;
-    /*  document.excluirconsulta.dataconsulta.value = dataconsulta;
-     document.excluirconsulta.horarioconsulta.value = horarioconsulta;*/
+    document.excluirconsulta.dataconsulta.value = dataconsulta;
+    document.excluirconsulta.horarioconsulta.value = horarioconsulta;
 }
 
 function clickLinhaTabelaConsulta(row) {
@@ -74,8 +78,8 @@ function clickLinhaTabelaConsulta(row) {
     var nomeespecialidade = row.cells[5].innerText;
     var codigoconvenio = row.cells[6].innerText;
     var nomeconvenio = row.cells[7].innerText;
-      /* var dataconsulta = row.cell[8].innerText;
-     var horarioconsulta = row.cell[9].innerText; */
+    var dataconsulta = row.cell[8].innerText;
+    var horarioconsulta = row.cell[9].innerText;
     document.cadastrarprontuario.codigoconsulta.value = codigoconsulta;
     document.cadastrarprontuario.codigopaciente.value = codigopaciente;
     document.cadastrarprontuario.nomepaciente.value = nomepaciente;
@@ -84,7 +88,7 @@ function clickLinhaTabelaConsulta(row) {
     document.cadastrarprontuario.nomeespecialidade.value = nomeespecialidade;
     document.cadastrarprontuario.codigoconvenio.value = codigoconvenio;
     document.cadastrarprontuario.nomeconvenio.value = nomeconvenio;
-       /*  document.excluirconsulta.dataconsulta.value = dataconsulta;
-     document.excluirconsulta.horarioconsulta.value = horarioconsulta;*/
+    document.excluirconsulta.dataconsulta.value = dataconsulta;
+    document.excluirconsulta.horarioconsulta.value = horarioconsulta;
 
 }

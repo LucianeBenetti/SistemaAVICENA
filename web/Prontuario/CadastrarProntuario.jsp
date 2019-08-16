@@ -31,15 +31,7 @@
                 </div>
                 <form name="cadastrarprontuario" action="cadastrarprontuario" method="post">
                     Nome: <br>   
-                    <input type="hidden" readonly name="codigoconsulta"><br><br>  
-                    <input type="hidden" readonly name="codigopaciente"><br><br>  
                     <input type="text" readonly name="nomepaciente" size="50" required ><br><br> 
-                    <input type="hidden" readonly name="codigoespecializacao"><br><br>  
-                    <input type="hidden" readonly name="nomemedico"><br><br>  
-                    <input type="hidden" readonly name="codigopaciente"><br><br>  
-                    <input type="hidden" readonly name="nomeespecialidade"><br><br>  
-                    <input type="hidden" readonly name="codigoconvenio"><br><br>  
-                    <input type="hidden" readonly name="nomeconvenio"><br><br>  
                     <div style="width:55%">
                         <div style="float:left"> Data: </div>
                         <div style="float:right"> Horário: </div>
@@ -51,87 +43,19 @@
                     </div>
             </fieldset>
             <fieldset>
+                       
                 Medicamentos:
                 <textarea name="medicamentos"></textarea><br><br>
                 Exames:<br>
-                <textarea name="Exames"></textarea><br><br>
+                <textarea name="exames"></textarea><br><br>
                 Registro de Observações:<br>
-                <textarea name="medicamentos" ></textarea><br><br>
+                <textarea name="registro" ></textarea><br><br>
+                
                 <input type="submit" value="Cadastrar Prontuario">
                 <br><br>    
             </fieldset> 
         </form>
-    </div><br><br> 
-
-    <div class="resultadodaconsulta">
-
-        <%
-            Object obj = request.getAttribute("listaconsultas");
-            ArrayList<ConsultaVO> consultasVO = (ArrayList<ConsultaVO>) obj;
-            if (consultasVO != null) {%>
-
-        <h2>Dados das Consultas por Paciente</h2>
-        <table id="tabelaConsulta">
-            <tr>
-                <th>Id</th>
-                <th>Nome do Paciente</th> 
-                <th>Nome do Médico</th> 
-                <th>Especialidade</th>
-                <th>Convenio</th>
-                <th>Data da Consulta</th>
-                <th>Horário da Consulta</th>
-            </tr>        
-            <% for (ConsultaVO consultaVO : consultasVO) {%>  
-
-            <tr onclick="clickLinhaTabelaConsulta(this)">
-                <td><%= consultaVO.getCodigoConsulta()%></td>
-                <td hidden><%= consultaVO.getPacienteVO().getCodigoPaciente()%></td>
-                <td><%= consultaVO.getPacienteVO().getNomePaciente()%></td>
-                <td hidden><%= consultaVO.getEspecializacaoVO().getCodigoEspecializacao()%></td>
-                <td><%= consultaVO.getEspecializacaoVO().getMedicoVO().getNomeMedico()%></td>
-                <td><%= consultaVO.getEspecializacaoVO().getEspecialidadeVO().getNomeEspecialidade()%></td>
-                <td hidden><%= consultaVO.getConvenioVO().getCodigoConvenio()%></td>
-                <td><%= consultaVO.getConvenioVO().getNomeConvenio()%></td>
-                <td ><%= consultaVO.getDataConsulta()%></td>
-                <td ><%= consultaVO.getHorarioConsulta()%></td>
-            </tr>     
-            <% }  %>
-            <% }  %>
-        </table>
-        <br><br>
-        </form>
-        <br><br>
-        <%
-            Object objprontuario = request.getAttribute("prontuarios");
-            ArrayList<ProntuarioVO> prontuariosVO = (ArrayList<ProntuarioVO>) objprontuario;
-            if (prontuariosVO != null) {%>
-        <h2>Lista de Convênios</h2>
-        <table id="tabelaConsulta">
-            <tr>
-                <th>Id</th>
-                <th>Nome do Convênio</th> 
-                <th>Nome do Paciente</th> 
-                <th>Medicamentos</th>
-                <th>Exames</th> 
-                <th>Registro de OBS</th> 
-            </tr>        
-            <%
-                    for (ProntuarioVO pontuarioVO : prontuariosVO) {%>   
-            <tr onclick="clickLinhaTabelaProntuario(this)">
-                <td><%= pontuarioVO.getCodigoProntuario()%></td>
-                <td hidden><%= pontuarioVO.getConsultaVO().getCodigoConsulta()%></td>
-                <td ><%= pontuarioVO.getConsultaVO().getPacienteVO().getNomePaciente()%></td>
-                <td><%= pontuarioVO.getMedicamento()%></td>
-                <td><%= pontuarioVO.getExame()%></td>
-                <td><%= pontuarioVO.getRegistro()%></td>
-
-            </tr>     
-            <% }%>
-            <% }%>
-        </table>
-
-        <br><br>
-    </div>           
+    </div><br><br>            
     <footer class="footer">                
         &copy; Desenvolvido por Luciane Benetti e Marco Sena.
     </footer>

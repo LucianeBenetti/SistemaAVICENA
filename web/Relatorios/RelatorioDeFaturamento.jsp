@@ -1,23 +1,17 @@
-<%-- 
-    Document   : ListarTodosOsMedicos
-    Created on : 08/05/2019, 15:12:57
-    Author     : 80130917
---%>
-
-<%@page import="model.vo.Medico.MedicoVO"%>
+<%@page import="model.vo.Convenio.ConvenioVO"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>    
-        <meta charset= "utf-8">
+     <meta charset= "utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link type="text/css" rel="stylesheet" href="Medico/CRUDMedico.css">
+        <link type="text/css" rel="stylesheet" href="Convenio/CRUDConvenio.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-        <title>Sistema Avicena</title>    
+        <title>Sistema Avicena</title> 
     </head>
     <body>  
         <nav class="navbar navbar-expand-sm navbar-dark justify-content-left" 
@@ -39,34 +33,7 @@
             </ul>
         </nav>
         <div class="container">
-            <h1>Lista dos médicos cadastrados na clínica AVICENA</h1><br> 
-            <table>
-                <tr>
-                    <th>Id</th>
-                    <th>Nome</th> 
-                    <th>CRM</th> 
-                    <th>Celular</th>
-                    <th>Fone WhatsApp</th>
-                    <th>e-mail</th>
-                    <th>CPF</th>
-                    <th>CNPJ</th>
-                </tr>            
-                <%
-                    ArrayList<MedicoVO> medicosVO = (ArrayList<MedicoVO>) request.getAttribute("medicos");
-                    for (MedicoVO medicoVO : medicosVO) {%>   
-                <tr>
-                    <td><%= medicoVO.getCodigoMedico()%></td>
-                    <td><%= medicoVO.getNomeMedico()%></td>
-                    <td><%= medicoVO.getCrm()%></td>
-                    <td><%= medicoVO.getCelularMedico()%></td>
-                    <td><%= medicoVO.getCelMensagemMedico()%></td>
-                    <td><%= medicoVO.getEmailMedico()%></td>                        
-                    <td><%= medicoVO.getCpfMedico()%></td>
-                    <td><%= medicoVO.getCnpjMedico()%></td>
-                </tr>                   
-                <%}%>
-            </table>      
-            <br><br>
+      
         </div>
     </body>
 </html>
