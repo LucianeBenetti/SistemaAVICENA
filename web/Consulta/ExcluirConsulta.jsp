@@ -79,7 +79,7 @@
                         <input type="text" name="nomeespecialidade"  size="50" readonly> <br><br>
                         Convênio <br>                       
                         <input type="text" readonly name="nomeconvenio"  size="50"><br><br>
-                        <!--  <div style="width:55%">
+                        <div style="width:55%">
                         <div style="float:left"> Data<a>*</a>: </div>
                         <div style="float:right"> Horário<a>*</a>: </div>
                     </div>
@@ -88,7 +88,7 @@
                              <div style="float:left"> <input type="text" name="dataconsulta" readonly size="15"></div>    
                              <div style="float:right"> <input type="text" name="horarioconsulta" readonly size="15"></div><br><br> 
                         
-                         </div> -->
+                         </div> 
                         <input type="hidden" id="excluir" name="excluir" value="excluir">
                         <input type="submit" value="Excluir Consulta">
                     </fieldset>

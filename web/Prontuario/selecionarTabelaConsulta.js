@@ -90,5 +90,4 @@ function clickLinhaTabelaConsulta(row) {
     document.cadastrarprontuario.nomeconvenio.value = nomeconvenio;
     document.excluirconsulta.dataconsulta.value = dataconsulta;
     document.excluirconsulta.horarioconsulta.value = horarioconsulta;
-
 }
