@@ -8,12 +8,12 @@ a{
 }
 .form1 {    
     background-color: lightblue; 
-    padding: 5px;
+    padding: 0px;
     margin-top: 0px;/*Margen superior com 1 pixel*/
-    margin-right: -1px;
+    margin-right: 0px;
     float: left;/*propriedade indicando que a Área flutuará a esquerda*/
-    width: 48%; /*Ocupando 24% da largura total destinada para o corpo*/
-    height: 400px; /*Altura de 500 pixels*/   
+    width: 38%; /*Ocupando 24% da largura total destinada para o corpo*/
+    height: 200px; /*Altura de 500 pixels*/   
 }
 .form2 {  
     background-color: lightblue; 
@@ -24,7 +24,7 @@ a{
     width: 50%; /*Ocupando 24% da largura total destinada para o corpo*/
     height: 400px; /*Altura de 500 pixels*/    
 }
-.consultaCPF {
+.consultaNome {
     background-color: lightblue; 
     padding: 0px;
     margin-top: 0px;/*Margen superior com 1 pixel*/
@@ -33,14 +33,14 @@ a{
     width:34%; /*Ocupando 24% da largura total destinada para o corpo*/
     height: 700px; /*Altura de 500 pixels*/
 }
-.resultadodaconsultaCPF {
+.resultadodaconsultaNome {
     background-color: lightblue;/*Cor de fundo*/    
     padding: 0px;/*Margen interna de 3 pixels*/
     margin-top: 0px;/*Margen superior com 1 pixel*/
-    margin-right: 8%;
+    margin-right: 0%;
     float: right;/*propriedade indicando que a Área flutuará a direita*/
     margin-left: 1%;
-    width: 55%;/*Ocupando 74% da largura total destinada para o corpo*/
+    width: 59%;/*Ocupando 74% da largura total destinada para o corpo*/
     height: 700px;/*Altura de 494 pixels*/
 }
 .resultadodaatualizacao{
@@ -59,42 +59,85 @@ a{
     width: 100%;/*Ocupando 74% da largura total destinada para o corpo*/
     height: 700px;/*Altura de 494 pixels*/
 }
-td,th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 6px;
-}  
-tr:nth-child(even){background-color: beige;}
-tr:nth-child(odd){background-color: burlywood;}  
 .footer {
     float: left; 
     width: 100%; 
     background-color:cadetblue; 
     text-align: center; 
-    padding: 2px; 
-    margin-top: 200px; 
+    padding: 8px; 
+    margin-top: 400px; 
     margin-left: 0%; 
     bottom: 0px;
 }
 .form3{
     background-color: lightblue; 
-    padding: 5px;
+    padding: 0px;
     margin-top: 0px;/*Margen superior com 1 pixel*/
-    margin-left: -1;
+    margin-left: 0px;
     float: left;/*propriedade indicando que a Área flutuará a esquerda*/
-    width: 51.5%; /*Ocupando 24% da largura total destinada para o corpo*/
-    height: 400px; /*Altura de 500 pixels*/
+    width: 38%; /*Ocupando 24% da largura total destinada para o corpo*/
+    height: 200px; /*Altura de 500 pixels*/
 }
-.form4{
-    background-color: powderblue;
-    padding: 4px;
-    float: right;
-    width: 40%;
-    margin-right: 30%;
-    margin-left: 0%;
-    margin-top: 2%;
-    margin-bottom: 1%;    
+#tabelaConsulta{
+  width:80%;
+  margin:0 auto;
+  border:0;
+  box-shadow: 0 5px 30px darkgrey;
+  border-spacing: 0;
 }
+
+#tabelaConsulta thead th{
+  font-weight: bold;
+  background-color: black;
+  color:white;
+  text-align: center;
+  padding:5px 10px;
+}
+
+#tabelaConsulta tr td{
+  padding:5px 10px;
+  text-align: center;
+}
+
+#tabelaConsulta tr td:last-child{
+  text-align: center;
+}
+
+/**Cores**/
+#tabelaConsulta tr:nth-child(odd){
+  background-color: #eee;
+}
+
+/**Cor quando passar por cima**/
+#tabelaEspecialidades tr:hover td{
+  background-color: #feffb7;
+}
+
+/**Cor quando selecionado**/
+#tabelaConsulta tr.selecionado td{
+  background-color: #aff7ff;
+}
+
+button#visualizarDados{
+  background-color: white;
+  border: 1px solid black;
+  width:50%;
+  margin: 10px auto;
+  padding:10px 0;
+  display: block;
+  color: black;
+}
+#tabelaListarTodas td,th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 6px;
+}  
+#tabelaListarTodas tr:nth-child(even){
+    background-color: beige;
+}
+#tabelaListarTodas tr:nth-child(odd){
+    background-color: burlywood;
+} 
 .secao3 {     
     float: left;/*propriedade indicando que a Área flutuará a direita*/
     margin-top: 0px;
@@ -125,4 +168,19 @@ tr:nth-child(odd){background-color: burlywood;}
     margin-left: 0%;
     margin-top: 2%;
     margin-bottom: 1%;
+}
+.resultadodaconsulta {
+    background-color: lightblue;/*Cor de fundo*/    
+    padding: 0px;/*Margen interna de 3 pixels*/
+    margin-top: 0px;/*Margen superior com 1 pixel*/
+    margin-right: 8%;
+    float: right;/*propriedade indicando que a Área flutuará a direita*/
+    margin-left: 1%;
+    width: 50%;/*Ocupando 74% da largura total destinada para o corpo*/
+    height: 700px;/*Altura de 494 pixels*/
+}
+textArea{
+    width:400px;
+    height:100px;
+    border: 2px solid #990000;
 }

@@ -60,7 +60,7 @@
     <nav class="navbar navbar-expand-sm navbar-dark justify-content-center" style= "background-color: #7986cb; 
          font-size: 18px; color: #ffffff; ">
         <a class="navbar-brand">
-            <img src="icon2.png" alt="logo" style="width:50px; height: 30px;">
+            <img src=icon2.png alt="logo" style="width:50px; height: 30px;">
         </a>
         
         <ul class="navbar-nav">

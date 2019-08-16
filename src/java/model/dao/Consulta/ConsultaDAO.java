@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import model.dao.ConexaoComBanco;
 import model.dao.Convenio.ConvenioDAO;
 import model.dao.Especializacao.EspecializacaoDAO;
@@ -35,10 +36,6 @@ public class ConsultaDAO {
 
         try {
 
-//            Calendar c = Calendar.getInstance();
-//            c.setTime(consulta.getDataConsulta());
-//            //java.sql.Date			
-//            Date dataSQL = new Date(c.getTimeInMillis());
             prepStmt.setInt(1, consulta.getEspecializacaoVO().getCodigoEspecializacao());
             prepStmt.setInt(2, consulta.getPacienteVO().getCodigoPaciente());
             prepStmt.setInt(3, consulta.getConvenioVO().getCodigoConvenio());
@@ -153,7 +150,7 @@ public class ConsultaDAO {
             ConexaoComBanco.closePreparedStatement(prepStmt);
             ConexaoComBanco.closeConnection(conn);
         }
-        
+
         return sucessoAtualizar;
     }
 
@@ -256,6 +253,41 @@ public class ConsultaDAO {
             ConexaoComBanco.closeConnection(conn);
         }
         return consulta.getCodigoConsulta();
+    }
+
+    public List<ConsultaVO> listarConsultasVOPOrConvenio(int codigoConvenio) {
+
+        ArrayList<ConsultaVO> listaConsultas = new ArrayList<ConsultaVO>();
+        String query = "SELECT * from consulta " + " where codigoConvenio = ?";
+
+        Connection conn = ConexaoComBanco.getConnection();
+        PreparedStatement prepStmt = ConexaoComBanco.getPreparedStatement(conn, query);
+        try {
+            prepStmt.setInt(1, codigoConvenio);
+            ResultSet result = prepStmt.executeQuery();
+
+            while (result.next()) {
+                ConsultaVO consulta = new ConsultaVO();
+                consulta.setCodigoConsulta(result.getInt(1));
+                EspecializacaoVO especializacaoVO = especializacaoDAO.consultarEspecializacaoVOPorId(result.getInt(2));
+                consulta.setEspecializacaoVO(especializacaoVO);
+                PacienteVO pacienteVO = pacienteDAO.consultarPorId(result.getInt(3));
+                consulta.setPacienteVO(pacienteVO);
+                ConvenioVO convenioVO = convenioDAO.consultarPorId(result.getInt(4));
+                consulta.setConvenioVO(convenioVO);
+                consulta.setDataConsulta(result.getString(5));
+                consulta.setAtencaoEspecial(result.getString(6));
+                consulta.setHorarioConsulta(result.getString(7));
+                listaConsultas.add(consulta);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            ConexaoComBanco.closePreparedStatement(prepStmt);
+            ConexaoComBanco.closeConnection(conn);
+        }
+        System.out.println("model.dao.Consulta()" + listaConsultas);
+        return listaConsultas;
     }
 
 }

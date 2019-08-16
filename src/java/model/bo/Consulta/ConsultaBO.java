@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import javax.swing.JOptionPane;
+import model.GeradorPlanilha;
 import model.dao.Consulta.ConsultaDAO;
 import model.vo.Consulta.ConsultaVO;
 
@@ -48,5 +49,15 @@ public class ConsultaBO {
     public List<ConsultaVO> listarConsultasVOPorID(int codigoPaciente) {
         return consultaDAO.consultarPorPaciente(codigoPaciente);
     }
+
+    public List<ConsultaVO> listarConsultasVOPorConvenio(int codigoConvenio) {
+        return consultaDAO.listarConsultasVOPOrConvenio(codigoConvenio);
+    }
+    
+    public void gerarPlanilha(List<ConsultaVO> convenios, String caminhoEscolhido) {
+		GeradorPlanilha gerador = new GeradorPlanilha();
+		gerador.gerarPlanilhaConvenios(convenios, caminhoEscolhido);
+		
+	}
 
 }

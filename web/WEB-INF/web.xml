@@ -152,6 +152,14 @@
         <servlet-name>PesquisarDadosParaCadastrarProntuario</servlet-name>
         <servlet-class>Servlets.Prontuario.PesquisarDadosParaCadastrarProntuario</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PesquisarConsultaPorConvenio</servlet-name>
+        <servlet-class>Servlets.Relatorios.PesquisarConsultaPorConvenio</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GerarRelatorioConsultasPorConvenio</servlet-name>
+        <servlet-class>Servlets.Relatorios.GerarRelatorioConsultasPorConvenio</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CrudPaciente</servlet-name>
         <url-pattern>/crudpaciente</url-pattern>
@@ -302,6 +310,14 @@
     <servlet-mapping>
         <servlet-name>PesquisarDadosParaCadastrarProntuario</servlet-name>
         <url-pattern>/pesquisardadosparacadastrarprontuario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PesquisarConsultaPorConvenio</servlet-name>
+        <url-pattern>/pesquisarconsultaporconvenio</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GerarRelatorioConsultasPorConvenio</servlet-name>
+        <url-pattern>/gerarrelatorioconsultasporconvenio</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

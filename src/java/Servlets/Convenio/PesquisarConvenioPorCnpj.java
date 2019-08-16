@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.vo.Convenio.ConvenioVO;
 
 public class PesquisarConvenioPorCnpj extends HttpServlet {
@@ -31,6 +32,9 @@ public class PesquisarConvenioPorCnpj extends HttpServlet {
             request.setAttribute("valor", convenioVO.getValor());
             
             resultadoDaPesquisaPorCpf = true;
+            HttpSession session = request.getSession();
+            session.setAttribute("codigoconvenio", convenioVO.getCodigoConvenio());
+            
             request.setAttribute("conveniovoretornado", resultadoDaPesquisaPorCpf);
             request.getRequestDispatcher("Convenio/PesquisarConvenioPorCnpj.jsp").forward(request, response);
 

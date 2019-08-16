@@ -72,6 +72,7 @@ public class ConvenioDAO {
             ConexaoComBanco.closePreparedStatement(prepStmt);
             ConexaoComBanco.closeConnection(conn);
         }
+        System.out.println("model.dao.Convenio.ConvenioDAO.pesquisarConvenioVOPorCnpj()" + convenio);
         return convenio;
     }
 
@@ -157,9 +158,7 @@ public class ConvenioDAO {
 
     public ConvenioVO consultarPorId(int id) {
         ConvenioVO convenio = null;
-
         String query = "SELECT *from convenio " + " where codigoConvenio = ?";
-
         Connection conn = ConexaoComBanco.getConnection();
         PreparedStatement prepStmt = ConexaoComBanco.getPreparedStatement(conn, query);
         try {

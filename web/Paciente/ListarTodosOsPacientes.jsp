@@ -6,7 +6,6 @@
     <head>    
         <meta charset= "utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link type="text/css" rel="stylesheet" href="Paciente/PacienteCRUD.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -32,10 +31,11 @@
                 </li>
             </ul>
         </nav>
-        <div class="container">
-            <h4>Lista dos pacientes cadastrados na clínica AVICENA</h4><br> 
-            <table class="table">
-                <tr>
+        <div class="container-fluid">
+            <h4>Lista dos pacientes cadastrados na clínica AVICENA:</h4><br> 
+            <table class="table table-borderless table-sm table-hover table-striped">
+              <thead>
+                <tr class="table-warning" >
                     <th>Id</th>
                     <th>Nome</th> 
                     <th>Celular</th>
@@ -51,28 +51,31 @@
                     <th>Cidade</th> 
                     <th>UF</th>
                     <th>CEP</th>
-                </tr>            
+                </tr>
+            </thead>
                 <%
                     ArrayList<PacienteVO> pacientesVO = (ArrayList<PacienteVO>) request.getAttribute("pacientes");
 
                     for (PacienteVO pacienteVO : pacientesVO) {%>   
-                <tr>
-                    <td><%= pacienteVO.getCodigoPaciente()%></td>
-                    <td><%= pacienteVO.getNomePaciente()%></td>
-                    <td><%= pacienteVO.getCelMensagemPaciente()%></td>
-                    <td><%= pacienteVO.getFoneResidencial()%></td>
-                    <td><%= pacienteVO.getFoneComercial()%></td>
-                    <td><%= pacienteVO.getEmailPaciente()%></td>                        
-                    <td><%= pacienteVO.getCpfPaciente()%></td>
-                    <td><%= pacienteVO.getCnpjPaciente()%></td>
-                    <td><%= pacienteVO.getLogradouro()%></td>
-                    <td><%= pacienteVO.getNumLogradouro()%></td>
-                    <td><%= pacienteVO.getComplemento()%></td>
-                    <td><%= pacienteVO.getBairro()%></td>
-                    <td><%= pacienteVO.getCidade()%></td>
-                    <td><%= pacienteVO.getUf()%></td>
-                    <td><%= pacienteVO.getCep()%></td>
-                </tr>                   
+                <tbody>
+                    <tr>
+                        <td><%= pacienteVO.getCodigoPaciente()%></td>
+                        <td><%= pacienteVO.getNomePaciente()%></td>
+                        <td><%= pacienteVO.getCelMensagemPaciente()%></td>
+                        <td><%= pacienteVO.getFoneResidencial()%></td>
+                        <td><%= pacienteVO.getFoneComercial()%></td>
+                        <td><%= pacienteVO.getEmailPaciente()%></td>                        
+                        <td><%= pacienteVO.getCpfPaciente()%></td>
+                        <td><%= pacienteVO.getCnpjPaciente()%></td>
+                        <td><%= pacienteVO.getLogradouro()%></td>
+                        <td><%= pacienteVO.getNumLogradouro()%></td>
+                        <td><%= pacienteVO.getComplemento()%></td>
+                        <td><%= pacienteVO.getBairro()%></td>
+                        <td><%= pacienteVO.getCidade()%></td>
+                        <td><%= pacienteVO.getUf()%></td>
+                        <td><%= pacienteVO.getCep()%></td>
+                    </tr>
+                </tbody>
                 <%
                     }
                 %>
@@ -80,3 +83,4 @@
         </div>      
     </body>
 </html>
+
