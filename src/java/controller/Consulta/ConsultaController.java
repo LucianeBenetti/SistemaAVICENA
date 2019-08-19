@@ -36,4 +36,8 @@ public class ConsultaController {
         return consultaBO.listarConsultasVOPorConvenio(codigoConvenio);
     }
 
- }
+    public List<ConsultaVO> listarConsultasVOPorMedico(int codigoEspecializacao) {
+        return consultaBO.listarConsultasVOPorMedico(codigoEspecializacao);
+    }
+
+}

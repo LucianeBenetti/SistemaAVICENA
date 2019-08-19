@@ -255,7 +255,7 @@ public class ConsultaDAO {
         return consulta.getCodigoConsulta();
     }
 
-    public List<ConsultaVO> listarConsultasVOPOrConvenio(int codigoConvenio) {
+    public List<ConsultaVO> listarConsultasVOPorConvenio(int codigoConvenio) {
 
         ArrayList<ConsultaVO> listaConsultas = new ArrayList<ConsultaVO>();
         String query = "SELECT * from consulta " + " where codigoConvenio = ?";
@@ -290,4 +290,39 @@ public class ConsultaDAO {
         return listaConsultas;
     }
 
+    public List<ConsultaVO> listarConsultasVOPorMedico(int codigoEspecializacao) {
+        ArrayList<ConsultaVO> listaConsultas = new ArrayList<ConsultaVO>();
+        String query = "SELECT * from consulta " + " where codigoEspecializacao = ?";
+
+        Connection conn = ConexaoComBanco.getConnection();
+        PreparedStatement prepStmt = ConexaoComBanco.getPreparedStatement(conn, query);
+        try {
+            prepStmt.setInt(1, codigoEspecializacao);
+            ResultSet result = prepStmt.executeQuery();
+
+            while (result.next()) {
+                ConsultaVO consulta = new ConsultaVO();
+                consulta.setCodigoConsulta(result.getInt(1));
+                EspecializacaoVO especializacaoVO = especializacaoDAO.consultarEspecializacaoVOPorId(result.getInt(2));
+                consulta.setEspecializacaoVO(especializacaoVO);
+                PacienteVO pacienteVO = pacienteDAO.consultarPorId(result.getInt(3));
+                consulta.setPacienteVO(pacienteVO);
+                ConvenioVO convenioVO = convenioDAO.consultarPorId(result.getInt(4));
+                consulta.setConvenioVO(convenioVO);
+                consulta.setDataConsulta(result.getString(5));
+                consulta.setAtencaoEspecial(result.getString(6));
+                consulta.setHorarioConsulta(result.getString(7));
+                listaConsultas.add(consulta);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            ConexaoComBanco.closePreparedStatement(prepStmt);
+            ConexaoComBanco.closeConnection(conn);
+        }
+        System.out.println("model.dao.Consulta()" + listaConsultas);
+        return listaConsultas;
+    }
 }
+
+

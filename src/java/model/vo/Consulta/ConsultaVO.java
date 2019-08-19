@@ -1,5 +1,6 @@
 package model.vo.Consulta;
 
+import java.util.ArrayList;
 import java.util.Date;
 import model.vo.Convenio.ConvenioVO;
 import model.vo.Especializacao.EspecializacaoVO;
@@ -83,10 +84,13 @@ public class ConsultaVO {
     public void setAtencaoEspecial(String atencaoEspecial) {
         this.atencaoEspecial = atencaoEspecial;
     }
-
+    
     @Override
     public String toString() {
         return "ConsultaVO{" + "codigoConsulta=" + codigoConsulta + ", especializacaoVO=" + especializacaoVO + ", pacienteVO=" + pacienteVO + ", convenioVO=" + convenioVO + ", dataConsulta=" + dataConsulta + ", horarioConsulta=" + horarioConsulta + ", atencaoEspecial=" + atencaoEspecial + '}';
     }
 
+   
+
+   
 }

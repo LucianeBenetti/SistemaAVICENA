@@ -67,8 +67,7 @@
                 </table>
                 <br><br>
 
-                <input type="hidden" name="caminhoEscolhido" id="gerarrelatorio" name="gerarrelatorio" value="gerarrelatorio">
-
+                <input type="hidden" id="gerarrelatorio" name="gerarrelatorio" value="gerarrelatorio">
                 <input type="submit" value="Gerar Relatório">
             </div>
 

@@ -50,7 +50,11 @@ public class ConsultaBO {
     }
 
     public List<ConsultaVO> listarConsultasVOPorConvenio(int codigoConvenio) {
-        return consultaDAO.listarConsultasVOPOrConvenio(codigoConvenio);
+        return consultaDAO.listarConsultasVOPorConvenio(codigoConvenio);
+    }
+
+    public List<ConsultaVO> listarConsultasVOPorMedico(int codigoEspecializacao) {
+        return consultaDAO.listarConsultasVOPorMedico(codigoEspecializacao);
     }
 
 }

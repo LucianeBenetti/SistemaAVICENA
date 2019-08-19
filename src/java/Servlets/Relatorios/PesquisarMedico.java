@@ -1,51 +1,33 @@
+
 package Servlets.Relatorios;
 
-import controller.Consulta.ConsultaController;
-import controller.Convenio.ConvenioController;
+import controller.Medico.MedicoController;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import model.vo.Consulta.ConsultaVO;
-import model.vo.Convenio.ConvenioVO;
+import model.vo.Medico.MedicoVO;
 
-public class PesquisarConsultaPorConvenio extends HttpServlet {
-
-    ConvenioVO convenioVO = new ConvenioVO();
+public class PesquisarMedico extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
+        MedicoController medicoController = new MedicoController();
+        ArrayList<MedicoVO> listaMedicosVO = new ArrayList<MedicoVO>();
 
-        convenioVO.setCnpjConvenio(request.getParameter("cnpjconvenio"));
-        ConvenioController conveniocontroller = new ConvenioController();
-        Boolean resultadoDaPesquisaPorCpf = false;
-        convenioVO = conveniocontroller.pesquisarConvenioVOPorCnpj(convenioVO.getCnpjConvenio());
+        listaMedicosVO = medicoController.listarTodosOsMedicosVO();
 
-        if (convenioVO != null) {
+        if (listaMedicosVO != null) {
 
-            int codigoConvenio = convenioVO.getCodigoConvenio();
-            List<ConsultaVO> listaConsultas = null;
-            Boolean resultadoDaPesquisaDeConsultas = false;
-            ConsultaController consultaController = new ConsultaController();
-            listaConsultas = consultaController.listarConsultasVOPorConvenio(codigoConvenio);
-            System.out.println("Servlets.Relatorios.PesquisarConsultaPorConvenio.processRequest()" + listaConsultas);
-            if (listaConsultas.size() > 0) {
+            request.setAttribute("listamedicosvo", listaMedicosVO);
 
-                HttpSession session = request.getSession();
-                session.setAttribute("listaconsultas", listaConsultas);
-                request.setAttribute("listaconsultas", listaConsultas);
-
-            } else {
-                System.out.println("O consulta não foi encontrada!");
-                request.setAttribute("consultavoretornada", resultadoDaPesquisaDeConsultas);
-            }
-            request.getRequestDispatcher("Relatorios/RelatorioDeConsultaPorConvenio.jsp").forward(request, response);
         }
+            request.getRequestDispatcher("Relatorios/RelatorioDeConsultaPorMedico.jsp").forward(request, response);
 
     }
 

@@ -160,6 +160,18 @@
         <servlet-name>GerarRelatorioConsultasPorConvenio</servlet-name>
         <servlet-class>Servlets.Relatorios.GerarRelatorioConsultasPorConvenio</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PesquisarConsultaPorMedico</servlet-name>
+        <servlet-class>Servlets.Relatorios.PesquisarConsultaPorMedico</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PesquisarMedico</servlet-name>
+        <servlet-class>Servlets.Relatorios.PesquisarMedico</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GerarRelatorioConsultasPorMedico</servlet-name>
+        <servlet-class>Servlets.Relatorios.GerarRelatorioConsultasPorMedico</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CrudPaciente</servlet-name>
         <url-pattern>/crudpaciente</url-pattern>
@@ -318,6 +330,18 @@
     <servlet-mapping>
         <servlet-name>GerarRelatorioConsultasPorConvenio</servlet-name>
         <url-pattern>/gerarrelatorioconsultasporconvenio</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PesquisarConsultaPorMedico</servlet-name>
+        <url-pattern>/pesquisarconsultapormedico</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PesquisarMedico</servlet-name>
+        <url-pattern>/pesquisarmedico</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GerarRelatorioConsultasPorMedico</servlet-name>
+        <url-pattern>/gerarrelatorioconsultaspormedico</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

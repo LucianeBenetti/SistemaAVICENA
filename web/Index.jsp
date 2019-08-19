@@ -26,7 +26,7 @@
 
                 <p style="text-align: center; font-weight: bold">Faça o Login para acessar o sistema Avicena!</p>
 
-                <form action="usuario" class="was-validated">
+                <form action="usuario" class="was-validated" method="post">
                     <div class="form-group">
                         <input type="hidden" id="validar" name="validar" value="validar">
                         <label for="nome">Nome:</label>
