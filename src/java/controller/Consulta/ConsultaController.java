@@ -11,8 +11,6 @@ import model.vo.Convenio.ConvenioVO;
 public class ConsultaController {
 
     ConsultaBO consultaBO = new ConsultaBO();
-    public static final String TIPO_RELATORIO_XLS = "xls";
-    public static final String TIPO_RELATORIO_PDF = "pdf";
 
     public int cadastrarConsultaVO(ConsultaVO consultaVO) {
         return consultaBO.cadastrarConsultaVO(consultaVO);
@@ -38,10 +36,4 @@ public class ConsultaController {
         return consultaBO.listarConsultasVOPorConvenio(codigoConvenio);
     }
 
-    public void gerarRelatorio(List<ConsultaVO> consultas, String caminhoEscolhido, String tipoRelatorio) {
-		if (tipoRelatorio.equals(TIPO_RELATORIO_XLS)) {
-			consultaBO.gerarPlanilha(consultas, caminhoEscolhido);
-		}
-
-	}
  }
