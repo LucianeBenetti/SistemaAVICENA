@@ -172,6 +172,10 @@
         <servlet-name>GerarRelatorioConsultasPorMedico</servlet-name>
         <servlet-class>Servlets.Relatorios.GerarRelatorioConsultasPorMedico</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CadastrarProntuario</servlet-name>
+        <servlet-class>Servlets.Prontuario.CadastrarProntuario</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CrudPaciente</servlet-name>
         <url-pattern>/crudpaciente</url-pattern>
@@ -342,6 +346,10 @@
     <servlet-mapping>
         <servlet-name>GerarRelatorioConsultasPorMedico</servlet-name>
         <url-pattern>/gerarrelatorioconsultaspormedico</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CadastrarProntuario</servlet-name>
+        <url-pattern>/cadastrarprontuario</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

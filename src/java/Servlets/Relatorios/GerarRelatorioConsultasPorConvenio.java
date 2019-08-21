@@ -60,7 +60,7 @@ public class GerarRelatorioConsultasPorConvenio extends HttpServlet {
         }
         //5) Escreve o arquivo em disco, no caminho informado
         FileOutputStream fileOut = null;
-        File arquivoRelatorio = new File("C:\\SENAC\\Relatorio" + nomeConvenio + ".xls");
+        File arquivoRelatorio = new File("D:\\SENAC\\Relatorio" + nomeConvenio + ".xls");
         try {
             fileOut = new FileOutputStream(arquivoRelatorio);
             // DataOutputStream abrirArquivo = new DataOutputStream(fileOut);

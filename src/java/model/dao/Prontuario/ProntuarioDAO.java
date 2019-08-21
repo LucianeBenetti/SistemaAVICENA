@@ -6,31 +6,33 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 import model.dao.ConexaoComBanco;
-import model.dao.Consulta.ConsultaDAO;
-import model.vo.Consulta.ConsultaVO;
+import model.dao.Paciente.PacienteDAO;
+import model.vo.Paciente.PacienteVO;
 import model.vo.Prontuario.ProntuarioVO;
 
 public class ProntuarioDAO {
 
     ProntuarioVO prontuario = new ProntuarioVO();
-    ConsultaDAO consultaDAO = new ConsultaDAO();
+    PacienteDAO pacienteDAO = new PacienteDAO();
 
-    public int inserir(ProntuarioVO prontuario) {
+    public int cadastrarProntuario(ProntuarioVO prontuario) {
         int novoId = -1;
 
-        String query = " INSERT INTO prontuario (codigoConsulta, medicamento, exame, registro) "
-                + " VALUES (?, ?, ?,?) ";
+        String query = " INSERT INTO prontuario (codigoPaciente, medicamento, exame, procedimento, registro) "
+                + " VALUES (?, ?, ?, ?, ?) ";
 
         Connection conn = ConexaoComBanco.getConnection();
         PreparedStatement prepStmt = ConexaoComBanco.getPreparedStatement(conn, query, Statement.RETURN_GENERATED_KEYS);
 
         try {
 
-            prepStmt.setInt(1, prontuario.getConsultaVO().getCodigoConsulta());
+            prepStmt.setInt(1, prontuario.getPacienteVO().getCodigoPaciente());
             prepStmt.setString(2, prontuario.getMedicamento());
             prepStmt.setString(3, prontuario.getExame());
-            prepStmt.setString(4, prontuario.getRegistro());
+            prepStmt.setString(4, prontuario.getProcedimento());
+            prepStmt.setString(5, prontuario.getRegistro());
 
             prepStmt.executeUpdate();
 
@@ -70,24 +72,25 @@ public class ProntuarioDAO {
         return sucessoDelete;
     }
 
-    public ProntuarioVO consultarProntuarioPorId(int id) {
+    public ProntuarioVO consultarProntuarioVOPorId(int codigoPaciente){
 
-        String query = " SELECT *from prontuario " + " where codigoProntuario = ? ";
+        String query = " SELECT *from prontuario " + " where codigoPaciente = ? ";
 
         Connection conn = ConexaoComBanco.getConnection();
         PreparedStatement prepStmt = ConexaoComBanco.getPreparedStatement(conn, query);
         try {
-            prepStmt.setInt(1, id);
+            prepStmt.setInt(1, codigoPaciente);
             ResultSet result = prepStmt.executeQuery();
 
             while (result.next()) {
 
                 prontuario.setCodigoProntuario(result.getInt(1));
-                ConsultaVO consulta = consultaDAO.consultarPorId(result.getInt(2));
-                prontuario.setConsultaVO(consulta);
+                PacienteVO paciente = pacienteDAO.consultarPorId(result.getInt(2));
+                prontuario.setPacienteVO(paciente);
                 prontuario.setMedicamento(result.getString(3));
                 prontuario.setExame(result.getString(4));
-                prontuario.setRegistro(result.getString(5));
+                prontuario.setProcedimento(result.getString(5));
+                prontuario.setRegistro(result.getString(6));
 
             }
         } catch (SQLException ex) {
@@ -99,10 +102,10 @@ public class ProntuarioDAO {
         return prontuario;
     }
 
-    public boolean atualizar(ProntuarioVO prontuario, int codigoProntuario) {
-        boolean sucessoAtualizar = false;
+    public boolean atualizarProntuario(ProntuarioVO prontuarioVO) {
+       boolean sucessoAtualizar = false;
 
-        String query = " UPDATE prontuario SET codigoConsulta=?, medicamento=?, exame=?, registro=? "
+        String query = " UPDATE prontuario SET codigoPaciente=?, medicamento=?, exame=?, procedimento=?, registro=? "
                 + " where codigoProntuario = ? ";
 
         Connection conn = ConexaoComBanco.getConnection();
@@ -110,16 +113,17 @@ public class ProntuarioDAO {
 
         try {
 
-            prepStmt.setInt(1, prontuario.getConsultaVO().getCodigoConsulta());
+            prepStmt.setInt(1, prontuario.getPacienteVO().getCodigoPaciente());
             prepStmt.setString(2, prontuario.getMedicamento());
             prepStmt.setString(3, prontuario.getExame());
-            prepStmt.setString(4, prontuario.getRegistro());
-            prepStmt.setInt(5, prontuario.getCodigoProntuario());
+            prepStmt.setString(4, prontuario.getProcedimento());
+            prepStmt.setString(5, prontuario.getRegistro());
+            prepStmt.setInt(6, prontuario.getCodigoProntuario());
 
             int codigoRetorno = prepStmt.executeUpdate();
 
-            if (codigoRetorno == 1) {
-                sucessoAtualizar = true;
+           if (codigoRetorno == 1) {
+              sucessoAtualizar = true;
             }
         } catch (SQLException ex) {
             System.out.println("Erro ao executar Query de Atualiza��o do Prontu�rio!Causa: \n: " + ex.getMessage());
@@ -144,11 +148,12 @@ public class ProntuarioDAO {
                 ProntuarioVO prontuario = new ProntuarioVO();
 
                 prontuario.setCodigoProntuario(result.getInt(1));
-                ConsultaVO consulta = consultaDAO.consultarPorId(result.getInt(2));
-                prontuario.setConsultaVO(consulta);
+                PacienteVO paciente = pacienteDAO.consultarPorId(result.getInt(2));
+                prontuario.setPacienteVO(paciente);
                 prontuario.setMedicamento(result.getString(3));
                 prontuario.setExame(result.getString(4));
-                prontuario.setRegistro(result.getString(5));
+                prontuario.setProcedimento(result.getString(5));
+                prontuario.setRegistro(result.getString(6));
 
                 listaProntuarios.add(prontuario);
             }
@@ -159,39 +164,34 @@ public class ProntuarioDAO {
         return listaProntuarios;
     }
 
-    public ArrayList<ProntuarioVO> listarProntuariosDoPaciente(int idPaciente) {
-
-        ArrayList<ProntuarioVO> listaProntuarios = new ArrayList<ProntuarioVO>();
-
-        String query = " SELECT prt.* from prontuario prt, consulta con, paciente pac "
-                + " WHERE prt.codigoConsulta = con.codigoConsulta "
-                + "     AND pac.codigoPaciente = con.codigoPaciente "
-                + "     AND pac.codigoPaciente = ? ";
+    public ProntuarioVO listarProntuariosPorPaciente(int codigoPaciente) {
+        ProntuarioVO prontuarioVO = null;
+        String query = " SELECT * from prontuario where codigoPaciente = ? ";
 
         Connection conn = ConexaoComBanco.getConnection();
         PreparedStatement prepStmt = ConexaoComBanco.getPreparedStatement(conn, query);
         try {
-            prepStmt.setInt(1, idPaciente);
+            prepStmt.setInt(1, codigoPaciente);
             ResultSet result = prepStmt.executeQuery();
 
             while (result.next()) {
-                ProntuarioVO prontuario = new ProntuarioVO();
+                prontuarioVO = new ProntuarioVO();
+                prontuarioVO.setCodigoProntuario(result.getInt(1));
+                PacienteVO paciente = pacienteDAO.consultarPorId(result.getInt(2));
+                prontuarioVO.setPacienteVO(paciente);
+                prontuarioVO.setMedicamento(result.getString(3));
+                prontuarioVO.setExame(result.getString(4));
+                prontuarioVO.setProcedimento(result.getString(5));
+                prontuarioVO.setRegistro(result.getString(6));
 
-                prontuario.setCodigoProntuario(result.getInt(1));
-                ConsultaVO consulta = consultaDAO.consultarPorId(result.getInt(2));
-                prontuario.setConsultaVO(consulta);
-                prontuario.setMedicamento(result.getString(3));
-                prontuario.setExame(result.getString(4));
-                prontuario.setRegistro(result.getString(5));
-
-                listaProntuarios.add(prontuario);
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-             System.out.println("model.bo.Prontuario. " + listaProntuarios);
-        return listaProntuarios;
+        System.out.println("model.bo.Prontuario. " + prontuarioVO);
+        return prontuarioVO;
     }
 
-}
+    
+   }

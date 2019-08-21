@@ -1,24 +1,36 @@
 package model.vo.Prontuario;
 
-import model.vo.Consulta.ConsultaVO;
+import model.vo.Paciente.PacienteVO;
 
 public class ProntuarioVO {
 
     private int codigoProntuario;
     private String medicamento;
     private String exame;
+    private String Procedimento;
     private String registro;
-    private ConsultaVO consultaVO = new ConsultaVO();
+    private PacienteVO pacienteVO = new PacienteVO();
 
     public ProntuarioVO() {
     }
 
-    public ProntuarioVO(int codigoProntuario, String medicamento, String exame, String registro) {
+    public ProntuarioVO(int codigoProntuario, String medicamento, String exame, String Procedimento, String registro) {
         this.codigoProntuario = codigoProntuario;
         this.medicamento = medicamento;
         this.exame = exame;
+        this.Procedimento = Procedimento;
         this.registro = registro;
     }
+
+    public String getProcedimento() {
+        return Procedimento;
+    }
+
+    public void setProcedimento(String Procedimento) {
+        this.Procedimento = Procedimento;
+    }
+
+   
 
     public int getCodigoProntuario() {
         return codigoProntuario;
@@ -52,18 +64,18 @@ public class ProntuarioVO {
         this.registro = registro;
     }
 
-    public ConsultaVO getConsultaVO() {
-        return consultaVO;
+    public PacienteVO getPacienteVO() {
+        return pacienteVO;
     }
 
-    public void setConsultaVO(ConsultaVO consultaVO) {
-        this.consultaVO = consultaVO;
+    public void setPacienteVO(PacienteVO pacienteVO) {
+        this.pacienteVO = pacienteVO;
     }
 
     @Override
     public String toString() {
-        return "ProntuarioVO{" + "codigoProntuario=" + codigoProntuario + ", medicamento=" + medicamento + ", exame=" + exame + ", registro=" + registro + ", consultaVO=" + consultaVO + '}';
+        return "ProntuarioVO{" + "codigoProntuario=" + codigoProntuario + ", medicamento=" + medicamento + ", exame=" + exame + ", registro=" + registro + ", pacienteVO=" + pacienteVO + '}';
     }
     
-
+    
 }

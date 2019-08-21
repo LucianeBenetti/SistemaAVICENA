@@ -38,13 +38,9 @@
                 <tr>
                     <th>Id</th>
                     <th>Nome do Paciente</th> 
-                    <th>Nome do Médico</th> 
-                    <th>Especialidade do Médico</th>
-                    <th>Convênio</th>
-                    <th>Data da Consulta</th>
-                    <th>Horário da Consulta</th>
                     <th>Medicamentos</th>
                     <th>Exames</th>
+                    <th>Procedimentos</th>
                     <th>Registro</th>
                 </tr>            
                 <%
@@ -52,14 +48,10 @@
                     for (ProntuarioVO prontuarioVO : prontuariosVO) {%>   
                 <tr>
                     <td><%= prontuarioVO.getCodigoProntuario()%></td>
-                    <td><%= prontuarioVO.getConsultaVO().getPacienteVO().getNomePaciente()%></td>
-                    <td><%= prontuarioVO.getConsultaVO().getEspecializacaoVO().getMedicoVO().getNomeMedico()%></td>
-                    <td><%= prontuarioVO.getConsultaVO().getEspecializacaoVO().getEspecialidadeVO().getNomeEspecialidade()%></td>
-                    <td><%= prontuarioVO.getConsultaVO().getConvenioVO().getNomeConvenio()%></td>
-                    <td><%= prontuarioVO.getConsultaVO().getDataConsulta()%></td>
-                    <td><%= prontuarioVO.getConsultaVO().getHorarioConsulta()%></td>
+                    <td><%= prontuarioVO.getPacienteVO().getNomePaciente()%></td>
                     <td><%= prontuarioVO.getMedicamento()%></td>
                     <td><%= prontuarioVO.getExame()%></td>
+                    <td><%= prontuarioVO.getProcedimento()%></td>
                     <td><%= prontuarioVO.getRegistro()%></td>
                 </tr>                   
                 <%

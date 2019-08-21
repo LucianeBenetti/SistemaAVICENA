@@ -1,4 +1,3 @@
-
 package Servlets.Consulta;
 
 import controller.Consulta.ConsultaController;

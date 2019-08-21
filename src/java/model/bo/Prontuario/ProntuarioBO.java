@@ -4,43 +4,46 @@ import java.util.ArrayList;
 import java.util.List;
 import model.dao.Prontuario.ProntuarioDAO;
 import model.vo.Consulta.ConsultaVO;
+import model.vo.Paciente.PacienteVO;
 import model.vo.Prontuario.ProntuarioVO;
 
-
 public class ProntuarioBO {
-ProntuarioDAO prontuarioDAO = new ProntuarioDAO();
 
-	public ArrayList<ProntuarioVO> listarTodosOsProntuariosVO() {
+    ProntuarioDAO prontuarioDAO = new ProntuarioDAO();
 
-		ArrayList<ProntuarioVO> prontuarios = prontuarioDAO.listarTodosOsProntuariosVO();
-		return prontuarios;
-	}
+    public ArrayList<ProntuarioVO> listarTodosOsProntuariosVO() {
 
-	public boolean inserir(ProntuarioVO prontuario) {
+        ArrayList<ProntuarioVO> prontuarios = prontuarioDAO.listarTodosOsProntuariosVO();
+        return prontuarios;
+    }
 
-		int idGerado = prontuarioDAO.inserir(prontuario);
+    public boolean excluirProntuario(ProntuarioVO prontuarioExcluido) {
 
-		return idGerado > 0;
+        boolean sucesso = prontuarioDAO.delete(prontuarioExcluido.getCodigoProntuario());
+        return sucesso;
+    }
 
-	}
+   
 
-	public boolean excluirProntuario(ProntuarioVO prontuarioExcluido) {
+    public ProntuarioVO listarProntuariosPorPaciente(PacienteVO pacienteVO) {
+        ProntuarioVO prontuarioVO = new ProntuarioVO();
 
-		boolean sucesso = prontuarioDAO.delete(prontuarioExcluido.getCodigoProntuario());
-		return sucesso;
-	}
+        if (pacienteVO != null) {
+            prontuarioVO = prontuarioDAO.listarProntuariosPorPaciente(pacienteVO.getCodigoPaciente());
+        }
+        return prontuarioVO;
+    }
 
-	public boolean atualizar(ProntuarioVO prontuario, int codigoProntuario) {
-		
-		return  prontuarioDAO.atualizar(prontuario, codigoProntuario);
-	}
+    public int cadastrarProntuario(ProntuarioVO prontuarioVO) {
+        int novoId;
+     
+        if (prontuarioDAO.consultarProntuarioVOPorId(prontuarioVO.getPacienteVO().getCodigoPaciente()) == null) {
+          return novoId=0;
+        } else {
+            novoId = prontuarioDAO.cadastrarProntuario(prontuarioVO);
+        }
 
-	public List<ProntuarioVO> listarProntuariosDoPaciente(ConsultaVO consultaVO) {
-            List<ProntuarioVO> prontuarios = new ArrayList<>();
-		if(consultaVO != null && consultaVO.getPacienteVO() != null) {
-			prontuarios = prontuarioDAO.listarProntuariosDoPaciente(consultaVO.getPacienteVO().getCodigoPaciente());
-		}
-           
-		return prontuarios;
-	}
+        return novoId;
+    }
+
 }

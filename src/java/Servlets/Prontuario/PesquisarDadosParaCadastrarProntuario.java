@@ -17,56 +17,51 @@ import model.vo.Prontuario.ProntuarioVO;
 public class PesquisarDadosParaCadastrarProntuario extends HttpServlet {
 
     PacienteVO pacienteVO = new PacienteVO();
+    ProntuarioVO prontuarioVO = new ProntuarioVO();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+
         pacienteVO.setCpfPaciente(request.getParameter("cpfpaciente"));
         PacienteController pacientecontroller = new PacienteController();
         Boolean resultadoDaPesquisaPorCpf = false;
         pacienteVO = pacientecontroller.pesquisarPacienteVOPorCpf(pacienteVO.getCpfPaciente());
+        Boolean resultadoDaPesquisaDeConsultas = false;
+        Boolean resultadoDaPesquisaDeProntuarios = false;
 
         if (pacienteVO != null) {
+
+            ProntuarioController prontuarioController = new ProntuarioController();
+            prontuarioVO = prontuarioController.listarProntuarioPorPaciente(pacienteVO);
+            System.out.println("Servlets.Prontuario " + prontuarioVO);
 
             ConsultaVO consultaVO = new ConsultaVO();
             consultaVO.setPacienteVO(pacienteVO);
             List<ConsultaVO> listaConsultas = null;
-            Boolean resultadoDaPesquisaDeConsultas = false;
 
             ConsultaController consultaController = new ConsultaController();
             listaConsultas = consultaController.listarConsultasVOPorID(pacienteVO.getCodigoPaciente());
-            
-                if (listaConsultas!=null) {
-                   
-//                    ProntuarioVO prontuarioVO = new ProntuarioVO();
-//                    List<ProntuarioVO> listaProntuarios = null;
-//                    Boolean resultadoDaPesquisaDeProntuarios = false;
-//
-//                    ProntuarioController prontuarioController = new ProntuarioController();
-//                    listaProntuarios = prontuarioController.listarTodosOsProntuariosVO(consultaVO);
-//                    System.out.println("Servlets.Prontuario " + listaProntuarios);
 
-                    request.setAttribute("listaconsultas", listaConsultas);
-                    resultadoDaPesquisaDeConsultas = true;
-                    request.setAttribute("consultavoretornada", resultadoDaPesquisaDeConsultas);
-                    resultadoDaPesquisaPorCpf = true;
-                    request.setAttribute("codigopaciente", pacienteVO.getCodigoPaciente());
-                    request.setAttribute("nomepaciente", pacienteVO.getNomePaciente());
-                
-                    
-                    request.setAttribute("pacientevoretornado", resultadoDaPesquisaPorCpf);
-//                    resultadoDaPesquisaDeProntuarios = true;
-//                    request.setAttribute("listaprontuarios", listaProntuarios);
-                } else {
-                    System.out.println("O consulta não foi encontrada!");
-                    request.setAttribute("consultavoretornada", resultadoDaPesquisaDeConsultas);
-                }
-            
-            request.getRequestDispatcher("Prontuario/CadastrarProntuario.jsp").forward(request, response);
+            request.setAttribute("listaconsultas", listaConsultas);
+            resultadoDaPesquisaDeConsultas = true;
+            request.setAttribute("consultavoretornada", resultadoDaPesquisaDeConsultas);
+            resultadoDaPesquisaPorCpf = true;
+            request.setAttribute("codigopaciente", pacienteVO.getCodigoPaciente());
+            request.setAttribute("nomepaciente", pacienteVO.getNomePaciente());
+            request.setAttribute("pacientevoretornado", resultadoDaPesquisaPorCpf);
+            resultadoDaPesquisaDeProntuarios = true;
+            request.setAttribute("prontuarioVO", prontuarioVO);
+        } else {
+            System.out.println("O consulta não foi encontrada!");
+            request.setAttribute("consultavoretornada", resultadoDaPesquisaDeConsultas);
         }
+
+        request.getRequestDispatcher("Prontuario/CadastrarProntuario.jsp").forward(request, response);
+
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
