@@ -72,8 +72,9 @@ public class ProntuarioDAO {
         return sucessoDelete;
     }
 
-    public ProntuarioVO consultarProntuarioVOPorId(int codigoPaciente){
+    public List<ProntuarioVO> consultarProntuarioVOPorId(int codigoPaciente){
 
+        ArrayList<ProntuarioVO> listaProntuarios = new ArrayList<ProntuarioVO>();
         String query = " SELECT *from prontuario " + " where codigoPaciente = ? ";
 
         Connection conn = ConexaoComBanco.getConnection();
@@ -83,14 +84,17 @@ public class ProntuarioDAO {
             ResultSet result = prepStmt.executeQuery();
 
             while (result.next()) {
+                
+                ProntuarioVO prontuarioVO = new ProntuarioVO();
 
-                prontuario.setCodigoProntuario(result.getInt(1));
+                prontuarioVO.setCodigoProntuario(result.getInt(1));
                 PacienteVO paciente = pacienteDAO.consultarPorId(result.getInt(2));
-                prontuario.setPacienteVO(paciente);
-                prontuario.setMedicamento(result.getString(3));
-                prontuario.setExame(result.getString(4));
-                prontuario.setProcedimento(result.getString(5));
-                prontuario.setRegistro(result.getString(6));
+                prontuarioVO.setPacienteVO(paciente);
+                prontuarioVO.setMedicamento(result.getString(3));
+                prontuarioVO.setExame(result.getString(4));
+                prontuarioVO.setProcedimento(result.getString(5));
+                prontuarioVO.setRegistro(result.getString(6));
+                listaProntuarios.add(prontuarioVO);
 
             }
         } catch (SQLException ex) {
@@ -99,10 +103,10 @@ public class ProntuarioDAO {
             ConexaoComBanco.closePreparedStatement(prepStmt);
             ConexaoComBanco.closeConnection(conn);
         }
-        return prontuario;
+        return listaProntuarios;
     }
 
-    public boolean atualizarProntuario(ProntuarioVO prontuarioVO) {
+    public boolean atualizarProntuarioVO(ProntuarioVO prontuarioVO, int codigoProntuario) {
        boolean sucessoAtualizar = false;
 
         String query = " UPDATE prontuario SET codigoPaciente=?, medicamento=?, exame=?, procedimento=?, registro=? "
@@ -164,34 +168,5 @@ public class ProntuarioDAO {
         return listaProntuarios;
     }
 
-    public ProntuarioVO listarProntuariosPorPaciente(int codigoPaciente) {
-        ProntuarioVO prontuarioVO = null;
-        String query = " SELECT * from prontuario where codigoPaciente = ? ";
-
-        Connection conn = ConexaoComBanco.getConnection();
-        PreparedStatement prepStmt = ConexaoComBanco.getPreparedStatement(conn, query);
-        try {
-            prepStmt.setInt(1, codigoPaciente);
-            ResultSet result = prepStmt.executeQuery();
-
-            while (result.next()) {
-                prontuarioVO = new ProntuarioVO();
-                prontuarioVO.setCodigoProntuario(result.getInt(1));
-                PacienteVO paciente = pacienteDAO.consultarPorId(result.getInt(2));
-                prontuarioVO.setPacienteVO(paciente);
-                prontuarioVO.setMedicamento(result.getString(3));
-                prontuarioVO.setExame(result.getString(4));
-                prontuarioVO.setProcedimento(result.getString(5));
-                prontuarioVO.setRegistro(result.getString(6));
-
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        System.out.println("model.bo.Prontuario. " + prontuarioVO);
-        return prontuarioVO;
-    }
-
-    
+          
    }

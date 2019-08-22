@@ -23,27 +23,30 @@ public class ProntuarioBO {
         return sucesso;
     }
 
-   
-
-    public ProntuarioVO listarProntuariosPorPaciente(PacienteVO pacienteVO) {
-        ProntuarioVO prontuarioVO = new ProntuarioVO();
-
-        if (pacienteVO != null) {
-            prontuarioVO = prontuarioDAO.listarProntuariosPorPaciente(pacienteVO.getCodigoPaciente());
-        }
-        return prontuarioVO;
+    public List<ProntuarioVO> listarProntuariosPorPaciente(int codigoPaciente) {
+        return prontuarioDAO.consultarProntuarioVOPorId(codigoPaciente);
     }
 
     public int cadastrarProntuario(ProntuarioVO prontuarioVO) {
         int novoId;
-     
-        if (prontuarioDAO.consultarProntuarioVOPorId(prontuarioVO.getPacienteVO().getCodigoPaciente()) != null) {
-          return novoId=0;
-        } else {
-            novoId = prontuarioDAO.cadastrarProntuario(prontuarioVO);
-        }
+
+        //  if (prontuarioDAO.consultarProntuarioVOPorId(prontuarioVO.getPacienteVO().getCodigoPaciente()) != null) {
+        //    return novoId=0;
+        //   } else {
+        novoId = prontuarioDAO.cadastrarProntuario(prontuarioVO);
+        //   }
 
         return novoId;
     }
 
+    public boolean atualizarProntuario(ProntuarioVO prontuarioVO, int codigoProntuario) {
+        boolean atualizacao = false;
+
+        if (prontuarioDAO.atualizarProntuarioVO(prontuarioVO, codigoProntuario)) {
+
+            atualizacao = true;
+        }
+
+        return atualizacao;
+    }
 }

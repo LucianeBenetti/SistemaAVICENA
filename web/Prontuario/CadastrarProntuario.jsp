@@ -63,7 +63,8 @@
                     Registro de Observações:<br>
                     <textarea name="registro" ></textarea><br><br>
 
-                    <input type="submit" value="Cadastrar Prontuario">
+                    <input type="submit" name="cadastrar" value="Cadastrar Prontuario">
+                    
                     <br><br>    
 
                 </fieldset>
@@ -106,9 +107,9 @@
             <br><br>
 
             <%
-                Object obj = request.getAttribute("prontuarioVO");
-                ProntuarioVO prontuarioVO = (ProntuarioVO) obj;
-                if (prontuarioVO != null) {%>
+                Object obj = request.getAttribute("listaProntuarios");
+                ArrayList<ProntuarioVO> listaProntuarios = (ArrayList<ProntuarioVO>) obj;
+                if (listaProntuarios != null) {%>
 
             <h2>Prontuario do Paciente</h2>
             <table id="tabelaConsulta">
@@ -121,6 +122,7 @@
                     <th>Registro</th>
 
                 </tr>        
+                 <% for (ProntuarioVO prontuarioVO : listaProntuarios) {%>
                 <tr onclick="clickLinhaTabelaProntuario(this)">
                     <td><%= prontuarioVO.getCodigoProntuario()%></td>
                     <td hidden><%= prontuarioVO.getPacienteVO().getCodigoPaciente()%></td>
@@ -130,7 +132,7 @@
                     <td><%= prontuarioVO.getProcedimento()%></td>
                     <td ><%= prontuarioVO.getRegistro()%></td>
                 </tr>     
-                <% }%>
+                <% }}%>
             </table>
             <br><br>      
 

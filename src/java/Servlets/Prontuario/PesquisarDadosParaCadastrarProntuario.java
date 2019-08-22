@@ -29,31 +29,34 @@ public class PesquisarDadosParaCadastrarProntuario extends HttpServlet {
         pacienteVO = pacientecontroller.pesquisarPacienteVOPorCpf(pacienteVO.getCpfPaciente());
         Boolean resultadoDaPesquisaDeConsultas = false;
         Boolean resultadoDaPesquisaDeProntuarios = false;
+        List<ProntuarioVO> listaProntuarios = null;
+        List<ConsultaVO> listaConsultas = null;
 
         if (pacienteVO != null) {
 
-            ProntuarioController prontuarioController = new ProntuarioController();
-            prontuarioVO = prontuarioController.listarProntuarioPorPaciente(pacienteVO);
-            System.out.println("Servlets.Prontuario " + prontuarioVO);
+            int codigoPaciente = pacienteVO.getCodigoPaciente();
 
+            ProntuarioController prontuarioController = new ProntuarioController();
+            listaProntuarios = prontuarioController.listarProntuarioPorPaciente(codigoPaciente);
+            System.out.println("Servlets.Prontuario " + listaProntuarios);
             ConsultaVO consultaVO = new ConsultaVO();
             consultaVO.setPacienteVO(pacienteVO);
-            List<ConsultaVO> listaConsultas = null;
-
             ConsultaController consultaController = new ConsultaController();
             listaConsultas = consultaController.listarConsultasVOPorID(pacienteVO.getCodigoPaciente());
 
-            request.setAttribute("listaconsultas", listaConsultas);
+            resultadoDaPesquisaDeProntuarios = true;
             resultadoDaPesquisaDeConsultas = true;
-            request.setAttribute("consultavoretornada", resultadoDaPesquisaDeConsultas);
             resultadoDaPesquisaPorCpf = true;
+            request.setAttribute("listaconsultas", listaConsultas);
+            request.setAttribute("consultavoretornada", resultadoDaPesquisaDeConsultas);
             request.setAttribute("codigopaciente", pacienteVO.getCodigoPaciente());
             request.setAttribute("nomepaciente", pacienteVO.getNomePaciente());
             request.setAttribute("pacientevoretornado", resultadoDaPesquisaPorCpf);
-            resultadoDaPesquisaDeProntuarios = true;
-            request.setAttribute("prontuarioVO", prontuarioVO);
+            request.setAttribute("pacientevoretornado", resultadoDaPesquisaDeProntuarios);
+            request.setAttribute("listaProntuarios", listaProntuarios);
         } else {
             System.out.println("O consulta não foi encontrada!");
+            request.setAttribute("pacientevoretornado", resultadoDaPesquisaDeProntuarios);
             request.setAttribute("consultavoretornada", resultadoDaPesquisaDeConsultas);
         }
 

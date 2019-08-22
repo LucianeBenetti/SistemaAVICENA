@@ -3,6 +3,7 @@ package Servlets.Prontuario;
 import controller.Prontuario.ProntuarioController;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,10 +15,16 @@ public class CadastrarProntuario extends HttpServlet {
 
     ProntuarioVO prontuarioVO;
     ProntuarioController prontuarioController;
+    List<ProntuarioVO> listaProntuarios = null;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        String var1 = request.getParameter("cadastrar");
+        String var2 = request.getParameter("atualizar");
+        System.out.println("Cadastrar " + var1);
+        System.out.println("Atualizar " + var2);
 
         PacienteVO pacienteVO = new PacienteVO();
         String nomepaciente = request.getParameter("nomepaciente");
@@ -32,27 +39,26 @@ public class CadastrarProntuario extends HttpServlet {
         prontuarioVO.setRegistro(request.getParameter("registro"));
 
         prontuarioController = new ProntuarioController();
+        listaProntuarios = prontuarioController.listarProntuarioPorPaciente(codigoPaciente);
+        System.out.println("Servlets.Prontuario " + listaProntuarios);
 
-        int novoId = prontuarioController.cadastrarProntuarioVO(prontuarioVO);
         Boolean resultadoDoCadastro = false;
 
-        if ((novoId > 0)) {
+        if (listaProntuarios.size() == 0) {
+            prontuarioController.cadastrarProntuarioVO(prontuarioVO);
 
-            request.setAttribute("codigoprontuario", novoId);
             request.setAttribute("codigoPaciente", codigoPaciente);
             request.setAttribute("nomepaciente", nomepaciente);
             request.setAttribute("medicamentos", prontuarioVO.getMedicamento());
             request.setAttribute("exames", prontuarioVO.getExame());
             request.setAttribute("procedimento", prontuarioVO.getProcedimento());
             request.setAttribute("registro", prontuarioVO.getRegistro());
-
             resultadoDoCadastro = true;
-
             request.setAttribute("prontuariocadastrado", resultadoDoCadastro);
             request.getRequestDispatcher("Prontuario/MostrarProntuarioCadastrado.jsp").forward(request, response);
 
         } else {
-            request.setAttribute("prontuariocadastrada", resultadoDoCadastro);
+            request.setAttribute("prontuariocadastrado", resultadoDoCadastro);
             request.getRequestDispatcher("Prontuario/MostrarProntuarioCadastrado.jsp").forward(request, response);
         }
 
