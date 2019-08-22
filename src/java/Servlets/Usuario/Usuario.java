@@ -52,7 +52,7 @@ public class Usuario extends HttpServlet {
                             request.setAttribute("codigodousuario", usuarioVO.getCodigoUsuario());
                             request.setAttribute("nome", usuarioVO.getLogin());
                             request.setAttribute("senha", usuarioVO.getSenha());
-                            request.getRequestDispatcher("Index.jsp").forward(request, response);
+                            request.getRequestDispatcher("TelaDeLogin.jsp").forward(request, response);
                         } else {
                             Boolean usuariocadastrado = false;
                             request.setAttribute("usuariocadastrado", usuariocadastrado);
@@ -81,7 +81,7 @@ public class Usuario extends HttpServlet {
                         break;
 
                     default:
-                        request.getRequestDispatcher("Index.jsp").forward(request, response);
+                        request.getRequestDispatcher("TelaDeLogin.jsp").forward(request, response);
                         break;
 
                 }

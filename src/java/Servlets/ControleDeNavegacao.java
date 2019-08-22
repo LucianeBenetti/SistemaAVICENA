@@ -40,7 +40,7 @@ public class ControleDeNavegacao extends HttpServlet {
                         break;
 
                     case "sairdocadastro":
-                        request.getRequestDispatcher("Index.jsp").forward(request, response);
+                        request.getRequestDispatcher("Index.html").forward(request, response);
                         break;
                         
                     case "voltarpaginainicial":
@@ -48,7 +48,7 @@ public class ControleDeNavegacao extends HttpServlet {
                         break;
 
                     default:
-                        request.getRequestDispatcher("Index.jsp").forward(request, response);
+                        request.getRequestDispatcher("TelaDeLogin").forward(request, response);
                         break;
 
                 }

@@ -1,8 +1,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
-        <title>Avicena</title>
+        <title>Sistema Avicena</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -11,15 +11,15 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
     </head>
-    <body>
+<body>
 
-        <div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0; 
+  <div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0; 
              background-color: #7986cb; padding: 20px; color: white">
-            <h1>Sistema Avicena</h1>
-            <p>Medicina Humanizada</p> 
-        </div>
+      <h1>Sistema Avicena</h1>
+      <p>Medicina Humanizada</p> 
+  </div>
 
-        <div class="container" style="padding: 10px" >
+  <div class="container" style="padding: 10px; margin-top: 3%; margin-bottom: 4%;" >
 
             <div class="form" style="background-color: #b0bec5; padding: 20px; width: 50%;  
                  border-radius: 15px; margin-left: 25%; ">
@@ -54,12 +54,12 @@
                 </form> 
             </div>
 
-        </div>
+  </div>
 
-        <div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0; background-color: #7986cb; 
-             padding: 1px; color: white; ">
-            <p>&copy; Desenvolvido por Luciane Benetti e Marco Sena.</p>
-        </div>
+     <div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0; 
+     background-color: #7986cb;padding: 1px; color: white; font-size: small; ">
+            &copy; Desenvolvido por Luciane Benetti e Marco Sena.
+     </div>
 
-    </body>
+</body>
 </html>
