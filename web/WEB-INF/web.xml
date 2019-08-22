@@ -201,7 +201,7 @@
         <url-pattern>/controledenavegacao</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
-        <welcome-file>Index.jsp</welcome-file>
+        <welcome-file>Index.html</welcome-file>
     </welcome-file-list>
     <servlet-mapping>
         <servlet-name>ListarMedicos</servlet-name>

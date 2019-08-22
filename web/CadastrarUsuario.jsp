@@ -2,71 +2,73 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Tela de Cadastro</title>
+        <title>Avicena</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
         <style>
             .generico
             {text-align: center; border-color: transparent; color: red; padding: 20px}
-             </style>
-            </head>
-            <body>
+        </style>
+    </head>
+<body>
 
-                <div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0; 
-                     background-color: #7986cb; padding: 20px; color: white;">
-                    <h1>Sistema Avicena</h1>
-                    <p>Medicina Humanizada</p> 
-                </div>
+  <div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0; 
+             background-color: #7986cb; padding: 20px; color: white">
+      <h1>Sistema Avicena</h1>
+      <p>Medicina Humanizada</p> 
+  </div>
 
-                <div class="container" style="padding: 10px;" >
+  <div class="container" style="padding: 10px; margin-top: 3%; margin-bottom: 10%;" >
 
-                    <div class="form" style="background-color: #b0bec5; padding: 20px; width: 50%; 
-                         border-radius: 25px; margin-left: 25%; float: left">
+    <div class="form" style="background-color: #b0bec5; padding: 20px; width: 50%;  
+                 border-radius: 15px; float: left; margin-left: 25%; ">
 
-                        <p style="text-align: center; font-weight: bold">Insira os dados, a seguir, para cadastrar novo Usuário!</p>
+        <p style="text-align: center; font-weight: bold">Insira os dados, a seguir, para cadastrar novo Usuário!</p>
 
-                        <form action="usuario" class="was-validated">
-                            <div class="form-group">
-                                <input type="hidden" id="cadastrar" name="cadastrar" value="cadastrar">
-                                <label for="nome">Nome:</label>
-                                <input type="text" class="form-control" id="nome" placeholder="Digite seu nome de login" name="nome" style="border-color: gray" required>
-                                <div class="valid-feedback">Valido.</div>
-                                <div class="invalid-feedback" style = "color: black">Campo obrigatório.</div>
-                            </div>
-                            <div class="form-group">
-                                <label for="senha">Senha:</label>
-                                <input type="password" class="form-control" id="senha" placeholder="Digite uma senha" name="senha" style="border-color: gray" required>
-                                <div class="valid-feedback">Valido.</div>
-                                <div class="invalid-feedback"  style = "color: black">Campo obrigatório.</div>
-                            </div>
-                            <div class="form-group form-check">
-                                <label class="form-check-label">
-                                    <input class="form-check-input" type="checkbox" name="lembrar"> Lembre-me
-                                </label>
-                            </div>
-                            <button type="submit" class="btn btn-secondary" style="float: left">Cadastrar</button>
+        <form action="usuario" class="was-validated" method="post">
+            <div class="form-group">
+                <input type="hidden" id="cadastrar" name="cadastrar" value="cadastrar">
+                <label for="nome">Nome:</label>
+                <input type="text" class="form-control" id="nome" placeholder="Digite seu nome para seu login" name="nome" style="border-color: gray" required>
+                <div class="valid-feedback">Valido.</div>
+                <div class="invalid-feedback" style = "color: black">Campo obrigatório.</div>
+            </div>
+            <div class="form-group">
+                <label for="senha">Senha:</label>
+                <input type="password" class="form-control" id="senha" placeholder="Digite uma senha" name="senha" style="border-color: gray" required>
+                <div class="valid-feedback">Valido.</div>
+                <div class="invalid-feedback"  style = "color: black">Campo obrigatório.</div>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox" name="lembrar"> Lembre-me
+                </label>
+            </div>
+            <button type="submit" class="btn btn-secondary" style="float: left" >Cadastrar</button>
+        </form> 
+        
+        <form action="controledenavegacao" method="post">
 
-                        </form>        
+            <input type="hidden" id="sairdocadastro" name="sairdocadastro" value="sairdocadastro">
+            <input type="submit" value = "Voltar" class="btn btn-secondary" 
+                   style=" margin-left: 20px; float: left;">            
+        </form>
+    </div>
 
-                        <form action="controledenavegacao" method="post">
-
-                            <input type="hidden" id="sairdocadastro" name="sairdocadastro" value="sairdocadastro">
-                            <input type="submit" value = "Voltar" class="btn btn-secondary" style="float: left;
-                                   margin-left: 20px">            
-                        </form>
-
-                    </div>  
-
-                </div>
-
-                <div class="Container" style="text-align: center">
+  </div>
+    
+      <div class="Container" style="text-align: center">
 
                     <%
                         Object obj1 = request.getAttribute("usuariocadastrado");
                         Object obj2 = request.getAttribute("usuariovalidado");
-
                         if (obj1 != null) {
                             Boolean usuariocadastrado = (Boolean) obj1;
                 if (!usuariocadastrado) {%>
@@ -80,7 +82,6 @@
 
                     <%}
                         }
-
                         if (obj2 != null) {
                             Boolean usuariovalidado = (Boolean) obj2;
                 if (!usuariovalidado) {%>
@@ -92,12 +93,13 @@
             }%>
 
 
-                </div>
-                <div class="jumbotron jumbotron-fluid text-center" style=" width: 100%; margin-top: 40px; margin-bottom:0; 
-                     background-color: #7986cb; padding: 1px; color: white; float: left">
-                    <p>&copy; Desenvolvido por Luciane Benetti e Marco Sena.</p>
-                </div> 
+                </div>      
+    
 
+     <div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0; margin-top: 32%; 
+     background-color: #7986cb;padding: 1px; color: white; font-size: small; ">
+            &copy; Desenvolvido por Luciane Benetti e Marco Sena.
+     </div>
 
-            </body>
-        </html>
+</body>
+</html>

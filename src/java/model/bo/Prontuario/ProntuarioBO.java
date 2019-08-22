@@ -37,7 +37,7 @@ public class ProntuarioBO {
     public int cadastrarProntuario(ProntuarioVO prontuarioVO) {
         int novoId;
      
-        if (prontuarioDAO.consultarProntuarioVOPorId(prontuarioVO.getPacienteVO().getCodigoPaciente()) == null) {
+        if (prontuarioDAO.consultarProntuarioVOPorId(prontuarioVO.getPacienteVO().getCodigoPaciente()) != null) {
           return novoId=0;
         } else {
             novoId = prontuarioDAO.cadastrarProntuario(prontuarioVO);

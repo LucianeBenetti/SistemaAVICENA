@@ -36,7 +36,7 @@ public class ControleDeNavegacao extends HttpServlet {
                     case "sair":
                        
                         request.getSession().invalidate();        
-                        request.getRequestDispatcher("Index.jsp").forward(request, response);
+                        request.getRequestDispatcher("Index.html").forward(request, response);
                         break;
 
                     case "sairdocadastro":
