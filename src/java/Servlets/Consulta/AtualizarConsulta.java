@@ -16,7 +16,7 @@ import model.vo.Paciente.PacienteVO;
 public class AtualizarConsulta extends HttpServlet {
  ConsultaVO consultaVO;
     ConsultaController consultaController;
-
+//
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
