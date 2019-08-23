@@ -176,6 +176,14 @@
         <servlet-name>CadastrarProntuario</servlet-name>
         <servlet-class>Servlets.Prontuario.CadastrarProntuario</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PesquisarProntuarioParaExcluir</servlet-name>
+        <servlet-class>Servlets.Prontuario.PesquisarProntuarioParaExcluir</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ExcluirProntuario</servlet-name>
+        <servlet-class>Servlets.Prontuario.ExcluirProntuario</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CrudPaciente</servlet-name>
         <url-pattern>/crudpaciente</url-pattern>
@@ -350,6 +358,14 @@
     <servlet-mapping>
         <servlet-name>CadastrarProntuario</servlet-name>
         <url-pattern>/cadastrarprontuario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PesquisarProntuarioParaExcluir</servlet-name>
+        <url-pattern>/pesquisarprontuarioparaexcluir</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExcluirProntuario</servlet-name>
+        <url-pattern>/excluirprontuario</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

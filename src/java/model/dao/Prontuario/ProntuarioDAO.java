@@ -49,7 +49,7 @@ public class ProntuarioDAO {
         return novoId;
     }
 
-    public boolean delete(int codigoProntuario) {
+    public boolean excluirProntuarioPorId(int codigoProntuario) {
         boolean sucessoDelete = false;
 
         String query = " DELETE from prontuario where codigoProntuario = ? ";
@@ -64,7 +64,7 @@ public class ProntuarioDAO {
                 sucessoDelete = true;
             }
         } catch (SQLException e) {
-            System.out.println("Erro ao executar Query de Exclus�o do Prontu�rio! Causa: \n: " + e.getMessage());
+            System.out.println("Erro ao executar Query de Exclusão do Prontuário! Causa: \n: " + e.getMessage());
         } finally {
             ConexaoComBanco.closePreparedStatement(prepStmt);
             ConexaoComBanco.closeConnection(conn);
@@ -72,7 +72,7 @@ public class ProntuarioDAO {
         return sucessoDelete;
     }
 
-    public List<ProntuarioVO> consultarProntuarioVOPorId(int codigoPaciente){
+    public List<ProntuarioVO> consultarProntuarioVOPorId(int codigoPaciente) {
 
         ArrayList<ProntuarioVO> listaProntuarios = new ArrayList<ProntuarioVO>();
         String query = " SELECT *from prontuario " + " where codigoPaciente = ? ";
@@ -84,7 +84,7 @@ public class ProntuarioDAO {
             ResultSet result = prepStmt.executeQuery();
 
             while (result.next()) {
-                
+
                 ProntuarioVO prontuarioVO = new ProntuarioVO();
 
                 prontuarioVO.setCodigoProntuario(result.getInt(1));
@@ -107,7 +107,7 @@ public class ProntuarioDAO {
     }
 
     public boolean atualizarProntuarioVO(ProntuarioVO prontuarioVO, int codigoProntuario) {
-       boolean sucessoAtualizar = false;
+        boolean sucessoAtualizar = false;
 
         String query = " UPDATE prontuario SET codigoPaciente=?, medicamento=?, exame=?, procedimento=?, registro=? "
                 + " where codigoProntuario = ? ";
@@ -126,8 +126,8 @@ public class ProntuarioDAO {
 
             int codigoRetorno = prepStmt.executeUpdate();
 
-           if (codigoRetorno == 1) {
-              sucessoAtualizar = true;
+            if (codigoRetorno == 1) {
+                sucessoAtualizar = true;
             }
         } catch (SQLException ex) {
             System.out.println("Erro ao executar Query de Atualização do Prontuário!Causa: \n: " + ex.getMessage());
@@ -168,5 +168,4 @@ public class ProntuarioDAO {
         return listaProntuarios;
     }
 
-          
-   }
+}

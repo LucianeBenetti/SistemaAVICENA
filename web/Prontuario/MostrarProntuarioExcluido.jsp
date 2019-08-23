@@ -1,6 +1,6 @@
 <%-- 
-    Document   : MostrarConsultaExcluida
-    Created on : 13/08/2019, 11:34:57
+    Document   : MostrarProntuarioExcluido
+    Created on : 23/08/2019, 08:58:40
     Author     : 80130917
 --%>
 
@@ -8,24 +8,24 @@
 <!DOCTYPE html>
 <html>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link type="text/css" rel="stylesheet" href="Consulta/CRUDConsulta.css">
-    <title>Consulta Excluida</title>
+    <link type="text/css" rel="stylesheet" href="Prontuario/ProntuarioCRUD.css">
+    <title>Prontuario Excluido</title>
 </head>
 <body class="body">
     <div class="principal">
         <div class="secao3">
         </div>
         <div class="cadastro">
-            <h3>Exclusão de Consulta por Paciente!</h3>
+            <h3>Exclusão de Prontuario por Paciente!</h3>
             <fieldset><legend>Resultado da exclusão:</legend>
                 <%
-                    Object obj1 = request.getAttribute("codigoconsulta");
+                    Object obj1 = request.getAttribute("codigoprontuario");
 
                     if (obj1 != null) {
-                        Integer consultaExcluida = (Integer) obj1;
-                        if (consultaExcluida != null) {%>
+                        Integer prontuarioExcluido = (Integer) obj1;
+                        if (prontuarioExcluido != null) {%>
 
-                A Consulta foi Excluída com sucesso! 
+                A Prontuario foi Excluído com sucesso! 
             </fieldset>
         </div>
         <%} else {%>
@@ -34,7 +34,7 @@
         </div>
         <div class="cadastro">
             <fieldset>
-                <% out.println("Consulta não pode ser excluída na base de dados!");%>
+                <% out.println("Prontuario não pode ser excluído na base de dados!");%>
 
                 <%}%>
                 <%}%>

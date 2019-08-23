@@ -56,23 +56,6 @@ function clickCheckbox() {
     }
 
 }
-function clickExcluirProntuario(row) {
-    var codigoconsulta = row.cells[0].innerText;
-    var nomepaciente = row.cells[1].innerText;
-    var nomemedico = row.cells[2].innerText;
-    var nomeespecialidade = row.cells[3].innerText;
-    var nomeconvenio = row.cells[4].innerText;
-    var dataconsulta = row.cells[5].innerText;
-    var horarioconsulta = row.cells[6].innerText;
-    document.excluirconsulta.codigoconsulta.value = codigoconsulta;
-    document.excluirconsulta.nomepaciente.value = nomepaciente;
-    document.excluirconsulta.nomemedico.value = nomemedico;
-    document.excluirconsulta.nomeespecialidade.value = nomeespecialidade;
-    document.excluirconsulta.nomeconvenio.value = nomeconvenio;
-    document.excluirconsulta.dataconsulta.value = dataconsulta;
-    document.excluirconsulta.horarioconsulta.value = horarioconsulta;
-}
-
 function clickLinhaTabelaConsulta(row) {
     var codigoconsulta = row.cells[0].innerText;
     var codigopaciente = row.cells[1].innerText;

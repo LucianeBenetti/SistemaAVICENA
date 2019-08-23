@@ -35,16 +35,16 @@ public class CadastrarProntuario extends HttpServlet {
 
         prontuarioController = new ProntuarioController();
         listaProntuarios = prontuarioController.listarProntuarioPorPaciente(codigoPaciente);
-        System.out.println("Servlets.Prontuario " + listaProntuarios);
+        //System.out.println("Servlets.Prontuario " + codigoProntuario);
 
         Boolean resultadoDoCadastro = false;
 
         if (listaProntuarios.size() == 0) {
             prontuarioController.cadastrarProntuarioVO(prontuarioVO);
         } else {
+            int codigoProntuario = new Integer(request.getParameter("codigoprontuario"));
+            prontuarioVO.setCodigoProntuario(codigoProntuario);
             prontuarioController.atualizarProntuarioVO(prontuarioVO, prontuarioVO.getCodigoProntuario());
-          //  request.setAttribute("prontuariocadastrado", resultadoDoCadastro);
-           // request.getRequestDispatcher("Prontuario/MostrarProntuarioCadastrado.jsp").forward(request, response);
         }
         request.setAttribute("codigoPaciente", codigoPaciente);
         request.setAttribute("nomepaciente", nomepaciente);

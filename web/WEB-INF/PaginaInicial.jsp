@@ -118,9 +118,8 @@
                     Prontuário
                 </a>
                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="Prontuario/CadastrarProntuario.jsp">Cadastrar Prontuário</a>
-                    <a class="dropdown-item" href="Prontuario/PesquisarProntuarioPorCPF.jsp">Pesquisar/Alterar Prontuário</a>
-                    <a class="dropdown-item" href="Prontuario/ExcluirProntuarioPorCPF.jsp">Excluir Prontuário</a>
+                    <a class="dropdown-item" href="Prontuario/CadastrarProntuario.jsp">Cadastrar/Atualizar Prontuário</a>
+                    <a class="dropdown-item" href="Prontuario/ExcluirProntuario.jsp">Excluir Prontuário</a>
                     <a class="dropdown-item" href="listarprontuarios">Listar Todos</a>
 
                 </div>

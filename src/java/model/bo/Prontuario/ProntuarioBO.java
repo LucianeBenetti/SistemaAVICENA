@@ -17,25 +17,13 @@ public class ProntuarioBO {
         return prontuarios;
     }
 
-    public boolean excluirProntuario(ProntuarioVO prontuarioExcluido) {
-
-        boolean sucesso = prontuarioDAO.delete(prontuarioExcluido.getCodigoProntuario());
-        return sucesso;
-    }
-
     public List<ProntuarioVO> listarProntuariosPorPaciente(int codigoPaciente) {
         return prontuarioDAO.consultarProntuarioVOPorId(codigoPaciente);
     }
 
     public int cadastrarProntuario(ProntuarioVO prontuarioVO) {
         int novoId;
-
-        //  if (prontuarioDAO.consultarProntuarioVOPorId(prontuarioVO.getPacienteVO().getCodigoPaciente()) != null) {
-        //    return novoId=0;
-        //   } else {
         novoId = prontuarioDAO.cadastrarProntuario(prontuarioVO);
-        //   }
-
         return novoId;
     }
 
@@ -48,5 +36,10 @@ public class ProntuarioBO {
         }
 
         return atualizacao;
+    }
+
+    public boolean excluirProntuarioPorId(int codigoProntuario) {
+        boolean sucesso = prontuarioDAO.excluirProntuarioPorId(codigoProntuario);
+        return sucesso;
     }
 }
