@@ -117,12 +117,12 @@ public class ProntuarioDAO {
 
         try {
 
-            prepStmt.setInt(1, prontuario.getPacienteVO().getCodigoPaciente());
-            prepStmt.setString(2, prontuario.getMedicamento());
-            prepStmt.setString(3, prontuario.getExame());
-            prepStmt.setString(4, prontuario.getProcedimento());
-            prepStmt.setString(5, prontuario.getRegistro());
-            prepStmt.setInt(6, prontuario.getCodigoProntuario());
+            prepStmt.setInt(1, prontuarioVO.getPacienteVO().getCodigoPaciente());
+            prepStmt.setString(2, prontuarioVO.getMedicamento());
+            prepStmt.setString(3, prontuarioVO.getExame());
+            prepStmt.setString(4, prontuarioVO.getProcedimento());
+            prepStmt.setString(5, prontuarioVO.getRegistro());
+            prepStmt.setInt(6, prontuarioVO.getCodigoProntuario());
 
             int codigoRetorno = prepStmt.executeUpdate();
 
@@ -130,7 +130,7 @@ public class ProntuarioDAO {
               sucessoAtualizar = true;
             }
         } catch (SQLException ex) {
-            System.out.println("Erro ao executar Query de Atualiza��o do Prontu�rio!Causa: \n: " + ex.getMessage());
+            System.out.println("Erro ao executar Query de Atualização do Prontuário!Causa: \n: " + ex.getMessage());
         } finally {
             ConexaoComBanco.closePreparedStatement(prepStmt);
             ConexaoComBanco.closeConnection(conn);
