@@ -184,6 +184,10 @@
         <servlet-name>ExcluirProntuario</servlet-name>
         <servlet-class>Servlets.Prontuario.ExcluirProntuario</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EmitirReceita</servlet-name>
+        <servlet-class>Servlets.Prontuario.EmitirReceita</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CrudPaciente</servlet-name>
         <url-pattern>/crudpaciente</url-pattern>
@@ -366,6 +370,10 @@
     <servlet-mapping>
         <servlet-name>ExcluirProntuario</servlet-name>
         <url-pattern>/excluirprontuario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EmitirReceita</servlet-name>
+        <url-pattern>/emitirreceita</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

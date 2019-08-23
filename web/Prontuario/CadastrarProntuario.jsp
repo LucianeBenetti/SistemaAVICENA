@@ -136,7 +136,7 @@
             </table>
             <br><br>      
 
-            <form name="emitirreceita" action="emitirreceita" method="post">
+            <form name="emitirreceita" action="../emitirreceita" method="post">
                 <input type="submit" value="Emitir Receita">
             </form>
         </div>
