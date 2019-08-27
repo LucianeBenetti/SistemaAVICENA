@@ -1,3 +1,5 @@
+<%@page import="model.vo.Prontuario.ReceitaVO"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -7,39 +9,37 @@
         <script type="text/javascript" src="Prontuario/selecionarTabelaProntuario.js"></script>
         <link type="text/css" rel="stylesheet" href="ProntuarioCRUD.css">
         <link type="text/css" rel="stylesheet" href="Prontuario/ProntuarioCRUD.css">
-        <title>Cadastrar Prontuário</title>
+        <title>Emitir Receita</title>
     </head>
     <body class="body">
         <div class="form1">
-            <h2>Cadastrar Prontuario!</h2>
+            <h2>Emitir Receita!</h2>
 
-            <fieldset><legend>Digite o CPF do Paciente</legend>
+           <!-- <fieldset><legend>Digite o CPF do Paciente</legend>
                 <div>
-                    <form method="post" action="../pesquisardadosparacadastrarprontuario">
+                    <form method="post" action="../pesquisardadosparaemitirreceita">
 
-                        <p><a>*</a>Campos de preenchimento obrigatório</p>                    
+                    <p><a>*</a>Campos de preenchimento obrigatório</p>                    
 
                         CPF<a>*</a>:<br> 
                         <input type="text" name="cpfpaciente" required onkeyup="maskIt(this, event, '###.###.###-##')">
                         <input type="submit" value="Buscar Paciente"><br><br>
                     </form>
-                </div>
+                </div> 
 
-            </fieldset>
-
-            <form name="cadastrarprontuario" action="cadastrarprontuario" method="post">
+            </fieldset>-->
+            
+           <form name="emitirreceita" action="emitirreceita" method="post">
                 <fieldset>
                     Nome: <br>   
+                    <input type="hidden" readonly name="codigoreceita"> 
                     <input type="hidden" readonly name="codigoconsulta"> 
                     <input type="hidden" readonly name="codigopaciente"> 
                     <input type="text" readonly name="nomepaciente" size="50" required ><br><br> 
                     <input type="hidden" readonly name="codigoespecializacao"> 
                     <input type="hidden" readonly name="nomemedico"> 
                     <input type="hidden" readonly name="nomeespecialidade"> 
-                    <input type="hidden" readonly name="codigoconvenio"> 
-                    <input type="hidden" readonly name="nomeconvenio"> 
-
-                    <div style="width:55%">
+                   <div style="width:55%">
                         <div style="float:left"> Data: </div>
                         <div style="float:right"> Horário: </div>
                     </div>
@@ -58,82 +58,57 @@
                     Registro de Observações:<br>
                     <textarea name="registro" ></textarea><br><br>
 
-                    <input type="submit" name="cadastrar" value="Cadastrar Prontuario">
-                    
+                <input type="submit" value="Emitir Receita">
+   
                     <br><br>    
 
                 </fieldset>
             </form>
         </div><br><br> 
 
+    
         <div class="resultadodaconsulta">            
             <%
-                Object consultas = request.getAttribute("listaconsultas");
-                ArrayList<ConsultaVO> consultasVO = (ArrayList<ConsultaVO>) consultas;
-                if (consultasVO != null) {%>
-            <h2>Consultas do Paciente</h2>
+                Object receitas = request.getAttribute("listareceitas");
+                ArrayList<ReceitaVO> receitasVO = (ArrayList<ReceitaVO>) receitas;
+                if (receitasVO != null) {%>
+            <h2>Receitas do Paciente</h2>
             <table id="tabelaConsulta">
                 <tr>
                     <th>Id</th>
                     <th>Nome do Paciente</th> 
                     <th>Nome do Médico</th> 
                     <th>Especialidade</th>
-                    <th>Convenio</th>
                     <th>Data da Consulta</th>
                     <th>Horário da Consulta</th>
+                    <th>Medicamento</th>
+                    <th>Posologia</th>
+                    <th>Exames</th>
+                    <th>Observações</th>
                 </tr>        
-                <% for (ConsultaVO consultaVO : consultasVO) {%>  
+                <% for (ReceitaVO receitaVO : receitasVO) {%>  
 
-                <tr onclick="clickLinhaTabelaConsulta(this)">
-                    <td><%= consultaVO.getCodigoConsulta()%></td>
-                    <td hidden><%= consultaVO.getPacienteVO().getCodigoPaciente()%></td>
-                    <td><%= consultaVO.getPacienteVO().getNomePaciente()%></td>
-                    <td hidden><%= consultaVO.getEspecializacaoVO().getCodigoEspecializacao()%></td>
-                    <td><%= consultaVO.getEspecializacaoVO().getMedicoVO().getNomeMedico()%></td>
-                    <td><%= consultaVO.getEspecializacaoVO().getEspecialidadeVO().getNomeEspecialidade()%></td>
-                    <td hidden><%= consultaVO.getConvenioVO().getCodigoConvenio()%></td>
-                    <td><%= consultaVO.getConvenioVO().getNomeConvenio()%></td>
-                    <td ><%= consultaVO.getDataConsulta()%></td>
-                    <td ><%= consultaVO.getHorarioConsulta()%></td>
+                <tr onclick="clickLinhaTabelaReceita(this)">
+                    <td><%= receitaVO.getCodigoReceita()%></td>
+                    <td hidden><%= receitaVO.getConsultaVO().getCodigoConsulta()%></td>
+                    <td hidden><%= receitaVO.getConsultaVO().getPacienteVO().getCodigoPaciente()%></td>
+                    <td><%= receitaVO.getConsultaVO().getPacienteVO().getNomePaciente()%></td>
+                    <td hidden><%= receitaVO.getEspecializacaoVO().getCodigoEspecializacao()%></td>
+                    <td><%= receitaVO.getEspecializacaoVO().getMedicoVO().getNomeMedico()%></td>
+                    <td><%= receitaVO.getEspecializacaoVO().getEspecialidadeVO().getNomeEspecialidade()%></td>
+                    <td ><%= receitaVO.getConsultaVO().getDataConsulta()%></td>
+                    <td ><%= receitaVO.getConsultaVO().getHorarioConsulta()%></td>
+                    <td ><%= receitaVO.getMedicamento()%></td>
+                    <td><%= receitaVO.getPosologia()%></td>
+                    <td ><%= receitaVO.getExames()%></td>
+                    <td><%= receitaVO.getObservacao()%></td>
+                
                 </tr>     
                 <% }
                     } %>
             </table>
             <br><br>
 
-            <%
-                Object obj = request.getAttribute("listaProntuarios");
-                ArrayList<ProntuarioVO> listaProntuarios = (ArrayList<ProntuarioVO>) obj;
-                if (listaProntuarios != null) {%>
-
-            <h2>Prontuario do Paciente</h2>
-            <table id="tabelaConsulta">
-                <tr>
-                    <th>Id</th>
-                    <th>Nome do Paciente</th> 
-                    <th>Medicamentos</th>
-                    <th>Exames</th>
-                    <th>Procedimentos</th>
-                    <th>Registro</th>
-
-                </tr>        
-                 <% for (ProntuarioVO prontuarioVO : listaProntuarios) {%>
-                <tr onclick="clickLinhaTabelaProntuario(this)">
-                    <td><%= prontuarioVO.getCodigoProntuario()%></td>
-                    <td hidden><%= prontuarioVO.getPacienteVO().getCodigoPaciente()%></td>
-                    <td><%= prontuarioVO.getPacienteVO().getNomePaciente()%></td>
-                    <td><%= prontuarioVO.getMedicamento()%></td>
-                    <td ><%= prontuarioVO.getExame()%></td>
-                    <td><%= prontuarioVO.getProcedimento()%></td>
-                    <td ><%= prontuarioVO.getRegistro()%></td>
-                </tr>     
-                <% }}%>
-            </table>
-            <br><br>      
-
-            <form name="emitirreceita" action="../emitirreceita" method="post">
-                <input type="submit" value="Emitir Receita">
-            </form>
         </div>
 
 

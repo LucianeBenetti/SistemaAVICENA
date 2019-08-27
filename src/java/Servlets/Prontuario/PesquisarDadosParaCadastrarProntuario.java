@@ -10,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.vo.Consulta.ConsultaVO;
 import model.vo.Paciente.PacienteVO;
 import model.vo.Prontuario.ProntuarioVO;
@@ -47,6 +48,7 @@ public class PesquisarDadosParaCadastrarProntuario extends HttpServlet {
             resultadoDaPesquisaDeProntuarios = true;
             resultadoDaPesquisaDeConsultas = true;
             resultadoDaPesquisaPorCpf = true;
+            HttpSession session = request.getSession();
             request.setAttribute("listaconsultas", listaConsultas);
             request.setAttribute("consultavoretornada", resultadoDaPesquisaDeConsultas);
             request.setAttribute("codigopaciente", pacienteVO.getCodigoPaciente());

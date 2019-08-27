@@ -145,7 +145,7 @@ public class ConsultaDAO {
                 sucessoAtualizar = true;
             }
         } catch (SQLException ex) {
-            System.out.println("Erro ao executar Query de Atualiza��o do Consulta!Causa: \n: " + ex.getMessage());
+            System.out.println("Erro ao executar Query de Atualizaçãoo do Consulta!Causa: \n: " + ex.getMessage());
         } finally {
             ConexaoComBanco.closePreparedStatement(prepStmt);
             ConexaoComBanco.closeConnection(conn);

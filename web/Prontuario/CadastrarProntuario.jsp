@@ -62,7 +62,7 @@
                     <textarea name="registro" ></textarea><br><br>
 
                     <input type="submit" name="cadastrar" value="Cadastrar Prontuario">
-                    
+
                     <br><br>    
 
                 </fieldset>
@@ -120,7 +120,7 @@
                     <th>Registro</th>
 
                 </tr>        
-                 <% for (ProntuarioVO prontuarioVO : listaProntuarios) {%>
+                <% for (ProntuarioVO prontuarioVO : listaProntuarios) {%>
                 <tr onclick="clickLinhaTabelaProntuario(this)">
                     <td><%= prontuarioVO.getCodigoProntuario()%></td>
                     <td hidden><%= prontuarioVO.getPacienteVO().getCodigoPaciente()%></td>
@@ -130,15 +130,11 @@
                     <td><%= prontuarioVO.getProcedimento()%></td>
                     <td ><%= prontuarioVO.getRegistro()%></td>
                 </tr>     
-                <% }}%>
+                <% }
+                    }%>
             </table>
             <br><br>      
-
-            <form name="emitirreceita" action="../emitirreceita" method="post">
-                <input type="submit" value="Emitir Receita">
-            </form>
         </div>
-
 
         <br><br>   
         <br><br>

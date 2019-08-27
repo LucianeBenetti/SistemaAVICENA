@@ -78,3 +78,24 @@ function clickLinhaTabelaConsulta(row) {
     document.cadastrarprontuario.dataconsulta.value = dataconsulta;
     document.cadastrarprontuario.horarioconsulta.value = horarioconsulta;
 }
+
+function clickLinhaTabelaReceita(row) {
+    var codigoreceita = row.cells[0].innerText;
+    var codigoconsulta = row.cells[1].innerText;
+    var codigopaciente = row.cells[2].innerText;
+    var nomepaciente = row.cells[3].innerText;
+    var codigoespecializacao = row.cells[4].innerText;
+    var nomemedico = row.cells[5].innerText;
+    var nomeespecialidade = row.cells[6].innerText;
+    var dataconsulta = row.cells[7].innerText;
+    var horarioconsulta = row.cells[8].innerText;
+    document.emitirreceita.codigoreceita.value = codigoreceita;
+    document.emitirreceita.codigoconsulta.value = codigoconsulta;
+    document.emitirreceita.cadastrarprontuariocodigopaciente.value = codigopaciente;
+    document.emitirreceita.nomepaciente.value = nomepaciente;
+    document.emitirreceita.codigoespecializacao.value = codigoespecializacao;
+    document.emitirreceita.nomemedico.value = nomemedico;
+    document.emitirreceita.nomeespecialidade.value = nomeespecialidade;
+    document.emitirreceita.dataconsulta.value = dataconsulta;
+    document.emitirreceita.horarioconsulta.value = horarioconsulta;
+}

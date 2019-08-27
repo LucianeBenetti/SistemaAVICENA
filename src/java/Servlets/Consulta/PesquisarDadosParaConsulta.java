@@ -42,7 +42,7 @@ public class PesquisarDadosParaConsulta extends HttpServlet {
             request.setAttribute("especializacaovoretornada", resultadoDaPesquisaPorNome);
 
         } else {
-            System.out.println("O especializacao não foi encontrada!");
+            System.out.println("A especializacao não foi encontrada!");
             request.setAttribute("especializacaovoretornada", resultadoDaPesquisaPorNome);
         }
 
