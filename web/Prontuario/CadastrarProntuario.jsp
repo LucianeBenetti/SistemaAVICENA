@@ -1,6 +1,4 @@
-<%@page import="model.vo.Especializacao.EspecializacaoVO"%>
 <%@page import="model.vo.Prontuario.ProntuarioVO"%>
-<%@page import="model.vo.Convenio.ConvenioVO"%>
 <%@page import="model.vo.Consulta.ConsultaVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
