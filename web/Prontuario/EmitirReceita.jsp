@@ -93,9 +93,9 @@
                     <td hidden><%= receitaVO.getConsultaVO().getCodigoConsulta()%></td>
                     <td hidden><%= receitaVO.getConsultaVO().getPacienteVO().getCodigoPaciente()%></td>
                     <td><%= receitaVO.getConsultaVO().getPacienteVO().getNomePaciente()%></td>
-                    <td hidden><%= receitaVO.getEspecializacaoVO().getCodigoEspecializacao()%></td>
-                    <td><%= receitaVO.getEspecializacaoVO().getMedicoVO().getNomeMedico()%></td>
-                    <td><%= receitaVO.getEspecializacaoVO().getEspecialidadeVO().getNomeEspecialidade()%></td>
+                    <td hidden><%= receitaVO.getConsultaVO().getEspecializacaoVO().getCodigoEspecializacao()%></td>
+                    <td><%= receitaVO.getConsultaVO().getEspecializacaoVO().getMedicoVO().getNomeMedico()%></td>
+                    <td><%= receitaVO.getConsultaVO().getEspecializacaoVO().getEspecialidadeVO().getNomeEspecialidade()%></td>
                     <td ><%= receitaVO.getConsultaVO().getDataConsulta()%></td>
                     <td ><%= receitaVO.getConsultaVO().getHorarioConsulta()%></td>
                     <td ><%= receitaVO.getMedicamento()%></td>
