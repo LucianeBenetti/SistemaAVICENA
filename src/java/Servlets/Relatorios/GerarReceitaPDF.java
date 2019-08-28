@@ -30,77 +30,75 @@ import com.itextpdf.tool.xml.pipeline.html.ImageProvider;
 
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
-public class GerarReceitaPDF {   
-    
-        
+
+public class GerarReceitaPDF {
+
     private final InputStream is;
     private ImageProvider imProvider;
     private CSSResolver cssResolver;
- 
+
     public GerarReceitaPDF(InputStream is) throws TransformerConfigurationException, TransformerException {
         this.is = is;
         cssResolver = XMLWorkerHelper.getInstance().getDefaultCssResolver(true);
         this.imProvider = new Base64ImageProvider();
-    }   
- 
+    }
+
     public GerarReceitaPDF(String html) throws TransformerException {
         this(new ByteArrayInputStream(html.getBytes()));
     }
- 
+
     public void setImageProvider(ImageProvider imProvider) {
         this.imProvider = imProvider;
     }
- 
+
     public void addCss(String css) throws CssResolverException {
         cssResolver.addCss(css, Boolean.TRUE.toString());
-    } 
- 
-     
- 
-    public void convert(OutputStream file) throws DocumentException, IOException {       
+    }
+
+    public void convert(OutputStream file) throws DocumentException, IOException {
         Document document = new Document();
         // step 2
         PdfWriter writer = PdfWriter.getInstance(document, file);
         // step 3
         document.open();
         // step 4        
- 
+
         // HTML
         HtmlPipelineContext htmlContext = new HtmlPipelineContext();
         htmlContext.setTagFactory(Tags.getHtmlTagProcessorFactory());
         if (imProvider != null) {
             htmlContext.setImageProvider(imProvider);
         }
- 
+
         // Pipelines
         PdfWriterPipeline pdf = new PdfWriterPipeline(document, writer);
         HtmlPipeline html = new HtmlPipeline(htmlContext, pdf);
         CssResolverPipeline css = new CssResolverPipeline(cssResolver, html);
- 
+
         // XML Worker
         XMLWorker worker = new XMLWorker(css, true);
         XMLParser p = new XMLParser(worker);
         p.parse(is);
- 
+
         // step 5
         document.close();
     }
- 
+
     public void convert(File os) throws FileNotFoundException, IOException, DocumentException {
         try (OutputStream out = new BufferedOutputStream(new FileOutputStream(os))) {
             convert(out);
         }
     }
- 
+
     public static void main(String[] args) throws IOException, FileNotFoundException, DocumentException, TransformerException, CssResolverException {
         //Html2Pdf pdf = new Html2Pdf(new File("C:/tmp/private/boleto_tmp.html"));
-        GerarReceitaPDF pdf = new GerarReceitaPDF("<h1 style=\"color:red\">Tchau Querida</h1>");
+        GerarReceitaPDF pdf = new GerarReceitaPDF("<h1>Tchau Querida</h1>");
         pdf.setImageProvider(new Base64ImageProvider());
-        pdf.convert(new File("/out.pdf"));
+        pdf.convert(new File("D:\\SENAC\\out.pdf"));
     }
- 
+
     static class Base64ImageProvider extends AbstractImageProvider {
- 
+
         @Override
         public Image retrieve(String src) {
             int pos = src.indexOf("base64,");
@@ -115,11 +113,11 @@ public class GerarReceitaPDF {
                 return null;
             }
         }
- 
+
         @Override
         public String getImageRootPath() {
             return null;
         }
     }
- 
+
 }

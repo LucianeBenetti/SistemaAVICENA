@@ -64,8 +64,7 @@ public class GerarRelatorioConsultasPorConvenio extends HttpServlet {
         File arquivoRelatorio = new File("D:\\SENAC\\Relatorio" + nomeConvenio + ".xls");
         try {
             fileOut = new FileOutputStream(arquivoRelatorio);
-            // DataOutputStream abrirArquivo = new DataOutputStream(fileOut);
-            //  abrirArquivo.writeBytes(planilha.toString());
+        //  abrirArquivo.writeBytes(planilha.toString());
             planilha.write(fileOut);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
