@@ -49,6 +49,10 @@ public class PesquisarDadosParaCadastrarProntuario extends HttpServlet {
             resultadoDaPesquisaDeConsultas = true;
             resultadoDaPesquisaPorCpf = true;
             HttpSession session = request.getSession();
+            session.setAttribute("listaconsultas", listaConsultas);
+            session.setAttribute("codigopaciente", pacienteVO.getCodigoPaciente());
+            session.setAttribute("nomepaciente", pacienteVO.getNomePaciente());
+
             request.setAttribute("listaconsultas", listaConsultas);
             request.setAttribute("consultavoretornada", resultadoDaPesquisaDeConsultas);
             request.setAttribute("codigopaciente", pacienteVO.getCodigoPaciente());

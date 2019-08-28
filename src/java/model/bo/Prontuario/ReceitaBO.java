@@ -17,4 +17,20 @@ public class ReceitaBO {
         return receitasVO;
     }
 
+    public int cadastrarReceitaVO(ReceitaVO receitaVO) {
+        int novoId;
+        novoId = receitaDAO.cadastrarReceitaVO(receitaVO);
+        return novoId;
+    }
+
+    public boolean atualizarReceitaVO(ReceitaVO receitaVO, int codigoReceita) {
+        boolean atualizacao = false;
+
+        if (receitaDAO.atualizarReceitaVO(receitaVO, codigoReceita)) {
+
+            atualizacao = true;
+        }
+
+        return atualizacao;
+    }
 }

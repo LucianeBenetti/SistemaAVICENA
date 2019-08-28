@@ -119,7 +119,7 @@
                 </a>
                <div class="dropdown-menu">
                     <a class="dropdown-item" href="Prontuario/CadastrarProntuario.jsp">Cadastrar/Atualizar Prontuário</a>
-                    <a class="dropdown-item" href="Prontuario/emitirreceita">Emitir Receita</a>
+                    <a class="dropdown-item" href="Prontuario/EmitirReceita.jsp">Emitir Receita</a>
                     <a class="dropdown-item" href="Prontuario/ExcluirProntuario.jsp">Excluir Prontuário</a>
                     <a class="dropdown-item" href="listarprontuarios">Listar Todos</a>
 

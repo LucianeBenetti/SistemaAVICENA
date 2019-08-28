@@ -79,19 +79,18 @@ function clickLinhaTabelaConsulta(row) {
     document.cadastrarprontuario.horarioconsulta.value = horarioconsulta;
 }
 
-function clickLinhaTabelaReceita(row) {
-    var codigoreceita = row.cells[0].innerText;
-    var codigoconsulta = row.cells[1].innerText;
-    var codigopaciente = row.cells[2].innerText;
-    var nomepaciente = row.cells[3].innerText;
-    var codigoespecializacao = row.cells[4].innerText;
-    var nomemedico = row.cells[5].innerText;
-    var nomeespecialidade = row.cells[6].innerText;
-    var dataconsulta = row.cells[7].innerText;
-    var horarioconsulta = row.cells[8].innerText;
-    document.emitirreceita.codigoreceita.value = codigoreceita;
+
+function clickLinhaTabelaConsultaReceita(row) {
+    var codigoconsulta = row.cells[0].innerText;
+    var codigopaciente = row.cells[1].innerText;
+    var nomepaciente = row.cells[2].innerText;
+    var codigoespecializacao = row.cells[3].innerText;
+    var nomemedico = row.cells[4].innerText;
+    var nomeespecialidade = row.cells[5].innerText;
+    var dataconsulta = row.cells[6].innerText;
+    var horarioconsulta = row.cells[7].innerText;
     document.emitirreceita.codigoconsulta.value = codigoconsulta;
-    document.emitirreceita.cadastrarprontuariocodigopaciente.value = codigopaciente;
+    document.emitirreceita.codigopaciente.value = codigopaciente;
     document.emitirreceita.nomepaciente.value = nomepaciente;
     document.emitirreceita.codigoespecializacao.value = codigoespecializacao;
     document.emitirreceita.nomemedico.value = nomemedico;

@@ -93,7 +93,10 @@ a{
   text-align: center;
   padding:5px 10px;
 }
-
+#tabelaReceita tr td{
+  padding:5px 10px;
+  text-align: center;
+ }
 #tabelaConsulta tr td{
   padding:5px 10px;
   text-align: center;

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import model.dao.ConexaoComBanco;
@@ -13,11 +14,11 @@ import model.vo.Consulta.ConsultaVO;
 import model.vo.Convenio.ConvenioVO;
 import model.vo.Especializacao.EspecializacaoVO;
 import model.vo.Paciente.PacienteVO;
+import model.vo.Prontuario.ProntuarioVO;
 import model.vo.Prontuario.ReceitaVO;
 
 public class ReceitaDAO {
 
-    private EspecializacaoDAO especializacaoDAO = new EspecializacaoDAO();
     private ConsultaDAO consultaDAO = new ConsultaDAO();
 
     public List<ReceitaVO> buscarReceitasConsultaPaciente(int codigoConsulta) {
@@ -37,9 +38,8 @@ public class ReceitaDAO {
                 ConsultaVO consultaVO = consultaDAO.consultarPorId(codigoConsulta);
                 receitaVO.setConsultaVO(consultaVO);
                 receitaVO.setMedicamento(result.getString(3));
-                receitaVO.setPosologia(result.getString(4));
-                receitaVO.setExames(result.getString(5));
-                receitaVO.setObservacao(result.getString(6));
+                receitaVO.setExame(result.getString(4));
+                receitaVO.setObservacao(result.getString(5));
                 listaReceitas.add(receitaVO);
             }
         } catch (SQLException ex) {
@@ -50,4 +50,69 @@ public class ReceitaDAO {
         }
         return listaReceitas;
     }
+
+    public int cadastrarReceitaVO(ReceitaVO receitaVO) {
+
+        int novoId = -1;
+
+        String query = " INSERT INTO receita (codigoConsulta, medicamento, exame, observacao) "
+                + " VALUES (?, ?, ?, ?) ";
+
+        Connection conn = ConexaoComBanco.getConnection();
+        PreparedStatement prepStmt = ConexaoComBanco.getPreparedStatement(conn, query, Statement.RETURN_GENERATED_KEYS);
+
+        try {
+
+            prepStmt.setInt(1, receitaVO.getConsultaVO().getCodigoConsulta());
+            prepStmt.setString(2, receitaVO.getMedicamento());
+            prepStmt.setString(3, receitaVO.getExame());
+            prepStmt.setString(4, receitaVO.getObservacao());
+
+            prepStmt.executeUpdate();
+
+            ResultSet generatedKeys = prepStmt.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                novoId = generatedKeys.getInt(1);
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao executar Query de Cadastro de Receita! Causa: \n: " + e.getMessage());
+        } finally {
+            ConexaoComBanco.closePreparedStatement(prepStmt);
+            ConexaoComBanco.closeConnection(conn);
+        }
+        return novoId;
+    }
+
+    public boolean atualizarReceitaVO(ReceitaVO receitaVO, int codigoReceita) {
+        boolean sucessoAtualizar = false;
+
+        String query = " UPDATE receita SET codigoConsulta=?, medicamento=?, exame=?, observacao=? "
+                + " where codigoReceita = ? ";
+
+        Connection conn = ConexaoComBanco.getConnection();
+        PreparedStatement prepStmt = ConexaoComBanco.getPreparedStatement(conn, query);
+
+        try {
+
+            prepStmt.setInt(1, receitaVO.getConsultaVO().getCodigoConsulta());
+            prepStmt.setString(2, receitaVO.getMedicamento());
+            prepStmt.setString(3, receitaVO.getExame());
+            prepStmt.setString(4, receitaVO.getObservacao());
+            prepStmt.setInt(5, receitaVO.getCodigoReceita());
+
+            int codigoRetorno = prepStmt.executeUpdate();
+
+            if (codigoRetorno == 1) {
+                sucessoAtualizar = true;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Erro ao executar Query de Atualização do Receita! Causa: \n: " + ex.getMessage());
+        } finally {
+            ConexaoComBanco.closePreparedStatement(prepStmt);
+            ConexaoComBanco.closeConnection(conn);
+        }
+        return sucessoAtualizar;
+    }
+
 }
+

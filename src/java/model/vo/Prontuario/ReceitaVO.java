@@ -6,20 +6,20 @@ import model.vo.Especializacao.EspecializacaoVO;
 public class ReceitaVO {
 
     private int codigoReceita;
-     private ConsultaVO consultaVO;
+    private ConsultaVO consultaVO;
     private String medicamento;
-    private String posologia;
-    private String exames;
+    private String exame;
     private String observacao;
 
-    public ReceitaVO(int codigoReceita, ConsultaVO consultaVO, String medicamento, String posologia, String exames, String observacao) {
+    public ReceitaVO(int codigoReceita, ConsultaVO consultaVO, String medicamento, String exame, String observacao) {
         this.codigoReceita = codigoReceita;
         this.consultaVO = consultaVO;
         this.medicamento = medicamento;
-        this.posologia = posologia;
-        this.exames = exames;
+        this.exame = exame;
         this.observacao = observacao;
     }
+
+   
 
     public ReceitaVO() {
     }
@@ -48,20 +48,13 @@ public class ReceitaVO {
         this.medicamento = medicamento;
     }
 
-    public String getPosologia() {
-        return posologia;
+  
+    public String getExame() {
+        return exame;
     }
 
-    public void setPosologia(String posologia) {
-        this.posologia = posologia;
-    }
-
-    public String getExames() {
-        return exames;
-    }
-
-    public void setExames(String exames) {
-        this.exames = exames;
+    public void setExame(String exame) {
+        this.exame = exame;
     }
 
     public String getObservacao() {
@@ -74,7 +67,7 @@ public class ReceitaVO {
 
     @Override
     public String toString() {
-        return "ReceitaVO{" + "codigoReceita=" + codigoReceita + ", consultaVO=" + consultaVO + ", medicamento=" + medicamento + ", posologia=" + posologia + ", exames=" + exames + ", observacao=" + observacao + '}';
+        return "ReceitaVO{" + "codigoReceita=" + codigoReceita + ", consultaVO=" + consultaVO + ", medicamento=" + medicamento + ", exame=" + exame + ", observacao=" + observacao + '}';
     }
 
 }

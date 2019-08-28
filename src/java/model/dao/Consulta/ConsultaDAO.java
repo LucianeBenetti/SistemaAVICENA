@@ -17,6 +17,7 @@ import model.vo.Consulta.ConsultaVO;
 import model.vo.Convenio.ConvenioVO;
 import model.vo.Especializacao.EspecializacaoVO;
 import model.vo.Paciente.PacienteVO;
+import model.vo.Prontuario.ReceitaVO;
 
 public class ConsultaDAO {
 
@@ -323,6 +324,5 @@ public class ConsultaDAO {
         System.out.println("model.dao.Consulta()" + listaConsultas);
         return listaConsultas;
     }
+
 }
-
-

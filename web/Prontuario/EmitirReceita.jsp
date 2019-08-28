@@ -1,3 +1,4 @@
+<%@page import="model.vo.Consulta.ConsultaVO"%>
 <%@page import="model.vo.Prontuario.ReceitaVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -15,11 +16,11 @@
         <div class="form1">
             <h2>Emitir Receita!</h2>
 
-           <!-- <fieldset><legend>Digite o CPF do Paciente</legend>
+            <fieldset><legend>Digite o CPF do Paciente</legend>
                 <div>
                     <form method="post" action="../pesquisardadosparaemitirreceita">
 
-                    <p><a>*</a>Campos de preenchimento obrigatório</p>                    
+                        <p><a>*</a>Campos de preenchimento obrigatório</p>                    
 
                         CPF<a>*</a>:<br> 
                         <input type="text" name="cpfpaciente" required onkeyup="maskIt(this, event, '###.###.###-##')">
@@ -27,19 +28,19 @@
                     </form>
                 </div> 
 
-            </fieldset>-->
-            
-           <form name="emitirreceita" action="emitirreceita" method="post">
+            </fieldset>
+
+            <form name="emitirreceita" action="emitirreceita" method="post">
                 <fieldset>
                     Nome: <br>   
                     <input type="hidden" readonly name="codigoreceita"> 
                     <input type="hidden" readonly name="codigoconsulta"> 
                     <input type="hidden" readonly name="codigopaciente"> 
-                    <input type="text" readonly name="nomepaciente" size="50" required ><br><br> 
-                    <input type="hidden" readonly name="codigoespecializacao"> 
-                    <input type="hidden" readonly name="nomemedico"> 
-                    <input type="hidden" readonly name="nomeespecialidade"> 
-                   <div style="width:55%">
+                    <input type="text" readonly name="nomepaciente" size="50"><br><br> 
+                    <input type="hidden" readonly name="codigoespecializacao" > 
+                    <input type="text" readonly name="nomemedico" size="50"> <br><br>
+                    <input type="text" readonly name="nomeespecialidade" size="50"> <br><br>
+                    <div style="width:55%">
                         <div style="float:left"> Data: </div>
                         <div style="float:right"> Horário: </div>
                     </div>
@@ -53,21 +54,51 @@
                     <textarea name="medicamentos"></textarea><br><br>
                     Exames:<br>
                     <textarea name="exames"></textarea><br><br>
-                    Procedimentos:<br>
-                    <textarea name="procedimento" ></textarea><br><br>
                     Registro de Observações:<br>
-                    <textarea name="registro" ></textarea><br><br>
+                    <textarea name="registroobservacao" ></textarea><br><br>
 
-                <input type="submit" value="Emitir Receita">
-   
+                    <input type="submit" value="Emitir Receita">
+
                     <br><br>    
 
                 </fieldset>
             </form>
         </div><br><br> 
 
-    
-        <div class="resultadodaconsulta">            
+
+        <div class="resultadodaconsulta">  
+
+            <%
+                Object consultas = request.getAttribute("listaconsultas");
+                ArrayList<ConsultaVO> consultasVO = (ArrayList<ConsultaVO>) consultas;
+                if (consultasVO != null) {%>
+            <h2>Consultas do Paciente</h2>
+            <table id="tabelaConsulta">
+                <tr>
+                    <th>Id</th>
+                    <th>Nome do Paciente</th> 
+                    <th>Nome do Médico</th> 
+                    <th>Especialidade</th>
+                    <th>Data da Consulta</th>
+                    <th>Horário da Consulta</th>
+                </tr>        
+                <% for (ConsultaVO consultaVO : consultasVO) {%>  
+
+                <tr onclick="clickLinhaTabelaConsultaReceita(this)">
+                    <td><%= consultaVO.getCodigoConsulta()%></td>
+                    <td hidden><%= consultaVO.getPacienteVO().getCodigoPaciente()%></td>
+                    <td><%= consultaVO.getPacienteVO().getNomePaciente()%></td>
+                    <td hidden><%= consultaVO.getEspecializacaoVO().getCodigoEspecializacao()%></td>
+                    <td><%= consultaVO.getEspecializacaoVO().getMedicoVO().getNomeMedico()%></td>
+                    <td><%= consultaVO.getEspecializacaoVO().getEspecialidadeVO().getNomeEspecialidade()%></td>
+                    <td ><%= consultaVO.getDataConsulta()%></td>
+                    <td ><%= consultaVO.getHorarioConsulta()%></td>
+                </tr>     
+                <% }
+                    } %>
+            </table>
+            <br><br>
+
             <%
                 Object receitas = request.getAttribute("listareceitas");
                 ArrayList<ReceitaVO> receitasVO = (ArrayList<ReceitaVO>) receitas;
@@ -82,13 +113,11 @@
                     <th>Data da Consulta</th>
                     <th>Horário da Consulta</th>
                     <th>Medicamento</th>
-                    <th>Posologia</th>
                     <th>Exames</th>
                     <th>Observações</th>
                 </tr>        
                 <% for (ReceitaVO receitaVO : receitasVO) {%>  
 
-                <tr onclick="clickLinhaTabelaReceita(this)">
                     <td><%= receitaVO.getCodigoReceita()%></td>
                     <td hidden><%= receitaVO.getConsultaVO().getCodigoConsulta()%></td>
                     <td hidden><%= receitaVO.getConsultaVO().getPacienteVO().getCodigoPaciente()%></td>
@@ -99,19 +128,14 @@
                     <td ><%= receitaVO.getConsultaVO().getDataConsulta()%></td>
                     <td ><%= receitaVO.getConsultaVO().getHorarioConsulta()%></td>
                     <td ><%= receitaVO.getMedicamento()%></td>
-                    <td><%= receitaVO.getPosologia()%></td>
-                    <td ><%= receitaVO.getExames()%></td>
                     <td><%= receitaVO.getObservacao()%></td>
-                
+
                 </tr>     
                 <% }
-                    } %>
+                    }%>
             </table>
             <br><br>
-
         </div>
-
-
         <br><br>   
         <br><br>
         <footer class="footer">                
