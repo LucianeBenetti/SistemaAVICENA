@@ -14,8 +14,7 @@
 <body class="body">
     <br><br>
    
-
-    
+   
 
     <h1>O Receita foi cadastrada com sucesso!!!</h1>
   

@@ -37,8 +37,8 @@
                     <input type="hidden" readonly name="codigopaciente"> 
                     <input type="text" readonly name="nomepaciente" size="50" required ><br><br> 
                     <input type="hidden" readonly name="codigoespecializacao"> 
-                    <input type="hidden" readonly name="nomemedico"> 
-                    <input type="hidden" readonly name="nomeespecialidade"> 
+                    <input type="hidden" readonly name="nomemedico" size="50"> 
+                    <input type="hidden" readonly name="nomeespecialidade" size="50"> 
                     <input type="hidden" readonly name="codigoconvenio"> 
                     <input type="hidden" readonly name="nomeconvenio"> 
 
@@ -52,7 +52,7 @@
                         <div style="float:right"> <input type="text" readonly name="horarioconsulta" size="20"></div>  <br><br>  
                     </div>
                     <input type="hidden" readonly name="codigoprontuario"> 
-                    Medicamentos:
+                    Medicamentos:<br>
                     <textarea name="medicamentos"></textarea><br><br>
                     Exames:<br>
                     <textarea name="exames"></textarea><br><br>

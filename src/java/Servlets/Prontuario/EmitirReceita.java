@@ -59,7 +59,6 @@ public class EmitirReceita extends HttpServlet {
 
             Image figura = Image.getInstance("D:\\SENAC\\coracao.png");
             document.add(figura);
-
             document.add(new Paragraph("Clínica AVICENA - Medicina Humanizada" + "\n\n"));
             document.add(new Paragraph("Receita Médica" + "\n\n"));
             document.add(new Paragraph("Paciente " + nomePaciente + "\n\n"));
@@ -75,6 +74,8 @@ public class EmitirReceita extends HttpServlet {
             System.err.println(ioe.getMessage());
         }
         document.close();
+        
+        Runtime.getRuntime().exec (new String[]{"cmd.exe", "/c", "start", "D://SENAC//Receita.pdf"}); 
 
         request.setAttribute("codigoPaciente", codigoPaciente);
         request.setAttribute("nomepaciente", nomePaciente);

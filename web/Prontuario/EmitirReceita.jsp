@@ -50,7 +50,7 @@
                         <div style="float:right"> <input type="text" readonly name="horarioconsulta" size="20"></div>  <br><br>  
                     </div>
                     <input type="hidden" readonly name="codigoprontuario"> 
-                    Medicamentos:
+                    Medicamentos:<br>
                     <textarea name="medicamentos"></textarea><br><br>
                     Exames:<br>
                     <textarea name="exames"></textarea><br><br>
@@ -128,6 +128,7 @@
                     <td ><%= receitaVO.getConsultaVO().getDataConsulta()%></td>
                     <td ><%= receitaVO.getConsultaVO().getHorarioConsulta()%></td>
                     <td ><%= receitaVO.getMedicamento()%></td>
+                    <td ><%= receitaVO.getExame()%></td>
                     <td><%= receitaVO.getObservacao()%></td>
 
                 </tr>     
