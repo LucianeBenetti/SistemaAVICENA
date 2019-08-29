@@ -34,7 +34,7 @@ public class EmitirReceita extends HttpServlet {
         consultaVO.setCodigoConsulta(codigoConsulta);
         String medicamentos = request.getParameter("medicamentos");
         String exames = request.getParameter("exames");
-        String registros = request.getParameter("registro");
+        String registros = request.getParameter("registroobservacao");
 
         receitaVO = new ReceitaVO();
         receitaVO.setConsultaVO(consultaVO);
@@ -52,22 +52,19 @@ public class EmitirReceita extends HttpServlet {
         Document document = new Document();
         try {
 
-            PdfWriter.getInstance(document, new FileOutputStream("D:\\SENAC\\PDF_Teste.pdf"));
+            PdfWriter.getInstance(document, new FileOutputStream("D:\\SENAC\\Receita.pdf"));
             document.open();
             // adicionando um parágrafo no documento
 
-            document.addTitle("Receita Médica");
-            document.add(new Paragraph("Paciente " + nomePaciente));
-            document.add(new Paragraph(""));
-            document.add(new Paragraph(""));
-            document.add(new Paragraph("Solicito Medicamentos: " + medicamentos));
-            document.add(new Paragraph(""));
-            document.add(new Paragraph(""));
-            document.add(new Paragraph("Solicitação de Exames: " + exames));
-            document.add(new Paragraph(""));
-            document.add(new Paragraph(""));
-            document.add(new Paragraph("Observações: " + registros));
-
+            document.add(new Paragraph("Clínica AVICENA - Medicina Humanizada" + "\n\n"));
+            document.add(new Paragraph("Receita Médica" + "\n\n"));
+            document.add(new Paragraph("Paciente " + nomePaciente + "\n\n"));
+            document.add(new Paragraph("Solicitação de Medicamentos: " + "\n\n"));
+            document.add(new Paragraph(medicamentos + "\n\n"));
+            document.add(new Paragraph("Solicitação de Exames: " + "\n\n"));
+            document.add(new Paragraph(exames + "\n\n"));
+            document.add(new Paragraph("Observações: " + "\n\n"));
+            document.add(new Paragraph(registros + "\n\n"));
         } catch (DocumentException de) {
             System.err.println(de.getMessage());
         } catch (IOException ioe) {

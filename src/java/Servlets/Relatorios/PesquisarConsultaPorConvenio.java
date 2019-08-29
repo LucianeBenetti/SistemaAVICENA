@@ -33,7 +33,6 @@ public class PesquisarConsultaPorConvenio extends HttpServlet {
             Boolean resultadoDaPesquisaDeConsultas = false;
             ConsultaController consultaController = new ConsultaController();
             listaConsultas = consultaController.listarConsultasVOPorConvenio(codigoConvenio);
-            System.out.println("Servlets.Relatorios.PesquisarConsultaPorConvenio.processRequest()" + listaConsultas);
             if (listaConsultas.size() > 0) {
 
                 HttpSession session = request.getSession();

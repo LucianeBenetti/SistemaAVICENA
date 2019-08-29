@@ -40,7 +40,7 @@
         <div class="resultadodaconsultaNome">
             <form action="gerarrelatorioconsultaspormedico" method="post">
                 <%
-                    Object consultas = request.getAttribute("listaconsultas");
+                    Object consultas = request.getAttribute("listadeconsultas");
                     ArrayList<ConsultaVO> consultasVO = (ArrayList<ConsultaVO>) consultas;
                     if (consultasVO != null) {%>
 
@@ -71,7 +71,7 @@
                     <% }  %>
                 </table>
                 <br><br>
-                <input type="hidden" id="gerarrelatorio" name="gerarrelatorio" value="gerarrelatorio">
+                 <input type="hidden" id="gerarrelatorio" name="gerarrelatorio" value="gerarrelatorio">
                 <input type="submit" value="Gerar Relatório">
                 <%  }%>      
 

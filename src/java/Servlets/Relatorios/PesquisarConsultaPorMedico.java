@@ -32,10 +32,10 @@ public class PesquisarConsultaPorMedico extends HttpServlet {
 
         for (int i = 0; i < listaMedicos.size(); i++) {
             if (medicoVO.getNomeMedico().equals(listaMedicos.get(i).getNomeMedico())) {
-                medicoVO.setCodigoMedico(listaMedicos.get(i).getCodigoMedico());
-            }
-        }
+                medicoVO.setCodigoMedico(listaMedicos.get(i).getCodigoMedico());            
+         }
 
+        }
         if (medicoVO != null) {
 
             int codigoMedico = medicoVO.getCodigoMedico();
@@ -52,13 +52,13 @@ public class PesquisarConsultaPorMedico extends HttpServlet {
 
                 listaConsultas = consultaController.listarConsultasVOPorMedico(codigoEspecializacao);
             }
-            System.out.println("Servlets.Relatorios.PesquisarConsultaPorConvenio.processRequest()" + listaConsultas);
 
             if (listaConsultas.size() > 0) {
 
                 HttpSession session = request.getSession();
-                session.setAttribute("listaconsultas", listaConsultas);
-                request.setAttribute("listaconsultas", listaConsultas);
+                session.setAttribute("listadeconsultas", listaConsultas);
+                session.setAttribute("medicovo", medicoVO);
+                request.setAttribute("listadeconsultas", listaConsultas);
 
             } else {
                 System.out.println("O consulta não foi encontrada!");
