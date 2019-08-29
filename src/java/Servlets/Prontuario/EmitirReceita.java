@@ -2,6 +2,7 @@ package Servlets.Prontuario;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import controller.Prontuario.ReceitaController;
@@ -55,6 +56,9 @@ public class EmitirReceita extends HttpServlet {
             PdfWriter.getInstance(document, new FileOutputStream("D:\\SENAC\\Receita.pdf"));
             document.open();
             // adicionando um parágrafo no documento
+
+            Image figura = Image.getInstance("D:\\SENAC\\coracao.png");
+            document.add(figura);
 
             document.add(new Paragraph("Clínica AVICENA - Medicina Humanizada" + "\n\n"));
             document.add(new Paragraph("Receita Médica" + "\n\n"));
