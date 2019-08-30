@@ -2,8 +2,11 @@ package Servlets.Prontuario;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfWriter;
 import controller.Prontuario.ReceitaController;
 import java.io.FileOutputStream;
@@ -59,15 +62,21 @@ public class EmitirReceita extends HttpServlet {
 
             Image figura = Image.getInstance("D:\\SENAC\\coracao.png");
             document.add(figura);
-            document.add(new Paragraph("Clínica AVICENA - Medicina Humanizada" + "\n\n"));
-            document.add(new Paragraph("Receita Médica" + "\n\n"));
-            document.add(new Paragraph("Paciente " + nomePaciente + "\n\n"));
-            document.add(new Paragraph("Solicitação de Medicamentos: " + "\n\n"));
+            Paragraph pTitulo = new Paragraph(new Phrase(20F , "AVICENA - Medicina Humanizada", FontFactory.getFont(FontFactory.HELVETICA, 18F)));
+            pTitulo.setAlignment(Element.ALIGN_CENTER);
+            document.add(pTitulo);
+            Paragraph pSubTitulo = new Paragraph(new Phrase("Receita Médica", FontFactory.getFont(FontFactory.HELVETICA, 16F)));
+            pSubTitulo.setAlignment(Element.ALIGN_CENTER);
+            document.add(pSubTitulo );
+            document.add(new Paragraph("\n\n"));
+            document.add(new Paragraph("Paciente: " + nomePaciente + "\n\n"));
+            document.add(new Paragraph("Solicitação de Medicamentos: "));
             document.add(new Paragraph(medicamentos + "\n\n"));
-            document.add(new Paragraph("Solicitação de Exames: " + "\n\n"));
+            document.add(new Paragraph("Solicitação de Exames: "));
             document.add(new Paragraph(exames + "\n\n"));
-            document.add(new Paragraph("Observações: " + "\n\n"));
+            document.add(new Paragraph("Observações: "));
             document.add(new Paragraph(registros + "\n\n"));
+            
         } catch (DocumentException de) {
             System.err.println(de.getMessage());
         } catch (IOException ioe) {

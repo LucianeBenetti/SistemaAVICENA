@@ -13,34 +13,35 @@
         <title>Sistema Avicena</title> 
     </head>
     <body class="body">  
+
+        <%
+            Object listaMedicos = request.getAttribute("listamedicosvo");
+            if (listaMedicos != null) {
+                ArrayList<MedicoVO> medicos = (ArrayList<MedicoVO>) listaMedicos;
+        %>
         <h2>Relatório de Consultas por Médico</h2>
         <form name="f1"  action="pesquisarconsultapormedico" method="POST">
 
             <div class="consultaNome">
 
-                    <%
-                        Object listaMedicos = request.getAttribute("listamedicosvo");
-                        if (listaMedicos != null) {
-                            ArrayList<MedicoVO> medicos = (ArrayList<MedicoVO>) listaMedicos;
-                    %>
-                    <fieldset><legend>Por gentileza, selecionar o nome do Médico a ser pesquisado:</legend>
-                        <select name="medicoselecionado" >
-                            <option selected disabled >Selecione um Médico</option>
-                            <% for (int i = 0; i < medicos.size(); i++) {%>
-                            <option name="medicoselecionado" value="<%=(medicos.get(i).getNomeMedico())%>"><%out.println(medicos.get(i).getNomeMedico());%></option>
-                            <%} %>  
-                        </select>
-                        <br /><br />
-                        <input type="submit" value = "Buscar Médico Selecionado">   
-                    </fieldset>
+                <fieldset><legend>Por gentileza, selecionar o nome do Médico a ser pesquisado:</legend>
+                    <select name="medicoselecionado" >
+                        <option selected disabled >Selecione um Médico</option>
+                        <% for (int i = 0; i < medicos.size(); i++) {%>
+                        <option name="medicoselecionado" value="<%=(medicos.get(i).getNomeMedico())%>"><%out.println(medicos.get(i).getNomeMedico());%></option>
+                        <%} %>  
+                    </select>
+                    <br /><br />
+                    <input type="submit" value = "Buscar Médico Selecionado">   
+                </fieldset>
 
                 <%} %>  
                 <br><br>
             </div>
         </form>  
-         <form name="f2" action="gerarrelatorioconsultaspormedico" method="post">
-        <div class="resultadodaconsultaNome">
-           
+        <form name="f2" action="gerarrelatorioconsultaspormedico" method="post">
+            <div class="resultadodaconsultaNome">
+
                 <%
                     Object consultas = request.getAttribute("listadeconsultas");
                     ArrayList<ConsultaVO> consultasVO = (ArrayList<ConsultaVO>) consultas;
@@ -73,13 +74,12 @@
                     <% }  %>
                 </table>
                 <br><br>
-                 <input type="hidden" id="gerarrelatorio" name="gerarrelatorio" value="gerarrelatorio">
+                <input type="hidden" id="gerarrelatorio" name="gerarrelatorio" value="gerarrelatorio">
                 <input type="submit" value="Gerar Relatório">
                 <%  }%>      
 
-          
-            <br><br>         
-        </div>
+                <br><br>         
+            </div>
         </form>
     </body>
 </html>

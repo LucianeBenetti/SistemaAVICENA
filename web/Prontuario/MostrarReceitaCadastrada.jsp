@@ -13,10 +13,8 @@
 </head>
 <body class="body">
     <br><br>
-   
-   
 
-    <h1>O Receita foi cadastrada com sucesso!!!</h1>
+    <h1>Relatório cadastrado com sucesso!!!</h1>
   
 
 <footer class="footer">                

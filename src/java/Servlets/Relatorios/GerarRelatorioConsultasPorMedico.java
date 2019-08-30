@@ -3,6 +3,8 @@ package Servlets.Relatorios;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
@@ -32,7 +34,17 @@ public class GerarRelatorioConsultasPorMedico extends HttpServlet {
         PdfWriter.getInstance(document, new FileOutputStream("D:\\SENAC\\RelatorioMedico.pdf"));
         document.open();
 
-        PdfPTable table = new PdfPTable(new float[]{10f, 5f, 3f});
+        Image figura = Image.getInstance("D:\\SENAC\\coracao.png");
+        document.add(figura);
+        Paragraph pTitulo = new Paragraph(new Phrase(20F, "AVICENA - Medicina Humanizada", FontFactory.getFont(FontFactory.HELVETICA, 18F)));
+        pTitulo.setAlignment(Element.ALIGN_CENTER);
+        document.add(pTitulo);
+        Paragraph pSubTitulo = new Paragraph(new Phrase("Relatório de Consultas por Médico", FontFactory.getFont(FontFactory.HELVETICA, 16F)));
+        pSubTitulo.setAlignment(Element.ALIGN_CENTER);
+        document.add(pSubTitulo);
+        document.add(new Paragraph("\n\n"));
+
+        PdfPTable table = new PdfPTable(new float[]{7f, 7f, 5f, 7f, 7f});
         PdfPCell celulaNomeMedico = new PdfPCell(new Phrase("Nome do Médico"));
         celulaNomeMedico.setHorizontalAlignment(Element.ALIGN_CENTER);
         PdfPCell celulaDataConsulta = new PdfPCell(new Phrase("Data da Consulta"));
@@ -49,13 +61,19 @@ public class GerarRelatorioConsultasPorMedico extends HttpServlet {
         table.addCell(celulaHorario);
         table.addCell(celulaNomePeciente);
         table.addCell(celulaNomeConvenio);
+        
         for (int i = 0; i < consultas.size(); i++) {
-            PdfPCell celula1 = new PdfPCell(new Phrase(consultas.get(i).getCodigoConsulta()));
+            PdfPCell celula1 = new PdfPCell(new Phrase(consultas.get(i).getEspecializacaoVO().getMedicoVO().getNomeMedico()));
+            celula1.setHorizontalAlignment(Element.ALIGN_CENTER);
             PdfPCell celula2 = new PdfPCell(new Phrase(consultas.get(i).getDataConsulta()));
+            celula2.setHorizontalAlignment(Element.ALIGN_CENTER);
             PdfPCell celula3 = new PdfPCell(new Phrase(consultas.get(i).getHorarioConsulta()));
+            celula3.setHorizontalAlignment(Element.ALIGN_CENTER);
             PdfPCell celula4 = new PdfPCell(new Phrase(consultas.get(i).getPacienteVO().getNomePaciente()));
+            celula4.setHorizontalAlignment(Element.ALIGN_CENTER);
             PdfPCell celula5 = new PdfPCell(new Phrase(consultas.get(i).getConvenioVO().getNomeConvenio()));
-
+            celula5.setHorizontalAlignment(Element.ALIGN_CENTER);
+            
             table.addCell(celula1);
             table.addCell(celula2);
             table.addCell(celula3);
@@ -64,11 +82,9 @@ public class GerarRelatorioConsultasPorMedico extends HttpServlet {
             document.add(table);
         }
         document.close();
+        Runtime.getRuntime().exec(new String[]{"cmd.exe", "/c", "start", "D://SENAC//RelatorioMedico.pdf"});
+        request.getRequestDispatcher("Prontuario/MostrarReceitaCadastrada.jsp").forward(request, response);
 
-//         String nomePaciente = request.getParameter("nomepaciente");
-//        String medicamentos = request.getParameter("medicamentos");
-//        String exames = request.getParameter("exames");
-//        String registros = request.getParameter("registro");
     }
 
     @Override
