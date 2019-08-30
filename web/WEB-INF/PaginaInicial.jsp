@@ -154,7 +154,7 @@
                     Relatórios
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="Relatorios/RelatorioDeConsultaPorConvenio.jsp">Consultas por Convênio</a>
+                    <a class="dropdown-item" href="pesquisarconvenio">Consultas por Convênio</a>
                     <a class="dropdown-item" href="pesquisarmedico">Consultas por Médico</a>
                     <a class="dropdown-item" href="Relatorios/RelatorioDeFaturamento.jsp">Faturamento Mensal</a>
 

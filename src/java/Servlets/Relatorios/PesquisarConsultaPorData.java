@@ -1,31 +1,52 @@
-package Servlets.Consulta;
+package Servlets.Relatorios;
 
 import controller.Consulta.ConsultaController;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.vo.Consulta.ConsultaVO;
 
-public class ListarConsultas extends HttpServlet {
+public class PesquisarConsultaPorData extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        ConsultaController consultaController = new ConsultaController();
-        ArrayList<ConsultaVO> consultasVO = consultaController.listarTodasAsConsultasVO();
+        String dataInicial = request.getParameter("datainicial");
+        String dataFinal = request.getParameter("datafinal");
 
-        if (consultasVO != null) {
-            request.setAttribute("consultas", consultasVO);
-            request.getRequestDispatcher("Consulta/ListarTodasAsConsultas.jsp").forward(request, response);
-   
+        List<ConsultaVO> listaConsultas = null;
+        Boolean resultadoDaPesquisaDeConsultas = false;
+
+        ConsultaController consultaController = new ConsultaController();
+        listaConsultas = consultaController.listarConsultasVOPorData(dataInicial, dataFinal);
+
+        if (listaConsultas.size() > 0) {
+
+            request.setAttribute("listadeconsultas", listaConsultas);
+
+        } else {
+            System.out.println("O consulta não foi encontrada!");
+            request.setAttribute("consultavoretornada", resultadoDaPesquisaDeConsultas);
         }
+        request.getRequestDispatcher("Relatorios/RelatorioDeFaturamento.jsp").forward(request, response);
+
     }
 
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

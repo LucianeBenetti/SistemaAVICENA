@@ -17,9 +17,14 @@ import javax.swing.JFileChooser;
 import model.vo.Consulta.ConsultaVO;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.BorderStyle;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.FillPatternType;
+import org.apache.poi.ss.usermodel.HorizontalAlignment;
+import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.Row;
-
+import org.apache.poi.ss.usermodel.VerticalAlignment;
 
 public class GerarRelatorioConsultasPorConvenio extends HttpServlet {
 
@@ -37,10 +42,22 @@ public class GerarRelatorioConsultasPorConvenio extends HttpServlet {
         HSSFSheet abaPlanilha = planilha.createSheet("Consultas");
         Row headerRow = abaPlanilha.createRow(0);
 
+        CellStyle headerStyle = planilha.createCellStyle();
+        headerStyle.setAlignment(HorizontalAlignment.CENTER);
+        headerStyle.setFillForegroundColor(IndexedColors.GREY_25_PERCENT.getIndex());
+        headerStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+        headerStyle.setVerticalAlignment(VerticalAlignment.CENTER);
+
+        CellStyle textStyle = planilha.createCellStyle();
+        textStyle.setAlignment(HorizontalAlignment.CENTER);
+        textStyle.setVerticalAlignment(VerticalAlignment.CENTER);
+
         // 2) Cria o cabeçalho a partir de um array columns
         for (int i = 0; i < columns.length; i++) {
             Cell cell = headerRow.createCell(i);
             cell.setCellValue(columns[i]);
+            cell.setCellStyle(headerStyle);
+
         }
         // 3) Cria as linhas com os produtos da lista
         int rowNum = 1;
@@ -53,6 +70,7 @@ public class GerarRelatorioConsultasPorConvenio extends HttpServlet {
             novaLinha.createCell(3).setCellValue(consulta.getConvenioVO().getNomeConvenio());
             novaLinha.createCell(4).setCellValue(consulta.getEspecializacaoVO().getMedicoVO().getNomeMedico());
             nomeConvenio = consulta.getConvenioVO().getNomeConvenio();
+            novaLinha.setRowStyle(textStyle);
         }
         // 4) Ajusta o tamanho de todas as colunas conforme a largura do
         // conteúdo
@@ -64,7 +82,7 @@ public class GerarRelatorioConsultasPorConvenio extends HttpServlet {
         File arquivoRelatorio = new File("D:\\SENAC\\Relatorio" + nomeConvenio + ".xls");
         try {
             fileOut = new FileOutputStream(arquivoRelatorio);
-        //  abrirArquivo.writeBytes(planilha.toString());
+            //  abrirArquivo.writeBytes(planilha.toString());
             planilha.write(fileOut);
         } catch (FileNotFoundException e) {
             e.printStackTrace();

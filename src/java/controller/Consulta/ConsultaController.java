@@ -40,4 +40,8 @@ public class ConsultaController {
         return consultaBO.listarConsultasVOPorMedico(codigoEspecializacao);
     }
 
+    public List<ConsultaVO> listarConsultasVOPorData(String dataInicial, String dataFinal) {
+        return consultaBO.listarConsultasVOPorData(dataInicial, dataFinal);
+    }
+
 }

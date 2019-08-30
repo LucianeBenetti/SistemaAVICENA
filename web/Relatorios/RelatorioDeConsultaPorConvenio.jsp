@@ -12,31 +12,41 @@
         <title>Sistema Avicena</title> 
     </head>
     <body class="body">  
+        <%
+            Object convenios = request.getAttribute("listaconvenios");
+            ArrayList<ConvenioVO> conveniosVO = (ArrayList<ConvenioVO>) convenios;
+            if (conveniosVO != null) {%>
 
         <div class="form1">
             <h2>Pesquisar Convênio por CNPJ!</h2>
 
-            <form method="post" action="../pesquisarconsultaporconvenio">
+            <form method="post" action="pesquisarconsultaporconvenio">
 
-                <fieldset><legend>Digite o CNPJ do Convênio a ser consultado na base de dados</legend>
-                    <p><a>*</a>Campos de preenchimento obrigatório</p>                    
-
-                    CNPJ<a>*</a>:<br> 
-                    <input type="text" name="cnpjconvenio" required onkeyup="maskIt(this, event, '##.###.###/####-##')"><br><br>
-                    <input type="submit" value = "Pesquisar Convenio">                
-
+                <fieldset><legend>Por gentileza, selecionar o nome do Convênio a ser pesquisado:</legend>
+                    <select name="convenioselecionado" >
+                        <option selected disabled >Selecione um Convênio</option>
+                        <% for (int i = 0; i < conveniosVO.size(); i++) {%>
+                        <option name="convenioselecionado" value="<%=(conveniosVO.get(i).getCnpjConvenio())%>"><%out.println(conveniosVO.get(i).getNomeConvenio());%></option>
+                        <%} %>  
+                    </select>
+                    <br /><br />
+                    <input type="submit" value = "Buscar Convênio Selecionado">   
                 </fieldset>
+
+                <%} %>  
+                <br><br>
             </form>
-            <br><br>
         </div>
 
         <form action="gerarrelatorioconsultasporconvenio" method="post">
 
             <div class="resultadodaconsultaNome">
+
                 <%
                     Object consultas = request.getAttribute("listaconsultas");
                     ArrayList<ConsultaVO> consultasVO = (ArrayList<ConsultaVO>) consultas;
                     if (consultasVO != null) {%>
+
                 <h2>Relatório de Consultas</h2>
 
                 <table id="tabelaConsulta">

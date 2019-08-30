@@ -57,4 +57,8 @@ public class ConsultaBO {
         return consultaDAO.listarConsultasVOPorMedico(codigoEspecializacao);
     }
 
+    public List<ConsultaVO> listarConsultasVOPorData(String dataInicial, String dataFinal) {
+        return consultaDAO.listarConsultasVOPorData(dataInicial, dataFinal);
+    }
+
 }

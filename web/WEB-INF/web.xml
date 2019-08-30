@@ -192,6 +192,14 @@
         <servlet-name>PesquisarDadosParaEmitirReceita</servlet-name>
         <servlet-class>Servlets.Prontuario.PesquisarDadosParaEmitirReceita</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PesquisarConvenio</servlet-name>
+        <servlet-class>Servlets.Relatorios.PesquisarConvenio</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PesquisarConsultaPorData</servlet-name>
+        <servlet-class>Servlets.Relatorios.PesquisarConsultaPorData</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CrudPaciente</servlet-name>
         <url-pattern>/crudpaciente</url-pattern>
@@ -382,6 +390,14 @@
     <servlet-mapping>
         <servlet-name>PesquisarDadosParaEmitirReceita</servlet-name>
         <url-pattern>/pesquisardadosparaemitirreceita</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PesquisarConvenio</servlet-name>
+        <url-pattern>/pesquisarconvenio</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PesquisarConsultaPorData</servlet-name>
+        <url-pattern>/pesquisarconsultapordata</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
