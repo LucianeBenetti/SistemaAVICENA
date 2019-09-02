@@ -69,14 +69,14 @@ public class GerarRelatorioConsultasPorMedico extends HttpServlet {
         table.addCell(celulaNomeConvenio);
 
         //ConsultaVO consultaVO = new ConsultaVO();
-          for (int i = 0; i < consultas.size(); i++) {
-        Calendar c = Calendar.getInstance();
-        c.setTime(consultas.get(i).getDataConsulta());
-        Date dataSQL = new Date(c.getTimeInMillis());
+        for (int i = 0; i < consultas.size(); i++) {
+            Calendar c = Calendar.getInstance();
+            c.setTime(consultas.get(i).getDataConsulta());
+            Date dataSQL = new Date(c.getTimeInMillis());
 
-        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        String dataFormatada = dateFormat.format(dataSQL);
-     
+            DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+            String dataFormatada = dateFormat.format(dataSQL);
+
             PdfPCell celula1 = new PdfPCell(new Phrase(consultas.get(i).getEspecializacaoVO().getMedicoVO().getNomeMedico()));
             celula1.setHorizontalAlignment(Element.ALIGN_CENTER);
             PdfPCell celula2 = new PdfPCell(new Phrase(dataFormatada));
@@ -93,8 +93,9 @@ public class GerarRelatorioConsultasPorMedico extends HttpServlet {
             table.addCell(celula3);
             table.addCell(celula4);
             table.addCell(celula5);
-            document.add(table);
+
         }
+        document.add(table);
         document.close();
         Runtime.getRuntime().exec(new String[]{"cmd.exe", "/c", "start", "D://SENAC//RelatorioMedico.pdf"});
         request.getRequestDispatcher("Prontuario/MostrarReceitaCadastrada.jsp").forward(request, response);
