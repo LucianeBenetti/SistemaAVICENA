@@ -68,12 +68,10 @@ public class GerarRelatorioConsultasPorMedico extends HttpServlet {
         table.addCell(celulaNomePeciente);
         table.addCell(celulaNomeConvenio);
 
-        ConsultaVO consultaVO = new ConsultaVO();
-       
-
-        for (int i = 0; i < consultas.size(); i++) {
+        //ConsultaVO consultaVO = new ConsultaVO();
+          for (int i = 0; i < consultas.size(); i++) {
         Calendar c = Calendar.getInstance();
-        c.setTime(consultaVO.getDataConsulta());
+        c.setTime(consultas.get(i).getDataConsulta());
         Date dataSQL = new Date(c.getTimeInMillis());
 
         DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
@@ -81,7 +79,7 @@ public class GerarRelatorioConsultasPorMedico extends HttpServlet {
      
             PdfPCell celula1 = new PdfPCell(new Phrase(consultas.get(i).getEspecializacaoVO().getMedicoVO().getNomeMedico()));
             celula1.setHorizontalAlignment(Element.ALIGN_CENTER);
-            PdfPCell celula2 = new PdfPCell(new Date(dataSQL.getDate()));
+            PdfPCell celula2 = new PdfPCell(new Phrase(dataFormatada));
             celula2.setHorizontalAlignment(Element.ALIGN_CENTER);
             PdfPCell celula3 = new PdfPCell(new Phrase(consultas.get(i).getHorarioConsulta()));
             celula3.setHorizontalAlignment(Element.ALIGN_CENTER);
