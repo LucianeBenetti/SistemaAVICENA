@@ -35,7 +35,7 @@
                 Exames: <br>
                 <input type="text" name="exames"  size="50" readonly value="<%= request.getAttribute("exames")%>"> <br><br>
                 Procedimentos: <br>
-                <input type="text" name="procedimentos"  size="50" readonly value="<%= request.getAttribute("procedimentos")%>"> <br><br>
+                <input type="text" name="procedimento"  size="50" readonly value="<%= request.getAttribute("procedimentos")%>"> <br><br>
                 Registro de Observações:
                 <input type="text" readonly name="registro"  size ="50" value="<%= request.getAttribute("registro")%>"><br><br>
 

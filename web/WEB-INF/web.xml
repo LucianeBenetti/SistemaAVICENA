@@ -200,6 +200,10 @@
         <servlet-name>PesquisarConsultaPorData</servlet-name>
         <servlet-class>Servlets.Relatorios.PesquisarConsultaPorData</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GerarRelatorioFaturamentoPorData</servlet-name>
+        <servlet-class>Servlets.Relatorios.GerarRelatorioFaturamentoPorData</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CrudPaciente</servlet-name>
         <url-pattern>/crudpaciente</url-pattern>
@@ -398,6 +402,10 @@
     <servlet-mapping>
         <servlet-name>PesquisarConsultaPorData</servlet-name>
         <url-pattern>/pesquisarconsultapordata</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GerarRelatorioFaturamentoPorData</servlet-name>
+        <url-pattern>/gerarrelatoriofaturamentopordata</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -46,16 +46,16 @@
             </form>
         </div>
 
-        <form action="gerarrelatorioconsultasporconvenio" method="post">
+        <form action="gerarrelatoriofaturamentopordata" method="post">
 
             <div class="resultadodaconsultaNome">
 
                 <%
-                    Object consultas = request.getAttribute("listaconsultas");
+                    Object consultas = request.getAttribute("listadeconsultas");
                     ArrayList<ConsultaVO> consultasVO = (ArrayList<ConsultaVO>) consultas;
                     if (consultasVO != null) {%>
 
-                <h2>Relatório de Consultas</h2>
+                <h2>Relatório de Consultas para Faturamento</h2>
 
                 <table id="tabelaConsulta">
                     <tr>
@@ -64,6 +64,7 @@
                         <th>Nome do Médico</th> 
                         <th>Especialidade</th>
                         <th>Convenio</th>
+                        <th>Valor (R$)</th>
                         <th>Data da Consulta</th>
                         <th>Horário da Consulta</th>
                     </tr>        
@@ -78,6 +79,7 @@
                         <td><%= consultaVO.getEspecializacaoVO().getEspecialidadeVO().getNomeEspecialidade()%></td>
                         <td hidden><%= consultaVO.getConvenioVO().getCodigoConvenio()%></td>
                         <td><%= consultaVO.getConvenioVO().getNomeConvenio()%></td>
+                        <td><%= consultaVO.getConvenioVO().getValor()%></td>
                         <td ><%= consultaVO.getDataConsulta()%></td>
                         <td ><%= consultaVO.getHorarioConsulta()%></td>
                     </tr>     

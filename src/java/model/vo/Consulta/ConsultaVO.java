@@ -12,14 +12,14 @@ public class ConsultaVO {
     private EspecializacaoVO especializacaoVO;
     private PacienteVO pacienteVO;
     private ConvenioVO convenioVO;
-    private String dataConsulta;
+    private Date dataConsulta;
     private String atencaoEspecial;
     private String horarioConsulta;
 
     public ConsultaVO() {
     }
 
-    public ConsultaVO(int codigoConsulta, EspecializacaoVO especializacaoVO, PacienteVO pacienteVO, ConvenioVO convenioVO, String dataConsulta, String atencaoEspecial, String horarioConsulta) {
+    public ConsultaVO(int codigoConsulta, EspecializacaoVO especializacaoVO, PacienteVO pacienteVO, ConvenioVO convenioVO, Date dataConsulta, String atencaoEspecial, String horarioConsulta) {
         this.codigoConsulta = codigoConsulta;
         this.especializacaoVO = especializacaoVO;
         this.pacienteVO = pacienteVO;
@@ -29,14 +29,15 @@ public class ConsultaVO {
         this.horarioConsulta = horarioConsulta;
     }
 
-    public String getDataConsulta() {
+    public Date getDataConsulta() {
         return dataConsulta;
     }
 
-    public void setDataConsulta(String dataConsulta) {
+    public void setDataConsulta(Date dataConsulta) {
         this.dataConsulta = dataConsulta;
     }
 
+   
     public int getCodigoConsulta() {
         return codigoConsulta;
     }

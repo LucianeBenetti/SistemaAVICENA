@@ -45,7 +45,7 @@ public class ExcluirConsulta extends HttpServlet {
             resultadoDaExclusao = true;
             request.setAttribute("codigoconsulta", consultaVO.getCodigoConsulta());
              request.setAttribute("resultadodaexclusao", resultadoDaExclusao);
-            request.getRequestDispatcher("consulta/MostrarConsultaExcluida.jsp").forward(request, response);
+            request.getRequestDispatcher("Consulta/MostrarConsultaExcluida.jsp").forward(request, response);
         } else {
             request.setAttribute("nomeconsulta", resultadoDaExclusao);
             request.getRequestDispatcher("Consulta/MostrarConsultaExcluida.jsp").forward(request, response);

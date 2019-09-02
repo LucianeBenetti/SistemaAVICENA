@@ -6,6 +6,8 @@ import controller.Medico.MedicoController;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
+import java.util.Calendar;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -49,10 +51,20 @@ public class CadastrarConsulta extends HttpServlet {
         pacienteVO.setCodigoPaciente(codigoPaciente);
 
         String dataConsulta = request.getParameter("dataconsulta");
+        DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        Calendar c = Calendar.getInstance();
+        try {
+            c.setTime(formatter.parse(dataConsulta));
+        } catch (ParseException ex) {
+            Logger.getLogger(CadastrarConsulta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Date dataSQL = new Date(c.getTimeInMillis());
+
+       
         consultaVO = new ConsultaVO();
         consultaVO.setAtencaoEspecial(request.getParameter("atencaoEspecial"));
         consultaVO.setConvenioVO(convenioVO);
-        consultaVO.setDataConsulta(dataConsulta);
+        consultaVO.setDataConsulta(dataSQL);
         consultaVO.setEspecializacaoVO(especializacaoVO);
         consultaVO.setHorarioConsulta(request.getParameter("horaconsulta"));
         consultaVO.setPacienteVO(pacienteVO);

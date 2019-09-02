@@ -1,9 +1,14 @@
 package model.bo.Consulta;
 
+import Servlets.Consulta.CadastrarConsulta;
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.dao.Consulta.ConsultaDAO;
 import model.vo.Consulta.ConsultaVO;
@@ -13,8 +18,14 @@ public class ConsultaBO {
     ConsultaDAO consultaDAO = new ConsultaDAO();
 
     public int cadastrarConsultaVO(ConsultaVO consultaVO) {
+        Date data = (Date) consultaVO.getDataConsulta();
+        consultaVO.setDataConsulta(data);
+        Calendar c = Calendar.getInstance();
+        c.setTime(consultaVO.getDataConsulta());
+        Date dataSQL = new Date(c.getTimeInMillis());
+
         int novoId;
-        if (consultaDAO.consultarDataHorario(consultaVO.getDataConsulta(), consultaVO.getHorarioConsulta()) != 0) {
+        if (consultaDAO.consultarDataHorario(dataSQL, consultaVO.getHorarioConsulta()) != 0) {
             novoId = 0;
         } else {
             novoId = consultaDAO.cadastrarConsulta(consultaVO);
@@ -35,7 +46,13 @@ public class ConsultaBO {
 
     public boolean atualizarConsulta(ConsultaVO consultaVO, int codigoConsulta) {
         boolean sucesso = false;
-        if (consultaDAO.consultarDataHorario(consultaVO.getDataConsulta(), consultaVO.getHorarioConsulta()) == 0) {
+
+        Date data = (Date) consultaVO.getDataConsulta();
+        consultaVO.setDataConsulta(data);
+        Calendar c = Calendar.getInstance();
+        c.setTime(consultaVO.getDataConsulta());
+        Date dataSQL = new Date(c.getTimeInMillis());
+        if (consultaDAO.consultarDataHorario(dataSQL, consultaVO.getHorarioConsulta()) == 0) {
             consultaDAO.atualizarConsulta(consultaVO, codigoConsulta);
             return sucesso = true;
 
@@ -57,8 +74,8 @@ public class ConsultaBO {
         return consultaDAO.listarConsultasVOPorMedico(codigoEspecializacao);
     }
 
-    public List<ConsultaVO> listarConsultasVOPorData(String dataInicial, String dataFinal) {
-        return consultaDAO.listarConsultasVOPorData(dataInicial, dataFinal);
+    public List<ConsultaVO> listarConsultasVOPorData(Date dataSQLInicial, Date dataSQLFinal) {
+        return consultaDAO.listarConsultasVOPorData(dataSQLInicial, dataSQLFinal);
     }
 
 }

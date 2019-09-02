@@ -1,9 +1,15 @@
-
 package Servlets.Consulta;
 
 import controller.Consulta.ConsultaController;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,9 +20,11 @@ import model.vo.Especializacao.EspecializacaoVO;
 import model.vo.Paciente.PacienteVO;
 
 public class AtualizarConsulta extends HttpServlet {
- ConsultaVO consultaVO;
+
+    ConsultaVO consultaVO;
     ConsultaController consultaController;
 //
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -38,11 +46,19 @@ public class AtualizarConsulta extends HttpServlet {
         pacienteVO.setCodigoPaciente(codigoPaciente);
 
         String dataConsulta = request.getParameter("dataconsulta");
+        DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        Calendar c = Calendar.getInstance();
+        try {
+            c.setTime(formatter.parse(dataConsulta));
+        } catch (ParseException ex) {
+            Logger.getLogger(CadastrarConsulta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Date dataSQL = new Date(c.getTimeInMillis());
         consultaVO = new ConsultaVO();
         consultaVO.setCodigoConsulta(codigoConsulta);
         consultaVO.setAtencaoEspecial(request.getParameter("atencaoEspecial"));
         consultaVO.setConvenioVO(convenioVO);
-        consultaVO.setDataConsulta(dataConsulta);
+        consultaVO.setDataConsulta(dataSQL);
         consultaVO.setEspecializacaoVO(especializacaoVO);
         consultaVO.setHorarioConsulta(request.getParameter("horarioconsulta"));
         consultaVO.setPacienteVO(pacienteVO);
@@ -53,7 +69,7 @@ public class AtualizarConsulta extends HttpServlet {
         Boolean resultadoDaAtualizacao = false;
 
         if (atualizada) {
-   
+
             request.setAttribute("nomepaciente", nomepaciente);
             request.setAttribute("horarioconsulta", consultaVO.getHorarioConsulta());
             request.setAttribute("dataconsulta", dataConsulta);

@@ -1,5 +1,6 @@
 package Servlets.Relatorios;
 
+import Servlets.Consulta.CadastrarConsulta;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
@@ -13,7 +14,12 @@ import com.itextpdf.text.pdf.PdfWriter;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -61,11 +67,21 @@ public class GerarRelatorioConsultasPorMedico extends HttpServlet {
         table.addCell(celulaHorario);
         table.addCell(celulaNomePeciente);
         table.addCell(celulaNomeConvenio);
-        
+
+        ConsultaVO consultaVO = new ConsultaVO();
+       
+
         for (int i = 0; i < consultas.size(); i++) {
+        Calendar c = Calendar.getInstance();
+        c.setTime(consultaVO.getDataConsulta());
+        Date dataSQL = new Date(c.getTimeInMillis());
+
+        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        String dataFormatada = dateFormat.format(dataSQL);
+     
             PdfPCell celula1 = new PdfPCell(new Phrase(consultas.get(i).getEspecializacaoVO().getMedicoVO().getNomeMedico()));
             celula1.setHorizontalAlignment(Element.ALIGN_CENTER);
-            PdfPCell celula2 = new PdfPCell(new Phrase(consultas.get(i).getDataConsulta()));
+            PdfPCell celula2 = new PdfPCell(new Date(dataSQL.getDate()));
             celula2.setHorizontalAlignment(Element.ALIGN_CENTER);
             PdfPCell celula3 = new PdfPCell(new Phrase(consultas.get(i).getHorarioConsulta()));
             celula3.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -73,7 +89,7 @@ public class GerarRelatorioConsultasPorMedico extends HttpServlet {
             celula4.setHorizontalAlignment(Element.ALIGN_CENTER);
             PdfPCell celula5 = new PdfPCell(new Phrase(consultas.get(i).getConvenioVO().getNomeConvenio()));
             celula5.setHorizontalAlignment(Element.ALIGN_CENTER);
-            
+
             table.addCell(celula1);
             table.addCell(celula2);
             table.addCell(celula3);

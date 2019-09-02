@@ -1,7 +1,5 @@
 package Servlets.Relatorios;
 
-import controller.Consulta.ConsultaController;
-import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -12,16 +10,13 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.JFileChooser;
 import model.vo.Consulta.ConsultaVO;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.BorderStyle;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.FillPatternType;
@@ -30,16 +25,16 @@ import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.VerticalAlignment;
 
-public class GerarRelatorioConsultasPorConvenio extends HttpServlet {
+public class GerarRelatorioFaturamentoPorData extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        response.setContentType("text/html;charset=UTF-8");
         response.setContentType("text/html;charset=UTF-8");
 
-        Object listaconsultas = request.getSession().getAttribute("listaconsultas");
-        ArrayList<ConsultaVO> consultas = (ArrayList<ConsultaVO>) listaconsultas;
-        String[] columns = {"Nome", "Data Consulta", "Horario", "Convenio", "Medico"};
+        Object listaDeConsultas = request.getSession().getAttribute("listadeconsultas");
+        ArrayList<ConsultaVO> consultas = (ArrayList<ConsultaVO>) listaDeConsultas;
+        String[] columns = {"Nome", "Data Consulta", "Horario", "Convenio", "Valor", "Medico"};
         HSSFWorkbook planilha = new HSSFWorkbook();
 
         // 1) Cria uma aba na planilha (nome é um parâmetro opcional)
@@ -66,7 +61,6 @@ public class GerarRelatorioConsultasPorConvenio extends HttpServlet {
 
         // 3) Cria as linhas com os produtos da lista
         int rowNum = 1;
-        String nomeConvenio = null;
         for (ConsultaVO consulta : consultas) {
 
             Calendar c = Calendar.getInstance();
@@ -80,8 +74,8 @@ public class GerarRelatorioConsultasPorConvenio extends HttpServlet {
             novaLinha.createCell(1).setCellValue(dataFormatada);
             novaLinha.createCell(2).setCellValue(consulta.getHorarioConsulta());
             novaLinha.createCell(3).setCellValue(consulta.getConvenioVO().getNomeConvenio());
-            novaLinha.createCell(4).setCellValue(consulta.getEspecializacaoVO().getMedicoVO().getNomeMedico());
-            nomeConvenio = consulta.getConvenioVO().getNomeConvenio();
+            novaLinha.createCell(4).setCellValue(consulta.getConvenioVO().getValor());
+            novaLinha.createCell(5).setCellValue(consulta.getEspecializacaoVO().getMedicoVO().getNomeMedico());
             novaLinha.setRowStyle(textStyle);
         }
         // 4) Ajusta o tamanho de todas as colunas conforme a largura do
@@ -91,7 +85,7 @@ public class GerarRelatorioConsultasPorConvenio extends HttpServlet {
         }
         //5) Escreve o arquivo em disco, no caminho informado
         FileOutputStream fileOut = null;
-        File arquivoRelatorio = new File("D:\\SENAC\\Relatorio" + nomeConvenio + ".xls");
+        File arquivoRelatorio = new File("D:\\SENAC\\RelatorioFaturamento.xls");
         try {
             fileOut = new FileOutputStream(arquivoRelatorio);
             //  abrirArquivo.writeBytes(planilha.toString());

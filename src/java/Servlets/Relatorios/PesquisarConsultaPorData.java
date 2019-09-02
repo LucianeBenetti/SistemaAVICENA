@@ -1,9 +1,17 @@
-package Servlets.Relatorios;
+ package Servlets.Relatorios;
 
+import Servlets.Consulta.CadastrarConsulta;
 import controller.Consulta.ConsultaController;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,15 +27,28 @@ public class PesquisarConsultaPorData extends HttpServlet {
 
         String dataInicial = request.getParameter("datainicial");
         String dataFinal = request.getParameter("datafinal");
+        
+        DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        Calendar c = Calendar.getInstance();
+        try {
+            c.setTime(formatter.parse(dataInicial));
+            c.setTime(formatter.parse(dataFinal));
+        } catch (ParseException ex) {
+            Logger.getLogger(CadastrarConsulta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Date dataSQLInicial = new Date(c.getTimeInMillis());
+        Date dataSQLFinal = new Date(c.getTimeInMillis());
 
         List<ConsultaVO> listaConsultas = null;
         Boolean resultadoDaPesquisaDeConsultas = false;
 
         ConsultaController consultaController = new ConsultaController();
-        listaConsultas = consultaController.listarConsultasVOPorData(dataInicial, dataFinal);
+        listaConsultas = consultaController.listarConsultasVOPorData(dataSQLInicial, dataSQLFinal);
 
         if (listaConsultas.size() > 0) {
 
+             HttpSession session = request.getSession();
+             session.setAttribute("listadeconsultas", listaConsultas);
             request.setAttribute("listadeconsultas", listaConsultas);
 
         } else {
