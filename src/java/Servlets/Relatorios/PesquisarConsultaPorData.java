@@ -34,6 +34,7 @@ public class PesquisarConsultaPorData extends HttpServlet {
             System.out.println("O consulta não foi encontrada!");
             request.setAttribute("consultavoretornada", resultadoDaPesquisaDeConsultas);
         }
+        System.out.println("Servlets.Relatorios.PesquisarConsultaPorData.processRequest()" + listaConsultas.size());
         request.getRequestDispatcher("Relatorios/RelatorioDeFaturamento.jsp").forward(request, response);
 
     }

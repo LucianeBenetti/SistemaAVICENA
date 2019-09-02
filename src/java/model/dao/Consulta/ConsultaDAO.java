@@ -325,7 +325,7 @@ public class ConsultaDAO {
 
     public List<ConsultaVO> listarConsultasVOPorData(String dataInicial, String dataFinal) {
         ArrayList<ConsultaVO> listaConsultas = new ArrayList<ConsultaVO>();
-        String query = "SELECT * from consulta where dataConsulta between ? and ? ";
+        String query = "SELECT * from consulta where dataConsulta between ? and ?";
 
         Connection conn = ConexaoComBanco.getConnection();
         PreparedStatement prepStmt = ConexaoComBanco.getPreparedStatement(conn, query);
@@ -354,7 +354,7 @@ public class ConsultaDAO {
             ConexaoComBanco.closePreparedStatement(prepStmt);
             ConexaoComBanco.closeConnection(conn);
         }
-        System.out.println("listadatas" + listaConsultas);
+        System.out.println("listadatas" + listaConsultas.size());
         return listaConsultas;
     }
 

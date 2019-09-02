@@ -1,8 +1,3 @@
-<%-- 
-    Document   : MostrarReceitaCadatrada
-    Created on : 28/08/2019, 11:17:22
-    Author     : 80130917
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
