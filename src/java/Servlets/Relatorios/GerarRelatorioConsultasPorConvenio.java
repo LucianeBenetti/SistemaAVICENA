@@ -110,7 +110,7 @@ public class GerarRelatorioConsultasPorConvenio extends HttpServlet {
                 }
             }
         }
-        request.getRequestDispatcher("WEB-INF/PaginaInicial.jsp").forward(request, response);
+        request.getRequestDispatcher("Prontuario/MostrarReceitaCadastrada.jsp").forward(request, response);
     }
 
     @Override

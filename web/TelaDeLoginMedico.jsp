@@ -21,7 +21,7 @@
 
   <div class="container" style="padding: 10px; margin-top: 3%; margin-bottom: 4%;" >
 
-            <div class="form" style="background-color: #b0bec5; padding: 20px; width: 50%;  
+            <div class="form" style="background-color: #b0bec5; padding: 20px; width: 50%; height: 380px;  
                  border-radius: 15px; margin-left: 25%; ">
 
                 <p style="text-align: center; font-weight: bold">Faça o Login para acessar o sistema Avicena!</p>
@@ -29,6 +29,7 @@
                 <form action="usuario" class="was-validated" method="post">
                     <div class="form-group">
                         <input type="hidden" id="validar" name="validar" value="validar">
+                        <input type="hidden" id="medico" name="medico" value="medico">
                         <label for="nome">Nome:</label>
                         <input type="text" class="form-control" id="nome" placeholder="Digite seu login" name="nome" style="border-color: gray" required>
                         <div class="valid-feedback">Valido.</div>
@@ -45,13 +46,13 @@
                             <input class="form-check-input" type="checkbox" name="lembrar"> Lembre-me
                         </label>
                     </div>
-                    <button type="submit" class="btn btn-secondary">Enviar</button>
-
+                    <button type="submit" class="btn btn-secondary" style="float: left;" >Enviar</button>
                 </form>
-
-                <form action="CadastrarUsuario.jsp" method="post">
-                    Não sou cadastrado <input type="submit" class="btn btn-secondary" value = "Clique aqui!">
-                </form> 
+                
+                <form action="controledenavegacao" method="post">
+                    <input type="hidden" id="sair" name="sair" value="sair">
+                    <input type="submit" class="btn btn-secondary" style="float: left; margin-left: 10px" value = "Sair">
+                </form>
             </div>
 
   </div>

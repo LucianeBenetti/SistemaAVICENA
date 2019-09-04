@@ -10,12 +10,12 @@ import model.vo.Usuario.UsuarioVO;
 
 public class UsuarioDAO {
 
-    UsuarioVO usuarioVO;
+   UsuarioVO usuarioVO;
 
     public int inserir(UsuarioVO usuarioVO) {
         int novoId = 0;
 
-        String sql = "INSERT INTO usuario (login, senha) VALUES (?,?)";
+        String sql = "INSERT INTO usuario (login, senha, perfil) VALUES (?,?,?)";
 
         Connection conn = ConexaoComBanco.getConnection();
         PreparedStatement prepStmt = ConexaoComBanco.getPreparedStatement(conn, sql, Statement.RETURN_GENERATED_KEYS);
@@ -23,6 +23,7 @@ public class UsuarioDAO {
         try {
             prepStmt.setString(1, usuarioVO.getLogin());
             prepStmt.setString(2, usuarioVO.getSenha());
+            prepStmt.setString(3, usuarioVO.getPerfil());
 
             prepStmt.executeUpdate();
 
@@ -33,7 +34,7 @@ public class UsuarioDAO {
             }
 
         } catch (SQLException e) {
-            System.out.println("Erro ao executar Query de Cadastro de Produto! Causa: \n: " + e.getMessage());
+            System.out.println("Erro ao executar Query de Cadastro de Usuário! Causa: \n: " + e.getMessage());
 
         } finally {
             ConexaoComBanco.closePreparedStatement(prepStmt);
@@ -44,7 +45,7 @@ public class UsuarioDAO {
     }
 
     public UsuarioVO pesquisarUsuarioVO(UsuarioVO usuarioVO) {
-        String query = "select * from usuario where login = ? and senha = ?";
+        String query = "select * from usuario where login = ? and senha = ? and perfil = ?";
 
         Connection conn = ConexaoComBanco.getConnection();
         PreparedStatement prepStmt = ConexaoComBanco.getPreparedStatement(conn, query);
@@ -53,6 +54,7 @@ public class UsuarioDAO {
         try {
             prepStmt.setString(1, usuarioVO.getLogin());
             prepStmt.setString(2, usuarioVO.getSenha());
+           prepStmt.setString(3, usuarioVO.getPerfil());
             ResultSet result = prepStmt.executeQuery();
 
             while (result.next()) {
@@ -60,10 +62,11 @@ public class UsuarioDAO {
                 usuario.setCodigoUsuario(result.getInt("codigoUsuario"));
                 usuario.setLogin(result.getString("login"));
                 usuario.setSenha(result.getString("senha"));
+                usuario.setPerfil(result.getString("perfil"));
             }
 
         } catch (SQLException e) {
-            System.out.println("Erro ao executar a Query de Consulta de funcionarios!Causa: \n: " + e.getMessage());
+            System.out.println("Erro ao executar a Query de Consulta de Usuário!Causa: \n: " + e.getMessage());
         } finally {
             ConexaoComBanco.closeStatement(conn);
             ConexaoComBanco.closeConnection(conn);

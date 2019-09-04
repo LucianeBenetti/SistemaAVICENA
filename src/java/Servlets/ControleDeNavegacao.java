@@ -44,6 +44,7 @@ public class ControleDeNavegacao extends HttpServlet {
                         break;
                         
                     case "voltarpaginainicial":
+                        
                         request.getRequestDispatcher("WEB-INF/PaginaInicial.jsp").forward(request, response);
                         break;
 

@@ -7,10 +7,12 @@ import java.io.PrintWriter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.vo.Usuario.UsuarioVO;
 import sun.misc.BASE64Encoder;
 
@@ -22,15 +24,23 @@ public class Usuario extends HttpServlet {
 
         String var1 = request.getParameter("cadastrar");
         String var2 = request.getParameter("validar");
+        String var3 = request.getParameter("admin");
+        String var4 = request.getParameter("atendente");
+        String var5 = request.getParameter("medico");
         String nome = request.getParameter("nome");
         String senha = MD5(request.getParameter("senha"));
+        String perfil = request.getParameter("perfil");
         UsuarioController usuarioController;
         UsuarioVO usuarioVO;
+        UsuarioVO usuarioValidadoVO;
+        
+        HttpSession session;
 
         ArrayList<String> variaveis = new ArrayList<>();
+               
         variaveis.add(var1);
         variaveis.add(var2);
-
+        
         for (int i = 0; i < variaveis.size(); i++) {
             String variavelDeControle = variaveis.get(i);
 
@@ -40,6 +50,7 @@ public class Usuario extends HttpServlet {
                         usuarioVO = new UsuarioVO();
                         usuarioVO.setLogin(nome);
                         usuarioVO.setSenha(senha);
+                        usuarioVO.setPerfil(perfil);
 
                         System.out.println(usuarioVO);
                         usuarioController = new UsuarioController();
@@ -52,7 +63,9 @@ public class Usuario extends HttpServlet {
                             request.setAttribute("codigodousuario", usuarioVO.getCodigoUsuario());
                             request.setAttribute("nome", usuarioVO.getLogin());
                             request.setAttribute("senha", usuarioVO.getSenha());
-                            request.getRequestDispatcher("TelaDeLogin.jsp").forward(request, response);
+                            Boolean usuariocadastrado = true;
+                            request.setAttribute("usuariocadastrado", usuariocadastrado);
+                            request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
                         } else {
                             Boolean usuariocadastrado = false;
                             request.setAttribute("usuariocadastrado", usuariocadastrado);
@@ -61,29 +74,51 @@ public class Usuario extends HttpServlet {
                         break;
 
                     case "validar":
-
                         usuarioVO = new UsuarioVO();
                         usuarioVO.setLogin(nome);
                         usuarioVO.setSenha(senha);
-
                         usuarioController = new UsuarioController();
-                        UsuarioVO usuarioValidado = usuarioController.pesquisarUsuarioVO(usuarioVO);
-                        if (usuarioValidado != null) {
-                            request.setAttribute("login", usuarioVO.getLogin());
-                            request.setAttribute("senha", usuarioVO.getSenha());
-                            request.getRequestDispatcher("WEB-INF/PaginaInicial.jsp").forward(request, response);
-                        } else {
-                            Boolean validacao = false;
-                            request.setAttribute("usuariovalidado", validacao);
-                            request.getRequestDispatcher("CadastrarUsuario.jsp").forward(request, response);
-                        }
-
-                        break;
-
-                    default:
-                        request.getRequestDispatcher("TelaDeLogin.jsp").forward(request, response);
-                        break;
-
+                        
+                        //for(int j = 0; j < perfis.size(); j++){           
+//                            String perfilDoUsuario = perfis.get(j);
+                            usuarioVO.setPerfil(var3);
+                            usuarioValidadoVO = usuarioController.pesquisarUsuarioVO(usuarioVO);
+                            
+                            if (usuarioValidadoVO != null && usuarioValidadoVO.getPerfil().equals(var3)) {
+                                //System.out.println(usuarioValidado.getPerfil());
+                                request.setAttribute("login", usuarioVO.getLogin());
+                                request.setAttribute("senha", usuarioVO.getSenha());
+                                request.setAttribute("perfil", usuarioVO.getPerfil());
+                                                               
+                                request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
+                            }                             
+                            
+                            usuarioVO.setPerfil(var5);
+                            usuarioValidadoVO = usuarioController.pesquisarUsuarioVO(usuarioVO);
+                            if (usuarioValidadoVO != null && usuarioValidadoVO.getPerfil().equals(var5)) {
+                                
+                                request.setAttribute("login", usuarioVO.getLogin());
+                                request.setAttribute("senha", usuarioVO.getSenha());
+                                request.setAttribute("perfil", usuarioVO.getPerfil());
+                                request.getRequestDispatcher("WEB-INF/PaginaInicialMedico.jsp").forward(request, response);
+                            }
+                            
+                            usuarioVO.setPerfil(var4);
+                            usuarioValidadoVO = usuarioController.pesquisarUsuarioVO(usuarioVO);
+                            if (usuarioValidadoVO != null && usuarioValidadoVO.getPerfil().equals(var4)) {
+                                //System.out.println(usuarioValidado.getPerfil());
+                                request.setAttribute("login", usuarioVO.getLogin());
+                                request.setAttribute("senha", usuarioVO.getSenha());
+                                request.setAttribute("perfil", usuarioVO.getPerfil());
+                                request.getRequestDispatcher("WEB-INF/PaginaInicialAtendente.jsp").forward(request, response);
+                            } else {
+                                
+                                Boolean usuariovalidado = false;
+                                request.setAttribute("usuariovalidado", usuariovalidado);
+                                request.getRequestDispatcher("TelaDeLoginAdmin.jsp").forward(request, response);}
+                            
+                        //}                            
+                        break;                       
                 }
             }
         }
