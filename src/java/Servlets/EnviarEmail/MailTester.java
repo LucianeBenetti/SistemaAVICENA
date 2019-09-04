@@ -16,9 +16,9 @@ public class MailTester {
         mj.setSmtpPortMail("587");
         mj.setSmtpAuth("true");
         mj.setSmtpStarttls("true");
-        mj.setUserMail("luciane.benetti@gmail.com");
-        mj.setFromNameMail("Luciane Benetti");
-        mj.setPassMail("TiaLulu2019");
+        mj.setUserMail("clinicaavicena2@gmail.com");
+        mj.setFromNameMail("Cloinica AVICENA");
+        mj.setPassMail("TesteAvicena");
         mj.setCharsetMail("ISO-8859-1");
         mj.setSubjectMail("JavaMail");
         mj.setBodyMail(htmlMessage());
