@@ -18,18 +18,11 @@ public class JavaMail {
         final String password = "TesteAvicena";
 
         Properties prop = new Properties();
-//        prop.put("mail.smtp.host", "smtp.gmail.com");
-//        prop.put("mail.smtp.port", "587");
-//        prop.put("mail.smtp.auth", "true");
-//        prop.put("mail.smtp.starttls.enable", "true"); //TLS
-
         prop.put("mail.smtp.host", "smtp.gmail.com");
-        prop.put("mail.smtp.port", "465");
+        prop.put("mail.smtp.port", "587");
         prop.put("mail.smtp.auth", "true");
-        prop.put("mail.smtp.socketFactory.port", "465");
-        prop.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-        prop.put("mail.smtp.connectiontimeout", "5000");
-        prop.put("mail.smtp.timeout", "5000");
+        prop.put("mail.smtp.starttls.enable", "true"); //TLS
+
         Session session = Session.getInstance(prop,
                 new javax.mail.Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
