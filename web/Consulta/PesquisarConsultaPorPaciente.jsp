@@ -73,6 +73,7 @@
                         <td><%= consultaVO.getConvenioVO().getNomeConvenio()%></td>
                         <td ><%= consultaVO.getDataConsulta()%></td>
                         <td ><%= consultaVO.getHorarioConsulta()%></td>
+                        <td hidden><%= consultaVO.getAtencaoEspecial()%></td>
                     </tr>     
                     <% }  %>
                 </table>
@@ -120,6 +121,8 @@
                             <option>17:30</option>                                                                 
                         </select><br><br> 
                     </div>   
+                    <input type="hidden" readonly name="atencaoespecial" size="50" >
+                    
                     <input type="hidden" id="excluir" name="excluir" value="excluir">
                     <input type="submit" value="Atualizar Dados da Consulta">
                 </fieldset>
