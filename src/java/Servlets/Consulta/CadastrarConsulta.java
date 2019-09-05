@@ -129,13 +129,17 @@ public class CadastrarConsulta extends HttpServlet {
                 try {
 
                     Message message = new MimeMessage(session);
+
                     message.setFrom(new InternetAddress("clinicaavicena2@gmail.com", "Clinica AVICENA"));
                     message.setRecipients(
                             Message.RecipientType.TO,
                             InternetAddress.parse("luciane.benetti@gmail.com")
                     );
                     message.setSubject("Consulta com atendimento especial");
-                    message.setText("Clinica Avicena - Atendimento Médico Humanizado!" + "\n\n\n"
+
+                    // Cria o objeto que recebe o texto do corpo do email
+                    MimeBodyPart textPart = new MimeBodyPart();
+                    textPart.setText("Clinica Avicena - Atendimento Médico Humanizado!" + "\n\n\n"
                             + "Por gentileza, atentar para a consulta com atendimento"
                             + " especial, agendada para o dia e horário abaixo: " + "\n\n"
                             + "Nome do Paciente: " + nomepaciente + "\n\n"
@@ -166,7 +170,7 @@ public class CadastrarConsulta extends HttpServlet {
                     }
 
 //        //adiciona o corpo texto da mensagem
-//        mps.addBodyPart(textPart);
+                    mps.addBodyPart(textPart);
                     //adiciona a mensagem o conteudo texto e anexo
                     message.setContent(mps);
 
