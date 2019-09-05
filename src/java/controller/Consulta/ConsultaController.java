@@ -44,4 +44,8 @@ public class ConsultaController {
         return consultaBO.listarConsultasVOPorData(dataSQLInicial, dataSQLFinal);
     }
 
+    public ConsultaVO consultaPorID(int codigoPaciente) {
+        return consultaBO.consultarPorId(codigoPaciente);
+    }
+
 }

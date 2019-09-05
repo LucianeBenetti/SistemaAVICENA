@@ -73,7 +73,7 @@ public class AtualizarConsulta extends HttpServlet {
         consultaVO = new ConsultaVO();
         consultaVO.setCodigoConsulta(codigoConsulta);
         consultaVO.setConvenioVO(convenioVO);
-        consultaVO.setAtencaoEspecial(atencaoEspecial);
+        consultaVO.setAtencaoEspecial(request.getParameter("atencaoespecial"));
         consultaVO.setDataConsulta(dataSQL);
         consultaVO.setEspecializacaoVO(especializacaoVO);
         consultaVO.setHorarioConsulta(request.getParameter("horarioconsulta"));
@@ -94,7 +94,7 @@ public class AtualizarConsulta extends HttpServlet {
                 request.setAttribute("nomemedico", nomeMedico);
                 request.setAttribute("nomeespecialidade", nomeEspecialidade);
                 request.setAttribute("nomeconvenio", nomeConvenio);
-                request.setAttribute("atençãoespecial", atencaoEspecial);
+                request.setAttribute("atencaoespecial", atencaoEspecial);
 
                 resultadoDaAtualizacao = true;
             } else {
@@ -102,8 +102,7 @@ public class AtualizarConsulta extends HttpServlet {
                 request.getRequestDispatcher("Consulta/ResultadoDaAtualizacao.jsp").forward(request, response);
             }
         }
-
-        if (atencaoEspecial != null) {
+        if (!atencaoEspecial.equals("null") && atencaoEspecial != null && !atencaoEspecial.isEmpty()) {
 
             final String username = "clinicaavicena2@gmail.com";
             final String password = "TesteAvicena";
@@ -176,9 +175,7 @@ public class AtualizarConsulta extends HttpServlet {
             } catch (MessagingException e) {
                 e.printStackTrace();
             }
-        } else {
-            
-        }
+        } 
 
         request.setAttribute("consultaatualizada", resultadoDaAtualizacao);
         request.getRequestDispatcher("Consulta/ResultadoDaAtualizacao.jsp").forward(request, response);
