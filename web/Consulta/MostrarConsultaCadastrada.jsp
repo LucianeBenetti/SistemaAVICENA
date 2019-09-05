@@ -47,7 +47,7 @@
                     <div style="float:left"> <input type="text" name="horarioconsulta" size="20" value="<%= request.getAttribute("horarioconsulta")%>"></div>  <br><br>  
                 </div>
                 Atenção Especial:
-                <input type="text" readonly size ="50" value="<%= request.getAttribute("atençãoEspecial")%>"><br><br>
+                <input type="text" readonly size ="50" value="<%= request.getAttribute("atençãoespecial")%>"><br><br>
 
                 <br><br>
                 <br><br>
@@ -66,7 +66,8 @@
                 <fieldset><legend>Consulta</legend>
 
                     <br>             
-                    <% out.println("Consulta já cadastrada na base de dados!");%>
+                    <% out.println("Consulta já cadastrada na base de dados ou a data da consulta é inferior ou igual a data atual!" + "\n"+
+                            "Por gentileza, cadastrar novamente!");%>
 
                     <%}%>
                     <%}%>

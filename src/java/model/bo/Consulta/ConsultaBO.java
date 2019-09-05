@@ -23,9 +23,10 @@ public class ConsultaBO {
         Calendar c = Calendar.getInstance();
         c.setTime(consultaVO.getDataConsulta());
         Date dataSQL = new Date(c.getTimeInMillis());
-
+        java.util.Date hoje = Calendar.getInstance().getTime();
+				
         int novoId;
-        if (consultaDAO.consultarDataHorario(dataSQL, consultaVO.getHorarioConsulta()) != 0) {
+        if (consultaDAO.consultarDataHorario(dataSQL, consultaVO.getHorarioConsulta()) != 0 || dataSQL.before(hoje)) {
             novoId = 0;
         } else {
             novoId = consultaDAO.cadastrarConsulta(consultaVO);
@@ -52,6 +53,8 @@ public class ConsultaBO {
         Calendar c = Calendar.getInstance();
         c.setTime(consultaVO.getDataConsulta());
         Date dataSQL = new Date(c.getTimeInMillis());
+        java.util.Date hoje = Calendar.getInstance().getTime();
+        
         if (consultaDAO.consultarDataHorario(dataSQL, consultaVO.getHorarioConsulta()) == 0) {
             consultaDAO.atualizarConsulta(consultaVO, codigoConsulta);
             return sucesso = true;

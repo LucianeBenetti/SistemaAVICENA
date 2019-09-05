@@ -59,6 +59,7 @@
                         <th>Convenio</th>
                         <th>Data da Consulta</th>
                         <th>Horário da Consulta</th>
+                        <th>Atenção Especial</th>
                     </tr>        
                     <% for (ConsultaVO consultaVO : consultasVO) {%>  
 
@@ -73,7 +74,7 @@
                         <td><%= consultaVO.getConvenioVO().getNomeConvenio()%></td>
                         <td ><%= consultaVO.getDataConsulta()%></td>
                         <td ><%= consultaVO.getHorarioConsulta()%></td>
-                        <td hidden><%= consultaVO.getAtencaoEspecial()%></td>
+                        <td ><%= consultaVO.getAtencaoEspecial()%></td>
                     </tr>     
                     <% }  %>
                 </table>
@@ -94,6 +95,7 @@
                     Convênio <br> 
                     <input type="hidden" readonly name="codigoconvenio" size="50" >
                     <input type="text" readonly name="nomeconvenio"  size="50"><br><br>
+                           <input type="text" readonly name="atencaoespecial" size="50"><br><br>
                     <div style="width:55%">
                         <div style="float:left"> Data<a>*</a>: </div>
                         <div style="float:right"> Horário<a>*</a>: </div>
@@ -121,7 +123,7 @@
                             <option>17:30</option>                                                                 
                         </select><br><br> 
                     </div>   
-                    <input type="hidden" readonly name="atencaoespecial" size="50" >
+             
                     
                     <input type="hidden" id="excluir" name="excluir" value="excluir">
                     <input type="submit" value="Atualizar Dados da Consulta">

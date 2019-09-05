@@ -43,6 +43,7 @@
                     <th>Convênio</th>
                     <th>Data da Consulta</th>
                     <th>Horário da Consulta</th>
+                    <th>Atendimento Especial</th>
                 </tr>            
                 <%
                     ArrayList<ConsultaVO> consultasVO = (ArrayList<ConsultaVO>) request.getAttribute("consultas");
@@ -56,6 +57,7 @@
                     <td><%= consultaVO.getConvenioVO().getNomeConvenio()%></td>
                     <td><%= consultaVO.getDataConsulta()%></td>
                     <td><%= consultaVO.getHorarioConsulta()%></td>
+                    <td><%= consultaVO.getAtencaoEspecial()%></td>
                 </tr>                   
                 <%
                     }

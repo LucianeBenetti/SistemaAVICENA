@@ -57,6 +57,7 @@ public class AtualizarConsulta extends HttpServlet {
         especializacaoVO.setCodigoEspecializacao(codigoEspecializacao);
         convenioVO.setCodigoConvenio(codigoConvenio);
         pacienteVO.setCodigoPaciente(codigoPaciente);
+        String atencaoEspecial = request.getParameter("atencaoespecial");
 
         String dataConsulta = request.getParameter("dataconsulta");
         DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
@@ -67,114 +68,120 @@ public class AtualizarConsulta extends HttpServlet {
             Logger.getLogger(CadastrarConsulta.class.getName()).log(Level.SEVERE, null, ex);
         }
         Date dataSQL = new Date(c.getTimeInMillis());
+        java.util.Date hoje = Calendar.getInstance().getTime();
+
         consultaVO = new ConsultaVO();
         consultaVO.setCodigoConsulta(codigoConsulta);
-        consultaVO.setAtencaoEspecial(request.getParameter("atencaoespecial"));
         consultaVO.setConvenioVO(convenioVO);
+        consultaVO.setAtencaoEspecial(atencaoEspecial);
         consultaVO.setDataConsulta(dataSQL);
         consultaVO.setEspecializacaoVO(especializacaoVO);
         consultaVO.setHorarioConsulta(request.getParameter("horarioconsulta"));
         consultaVO.setPacienteVO(pacienteVO);
 
         consultaController = new ConsultaController();
-
-        boolean atualizada = consultaController.atualizarConsultaVO(consultaVO, codigoConsulta);
         Boolean resultadoDaAtualizacao = false;
+        boolean atualizada = false;
 
-        if (atualizada) {
+        if (dataSQL.after(hoje)) {
+            atualizada = consultaController.atualizarConsultaVO(consultaVO, codigoConsulta);
 
-            request.setAttribute("nomepaciente", nomepaciente);
-            request.setAttribute("horarioconsulta", consultaVO.getHorarioConsulta());
-            request.setAttribute("dataconsulta", dataConsulta);
-            request.setAttribute("nomemedico", nomeMedico);
-            request.setAttribute("nomeespecialidade", nomeEspecialidade);
-            request.setAttribute("nomeconvenio", nomeConvenio);
-            request.setAttribute("atençãoespecial", consultaVO.getAtencaoEspecial());
+            if (atualizada) {
 
-            resultadoDaAtualizacao = true;
+                request.setAttribute("nomepaciente", nomepaciente);
+                request.setAttribute("horarioconsulta", consultaVO.getHorarioConsulta());
+                request.setAttribute("dataconsulta", dataConsulta);
+                request.setAttribute("nomemedico", nomeMedico);
+                request.setAttribute("nomeespecialidade", nomeEspecialidade);
+                request.setAttribute("nomeconvenio", nomeConvenio);
+                request.setAttribute("atençãoespecial", atencaoEspecial);
 
-            if (consultaVO.getAtencaoEspecial() != null) {
+                resultadoDaAtualizacao = true;
+            } else {
+                request.setAttribute("consultaatualizada", resultadoDaAtualizacao);
+                request.getRequestDispatcher("Consulta/ResultadoDaAtualizacao.jsp").forward(request, response);
+            }
+        }
 
-              final String username = "clinicaavicena2@gmail.com";
-                final String password = "TesteAvicena";
+        if (atencaoEspecial != null) {
 
-                Properties prop = new Properties();
-                prop.put("mail.smtp.host", "smtp.gmail.com");
-                prop.put("mail.smtp.port", "587");
-                prop.put("mail.smtp.auth", "true");
-                prop.put("mail.smtp.starttls.enable", "true"); //TLS
+            final String username = "clinicaavicena2@gmail.com";
+            final String password = "TesteAvicena";
 
-                Session session = Session.getInstance(prop,
-                        new javax.mail.Authenticator() {
-                    protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication(username, password);
-                    }
-                });
+            Properties prop = new Properties();
+            prop.put("mail.smtp.host", "smtp.gmail.com");
+            prop.put("mail.smtp.port", "587");
+            prop.put("mail.smtp.auth", "true");
+            prop.put("mail.smtp.starttls.enable", "true"); //TLS
 
-                try {
+            Session session = Session.getInstance(prop,
+                    new javax.mail.Authenticator() {
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(username, password);
+                }
+            });
 
-                    Message message = new MimeMessage(session);
+            try {
 
-                    message.setFrom(new InternetAddress("clinicaavicena2@gmail.com", "Clinica AVICENA"));
-                    message.setRecipients(
-                            Message.RecipientType.TO,
-                            InternetAddress.parse("luciane.benetti@gmail.com")
-                    );
-                    message.setSubject("Consulta com atendimento especial");
+                Message message = new MimeMessage(session);
 
-                    // Cria o objeto que recebe o texto do corpo do email
-                    MimeBodyPart textPart = new MimeBodyPart();
-                    textPart.setText("Clinica Avicena - Atendimento Médico Humanizado!" + "\n\n\n"
-                            + "Por gentileza, atentar para a consulta com atendimento"
-                            + " especial, foi alterada para o dia e horário abaixo: " + "\n\n"
-                            + "Nome do Paciente: " + nomepaciente + "\n\n"
-                            + "Data da Consulta: " + dataConsulta + "\n\n"
-                            + "Horário da consulta: " + consultaVO.getHorarioConsulta() + "\n\n"
-                            + "Atenção especial: " + consultaVO.getAtencaoEspecial());
+                message.setFrom(new InternetAddress("clinicaavicena2@gmail.com", "Clinica AVICENA"));
+                message.setRecipients(
+                        Message.RecipientType.TO,
+                        InternetAddress.parse("luciane.benetti@gmail.com")
+                );
+                message.setSubject("Consulta com atendimento especial");
 
-                    //seta quatos anexos desejar
-                    List<String> files = new ArrayList<String>();
-                    files.add("D:\\SENAC\\coracao.png");
+                // Cria o objeto que recebe o texto do corpo do email
+                MimeBodyPart textPart = new MimeBodyPart();
+                textPart.setText("Clinica Avicena - Atendimento Médico Humanizado!" + "\n\n\n"
+                        + "Por gentileza, atentar para a consulta com atendimento"
+                        + " especial, foi alterada para o dia e horário abaixo: " + "\n\n"
+                        + "Nome do Paciente: " + nomepaciente + "\n\n"
+                        + "Data da Consulta: " + dataConsulta + "\n\n"
+                        + "Horário da consulta: " + consultaVO.getHorarioConsulta() + "\n\n"
+                        + "Atenção especial: " + atencaoEspecial);
+
+                //seta quatos anexos desejar
+                List<String> files = new ArrayList<String>();
+                files.add("D:\\SENAC\\coracao.png");
 //        files.add("C:\images\hover_next.png");
 //        files.add("C:\images\hover_prev.png");
 
-                    Multipart mps = new MimeMultipart();
-                    for (int i = 0; i < files.size(); i++) {
+                Multipart mps = new MimeMultipart();
+                for (int i = 0; i < files.size(); i++) {
 
-                        // Cria um novo objeto para cada arquivo, e anexa o arquivo
-                        MimeBodyPart attachFilePart = new MimeBodyPart();
-                        FileDataSource fds = new FileDataSource(
-                                files.get(i)
-                        );
-                        attachFilePart.setDataHandler(new DataHandler(fds));
-                        attachFilePart.setFileName(fds.getName());
+                    // Cria um novo objeto para cada arquivo, e anexa o arquivo
+                    MimeBodyPart attachFilePart = new MimeBodyPart();
+                    FileDataSource fds = new FileDataSource(
+                            files.get(i)
+                    );
+                    attachFilePart.setDataHandler(new DataHandler(fds));
+                    attachFilePart.setFileName(fds.getName());
 
-                        //adiciona os anexos da mensagem
-                        mps.addBodyPart(attachFilePart, i);
+                    //adiciona os anexos da mensagem
+                    mps.addBodyPart(attachFilePart, i);
 
-                    }
-
-                    //adiciona o corpo texto da mensagem
-                    mps.addBodyPart(textPart);
-                    //adiciona a mensagem o conteudo texto e anexo
-                    message.setContent(mps);
-
-                    Transport.send(message);
-
-                    System.out.println("Done");
-
-                } catch (MessagingException e) {
-                    e.printStackTrace();
                 }
+
+                //adiciona o corpo texto da mensagem
+                mps.addBodyPart(textPart);
+                //adiciona a mensagem o conteudo texto e anexo
+                message.setContent(mps);
+
+                Transport.send(message);
+
+                System.out.println("Done");
+
+            } catch (MessagingException e) {
+                e.printStackTrace();
             }
-
-            request.setAttribute("consultaatualizada", resultadoDaAtualizacao);
-            request.getRequestDispatcher("Consulta/ResultadoDaAtualizacao.jsp").forward(request, response);
-
         } else {
-            request.setAttribute("consultaatualizada", resultadoDaAtualizacao);
-            request.getRequestDispatcher("Consulta/ResultadoDaAtualizacao.jsp").forward(request, response);
+            
         }
+
+        request.setAttribute("consultaatualizada", resultadoDaAtualizacao);
+        request.getRequestDispatcher("Consulta/ResultadoDaAtualizacao.jsp").forward(request, response);
 
     }
 

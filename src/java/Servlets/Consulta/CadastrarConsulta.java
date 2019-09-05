@@ -75,7 +75,7 @@ public class CadastrarConsulta extends HttpServlet {
         Date dataSQL = new Date(c.getTimeInMillis());
 
         consultaVO = new ConsultaVO();
-        consultaVO.setAtencaoEspecial(request.getParameter("atencaoEspecial"));
+        consultaVO.setAtencaoEspecial(request.getParameter("atencaoespecial"));
         consultaVO.setConvenioVO(convenioVO);
         consultaVO.setDataConsulta(dataSQL);
         consultaVO.setEspecializacaoVO(especializacaoVO);
@@ -96,7 +96,7 @@ public class CadastrarConsulta extends HttpServlet {
             request.setAttribute("nomemedico", nomeMedico);
             request.setAttribute("nomeespecialidade", nomeEspecialidade);
             request.setAttribute("nomeconvenio", nomeConvenio);
-            request.setAttribute("atençãoEspecial", consultaVO.getAtencaoEspecial());
+            request.setAttribute("atençãoespecial", consultaVO.getAtencaoEspecial());
 
             resultadoDoCadastro = true;
 

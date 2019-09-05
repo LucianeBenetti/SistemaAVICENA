@@ -27,7 +27,10 @@
                             if (especializacaoAtualizada) {%>                     
                     <% out.println("Dados da Consulta atualizados com sucesso!!");%>            
                     <%} else {%>
-                    <% out.println("Não foi possível atualizar os dados da Consulta!! Tente novamente");%>
+
+                    <% out.println("Não foi possível atualizar os dados da Consulta! "
+                                + "Horário não disponével ou a data é inferior a data atual! "
+                                + " Por gentileza, tente novamente");%>
 
                     <%}
                         }%>            

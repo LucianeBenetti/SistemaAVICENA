@@ -90,7 +90,7 @@
                             <option>17:30</option>                                                                 
                         </select><br><br> 
                         <input type="checkbox" id="click" onclick="clickCheckbox(this)"> Necessita de atenção especial?
-                        <textarea disabled name="atencaoEspecial" id="tornarVisivel"></textarea>
+                        <textarea disabled name="atencaoespecial" id="tornarVisivel"></textarea>
                     </div><br><br>   
                     <input type="submit" value="Cadastrar Consulta">
                     <br><br>    
