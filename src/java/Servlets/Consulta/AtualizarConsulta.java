@@ -117,6 +117,7 @@ public class AtualizarConsulta extends HttpServlet {
                     message.setText("Clinica Avicena - Atendimento Médico Humanizado!" +"\n\n\n"
                             + "Por gentileza, atentar para a consulta com atendimento"
                             + " especial, que foi alterada para o dia e horário abaixo: " + "\n\n"
+                            + "Nome do Paciente: " + nomepaciente + "\n\n"
                             + "Data da Consulta: " + dataConsulta + "\n\n"
                             + "Horário da consulta: " + consultaVO.getHorarioConsulta() + "\n\n"
                             + "Atenção especial: " + consultaVO.getAtencaoEspecial());

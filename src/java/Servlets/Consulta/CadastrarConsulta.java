@@ -34,6 +34,15 @@ import model.vo.Especializacao.EspecializacaoVO;
 import model.vo.Medico.MedicoVO;
 import model.vo.Paciente.PacienteVO;
 
+import javax.mail.MessagingException;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import model.dao.Consulta.EnviarEmailDAO;
+import model.vo.Consulta.DadosEmail;
+
 public class CadastrarConsulta extends HttpServlet {
 
     ConsultaVO consultaVO;
@@ -96,45 +105,88 @@ public class CadastrarConsulta extends HttpServlet {
 
             if (consultaVO.getAtencaoEspecial() != null) {
 
-                final String username = "clinicaavicena2@gmail.com";
-                final String password = "TesteAvicena";
-
-                Properties prop = new Properties();
-                prop.put("mail.smtp.host", "smtp.gmail.com");
-                prop.put("mail.smtp.port", "587");
-                prop.put("mail.smtp.auth", "true");
-                prop.put("mail.smtp.starttls.enable", "true"); //TLS
-
-                Session session = Session.getInstance(prop,
-                        new javax.mail.Authenticator() {
-                    protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication(username, password);
-                    }
-                });
-
-                try {
-
-                    Message message = new MimeMessage(session);
-                    message.setFrom(new InternetAddress("clinicaavicena2@gmail.com"));
-                    message.setRecipients(
-                            Message.RecipientType.TO,
-                            InternetAddress.parse("luciane.benetti@gmail.com")
-                    );
-                    message.setSubject("Consulta com atendimento especial");
-                    message.setText("Clinica Avicena - Atendimento Médico Humanizado!" +"\n\n\n"
-                            + "Por gentileza, atentar para a consulta com atendimento"
+//                final String username = "clinicaavicena2@gmail.com";
+//                final String password = "TesteAvicena";
+//
+//                Properties prop = new Properties();
+//                prop.put("mail.smtp.host", "smtp.gmail.com");
+//                prop.put("mail.smtp.port", "587");
+//                prop.put("mail.smtp.auth", "true");
+//                prop.put("mail.smtp.starttls.enable", "true"); //TLS
+//
+//                Session session = Session.getInstance(prop,
+//                        new javax.mail.Authenticator() {
+//                    protected PasswordAuthentication getPasswordAuthentication() {
+//                        return new PasswordAuthentication(username, password);
+//                    }
+//                });
+//
+//                try {
+//
+//                    Message message = new MimeMessage(session);
+//                    message.setFrom(new InternetAddress("clinicaavicena2@gmail.com"));
+//                    message.setRecipients(
+//                            Message.RecipientType.TO,
+//                            InternetAddress.parse("luciane.benetti@gmail.com")
+//                    );
+//                    message.setSubject("Consulta com atendimento especial");
+//                    message.setText("Clinica Avicena - Atendimento Médico Humanizado!" +"\n\n\n"
+//                            + "Por gentileza, atentar para a consulta com atendimento"
+//                            + " especial, agendada para o dia e horário abaixo: " + "\n\n"
+//                            + "Nome do Paciente: " + nomepaciente + "\n\n"
+//                            + "Data da Consulta: " + dataConsulta + "\n\n"
+//                            + "Horário da consulta: " + consultaVO.getHorarioConsulta() + "\n\n"
+//                            + "Atenção especial: " + consultaVO.getAtencaoEspecial());
+//
+//                    Transport.send(message);
+//
+//                    System.out.println("Done");
+//
+//                } catch (MessagingException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+                DadosEmail mj = new DadosEmail();
+                //configMailJavauracoes de envio
+                mj.setSmtpHostMail("smtp.gmail.com");
+                mj.setSmtpPortMail("587");
+                mj.setSmtpAuth("true");
+                mj.setSmtpStarttls("true");
+                mj.setUserMail("clinicaavicena2@gmail.com");
+                mj.setFromNameMail("Clinica AVICENA");
+                mj.setPassMail("TesteAvicena");
+                mj.setCharsetMail("ISO-8859-1");
+                mj.setSubjectMail("Consulta com Atendimento Especial");
+                mj.setBodyMail("Por gentileza, atentar para a consulta com atendimento"
                             + " especial, agendada para o dia e horário abaixo: " + "\n\n"
+                            + "Nome do Paciente: " + nomepaciente + "\n\n"
                             + "Data da Consulta: " + dataConsulta + "\n\n"
                             + "Horário da consulta: " + consultaVO.getHorarioConsulta() + "\n\n"
                             + "Atenção especial: " + consultaVO.getAtencaoEspecial());
+                mj.setTypeTextMail(DadosEmail.TYPE_TEXT_HTML);
 
-                    Transport.send(message);
+                //sete quantos destinatarios desejar
+                Map<String, String> map = new HashMap<String, String>();
+                map.put("luciane.benetti@gmail.com", "email gmail");
+                //map.put("destinatario2@msn.com", "email msn");
+                //  map.put("destinatario3@ig.com.br", "email ig");
 
-                    System.out.println("Done");
+                mj.setToMailsUsers(map);
 
+                //seta quatos anexos desejar
+                List<String> files = new ArrayList<String>();
+                files.add("D:\\SENAC\\coracao.png");
+//        files.add("C:\images\hover_next.png");
+//        files.add("C:\images\hover_prev.png");
+
+                mj.setFileMails(files);
+
+                try {
+                    new EnviarEmailDAO().senderMail(mj);
                 } catch (MessagingException e) {
-                    e.printStackTrace();
+
                 }
+
             }
 
             request.setAttribute("consultacadastrada", resultadoDoCadastro);
@@ -146,5 +198,38 @@ public class CadastrarConsulta extends HttpServlet {
         }
 
     }
+
+//    private static String textMessage() {
+//        return "Leia o novo tutorial JavaMail do Programando com Java.n"
+//                + "Saiba como enviar emails com anexo, em formato texto e html.n"
+//                + "Envie seu email para mais de um destinatario.";
+//    }
+
+//    private static String htmlMessage() {
+//        return "<html> "
+//                + "<head>"
+//                + "<title>Email no formato HTML com Javamail!</title> "
+//                + "</head> "
+//                + "<body> "
+//                + "<div style='background-color:orange; width:28%; height:100px;'>"
+//                + "<ul>  "
+//                + "<li>Leia o novo tutorial JavaMail do Programando com Java.</li> "
+//                + "<li>Aprenda como enviar emails com anexos.</li>"
+//                + " <li>Aprenda como enviar emails em formato texto simples ou html.</li> "
+//                + "<li>Aprenda como enviar seu email para mais de um destinatario.</li>"
+//                + "</ul> "
+//                + "<p>Visite o blog "
+//                + "<a href='http://mballem.wordpress.com/' target='new'>Programando com Java</a>"
+//                + "</p>"
+//                + "</div>"
+//                + "<div style='background-color:FFFFF; width:28%; height:50px;' align='center'>"
+//                + "Download do JavaMail<br/>"
+//                + "<a href='http://www.oracle.com/technetwork/java/javaee/index-138643.html'>"
+//                + "<img src='http://www.oracleimg.com/admin/images/ocom/hp/oralogo_small.gif'/>"
+//                + "</a> "
+//                + "</div>"
+//                + "</body> "
+//                + "</html>";
+//    }
 
 }
