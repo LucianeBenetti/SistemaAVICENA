@@ -40,6 +40,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.activation.DataHandler;
+import javax.activation.FileDataSource;
+import javax.mail.Multipart;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMultipart;
 import model.dao.Consulta.EnviarEmailDAO;
 import model.vo.Consulta.DadosEmail;
 
@@ -124,19 +129,46 @@ public class CadastrarConsulta extends HttpServlet {
                 try {
 
                     Message message = new MimeMessage(session);
-                    message.setFrom(new InternetAddress("clinicaavicena2@gmail.com", "Clinica AVICENA" ));
+                    message.setFrom(new InternetAddress("clinicaavicena2@gmail.com", "Clinica AVICENA"));
                     message.setRecipients(
                             Message.RecipientType.TO,
                             InternetAddress.parse("luciane.benetti@gmail.com")
                     );
                     message.setSubject("Consulta com atendimento especial");
-                    message.setText("Clinica Avicena - Atendimento Médico Humanizado!" +"\n\n\n"
+                    message.setText("Clinica Avicena - Atendimento Médico Humanizado!" + "\n\n\n"
                             + "Por gentileza, atentar para a consulta com atendimento"
                             + " especial, agendada para o dia e horário abaixo: " + "\n\n"
                             + "Nome do Paciente: " + nomepaciente + "\n\n"
                             + "Data da Consulta: " + dataConsulta + "\n\n"
                             + "Horário da consulta: " + consultaVO.getHorarioConsulta() + "\n\n"
                             + "Atenção especial: " + consultaVO.getAtencaoEspecial());
+
+                    //seta quatos anexos desejar
+                    List<String> files = new ArrayList<String>();
+                    files.add("coracao.png");
+//        files.add("C:\images\hover_next.png");
+//        files.add("C:\images\hover_prev.png");
+
+                    Multipart mps = new MimeMultipart();
+                    for (int i = 0; i < files.size(); i++) {
+
+                        // Cria um novo objeto para cada arquivo, e anexa o arquivo
+                        MimeBodyPart attachFilePart = new MimeBodyPart();
+                        FileDataSource fds = new FileDataSource(
+                                files.get(i)
+                        );
+                        attachFilePart.setDataHandler(new DataHandler(fds));
+                        attachFilePart.setFileName(fds.getName());
+
+                        //adiciona os anexos da mensagem
+                        mps.addBodyPart(attachFilePart, i);
+
+                    }
+
+//        //adiciona o corpo texto da mensagem
+//        mps.addBodyPart(textPart);
+                    //adiciona a mensagem o conteudo texto e anexo
+                    message.setContent(mps);
 
                     Transport.send(message);
 
@@ -146,32 +178,7 @@ public class CadastrarConsulta extends HttpServlet {
                     e.printStackTrace();
                 }
             }
-//                DadosEmail mj = new DadosEmail();
-//                //configMailJavauracoes de envio
-//                mj.setSmtpHostMail("smtp.gmail.com");
-//                mj.setSmtpPortMail("587");
-//                mj.setSmtpAuth("true");
-//                mj.setSmtpStarttls("true");
-//                mj.setUserMail("clinicaavicena2@gmail.com");
-//                mj.setFromNameMail("Clinica AVICENA");
-//                mj.setPassMail("TesteAvicena");
-//                mj.setCharsetMail("ISO-8859-1");
-//                mj.setSubjectMail("Consulta com Atendimento Especial");
-//                mj.setBodyMail("Por gentileza, atentar para a consulta com atendimento"
-//                            + " especial, agendada para o dia e horário abaixo: " + "\n\n"
-//                            + "Nome do Paciente: " + nomepaciente + "\n\n"
-//                            + "Data da Consulta: " + dataConsulta + "\n\n"
-//                            + "Horário da consulta: " + consultaVO.getHorarioConsulta() + "\n\n"
-//                            + "Atenção especial: " + consultaVO.getAtencaoEspecial());
-//                mj.setTypeTextMail(DadosEmail.TYPE_TEXT_HTML);
-//
-//                //sete quantos destinatarios desejar
-//                Map<String, String> map = new HashMap<String, String>();
-//                map.put("luciane.benetti@gmail.com", "email gmail");
-//                //map.put("destinatario2@msn.com", "email msn");
-//                //  map.put("destinatario3@ig.com.br", "email ig");
-//
-//                mj.setToMailsUsers(map);
+
 //
 //                //seta quatos anexos desejar
 //                List<String> files = new ArrayList<String>();
@@ -188,7 +195,6 @@ public class CadastrarConsulta extends HttpServlet {
 //                }
 //
 //            }
-
             request.setAttribute("consultacadastrada", resultadoDoCadastro);
             request.getRequestDispatcher("Consulta/MostrarConsultaCadastrada.jsp").forward(request, response);
 
@@ -198,38 +204,5 @@ public class CadastrarConsulta extends HttpServlet {
         }
 
     }
-
-//    private static String textMessage() {
-//        return "Leia o novo tutorial JavaMail do Programando com Java.n"
-//                + "Saiba como enviar emails com anexo, em formato texto e html.n"
-//                + "Envie seu email para mais de um destinatario.";
-//    }
-
-//    private static String htmlMessage() {
-//        return "<html> "
-//                + "<head>"
-//                + "<title>Email no formato HTML com Javamail!</title> "
-//                + "</head> "
-//                + "<body> "
-//                + "<div style='background-color:orange; width:28%; height:100px;'>"
-//                + "<ul>  "
-//                + "<li>Leia o novo tutorial JavaMail do Programando com Java.</li> "
-//                + "<li>Aprenda como enviar emails com anexos.</li>"
-//                + " <li>Aprenda como enviar emails em formato texto simples ou html.</li> "
-//                + "<li>Aprenda como enviar seu email para mais de um destinatario.</li>"
-//                + "</ul> "
-//                + "<p>Visite o blog "
-//                + "<a href='http://mballem.wordpress.com/' target='new'>Programando com Java</a>"
-//                + "</p>"
-//                + "</div>"
-//                + "<div style='background-color:FFFFF; width:28%; height:50px;' align='center'>"
-//                + "Download do JavaMail<br/>"
-//                + "<a href='http://www.oracle.com/technetwork/java/javaee/index-138643.html'>"
-//                + "<img src='http://www.oracleimg.com/admin/images/ocom/hp/oralogo_small.gif'/>"
-//                + "</a> "
-//                + "</div>"
-//                + "</body> "
-//                + "</html>";
-//    }
 
 }
