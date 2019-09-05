@@ -29,24 +29,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.vo.Consulta.ConsultaVO;
 import model.vo.Convenio.ConvenioVO;
-import model.vo.Especialidade.EspecialidadeVO;
 import model.vo.Especializacao.EspecializacaoVO;
-import model.vo.Medico.MedicoVO;
 import model.vo.Paciente.PacienteVO;
-
 import javax.mail.MessagingException;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import javax.activation.DataHandler;
 import javax.activation.FileDataSource;
 import javax.mail.Multipart;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMultipart;
-import model.dao.Consulta.EnviarEmailDAO;
-import model.vo.Consulta.DadosEmail;
 
 public class CadastrarConsulta extends HttpServlet {
 
@@ -149,7 +141,7 @@ public class CadastrarConsulta extends HttpServlet {
 
                     //seta quatos anexos desejar
                     List<String> files = new ArrayList<String>();
-                    files.add("coracao.png");
+                    files.add("D:\\SENAC\\coracao.png");
 //        files.add("C:\images\hover_next.png");
 //        files.add("C:\images\hover_prev.png");
 
@@ -169,7 +161,7 @@ public class CadastrarConsulta extends HttpServlet {
 
                     }
 
-//        //adiciona o corpo texto da mensagem
+                    //adiciona o corpo texto da mensagem
                     mps.addBodyPart(textPart);
                     //adiciona a mensagem o conteudo texto e anexo
                     message.setContent(mps);
@@ -182,23 +174,6 @@ public class CadastrarConsulta extends HttpServlet {
                     e.printStackTrace();
                 }
             }
-
-//
-//                //seta quatos anexos desejar
-//                List<String> files = new ArrayList<String>();
-//                files.add("D:\\SENAC\\coracao.png");
-////        files.add("C:\images\hover_next.png");
-////        files.add("C:\images\hover_prev.png");
-//
-//                mj.setFileMails(files);
-//
-//                try {
-//                    new EnviarEmailDAO().senderMail(mj);
-//                } catch (MessagingException e) {
-//
-//                }
-//
-//            }
             request.setAttribute("consultacadastrada", resultadoDoCadastro);
             request.getRequestDispatcher("Consulta/MostrarConsultaCadastrada.jsp").forward(request, response);
 
