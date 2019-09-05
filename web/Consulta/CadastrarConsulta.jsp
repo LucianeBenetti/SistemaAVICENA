@@ -29,6 +29,8 @@
         <title>Cadastrar Consulta</title>
     </head>
     <body class="body">
+          
+        
         <div class="form1">
             <h2>Cadastrar Consulta!</h2>
 
@@ -45,6 +47,11 @@
                     </form>
                 </div>
             </fieldset>
+             <%
+                Object obj = request.getAttribute("listaEspecializacoes");
+                ArrayList<EspecializacaoVO> especializacoesVO = (ArrayList<EspecializacaoVO>) obj;
+                if (especializacoesVO != null) {%>
+            
             <form name="cadastrarconsulta" action="cadastrarconsulta" method="post">
                 <fieldset>
                     <input type="hidden" name="codigoespecializacao" size="4" readonly>
@@ -99,11 +106,6 @@
         </div>
         <div class="resultadodaconsulta">
 
-            <%
-                Object obj = request.getAttribute("listaEspecializacoes");
-                ArrayList<EspecializacaoVO> especializacoesVO = (ArrayList<EspecializacaoVO>) obj;
-                if (especializacoesVO != null) {%>
-
             <h2>Dados de Médicos por Especialidade</h2>
             <table id="tabelaConsulta">
                 <tr>
@@ -152,7 +154,8 @@
 
             <br><br>
         </div>    
-            
+
+       
         <footer class="footer">                
             &copy; Desenvolvido por Luciane Benetti e Marco Sena.
         </footer>

@@ -50,6 +50,7 @@ public class AtualizarConsulta extends HttpServlet {
         String nomeEspecialidade = request.getParameter("nomeespecialidade");
         String nomeConvenio = request.getParameter("nomeconvenio");
         String nomepaciente = request.getParameter("nomepaciente");
+        String horarioConsulta = request.getParameter("horarioconsulta");
         int codigoConsulta = new Integer(request.getParameter("codigoconsulta"));
         int codigoConvenio = new Integer(request.getParameter("codigoconvenio"));
         int codigoPaciente = new Integer(request.getParameter("codigopaciente"));
@@ -73,10 +74,10 @@ public class AtualizarConsulta extends HttpServlet {
         consultaVO = new ConsultaVO();
         consultaVO.setCodigoConsulta(codigoConsulta);
         consultaVO.setConvenioVO(convenioVO);
-        consultaVO.setAtencaoEspecial(request.getParameter("atencaoespecial"));
+        consultaVO.setAtencaoEspecial(atencaoEspecial);
         consultaVO.setDataConsulta(dataSQL);
         consultaVO.setEspecializacaoVO(especializacaoVO);
-        consultaVO.setHorarioConsulta(request.getParameter("horarioconsulta"));
+        consultaVO.setHorarioConsulta(horarioConsulta);
         consultaVO.setPacienteVO(pacienteVO);
 
         consultaController = new ConsultaController();
@@ -89,7 +90,7 @@ public class AtualizarConsulta extends HttpServlet {
             if (atualizada) {
 
                 request.setAttribute("nomepaciente", nomepaciente);
-                request.setAttribute("horarioconsulta", consultaVO.getHorarioConsulta());
+                request.setAttribute("horarioconsulta", horarioConsulta);
                 request.setAttribute("dataconsulta", dataConsulta);
                 request.setAttribute("nomemedico", nomeMedico);
                 request.setAttribute("nomeespecialidade", nomeEspecialidade);
@@ -138,7 +139,7 @@ public class AtualizarConsulta extends HttpServlet {
                         + " especial, foi alterada para o dia e horário abaixo: " + "\n\n"
                         + "Nome do Paciente: " + nomepaciente + "\n\n"
                         + "Data da Consulta: " + dataConsulta + "\n\n"
-                        + "Horário da consulta: " + consultaVO.getHorarioConsulta() + "\n\n"
+                        + "Horário da consulta: " + horarioConsulta + "\n\n"
                         + "Atenção especial: " + atencaoEspecial);
 
                 //seta quatos anexos desejar

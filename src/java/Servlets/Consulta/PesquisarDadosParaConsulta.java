@@ -50,25 +50,27 @@ public class PesquisarDadosParaConsulta extends HttpServlet {
         ArrayList<ConvenioVO> conveniosVO = convenioController.listarTodosOsConveniosVO();
 
         request.setAttribute("convenios", conveniosVO);
-
-        pacienteVO.setCpfPaciente(request.getParameter("cpfpaciente"));
-        PacienteController pacientecontroller = new PacienteController();
+        String cpfPaciente = request.getParameter("cpfpaciente");
         Boolean resultadoDaPesquisaPorCpf = false;
-        pacienteVO = pacientecontroller.pesquisarPacienteVOPorCpf(pacienteVO.getCpfPaciente());
 
-        if (pacienteVO != null) {
-            resultadoDaPesquisaPorCpf = true;
-            request.setAttribute("codigopaciente", pacienteVO.getCodigoPaciente());
-            request.setAttribute("nomepaciente", pacienteVO.getNomePaciente());
-            request.setAttribute("pacientevoretornado", resultadoDaPesquisaPorCpf);
-            request.getRequestDispatcher("Consulta/CadastrarConsulta.jsp").forward(request, response);
+        if (cpfPaciente != null) {
+            PacienteController pacientecontroller = new PacienteController();
+            pacienteVO = pacientecontroller.pesquisarPacienteVOPorCpf(cpfPaciente);
+            
+            if (pacienteVO != null) {
+                resultadoDaPesquisaPorCpf = true;
+                request.setAttribute("codigopaciente", pacienteVO.getCodigoPaciente());
+                request.setAttribute("nomepaciente", pacienteVO.getNomePaciente());
+                request.setAttribute("pacientevoretornado", resultadoDaPesquisaPorCpf);
+                request.getRequestDispatcher("Consulta/CadastrarConsulta.jsp").forward(request, response);
 
-        } else {
-            System.out.println("O paciente não foi encontrado!");
-            request.setAttribute("pacientevoretornado", resultadoDaPesquisaPorCpf);
-            request.getRequestDispatcher("WEB-INF/PaginaInicial.jsp").forward(request, response);
+            } else {
+                System.out.println("O paciente não foi encontrado!");
+                request.setAttribute("pacientevoretornado", resultadoDaPesquisaPorCpf);
+                request.getRequestDispatcher("Consulta/MostrarPacienteBuscado.jsp").forward(request, response);
+            }
+
         }
-
     }
 
 }

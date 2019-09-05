@@ -19,7 +19,6 @@
             <fieldset><legend>Digite o CPF do Paciente</legend>
                 <div>
                     <form method="post" action="../pesquisardadosparacadastrarprontuario">
-
                         <p><a>*</a>Campos de preenchimento obrigatório</p>                    
 
                         CPF<a>*</a>:<br> 
@@ -69,41 +68,7 @@
             </form>
         </div><br><br> 
 
-        <div class="resultadodaconsulta">            
-            <%
-                Object consultas = request.getAttribute("listaconsultas");
-                ArrayList<ConsultaVO> consultasVO = (ArrayList<ConsultaVO>) consultas;
-                if (consultasVO != null) {%>
-            <h2>Consultas do Paciente</h2>
-            <table id="tabelaConsulta">
-                <tr>
-                    <th>Id</th>
-                    <th>Nome do Paciente</th> 
-                    <th>Nome do Médico</th> 
-                    <th>Especialidade</th>
-                    <th>Convenio</th>
-                    <th>Data da Consulta</th>
-                    <th>Horário da Consulta</th>
-                </tr>        
-                <% for (ConsultaVO consultaVO : consultasVO) {%>  
-
-                <tr onclick="clickLinhaTabelaConsulta(this)">
-                    <td><%= consultaVO.getCodigoConsulta()%></td>
-                    <td hidden><%= consultaVO.getPacienteVO().getCodigoPaciente()%></td>
-                    <td><%= consultaVO.getPacienteVO().getNomePaciente()%></td>
-                    <td hidden><%= consultaVO.getEspecializacaoVO().getCodigoEspecializacao()%></td>
-                    <td><%= consultaVO.getEspecializacaoVO().getMedicoVO().getNomeMedico()%></td>
-                    <td><%= consultaVO.getEspecializacaoVO().getEspecialidadeVO().getNomeEspecialidade()%></td>
-                    <td hidden><%= consultaVO.getConvenioVO().getCodigoConvenio()%></td>
-                    <td><%= consultaVO.getConvenioVO().getNomeConvenio()%></td>
-                    <td ><%= consultaVO.getDataConsulta()%></td>
-                    <td ><%= consultaVO.getHorarioConsulta()%></td>
-                </tr>     
-                <% }
-                    } %>
-            </table>
-            <br><br>
-
+        <div class="resultadodaconsulta">    
             <%
                 Object obj = request.getAttribute("listaProntuarios");
                 ArrayList<ProntuarioVO> listaProntuarios = (ArrayList<ProntuarioVO>) obj;
@@ -134,6 +99,42 @@
                     }%>
             </table>
             <br><br>      
+
+            <%
+                Object consultas = request.getAttribute("listaconsultas");
+                ArrayList<ConsultaVO> consultasVO = (ArrayList<ConsultaVO>) consultas;
+                if (consultasVO != null) {%>
+            <h2>Consultas do Paciente</h2>
+            <table id="tabelaConsulta">
+                <tr>
+                    <th>Id</th>
+                    <th>Nome do Paciente</th> 
+                    <th>Nome do Médico</th> 
+                    <th>Especialidade</th>
+                    <th>Convenio</th>
+                    <th>Data da Consulta</th>
+                    <th>Horário da Consulta</th>
+                </tr>        
+                <% for (ConsultaVO consultaVO : consultasVO) {%>  
+
+                <tr onclick="clickLinhaTabelaConsulta(this)">
+                    <td><%= consultaVO.getCodigoConsulta()%></td>
+                    <td hidden><%= consultaVO.getPacienteVO().getCodigoPaciente()%></td>
+                    <td><%= consultaVO.getPacienteVO().getNomePaciente()%></td>
+                    <td hidden><%= consultaVO.getEspecializacaoVO().getCodigoEspecializacao()%></td>
+                    <td><%= consultaVO.getEspecializacaoVO().getMedicoVO().getNomeMedico()%></td>
+                    <td><%= consultaVO.getEspecializacaoVO().getEspecialidadeVO().getNomeEspecialidade()%></td>
+                    <td hidden><%= consultaVO.getConvenioVO().getCodigoConvenio()%></td>
+                    <td><%= consultaVO.getConvenioVO().getNomeConvenio()%></td>
+                    <td ><%= consultaVO.getDataConsulta()%></td>
+                    <td ><%= consultaVO.getHorarioConsulta()%></td>
+                </tr>     
+                <% }
+                    }%>
+            </table>
+            <br><br>
+
+
         </div>
 
         <br><br>   
