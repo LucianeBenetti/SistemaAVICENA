@@ -22,6 +22,7 @@ public class CrudPaciente extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
+        Object usuarioValidado = request.getSession().getAttribute("perfil");
         String var1 = request.getParameter("cadastrarpaciente");
         String var2 = request.getParameter("excluir");
 
@@ -83,9 +84,12 @@ public class CrudPaciente extends HttpServlet {
                             resultadoDoCadastro = true;
 
                             request.setAttribute("cadastrado", resultadoDoCadastro);
-                            
-                            request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
 
+                            if (usuarioValidado.equals("admin")) {
+                                request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
+                            } else if (usuarioValidado.equals("atendente")) {
+                                request.getRequestDispatcher("WEB-INF/PaginaInicialAtendente.jsp").forward(request, response);
+                            } 
                         } else {
                             request.setAttribute("pacientevocadastrado", resultadoDoCadastro);
                             request.getRequestDispatcher("Paciente/MostrarPacienteCadastrado.jsp").forward(request, response);
@@ -101,7 +105,7 @@ public class CrudPaciente extends HttpServlet {
                         pacienteController = new PacienteController();
                         if (pacienteController.excluirPacientePorCpf(pacienteVO.getCpfPaciente())) {
                             resultadoDaExclusao = true;
-                            
+
                             request.setAttribute("pacienteexcluido", resultadoDaExclusao);
                             request.setAttribute("cpfpaciente", pacienteVO.getCpfPaciente());
                             request.getRequestDispatcher("Paciente/MostrarPacienteExcluido.jsp").forward(request, response);

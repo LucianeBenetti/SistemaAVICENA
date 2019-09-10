@@ -34,6 +34,7 @@ public class ExcluirConsulta extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
+        Object usuarioValidado = request.getSession().getAttribute("perfil");
         String var1 = request.getParameter("excluirconsulta");
 
         consultaVO = new ConsultaVO();

@@ -87,11 +87,11 @@ public class Usuario extends HttpServlet {
                         if (usuarioValidadoVO != null && usuarioValidadoVO.getPerfil().equals(var3)) {
 
                             session = request.getSession();
-                            session.setAttribute("login", usuarioVO.getLogin());
+                            session.setAttribute("perfil", usuarioVO.getPerfil());
+                            
                             request.setAttribute("login", usuarioVO.getLogin());
                             request.setAttribute("senha", usuarioVO.getSenha());
                             request.setAttribute("perfil", usuarioVO.getPerfil());
-
                             request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
                         }
 
@@ -100,7 +100,8 @@ public class Usuario extends HttpServlet {
                         if (usuarioValidadoVO != null && usuarioValidadoVO.getPerfil().equals(var5)) {
 
                             session = request.getSession();
-                            session.setAttribute("login", usuarioVO.getLogin());
+                            session.setAttribute("perfil", usuarioVO.getPerfil());
+                            
                             request.setAttribute("login", usuarioVO.getLogin());
                             request.setAttribute("senha", usuarioVO.getSenha());
                             request.setAttribute("perfil", usuarioVO.getPerfil());
@@ -112,7 +113,8 @@ public class Usuario extends HttpServlet {
                         if (usuarioValidadoVO != null && usuarioValidadoVO.getPerfil().equals(var4)) {
 
                             session = request.getSession();
-                            session.setAttribute("login", usuarioVO.getLogin());
+                            session.setAttribute("perfil", usuarioVO.getPerfil());
+                            
                             request.setAttribute("login", usuarioVO.getLogin());
                             request.setAttribute("senha", usuarioVO.getSenha());
                             request.setAttribute("perfil", usuarioVO.getPerfil());

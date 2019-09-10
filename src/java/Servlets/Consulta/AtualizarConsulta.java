@@ -42,6 +42,7 @@ public class AtualizarConsulta extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        Object usuarioValidado = request.getSession().getAttribute("perfil");
         EspecializacaoVO especializacaoVO = new EspecializacaoVO();
         ConvenioVO convenioVO = new ConvenioVO();
         PacienteVO pacienteVO = new PacienteVO();

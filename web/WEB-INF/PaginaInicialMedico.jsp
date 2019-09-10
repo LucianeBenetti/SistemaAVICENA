@@ -129,13 +129,29 @@
 
     </nav>
 
-
     <div class="container" style="text-align: center">
 
         <h3>Sistema AVICENA - Especialidades Médicas</h3>
 
+        <h5>
 
-    </div>       
+            <%
+
+                Object obj1 = request.getAttribute("cadastrado");
+
+                if (obj1 != null) {
+
+                    Boolean usuariocadastrado = (Boolean) obj1;
+                    if (usuariocadastrado) {%>
+            <input class="generico"  type="text" size="150" 
+                   value="<% out.println("Transação realizada com sucesso!");%>">
+
+            <%}
+                }%>
+
+        </h5>            
+
+    </div>
 
     <div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0px; margin-top: 20%; background-color: #7986cb; 
          padding: 1px; color: white; ">
