@@ -188,24 +188,25 @@
 
         <h3>Sistema AVICENA - Especialidades Médicas</h3>
 
-        <div style="text-align: center; margin-top: 20px">
+        <h5>
 
             <%
 
-                Object obj1 = request.getAttribute("usuariocadastrado");
+                Object obj1 = request.getAttribute("cadastrado");
 
                 if (obj1 != null) {
 
                     Boolean usuariocadastrado = (Boolean) obj1;
                         if (usuariocadastrado) {%>
             <input class="generico"  type="text" size="150" 
-                   value="<% out.println("Usuário cadastrado com sucesso!");%>">
+                   value="<% out.println("Transação realizada com sucesso!");%>">
 
             <%}
                     }%>
 
-
-        </div> 
+        </h5>            
+                    
+    </div>
 
 
     </div>       

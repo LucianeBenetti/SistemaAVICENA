@@ -22,7 +22,7 @@ public class CrudPaciente extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String var1 = request.getParameter("cadastrar");
+        String var1 = request.getParameter("cadastrarpaciente");
         String var2 = request.getParameter("excluir");
 
         ArrayList<String> variavel = new ArrayList<String>();
@@ -37,7 +37,7 @@ public class CrudPaciente extends HttpServlet {
 
             if (var != null) {
                 switch (var) {
-                    case "cadastrar":
+                    case "cadastrarpaciente":
 
                         //System.out.println("A variável é: " + variavel.get(i));
                         pacienteVO = new PacienteVO();
@@ -82,8 +82,9 @@ public class CrudPaciente extends HttpServlet {
                             request.setAttribute("cep", pacienteVO.getCep());
                             resultadoDoCadastro = true;
 
-                            request.setAttribute("pacientevocadastrado", resultadoDoCadastro);
-                            request.getRequestDispatcher("Paciente/MostrarPacienteCadastrado.jsp").forward(request, response);
+                            request.setAttribute("cadastrado", resultadoDoCadastro);
+                            
+                            request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
 
                         } else {
                             request.setAttribute("pacientevocadastrado", resultadoDoCadastro);
