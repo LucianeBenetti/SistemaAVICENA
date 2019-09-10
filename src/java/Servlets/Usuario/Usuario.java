@@ -33,14 +33,14 @@ public class Usuario extends HttpServlet {
         UsuarioController usuarioController;
         UsuarioVO usuarioVO;
         UsuarioVO usuarioValidadoVO;
-        
+
         HttpSession session;
 
         ArrayList<String> variaveis = new ArrayList<>();
-               
+
         variaveis.add(var1);
         variaveis.add(var2);
-        
+
         for (int i = 0; i < variaveis.size(); i++) {
             String variavelDeControle = variaveis.get(i);
 
@@ -78,47 +78,54 @@ public class Usuario extends HttpServlet {
                         usuarioVO.setLogin(nome);
                         usuarioVO.setSenha(senha);
                         usuarioController = new UsuarioController();
-                        
+
                         //for(int j = 0; j < perfis.size(); j++){           
 //                            String perfilDoUsuario = perfis.get(j);
-                            usuarioVO.setPerfil(var3);
-                            usuarioValidadoVO = usuarioController.pesquisarUsuarioVO(usuarioVO);
-                            
-                            if (usuarioValidadoVO != null && usuarioValidadoVO.getPerfil().equals(var3)) {
-                                //System.out.println(usuarioValidado.getPerfil());
-                                request.setAttribute("login", usuarioVO.getLogin());
-                                request.setAttribute("senha", usuarioVO.getSenha());
-                                request.setAttribute("perfil", usuarioVO.getPerfil());
-                                                               
-                                request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
-                            }                             
-                            
-                            usuarioVO.setPerfil(var5);
-                            usuarioValidadoVO = usuarioController.pesquisarUsuarioVO(usuarioVO);
-                            if (usuarioValidadoVO != null && usuarioValidadoVO.getPerfil().equals(var5)) {
-                                
-                                request.setAttribute("login", usuarioVO.getLogin());
-                                request.setAttribute("senha", usuarioVO.getSenha());
-                                request.setAttribute("perfil", usuarioVO.getPerfil());
-                                request.getRequestDispatcher("WEB-INF/PaginaInicialMedico.jsp").forward(request, response);
-                            }
-                            
-                            usuarioVO.setPerfil(var4);
-                            usuarioValidadoVO = usuarioController.pesquisarUsuarioVO(usuarioVO);
-                            if (usuarioValidadoVO != null && usuarioValidadoVO.getPerfil().equals(var4)) {
-                                //System.out.println(usuarioValidado.getPerfil());
-                                request.setAttribute("login", usuarioVO.getLogin());
-                                request.setAttribute("senha", usuarioVO.getSenha());
-                                request.setAttribute("perfil", usuarioVO.getPerfil());
-                                request.getRequestDispatcher("WEB-INF/PaginaInicialAtendente.jsp").forward(request, response);
-                            } else {
-                                
-                                Boolean usuariovalidado = false;
-                                request.setAttribute("usuariovalidado", usuariovalidado);
-                                request.getRequestDispatcher("TelaDeLoginAdmin.jsp").forward(request, response);}
-                            
+                        usuarioVO.setPerfil(var3);
+                        usuarioValidadoVO = usuarioController.pesquisarUsuarioVO(usuarioVO);
+
+                        if (usuarioValidadoVO != null && usuarioValidadoVO.getPerfil().equals(var3)) {
+
+                            session = request.getSession();
+                            session.setAttribute("login", usuarioVO.getLogin());
+                            request.setAttribute("login", usuarioVO.getLogin());
+                            request.setAttribute("senha", usuarioVO.getSenha());
+                            request.setAttribute("perfil", usuarioVO.getPerfil());
+
+                            request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
+                        }
+
+                        usuarioVO.setPerfil(var5);
+                        usuarioValidadoVO = usuarioController.pesquisarUsuarioVO(usuarioVO);
+                        if (usuarioValidadoVO != null && usuarioValidadoVO.getPerfil().equals(var5)) {
+
+                            session = request.getSession();
+                            session.setAttribute("login", usuarioVO.getLogin());
+                            request.setAttribute("login", usuarioVO.getLogin());
+                            request.setAttribute("senha", usuarioVO.getSenha());
+                            request.setAttribute("perfil", usuarioVO.getPerfil());
+                            request.getRequestDispatcher("WEB-INF/PaginaInicialMedico.jsp").forward(request, response);
+                        }
+
+                        usuarioVO.setPerfil(var4);
+                        usuarioValidadoVO = usuarioController.pesquisarUsuarioVO(usuarioVO);
+                        if (usuarioValidadoVO != null && usuarioValidadoVO.getPerfil().equals(var4)) {
+
+                            session = request.getSession();
+                            session.setAttribute("login", usuarioVO.getLogin());
+                            request.setAttribute("login", usuarioVO.getLogin());
+                            request.setAttribute("senha", usuarioVO.getSenha());
+                            request.setAttribute("perfil", usuarioVO.getPerfil());
+                            request.getRequestDispatcher("WEB-INF/PaginaInicialAtendente.jsp").forward(request, response);
+                        } else {
+
+                            Boolean usuariovalidado = false;
+                            request.setAttribute("usuariovalidado", usuariovalidado);
+                            request.getRequestDispatcher("TelaDeLoginAdmin.jsp").forward(request, response);
+                        }
+
                         //}                            
-                        break;                       
+                        break;
                 }
             }
         }
