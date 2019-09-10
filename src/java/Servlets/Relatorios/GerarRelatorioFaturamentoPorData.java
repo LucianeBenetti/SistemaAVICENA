@@ -104,7 +104,8 @@ public class GerarRelatorioFaturamentoPorData extends HttpServlet {
                 }
             }
         }
-        request.getRequestDispatcher("Prontuario/MostrarReceitaCadastrada.jsp").forward(request, response);
+          Runtime.getRuntime().exec(new String[]{"cmd.exe", "/c", "start", "D://SENAC//RelatorioFaturamento.xls"});
+        request.getRequestDispatcher("WEB-INF//PaginaInicialAdmin.jsp").forward(request, response);
     }
 
     @Override

@@ -98,7 +98,7 @@ public class GerarRelatorioConsultasPorMedico extends HttpServlet {
         document.add(table);
         document.close();
         Runtime.getRuntime().exec(new String[]{"cmd.exe", "/c", "start", "D://SENAC//RelatorioMedico.pdf"});
-        request.getRequestDispatcher("Prontuario/MostrarReceitaCadastrada.jsp").forward(request, response);
+        request.getRequestDispatcher("Relatorios/MostrarResultadoEmissaoRelatorio.jsp").forward(request, response);
 
     }
 

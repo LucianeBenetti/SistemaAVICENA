@@ -40,7 +40,7 @@ public class ControleDeNavegacao extends HttpServlet {
                         break;
 
                     case "sairdocadastro":
-                        request.getRequestDispatcher("Index.html").forward(request, response);
+                        request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
                         break;
                         
                     case "voltarpaginainicial":

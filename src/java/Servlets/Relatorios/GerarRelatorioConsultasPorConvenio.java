@@ -110,7 +110,8 @@ public class GerarRelatorioConsultasPorConvenio extends HttpServlet {
                 }
             }
         }
-        request.getRequestDispatcher("Prontuario/MostrarReceitaCadastrada.jsp").forward(request, response);
+          Runtime.getRuntime().exec(new String[]{"cmd.exe", "/c", "start", "D://SENAC//Relatorio" + nomeConvenio + ".xls"});
+        request.getRequestDispatcher("Relatorios/MostrarResultadoEmissaoRelatorio.jsp").forward(request, response);
     }
 
     @Override
