@@ -1,24 +1,17 @@
-<%-- 
-    Document   : ResultadoDaAtualizacao
-    Created on : 31/05/2019, 10:04:02
-    Author     : 80130917
---%>
-
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link type="text/css" rel="stylesheet" href="Especializacao/CRUDEspecializacao.css">
-        <title>Resultado da Atualização</title>
+        <title>Resultado da Transação</title>
     </head>
     <body class="body">        
         <div class="principal">
             <div class="secao3">
             </div>
             <div class="cadastro">
-                <h2>Resultado da atualização:</h2>
+                <h2>Resultado da transação</h2>
                 <fieldset><legend>Especialização</legend>
                     <%
                         Object obj1 = request.getAttribute("resultado");

@@ -84,12 +84,12 @@ public class CrudEspecializacao extends HttpServlet {
                             request.setAttribute("anoespecializacao", especializacaoVO.getAnoEspecializacao());
 
                             resultadoDoCadastro = true;
-                            request.setAttribute("especializacaocadastrada", resultadoDoCadastro);
-                            request.getRequestDispatcher("Especializacao/MostrarEspecializacaoCadastrada.jsp").forward(request, response);
+                            request.setAttribute("resultado", resultadoDoCadastro);
+                            request.getRequestDispatcher("Especializacao/ResultadoDaTransacao.jsp").forward(request, response);
 
                         } else {
-                            request.setAttribute("especializacaocadastrada", resultadoDoCadastro);
-                            request.getRequestDispatcher("Especializacao/MostrarEspecializacaoCadastrada.jsp").forward(request, response);
+                            request.setAttribute("resultado", resultadoDoCadastro);
+                            request.getRequestDispatcher("Especializacao/ResultadoDaTransacao.jsp").forward(request, response);
                         }
 
                         break;
@@ -105,11 +105,12 @@ public class CrudEspecializacao extends HttpServlet {
 
                             resultadoDaExclusao = true;
                             request.setAttribute("codigoespecializacaoVO", especializacaoVO.getCodigoEspecializacao());
-                            request.getRequestDispatcher("Especializacao/MostrarEspecializacaoExcluida.jsp").forward(request, response);
+                            request.setAttribute("resultado", resultadoDaExclusao);
+                            request.getRequestDispatcher("Especializacao/ResultadoDaTransacao.jsp").forward(request, response);
                         } else {
 
-                            request.setAttribute("especializacaoexcluida", resultadoDaExclusao);
-                            request.getRequestDispatcher("Especializacao/MostrarEspecializacaoExcluida.jsp").forward(request, response);
+                            request.setAttribute("resultado", resultadoDaExclusao);
+                            request.getRequestDispatcher("Especializacao/ResultadoDaTransacao.jsp").forward(request, response);
 
                         }
 
