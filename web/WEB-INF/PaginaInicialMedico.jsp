@@ -71,7 +71,7 @@
                     Pacientes
                 </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="listarpacientes">Listar Todos</a>
+                    <a class="dropdown-item" href="listarpacientes">Listar Todos Pacientes</a>
 
                 </div>
             </li>
@@ -80,7 +80,7 @@
                     Consultas
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="listarconsultas">Listar Todas</a>                             
+                    <a class="dropdown-item" href="listarconsultas">Listar Todas Consultas</a>                             
 
                 </div>
             </li>
@@ -92,7 +92,7 @@
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="Prontuario/CadastrarProntuario.jsp">Cadastrar/Atualizar Prontuário</a>
                     <a class="dropdown-item" href="Prontuario/EmitirReceita.jsp">Emitir Receita</a>
-                    <a class="dropdown-item" href="listarprontuarios">Listar Todos</a>
+                    <a class="dropdown-item" href="listarprontuarios">Listar Todos Prontuários</a>
 
                 </div>
             </li>
@@ -104,7 +104,7 @@
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="buscarespecialidade">Cadastrar Especialização</a>
                     <a class="dropdown-item" href="pesquisarespecializacaopormedico">Pesquisar/Alterar Especialização</a>
-                    <a class="dropdown-item" href="listarespecializacoes">Listar Todas</a>
+                    <a class="dropdown-item" href="listarespecializacoes">Listar Todas Especializações</a>
 
                 </div>
             </li>

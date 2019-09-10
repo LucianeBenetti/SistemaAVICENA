@@ -72,7 +72,7 @@
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="Paciente/CadastrarPaciente.jsp">Cadastrar Paciente</a>
                     <a class="dropdown-item" href="Paciente/PesquisarPacientePorCpf.jsp">Pesquisar/Alterar Paciente</a>
-                    <a class="dropdown-item" href="listarpacientes">Listar Todos</a>
+                    <a class="dropdown-item" href="listarpacientes">Listar Todos Pacientes</a>
 
                 </div>
             </li>
@@ -84,7 +84,7 @@
                     <a class="dropdown-item" href="Consulta/CadastrarConsulta.jsp">Cadastrar Consulta</a>
                     <a class="dropdown-item" href="Consulta/PesquisarConsultaPorPaciente.jsp">Pesquisar/Alterar Consulta</a>
                     <a class="dropdown-item" href="Consulta/ExcluirConsulta.jsp">Excluir Consulta</a>
-                    <a class="dropdown-item" href="listarconsultas">Listar Todas</a>                             
+                    <a class="dropdown-item" href="listarconsultas">Listar Todas Consultas</a>                             
 
                 </div>
             </li>
@@ -95,7 +95,7 @@
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="Convenio/CadastrarConvenio.jsp">Cadastrar Convenio</a>
                     <a class="dropdown-item" href="Convenio/PesquisarConvenioPorCnpj.jsp">Pesquisar/Alterar Convenio</a>
-                    <a class="dropdown-item" href="listarconvenios">Listar Todos</a>                             
+                    <a class="dropdown-item" href="listarconvenios">Listar Todos Convênios</a>                             
 
                 </div>
             </li>
@@ -106,7 +106,7 @@
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="Medico/CadastrarMedico.jsp">Cadastrar Médico</a>
                     <a class="dropdown-item" href="Medico/PesquisarMedicoPorCpf.jsp">Pesquisar/Alterar Médico</a>
-                    <a class="dropdown-item" href="listarmedicos">Listar Todos</a>
+                    <a class="dropdown-item" href="listarmedicos">Listar Todos Médicos</a>
 
                 </div>
             </li>
@@ -117,7 +117,7 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="Especialidade/CadastrarEspecialidade.jsp">Cadastrar Especialidade</a>
                     <a class="dropdown-item" href="Especialidade/PesquisarEspecialidadePorNome.jsp">Pesquisar/Altear Especialidade</a>
-                    <a class="dropdown-item" href="listarespecialidades">Listar Todas as Especialidades</a>
+                    <a class="dropdown-item" href="listarespecialidades">Listar Todas Especialidades</a>
 
                 </div>
             </li>
