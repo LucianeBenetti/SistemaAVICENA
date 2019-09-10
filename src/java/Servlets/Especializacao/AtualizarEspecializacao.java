@@ -39,10 +39,10 @@ public class AtualizarEspecializacao extends HttpServlet {
 
         if (especializacaocontroller.atualizarEspecializacaoVO(especializacaoVO, especializacaoVO.getCodigoEspecializacao()) != null) {
             resultadoDaAtualizacao = true;
-            request.setAttribute("atualizacao", resultadoDaAtualizacao);
+            request.setAttribute("resultado", resultadoDaAtualizacao);
             request.getRequestDispatcher("Especializacao/ResultadoDaAtualizacao.jsp").forward(request, response);
         } else {
-            request.setAttribute("atualizacao", resultadoDaAtualizacao);
+            request.setAttribute("resultado", resultadoDaAtualizacao);
         }
 
         request.getRequestDispatcher("Especializacao/ResultadoDaAtualizacao.jsp").forward(request, response);

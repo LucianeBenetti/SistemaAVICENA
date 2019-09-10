@@ -4,6 +4,7 @@
     Author     : 80130917
 --%>
 
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -20,14 +21,14 @@
                 <h2>Resultado da atualização:</h2>
                 <fieldset><legend>Especialização</legend>
                     <%
-                        Object obj1 = request.getAttribute("atualizacao");
+                        Object obj1 = request.getAttribute("resultado");
                         if (obj1 != null) {
-                            Boolean especializacaoAtualizada = (Boolean) obj1;
+                            Boolean resultado = (Boolean) obj1;
 
-                            if (especializacaoAtualizada) {%>                     
-                    <% out.println("Dados da Especialização atualizados com sucesso!!");%>            
+                            if (resultado) {%>                     
+                    <% out.println("Transação efetuada com sucesso!!");%>            
                     <%} else {%>
-                    <% out.println("Não foi possível atualizar os dados do Especialização!! Tente novamente");%>
+                    <% out.println("Não foi possível efetuar a transação solicitada!! Por gentileza, tente novamente");%>
 
                     <%}
                         }%>            
@@ -36,12 +37,7 @@
                     </div>
                 </fieldset>
                 <br><br>
-                <div>
-                    <form action="controledenavegacao" method="POST">
-                        <input type="hidden" id="avicena" name="avicena" value="avicena">
-                        <input type="submit" value="Voltar">
-                    </form>
-                </div>   
+                 
             </div>     
         </div>
         <footer class="footer">                
