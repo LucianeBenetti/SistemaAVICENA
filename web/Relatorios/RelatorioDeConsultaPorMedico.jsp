@@ -8,11 +8,31 @@
     <head>    
         <meta charset= "utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link type="text/css" rel="stylesheet" href="Relatorios/CRUDRelatorio.css">
-        <link type="text/css" rel="stylesheet" href="CRUDRelatorio.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <title>Sistema Avicena</title> 
     </head>
-    <body class="body">  
+    <body>  
+        <nav class="navbar navbar-expand-sm navbar-dark justify-content-left" 
+             style= "background-color: #7986cb; font-size: 18px; color: #ffffff; ">
+            <a class="navbar-brand">
+                <img src="icon2.png" alt="logo" style="width:50px; height: 30px;">
+            </a>
+            <ul class="navbar-nav">
+                <form action="controledenavegacao" method="POST">
+                    <input type="hidden" id="voltarpaginainicial" name="voltarpaginainicial" value="voltarpaginainicial">
+                    <input type="submit" value="Inicio" style="border:none; background-color: #7986cb; color: white; padding: 8px;">
+                </form>  
+                <li>
+                    <form action="controledenavegacao" method="POST">
+                        <input type="hidden" id="sair" name="sair" value="sair">
+                        <input type="submit" value="Sair" style="border:none; background-color: #7986cb; color: white; padding: 8px;">
+                    </form>
+                </li>
+            </ul>
+        </nav>
 
         <%
             Object listaMedicos = request.getAttribute("listamedicosvo");
@@ -22,7 +42,7 @@
         <h2>Relatório de Consultas por Médico</h2>
         <form name="f1"  action="pesquisarconsultapormedico" method="POST">
 
-            <div class="consultaNome">
+            <div class="container-fluid">
 
                 <fieldset><legend>Por gentileza, selecionar o nome do Médico a ser pesquisado:</legend>
                     <select name="medicoselecionado" >
@@ -40,23 +60,23 @@
             </div>
         </form>  
         <form name="f2" action="gerarrelatorioconsultaspormedico" method="post">
-            <div class="resultadodaconsultaNome">
-
+            <div class="container-fluid">
                 <%
                     Object consultas = request.getAttribute("listadeconsultas");
                     ArrayList<ConsultaVO> consultasVO = (ArrayList<ConsultaVO>) consultas;
                     if (consultasVO != null) {%>
-
-                <table id="tabelaConsulta">
-                    <tr>
-                        <th>Id</th>
-                        <th>Nome do Paciente</th> 
-                        <th>Nome do Médico</th> 
-                        <th>Especialidade</th>
-                        <th>Convenio</th>
-                        <th>Data da Consulta</th>
-                        <th>Horário da Consulta</th>
-                    </tr>        
+                <table class="table table-borderless table-sm table-hover table-striped" id="tabelaConsulta">
+                    <thead>
+                        <tr class="table-warning" >
+                            <th>Id</th>
+                            <th>Nome do Paciente</th> 
+                            <th>Nome do Médico</th> 
+                            <th>Especialidade</th>
+                            <th>Convenio</th>
+                            <th>Data da Consulta</th>
+                            <th>Horário da Consulta</th>
+                        </tr>    
+                    </thead>
                     <% for (ConsultaVO consultaVO : consultasVO) {%>  
 
                     <tr onclick="clickAtualizarConsulta(this)">
@@ -81,5 +101,9 @@
                 <br><br>         
             </div>
         </form>
+        <div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0; margin-top: 5%;
+             background-color: #7986cb; padding: 5px; color: white; font-size: 10pt;">
+            &copy; Desenvolvido por Luciane Benetti e Marco Sena.
+        </div>
     </body>
 </html>

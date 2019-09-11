@@ -32,7 +32,7 @@
             </ul>
         </nav>
         <div class="container-fluid">
-            <h4>Lista dos pacientes cadastrados na clínica AVICENA:</h4><br> 
+            <h4>Lista das consultas cadastradas na clínica AVICENA:</h4><br> 
             <table class="table table-borderless table-sm table-hover table-striped">
                 <thead>
                     <tr class="table-warning" >
