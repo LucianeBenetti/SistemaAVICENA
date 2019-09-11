@@ -33,9 +33,10 @@
         </nav>
         <div class="container-fluid">
             <h4>Lista das especialidades cadastradas na clínica AVICENA:</h4><br> 
-            <table class="table table-borderless table-sm table-hover table-striped">
-                <thead>
-                    <tr class="table-warning" >
+           <div style="overflow-x:auto;">
+                <table class="table table-borderless table-sm table-hover table-primary table-striped">
+                    <thead>
+                        <tr class="table-success" >
                     <th>Id</th>
                         <th>Nome</th> 
                         <th>Instituição</th> 

@@ -17,6 +17,7 @@ public class ControleDeNavegacao extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         Object usuarioValidado = request.getSession().getAttribute("perfil");
+        System.out.println("perfil " + usuarioValidado);
         String var1 = request.getParameter("sair");
         String var2 = request.getParameter("sairdocadastro");
         String var3 = request.getParameter("voltarpaginainicial");

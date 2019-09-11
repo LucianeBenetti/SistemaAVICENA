@@ -16,18 +16,18 @@
 
     <body> 
 
-        <div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0;
-             background-color: #7986cb; padding: 5px; color: white">
+        <div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0; background-color: #7986cb; padding: 5px; color: white">
             <h4>Sistema Avicena</h4>
             Medicina Humanizada 
         </div>
 
-        <div class="form" style="width: 80%; margin: auto; margin-top: 2%; background-color: #c8e6c9; padding: 10px; border-radius: 10px;">
+        <div class="form" style="float: left; width: 80%; margin-left: 10%; margin-top: 2%; background-color: #c8e6c9; 
+             padding: 20px; border-radius: 10px;">
 
-            <h3 style="text-align: center; padding: 20px;">Por gentileza, preencher os dados do paciente a ser cadastrado:</h3>            
+            <h3 style="text-align: center;">Por gentileza, preencher os dados do paciente a ser cadastrado:</h3>            
 
 
-            <form action="../crudpaciente" method="post" style="padding: 10px" >
+            <form action="../crudpaciente" method="post" style="padding: 10px;" >
 
                 <input type="hidden" id="cadastrarpaciente" name="cadastrarpaciente" value="cadastrarpaciente">
 
@@ -136,14 +136,20 @@
 
                 <div class="form-row">
 
-                    <button type="submit" class="btn btn-primary" style="margin-left: 15px" >Cadastrar Paciente</button> 
+                    <button type="submit" class="btn btn-primary" style=" float: left; margin-left: 1.5%">Cadastrar Paciente</button> 
 
                 </div>
             </form>
 
+            <form action="../controledenavegacao" method="POST">
+                <input type="hidden" id="voltarpaginainicial" name="voltarpaginainicial" value="voltarpaginainicial">
+                <input type="submit" value = "Sair" class="btn btn-primary" 
+                       style=" margin-left: 1%; float: left;">            
+            </form>
+
         </div>
-        <div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0; margin-top: 5%;
-             background-color: #7986cb; padding: 5px; color: white; font-size: 10pt;">
+        <div class="jumbotron jumbotron-fluid text-center" style="clear: both; margin-bottom:0; margin-top: 45%;
+             background-color: #7986cb; padding: 4px; color: white; font-size: 10pt;">
             &copy; Desenvolvido por Luciane Benetti e Marco Sena.
         </div>
 

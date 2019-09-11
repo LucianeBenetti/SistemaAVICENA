@@ -33,9 +33,10 @@
         </nav>
         <div class="container-fluid">
             <h4>Lista das consultas cadastradas na clínica AVICENA:</h4><br> 
-            <table class="table table-borderless table-sm table-hover table-striped">
-                <thead>
-                    <tr class="table-warning" >
+          <div style="overflow-x:auto;">
+                <table class="table table-borderless table-sm table-hover table-primary table-striped">
+                    <thead>
+                        <tr class="table-success" >
                         <th>Id</th>
                         <th>Nome do Paciente</th> 
                         <th>Nome do Médico</th> 
