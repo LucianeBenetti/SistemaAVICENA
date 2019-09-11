@@ -33,6 +33,7 @@ public class GerarRelatorioFaturamentoPorData extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         Object listaDeConsultas = request.getSession().getAttribute("listadeconsultas");
+        Boolean resultadoEmissaoRelatorio = true;
         ArrayList<ConsultaVO> consultas = (ArrayList<ConsultaVO>) listaDeConsultas;
         String[] columns = {"Nome", "Data Consulta", "Horario", "Convenio", "Valor", "Medico"};
         HSSFWorkbook planilha = new HSSFWorkbook();
@@ -104,7 +105,9 @@ public class GerarRelatorioFaturamentoPorData extends HttpServlet {
                 }
             }
         }
-          Runtime.getRuntime().exec(new String[]{"cmd.exe", "/c", "start", "D://SENAC//RelatorioFaturamento.xls"});
+        Runtime.getRuntime().exec(new String[]{"cmd.exe", "/c", "start", "D://SENAC//RelatorioFaturamento.xls"});
+        request.setAttribute("resultadotransacao", resultadoEmissaoRelatorio);
+
         request.getRequestDispatcher("WEB-INF//PaginaInicialAdmin.jsp").forward(request, response);
     }
 

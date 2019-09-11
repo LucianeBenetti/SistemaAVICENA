@@ -34,6 +34,8 @@ public class GerarRelatorioConsultasPorMedico extends HttpServlet {
             throws ServletException, IOException, DocumentException {
         response.setContentType("text/html;charset=UTF-8");
 
+        Object usuarioValidado = request.getSession().getAttribute("perfil");
+        Boolean resultadoEmissaoRelatorio = true;
         Object listaconsultas = request.getSession().getAttribute("listadeconsultas");
         ArrayList<ConsultaVO> consultas = (ArrayList<ConsultaVO>) listaconsultas;
         Document document = new Document();
@@ -98,8 +100,16 @@ public class GerarRelatorioConsultasPorMedico extends HttpServlet {
         document.add(table);
         document.close();
         Runtime.getRuntime().exec(new String[]{"cmd.exe", "/c", "start", "D://SENAC//RelatorioMedico.pdf"});
-        request.getRequestDispatcher("Relatorios/MostrarResultadoEmissaoRelatorio.jsp").forward(request, response);
-
+        if (usuarioValidado.equals("admin")) {
+            request.setAttribute("resultadotransacao", resultadoEmissaoRelatorio);
+            request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
+        } else if (usuarioValidado.equals("atendente")) {
+            request.setAttribute("resultadotransacao", resultadoEmissaoRelatorio);
+            request.getRequestDispatcher("WEB-INF/PaginaInicialAtendente.jsp").forward(request, response);
+        } else if (usuarioValidado.equals("medico")) {
+            request.setAttribute("resultadotransacao", resultadoEmissaoRelatorio);
+            request.getRequestDispatcher("WEB-INF/PaginaInicialMedico.jsp").forward(request, response);
+        }
     }
 
     @Override

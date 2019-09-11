@@ -11,6 +11,17 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+        <style>
+            /* Make the image fully responsive */
+            .carousel-inner img {
+                width: 100%;
+            }
+
+            .generico
+            {text-align: center; border-color: transparent; color: red; padding: 10px}
+
+        </style> 
         <title>Sistema Avicena</title> 
     </head>
     <body>  
@@ -33,17 +44,17 @@
             </ul>
         </nav>
 
-        <%
-            Object convenios = request.getAttribute("listaconvenios");
-            ArrayList<ConvenioVO> conveniosVO = (ArrayList<ConvenioVO>) convenios;
-            if (conveniosVO != null) {%>
-
         <div class="container-fluid">
-            <h2>Pesquisar Convênio por CNPJ!</h2>
-
+            <h2>Relatório de Consultas por Convênio</h2>
+            <br><br>
             <form method="post" action="pesquisarconsultaporconvenio">
 
-                <fieldset><legend>Por gentileza, selecionar o nome do Convênio a ser pesquisado:</legend>
+                <%
+                    Object convenios = request.getAttribute("listaconvenios");
+                    ArrayList<ConvenioVO> conveniosVO = (ArrayList<ConvenioVO>) convenios;
+                    if (conveniosVO != null) {%>
+
+                <h5>Por gentileza, selecionar o nome do Convênio a ser pesquisado:</h5>
                     <select name="convenioselecionado" >
                         <option selected disabled >Selecione um Convênio</option>
                         <% for (int i = 0; i < conveniosVO.size(); i++) {%>
@@ -52,8 +63,7 @@
                     </select>
                     <br /><br />
                     <input type="submit" value = "Buscar Convênio Selecionado">   
-                </fieldset>
-
+           
                 <%} %>  
                 <br><br>
             </form>
@@ -66,50 +76,57 @@
                     Object consultas = request.getAttribute("listaconsultas");
                     ArrayList<ConsultaVO> consultasVO = (ArrayList<ConsultaVO>) consultas;
                     if (consultasVO != null) {%>
+                <div style="overflow-x:auto;">
+                    <table class="table table-borderless table-sm table-hover table-primary table-striped">
+                        <thead>
+                            <tr class="table-success" >
+                                <th>Id</th>
+                                <th>Nome do Paciente</th> 
+                                <th>Nome do Médico</th> 
+                                <th>Especialidade</th>
+                                <th>Convenio</th>
+                                <th>Data da Consulta</th>
+                                <th>Horário da Consulta</th>
+                            </tr>      
+                        </thead>
 
-                <h2>Relatório de Consultas</h2>
-                <table class="table table-borderless table-sm table-hover table-striped" id="tabelaConsulta">
-                    <thead>
-                        <tr class="table-warning" >
+                        <% for (ConsultaVO consultaVO : consultasVO) {%>  
 
-                            <th>Id</th>
-                            <th>Nome do Paciente</th> 
-                            <th>Nome do Médico</th> 
-                            <th>Especialidade</th>
-                            <th>Convenio</th>
-                            <th>Data da Consulta</th>
-                            <th>Horário da Consulta</th>
-                        </tr>      
-                    </thead>
+                        <tr onclick="clickAtualizarConsulta(this)">
+                            <td><%= consultaVO.getCodigoConsulta()%></td>
+                            <td hidden><%= consultaVO.getPacienteVO().getCodigoPaciente()%></td>
+                            <td><%= consultaVO.getPacienteVO().getNomePaciente()%></td>
+                            <td hidden><%= consultaVO.getEspecializacaoVO().getCodigoEspecializacao()%></td>
+                            <td><%= consultaVO.getEspecializacaoVO().getMedicoVO().getNomeMedico()%></td>
+                            <td><%= consultaVO.getEspecializacaoVO().getEspecialidadeVO().getNomeEspecialidade()%></td>
+                            <td hidden><%= consultaVO.getConvenioVO().getCodigoConvenio()%></td>
+                            <td><%= consultaVO.getConvenioVO().getNomeConvenio()%></td>
+                            <td ><%= consultaVO.getDataConsulta()%></td>
+                            <td ><%= consultaVO.getHorarioConsulta()%></td>
+                        </tr>     
+                        <% }  %>
+                    </table>
 
-                    <% for (ConsultaVO consultaVO : consultasVO) {%>  
-
-                    <tr onclick="clickAtualizarConsulta(this)">
-                        <td><%= consultaVO.getCodigoConsulta()%></td>
-                        <td hidden><%= consultaVO.getPacienteVO().getCodigoPaciente()%></td>
-                        <td><%= consultaVO.getPacienteVO().getNomePaciente()%></td>
-                        <td hidden><%= consultaVO.getEspecializacaoVO().getCodigoEspecializacao()%></td>
-                        <td><%= consultaVO.getEspecializacaoVO().getMedicoVO().getNomeMedico()%></td>
-                        <td><%= consultaVO.getEspecializacaoVO().getEspecialidadeVO().getNomeEspecialidade()%></td>
-                        <td hidden><%= consultaVO.getConvenioVO().getCodigoConvenio()%></td>
-                        <td><%= consultaVO.getConvenioVO().getNomeConvenio()%></td>
-                        <td ><%= consultaVO.getDataConsulta()%></td>
-                        <td ><%= consultaVO.getHorarioConsulta()%></td>
-                    </tr>     
-                    <% }  %>
-                </table>
+                </div>
+                
                 <br><br>
 
                 <input type="hidden" id="gerarrelatorio" name="gerarrelatorio" value="gerarrelatorio">
                 <input type="submit" value="Gerar Relatório">
-            </div>
+                <%  } else { %>
+                <input class="generico"  type="text" size="150" 
+                       value="<% out.println("Consulta, com este convênio selecionado, não encotrada na base de dados. Por gentileza, tente novamente!");%>">
+                <% }%>
 
-            <%  }%>      
-            <div >
-
             </div>
-        </form><br><br>    
-        
+        </form><br><br>  
+
+
+        <div >
+
+        </div>
+
+
         <div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0; margin-top: 5%;
              background-color: #7986cb; padding: 5px; color: white; font-size: 10pt;">
             &copy; Desenvolvido por Luciane Benetti e Marco Sena.

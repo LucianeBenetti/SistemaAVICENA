@@ -34,9 +34,10 @@ public class GerarRelatorioConsultasPorConvenio extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         response.setContentType("text/html;charset=UTF-8");
-
+        
+        Object usuarioValidado = request.getSession().getAttribute("perfil");
+        Boolean resultadoEmissaoRelatorio = true;
         Object listaconsultas = request.getSession().getAttribute("listaconsultas");
         ArrayList<ConsultaVO> consultas = (ArrayList<ConsultaVO>) listaconsultas;
         String[] columns = {"Nome", "Data Consulta", "Horario", "Convenio", "Medico"};
@@ -110,8 +111,17 @@ public class GerarRelatorioConsultasPorConvenio extends HttpServlet {
                 }
             }
         }
-          Runtime.getRuntime().exec(new String[]{"cmd.exe", "/c", "start", "D://SENAC//Relatorio" + nomeConvenio + ".xls"});
-        request.getRequestDispatcher("Relatorios/MostrarResultadoEmissaoRelatorio.jsp").forward(request, response);
+        Runtime.getRuntime().exec(new String[]{"cmd.exe", "/c", "start", "D://SENAC//Relatorio" + nomeConvenio + ".xls"});
+        if (usuarioValidado.equals("admin")) {
+            request.setAttribute("resultadotransacao", resultadoEmissaoRelatorio);
+            request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
+        } else if (usuarioValidado.equals("atendente")) {
+            request.setAttribute("resultadotransacao", resultadoEmissaoRelatorio);
+            request.getRequestDispatcher("WEB-INF/PaginaInicialAtendente.jsp").forward(request, response);
+        } else if (usuarioValidado.equals("medico")) {
+            request.setAttribute("resultadotransacao", resultadoEmissaoRelatorio);
+            request.getRequestDispatcher("WEB-INF/PaginaInicialMedico.jsp").forward(request, response);
+        }
     }
 
     @Override
