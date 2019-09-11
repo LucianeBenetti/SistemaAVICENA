@@ -49,7 +49,7 @@
 
                     <div class="form-group">
                         <label for="perfil">Perfil:</label>
-                        <input type="text" class="form-control" id="perfil" placeholder="Digite seu perfil: atendente, ou médico ou administrador" name="perfil" style="border-color: gray" required>
+                        <input type="text" class="form-control" id="perfil" placeholder="Digite seu perfil: atendente, ou medico ou admin" name="perfil" style="border-color: gray" required>
                         <div class="valid-feedback">Valido.</div>
                         <div class="invalid-feedback"  style = "color: black">Campo obrigatório.</div>
                     </div>

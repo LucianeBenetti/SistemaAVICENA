@@ -34,25 +34,25 @@
         <div class="container-fluid">
             <h4>Lista dos pacientes cadastrados na clínica AVICENA:</h4><br> 
             <table class="table table-borderless table-sm table-hover table-striped">
-              <thead>
-                <tr class="table-warning" >
-                    <th>Id</th>
-                    <th>Nome</th> 
-                    <th>Celular</th>
-                    <th>Fone Residencial</th>
-                    <th>Fone Comercial</th> 
-                    <th>e-mail</th>
-                    <th>CPF</th>
-                    <th>CNPJ</th>
-                    <th>Logradouro</th> 
-                    <th>Número</th>
-                    <th>Complemento</th>
-                    <th>Bairro</th>
-                    <th>Cidade</th> 
-                    <th>UF</th>
-                    <th>CEP</th>
-                </tr>
-            </thead>
+                <thead>
+                    <tr class="table-warning" >
+                        <th>Id</th>
+                        <th>Nome</th> 
+                        <th>Celular</th>
+                        <th>Fone Residencial</th>
+                        <th>Fone Comercial</th> 
+                        <th>e-mail</th>
+                        <th>CPF</th>
+                        <th>CNPJ</th>
+                        <th>Logradouro</th> 
+                        <th>Número</th>
+                        <th>Complemento</th>
+                        <th>Bairro</th>
+                        <th>Cidade</th> 
+                        <th>UF</th>
+                        <th>CEP</th>
+                    </tr>
+                </thead>
                 <%
                     ArrayList<PacienteVO> pacientesVO = (ArrayList<PacienteVO>) request.getAttribute("pacientes");
 
@@ -80,7 +80,11 @@
                     }
                 %>
             </table>      
-        </div>      
+        </div>  
+        <div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0; margin-top: 5%;
+             background-color: #7986cb; padding: 5px; color: white; font-size: 10pt;">
+            &copy; Desenvolvido por Luciane Benetti e Marco Sena.
+        </div>
     </body>
 </html>
 
