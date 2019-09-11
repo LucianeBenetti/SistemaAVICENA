@@ -149,7 +149,7 @@
                     <a class="dropdown-item" href="buscarespecialidade">Cadastrar Especialização</a>
                     <a class="dropdown-item" href="pesquisarespecializacaopormedico">Pesquisar/Alterar Especialização</a>
                     <a class="dropdown-item" href="pesquisarmedicoparaexcluir">Excluir Especialização</a>
-                    <a class="dropdown-item" href="listarespecializacoes">Listar Todas</a>
+                    <a class="dropdown-item" href="listarespecializacoes">Listar Todas Especializações</a>
 
                 </div>
             </li>
