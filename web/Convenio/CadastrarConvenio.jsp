@@ -43,9 +43,6 @@
                         <label for="inputcnpj">CNPJ:</label>
                         <input type="text" class="form-control" id="inputcnpj" name="cnpjconvenio" placeholder="Digite o CNPJ do convênio" onkeyup="maskIt(this, event, '##.###.###/####-##')">
                     </div>
-                </div>
-
-                <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="inputvalor">Valor</label>
                         <input type="text" class="form-control" id="inputvalor" name="valor" placeholder="Digite o valor do convênio" required onkeyup="maskIt(this, event, '###.###.###,##', true, {pre: 'R$ ', pos: ''})"">

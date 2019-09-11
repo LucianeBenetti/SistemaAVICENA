@@ -3,7 +3,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
- <head>    
+    <head>    
         <meta charset= "utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -33,34 +33,37 @@
         </nav>
         <div class="container-fluid">
             <h4>Lista dos prontuários cadastrados na clínica AVICENA:</h4><br> 
-            <table class="table table-borderless table-sm table-hover table-striped">
-                <thead>
-                    <tr class="table-warning" >
-                    <th>Id</th>
-                    <th>Nome do Paciente</th> 
-                    <th>Medicamentos</th>
-                    <th>Exames</th>
-                    <th>Procedimentos</th>
-                    <th>Registro</th>
-                </tr>         
-                </thead>
-                <%
-                    ArrayList<ProntuarioVO> prontuariosVO = (ArrayList<ProntuarioVO>) request.getAttribute("prontuarios");
-                    for (ProntuarioVO prontuarioVO : prontuariosVO) {%>   
-                <tr>
-                    <td><%= prontuarioVO.getCodigoProntuario()%></td>
-                    <td><%= prontuarioVO.getPacienteVO().getNomePaciente()%></td>
-                    <td><%= prontuarioVO.getMedicamento()%></td>
-                    <td><%= prontuarioVO.getExame()%></td>
-                    <td><%= prontuarioVO.getProcedimento()%></td>
-                    <td><%= prontuarioVO.getRegistro()%></td>
-                </tr>                   
-                <%
-                    }
-                %>
-            </table>      
-            <br><br>
+            <div style="overflow-x:auto;">
+                <table class="table table-borderless table-sm table-hover table-primary table-striped">
+                    <thead>
+                        <tr class="table-success" >
+                            <th>Id</th>
+                            <th>Nome do Paciente</th> 
+                            <th>Medicamentos</th>
+                            <th>Exames</th>
+                            <th>Procedimentos</th>
+                            <th>Registro</th>
+                        </tr>         
+                    </thead>
+                    <%
+                        ArrayList<ProntuarioVO> prontuariosVO = (ArrayList<ProntuarioVO>) request.getAttribute("prontuarios");
+                        for (ProntuarioVO prontuarioVO : prontuariosVO) {%>   
+                    <tr>
+                        <td><%= prontuarioVO.getCodigoProntuario()%></td>
+                        <td><%= prontuarioVO.getPacienteVO().getNomePaciente()%></td>
+                        <td><%= prontuarioVO.getMedicamento()%></td>
+                        <td><%= prontuarioVO.getExame()%></td>
+                        <td><%= prontuarioVO.getProcedimento()%></td>
+                        <td><%= prontuarioVO.getRegistro()%></td>
+                    </tr>                   
+                    <%
+                        }
+                    %>
+                </table>   
+            </div>
+
         </div>
+        <br><br>
         <div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0; margin-top: 5%;
              background-color: #7986cb; padding: 5px; color: white; font-size: 10pt;">
             &copy; Desenvolvido por Luciane Benetti e Marco Sena.
