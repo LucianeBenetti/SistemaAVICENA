@@ -64,7 +64,7 @@ public class Usuario extends HttpServlet {
                             request.setAttribute("nome", usuarioVO.getLogin());
                             request.setAttribute("senha", usuarioVO.getSenha());
                             Boolean usuariocadastrado = true;
-                            request.setAttribute("cadastrado", usuariocadastrado);
+                            request.setAttribute("resultadotransacao", usuariocadastrado);
                             request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
                         } else {
                             Boolean usuariocadastrado = false;

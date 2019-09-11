@@ -71,13 +71,13 @@ public class CrudEspecialidade extends HttpServlet {
                         Boolean resultadoDaExclusao = false;
                         especialidadeController = new EspecialidadeController();
                         if (especialidadeController.excluirEspecialidadePorId(especialidadeVO.getCodigoEspecialidade())) {
-                           
+
                             resultadoDaExclusao = true;
-                            request.setAttribute("codigoespecialidade", especialidadeVO.getCodigoEspecialidade());
-                            request.getRequestDispatcher("Especialidade/MostrarEspecialidadeExcluida.jsp").forward(request, response);
+                            request.setAttribute("resultadotransacao", resultadoDaExclusao);
+                            request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
                         } else {
-                            request.setAttribute("nomeespecialidade", resultadoDaExclusao);
-                            request.getRequestDispatcher("Especialidade/MostrarEspecialidadeExcluida.jsp").forward(request, response);
+                            request.setAttribute("resultadotransacao", resultadoDaExclusao);
+                            request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
                         }
 
                         break;

@@ -83,16 +83,20 @@ public class CrudPaciente extends HttpServlet {
                             request.setAttribute("cep", pacienteVO.getCep());
                             resultadoDoCadastro = true;
 
-                            request.setAttribute("cadastrado", resultadoDoCadastro);
+                            request.setAttribute("resultadotransacao", resultadoDoCadastro);
 
                             if (usuarioValidado.equals("admin")) {
                                 request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
                             } else if (usuarioValidado.equals("atendente")) {
                                 request.getRequestDispatcher("WEB-INF/PaginaInicialAtendente.jsp").forward(request, response);
-                            } 
+                            }
                         } else {
-                            request.setAttribute("pacientevocadastrado", resultadoDoCadastro);
-                            request.getRequestDispatcher("Paciente/MostrarPacienteCadastrado.jsp").forward(request, response);
+                            request.setAttribute("resultadotransacao", resultadoDoCadastro);
+                            if (usuarioValidado.equals("admin")) {
+                                request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
+                            } else if (usuarioValidado.equals("atendente")) {
+                                request.getRequestDispatcher("WEB-INF/PaginaInicialAtendente.jsp").forward(request, response);
+                            }
                         }
 
                         break;
@@ -106,12 +110,13 @@ public class CrudPaciente extends HttpServlet {
                         if (pacienteController.excluirPacientePorCpf(pacienteVO.getCpfPaciente())) {
                             resultadoDaExclusao = true;
 
-                            request.setAttribute("pacienteexcluido", resultadoDaExclusao);
+                            request.setAttribute("resultadotransacao", resultadoDaExclusao);
                             request.setAttribute("cpfpaciente", pacienteVO.getCpfPaciente());
-                            request.getRequestDispatcher("Paciente/MostrarPacienteExcluido.jsp").forward(request, response);
+                            request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
+
                         } else {
-                            request.setAttribute("cpfpaciente", resultadoDaExclusao);
-                            request.getRequestDispatcher("Paciente/MostrarPacienteExcluido.jsp").forward(request, response);
+                            request.setAttribute("resultadotransacao", resultadoDaExclusao);
+                            request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
                         }
 
                         break;

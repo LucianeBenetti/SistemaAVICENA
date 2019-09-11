@@ -1,4 +1,3 @@
-
 package Servlets.Prontuario;
 
 import controller.Prontuario.ProntuarioController;
@@ -11,10 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 import model.vo.Prontuario.ProntuarioVO;
 
 public class ExcluirProntuario extends HttpServlet {
-  ProntuarioVO prontuarioVO;
+
+    ProntuarioVO prontuarioVO;
     ProntuarioController prontuarioController;
 
-        @Override
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -28,17 +28,16 @@ public class ExcluirProntuario extends HttpServlet {
         if (prontuarioController.excluirProntuarioPorId(prontuarioVO.getCodigoProntuario())) {
 
             resultadoDaExclusao = true;
-            request.setAttribute("codigoprontuario", prontuarioVO.getCodigoProntuario());
-             request.setAttribute("resultadodaexclusao", resultadoDaExclusao);
-            request.getRequestDispatcher("Prontuario/MostrarProntuarioExcluido.jsp").forward(request, response);
+            request.setAttribute("resultadotransacao", resultadoDaExclusao);
+            request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
         } else {
-            request.setAttribute("nomeprontuario", resultadoDaExclusao);
-            request.getRequestDispatcher("Prontuario/MostrarProntuarioExcluido.jsp").forward(request, response);
+            request.setAttribute("resultadotransacao", resultadoDaExclusao);
+            request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
         }
     }
 
-@Override
-        public String getServletInfo() {
+    @Override
+    public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
 

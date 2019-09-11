@@ -187,34 +187,27 @@
     <div class="container" style="text-align: center">
 
         <h3>Sistema AVICENA - Especialidades Médicas</h3>
-
         <h5>
-
             <%
-
-                Object obj1 = request.getAttribute("cadastrado");
+                Object obj1 = request.getAttribute("resultadotransacao");
 
                 if (obj1 != null) {
 
                     Boolean usuariocadastrado = (Boolean) obj1;
-                        if (usuariocadastrado) {%>
+                    if (usuariocadastrado) {%>
             <input class="generico"  type="text" size="150" 
                    value="<% out.println("Transação realizada com sucesso!");%>">
-
             <%}
-                    }%>
-
+                }%>
         </h5>            
-                    
+
     </div>
+    
 
-
-    </div>       
-
-    <div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0px; margin-top: 20%; background-color: #7986cb; 
-         padding: 1px; color: white; ">
-        <p>&copy; Desenvolvido por Luciane Benetti e Marco Sena.</p>
-    </div>
+<div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0px; margin-top: 20%; background-color: #7986cb; 
+     padding: 1px; color: white; ">
+    <p>&copy; Desenvolvido por Luciane Benetti e Marco Sena.</p>
+</div>
 
 
 </body>

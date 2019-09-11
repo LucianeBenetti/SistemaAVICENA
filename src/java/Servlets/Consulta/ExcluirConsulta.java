@@ -29,7 +29,7 @@ public class ExcluirConsulta extends HttpServlet {
     ConsultaVO consultaVO;
     ConsultaController consultaController;
 
-        @Override
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -44,17 +44,16 @@ public class ExcluirConsulta extends HttpServlet {
         if (consultaController.excluirConsultaPorId(consultaVO.getCodigoConsulta())) {
 
             resultadoDaExclusao = true;
-            request.setAttribute("codigoconsulta", consultaVO.getCodigoConsulta());
-            request.setAttribute("resultadodaexclusao", resultadoDaExclusao);
-            request.getRequestDispatcher("Consulta/MostrarConsultaExcluida.jsp").forward(request, response);
+            request.setAttribute("resultadotransacao", resultadoDaExclusao);
+            request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
         } else {
-            request.setAttribute("nomeconsulta", resultadoDaExclusao);
-            request.getRequestDispatcher("Consulta/MostrarConsultaExcluida.jsp").forward(request, response);
+            request.setAttribute("resultadotransacao", resultadoDaExclusao);
+            request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
         }
     }
 
-@Override
-        public String getServletInfo() {
+    @Override
+    public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
 

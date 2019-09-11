@@ -105,13 +105,11 @@ public class CrudEspecializacao extends HttpServlet {
 
                             resultadoDaExclusao = true;
                             request.setAttribute("codigoespecializacaoVO", especializacaoVO.getCodigoEspecializacao());
-                            request.setAttribute("resultado", resultadoDaExclusao);
-                            request.getRequestDispatcher("Especializacao/ResultadoDaTransacao.jsp").forward(request, response);
+                            request.setAttribute("resultadotransacao", resultadoDaExclusao);
+                            request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
                         } else {
-
-                            request.setAttribute("resultado", resultadoDaExclusao);
-                            request.getRequestDispatcher("Especializacao/ResultadoDaTransacao.jsp").forward(request, response);
-
+                            request.setAttribute("resultadotransacao", resultadoDaExclusao);
+                            request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
                         }
 
                         break;

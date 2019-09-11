@@ -149,7 +149,7 @@
 
             <%
 
-                Object obj1 = request.getAttribute("cadastrado");
+                Object obj1 = request.getAttribute("resultadotransacao");
 
                 if (obj1 != null) {
 

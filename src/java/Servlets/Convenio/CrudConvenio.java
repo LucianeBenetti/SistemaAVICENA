@@ -58,12 +58,12 @@ public class CrudConvenio extends HttpServlet {
 
                             resultadoDoCadastro = true;
 
-                            request.setAttribute("conveniocadastrado", resultadoDoCadastro);
-                            request.getRequestDispatcher("Convenio/MostrarConvenioCadastrado.jsp").forward(request, response);
+                            request.setAttribute("resultadotransacao", resultadoDoCadastro);
+                            request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
 
                         } else {
-                            request.setAttribute("conveniocadastrado", resultadoDoCadastro);
-                            request.getRequestDispatcher("Convenio/MostrarConvenioCadastrado.jsp").forward(request, response);
+                            request.setAttribute("resultadotransacao", resultadoDoCadastro);
+                            request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
                         }
 
                         break;
@@ -77,12 +77,11 @@ public class CrudConvenio extends HttpServlet {
                         if (convenioController.excluirConvenioPorCnpj(convenioVO.getCnpjConvenio())) {
                            
                             resultadoDaExclusao = true;
-                            request.setAttribute("convenioexcluido", resultadoDaExclusao);
-                            request.setAttribute("cnpjconvenio", convenioVO.getCnpjConvenio());
-                            request.getRequestDispatcher("Convenio/MostrarConvenioExcluido.jsp").forward(request, response);
+                            request.setAttribute("resultadotransacao", resultadoDaExclusao);
+                            request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
                         } else {
-                            request.setAttribute("cnpjconvenio", resultadoDaExclusao);
-                            request.getRequestDispatcher("Convenio/MostrarConvenioExcluido.jsp").forward(request, response);
+                            request.setAttribute("resultadotransacao", resultadoDaExclusao);
+                            request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
                         }
 
                         break;

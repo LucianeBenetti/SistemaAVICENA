@@ -11,7 +11,7 @@
         <script type="text/javascript" src="Prontuario/selecionarTabelaProntuario.js"></script>
         <link type="text/css" rel="stylesheet" href="ProntuarioCRUD.css">
         <link type="text/css" rel="stylesheet" href="Prontuario/ProntuarioCRUD.css">
-        <title>Cadastrar Prontuário</title>
+        <title>Excluir Prontuário</title>
     </head>
     <body class="body">
         <div class="form1">
