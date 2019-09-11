@@ -4,7 +4,7 @@
 <html lang="pt-br">
 
     <head>        
-        <meta charset= "utf-8">
+      <meta charset= "utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -17,6 +17,10 @@
             .carousel-inner img {
                 width: 100%;
             }
+
+            .generico
+            {text-align: center; border-color: transparent; color: red; padding: 10px}
+
         </style> 
 
         <title>Sistema Avicena</title>
@@ -129,12 +133,10 @@
 
     </nav>
 
-    <div class="container" style="text-align: center">
+     <div class="container" style="text-align: center">
 
         <h3>Sistema AVICENA - Especialidades Médicas</h3>
-
         <h5>
-
             <%
                 Object obj1 = request.getAttribute("resultadotransacao");
 
@@ -144,10 +146,8 @@
                     if (usuariocadastrado) {%>
             <input class="generico"  type="text" size="150" 
                    value="<% out.println("Transação realizada com sucesso!");%>">
-
             <%}
                 }%>
-
         </h5>            
 
     </div>

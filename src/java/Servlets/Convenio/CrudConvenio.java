@@ -19,6 +19,8 @@ public class CrudConvenio extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
+        Object usuarioValidado = request.getSession().getAttribute("perfil");
+
         String var1 = request.getParameter("cadastrar");
         String var2 = request.getParameter("excluir");
 
@@ -59,11 +61,18 @@ public class CrudConvenio extends HttpServlet {
                             resultadoDoCadastro = true;
 
                             request.setAttribute("resultadotransacao", resultadoDoCadastro);
-                            request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
-
+                            if (usuarioValidado.equals("admin")) {
+                                request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
+                            } else if (usuarioValidado.equals("atendente")) {
+                                request.getRequestDispatcher("WEB-INF/PaginaInicialAtendente.jsp").forward(request, response);
+                            }
                         } else {
                             request.setAttribute("resultadotransacao", resultadoDoCadastro);
-                            request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
+                            if (usuarioValidado.equals("admin")) {
+                                request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
+                            } else if (usuarioValidado.equals("atendente")) {
+                                request.getRequestDispatcher("WEB-INF/PaginaInicialAtendente.jsp").forward(request, response);
+                            }
                         }
 
                         break;
@@ -75,7 +84,7 @@ public class CrudConvenio extends HttpServlet {
                         Boolean resultadoDaExclusao = false;
                         convenioController = new ConvenioController();
                         if (convenioController.excluirConvenioPorCnpj(convenioVO.getCnpjConvenio())) {
-                           
+
                             resultadoDaExclusao = true;
                             request.setAttribute("resultadotransacao", resultadoDaExclusao);
                             request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);

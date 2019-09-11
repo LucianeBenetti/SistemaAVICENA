@@ -16,7 +16,12 @@
             .carousel-inner img {
                 width: 100%;
             }
+
+            .generico
+            {text-align: center; border-color: transparent; color: red; padding: 10px}
+
         </style> 
+
 
         <title>Sistema Avicena</title>
 
@@ -141,28 +146,23 @@
 
     </nav>
     
-    <div class="container" style="text-align: center">
+     <div class="container" style="text-align: center">
 
         <h3>Sistema AVICENA - Especialidades Médicas</h3>
-
         <h5>
-
             <%
-
                 Object obj1 = request.getAttribute("resultadotransacao");
 
                 if (obj1 != null) {
 
                     Boolean usuariocadastrado = (Boolean) obj1;
-                        if (usuariocadastrado) {%>
+                    if (usuariocadastrado) {%>
             <input class="generico"  type="text" size="150" 
                    value="<% out.println("Transação realizada com sucesso!");%>">
-
             <%}
-                    }%>
-
+                }%>
         </h5>            
-                    
+
     </div>
 
          

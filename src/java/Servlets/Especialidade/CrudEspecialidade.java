@@ -19,6 +19,8 @@ public class CrudEspecialidade extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
+        Object usuarioValidado = request.getSession().getAttribute("perfil");
+
         String var1 = request.getParameter("cadastrar");
         String var2 = request.getParameter("excluir");
 
@@ -54,12 +56,19 @@ public class CrudEspecialidade extends HttpServlet {
 
                             resultadoDoCadastro = true;
 
-                            request.setAttribute("especialidadecadastrada", resultadoDoCadastro);
-                            request.getRequestDispatcher("Especialidade/MostrarEspecialidadeCadastrada.jsp").forward(request, response);
-
+                            request.setAttribute("resultadotransacao", resultadoDoCadastro);
+                            if (usuarioValidado.equals("admin")) {
+                                request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
+                            } else if (usuarioValidado.equals("atendente")) {
+                                request.getRequestDispatcher("WEB-INF/PaginaInicialAtendente.jsp").forward(request, response);
+                            }
                         } else {
-                            request.setAttribute("especialidadecadastrada", resultadoDoCadastro);
-                            request.getRequestDispatcher("Especialidade/MostrarEspecialidadeCadastrada.jsp").forward(request, response);
+                            request.setAttribute("resultadotransacao", resultadoDoCadastro);
+                            if (usuarioValidado.equals("admin")) {
+                                request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
+                            } else if (usuarioValidado.equals("atendente")) {
+                                request.getRequestDispatcher("WEB-INF/PaginaInicialAtendente.jsp").forward(request, response);
+                            }
                         }
 
                         break;

@@ -19,6 +19,8 @@ public class CrudMedico extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
+        Object usuarioValidado = request.getSession().getAttribute("perfil");
+
         String var1 = request.getParameter("cadastrar");
         String var2 = request.getParameter("excluir");
 
@@ -66,12 +68,19 @@ public class CrudMedico extends HttpServlet {
 
                             resultadoDoCadastro = true;
 
-                            request.setAttribute("medicocadastrado", resultadoDoCadastro);
-                            request.getRequestDispatcher("Medico/MostrarMedicoCadastrado.jsp").forward(request, response);
-
+                            request.setAttribute("resultadotransacao", resultadoDoCadastro);
+                            if (usuarioValidado.equals("admin")) {
+                                request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
+                            } else if (usuarioValidado.equals("atendente")) {
+                                request.getRequestDispatcher("WEB-INF/PaginaInicialAtendente.jsp").forward(request, response);
+                            }
                         } else {
-                            request.setAttribute("medicocadastrado", resultadoDoCadastro);
-                            request.getRequestDispatcher("Medico/MostrarMedicoCadastrado.jsp").forward(request, response);
+                            request.setAttribute("resultadotransacao", resultadoDoCadastro);
+                            if (usuarioValidado.equals("admin")) {
+                                request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
+                            } else if (usuarioValidado.equals("atendente")) {
+                                request.getRequestDispatcher("WEB-INF/PaginaInicialAtendente.jsp").forward(request, response);
+                            }
                         }
 
                         break;
@@ -83,7 +92,7 @@ public class CrudMedico extends HttpServlet {
                         Boolean resultadoDaExclusao = false;
                         medicoController = new MedicoController();
                         if (medicoController.excluirMedicoPorCpf(medicoVO.getCpfMedico())) {
-                            
+
                             resultadoDaExclusao = true;
                             request.setAttribute("resultadotransacao", resultadoDaExclusao);
                             request.setAttribute("cpfmedico", medicoVO.getCpfMedico());
