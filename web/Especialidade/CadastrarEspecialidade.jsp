@@ -61,40 +61,11 @@
             </form>
 
         </div>
+       
         <div class="jumbotron jumbotron-fluid text-center" style="clear: both; margin-bottom:0; margin-top: 45%;
              background-color: #7986cb; padding: 4px; color: white; font-size: 10pt;">
             &copy; Desenvolvido por Luciane Benetti e Marco Sena.
         </div>
 
     </body>   
-</html>
-
-
-                    <input type="text" name="nomeespecialidade" required size="80"><br><br>
-                    Instituição<a>*</a>: <br>
-                    
-                    <input type="text" name="instituicaoespecialidade" required size="80"><br><br>
-                  
-                    <br><br>
-                    <input type="reset" value="Limpar Campos">
-                    <input type="submit" value = "Cadastrar Especialidade">    
-                </fieldset>
-
-                <br><br>
-            </div>
-        </form>
-        <div class="form2">
-
-        </div>
-        <div>
-            <form action="../controledenavegacao" method="post">
-                <input type="hidden" id="avicena" name="avicena" value="avicena">
-                <input type="submit" value = "Voltar">
-            </form>   
-        </div>
-        <footer class="footer">                
-            &copy; Desenvolvido por Luciane Benetti e Marco Sena.
-        </footer>    
-
-    </body>
 </html>

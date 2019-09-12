@@ -5,6 +5,7 @@
         <title>Sistema Avicena</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -23,9 +24,9 @@
             <p>Medicina Humanizada</p> 
         </div>
 
-        <div class="container" style="padding: 10px; margin-top: 3%; margin-bottom: 4%;" >
+       <div class="container" style="padding: 10px; margin-top: 3%; margin-bottom: 4%;" >
 
-            <div class="form" style="background-color: #b0bec5; padding: 20px; 
+            <div class="form" style="background-color: #c8e6c9; padding: 20px; 
                  width: 60%; height: 380px; border-radius: 15px; margin-left: 25%; ">
 
                 <p style="text-align: center; font-weight: bold">Faça o Login para acessar o sistema Avicena!</p>
@@ -59,11 +60,12 @@
                     <input type="submit" class="btn btn-secondary" style="float: left; margin-left: 10px" value = "Sair">
                 </form> 
             </div>
+            
+        </div>       
 
             <div class="Container" style="text-align: center">
 
                 <%
-
                     Object obj = request.getAttribute("usuariovalidado");                    
 
                     if (obj != null) {
@@ -71,19 +73,17 @@
                         if (!usuariovalidado) {%>
                        <input class="generico"  type="text" size="150" value="<% out.println("Não foi "
                                    + "possível validar o usuário! Por gentileza, contate o Administrador da clínica");%>">
-
                 <%}
                     
                     }%>
+            </div>         
 
-
-            </div>  
-        </div>
-
-        <div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0; 
-             background-color: #7986cb;padding: 1px; color: white; font-size: small; ">
+        <div class="jumbotron jumbotron-fluid text-center" style="clear: both; margin-bottom:0; margin-top: 8%;
+             background-color: #7986cb; padding: 4px; color: white; font-size: 10pt;">
             &copy; Desenvolvido por Luciane Benetti e Marco Sena.
         </div>
 
     </body>
 </html>
+
+

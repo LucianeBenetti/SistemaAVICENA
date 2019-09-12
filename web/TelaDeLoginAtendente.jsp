@@ -11,18 +11,18 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
     </head>
-<body>
+    <body>
 
-  <div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0; 
+        <div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0; 
              background-color: #7986cb; padding: 20px; color: white">
-      <h1>Sistema Avicena</h1>
-      <p>Medicina Humanizada</p> 
-  </div>
+            <h1>Sistema Avicena</h1>
+            <p>Medicina Humanizada</p> 
+        </div>
 
-  <div class="container" style="padding: 10px; margin-top: 3%; margin-bottom: 4%;" >
+        <div class="container" style="padding: 10px; margin-top: 3%; margin-bottom: 4%;" >
 
-            <div class="form" style="background-color: #b0bec5; padding: 20px; width: 50%; height: 380px; 
-                 border-radius: 15px; margin-left: 25%; ">
+            <div class="form" style="background-color: #c8e6c9; padding: 20px; 
+                 width: 60%; height: 380px; border-radius: 15px; margin-left: 25%; ">
 
                 <p style="text-align: center; font-weight: bold">Faça o Login para acessar o sistema Avicena!</p>
 
@@ -47,22 +47,22 @@
                         </label>
                     </div>
                     <button type="submit" class="btn btn-secondary" style="float: left;">Enviar</button>
-                    
+
                 </form>
-                
+
                 <form action="controledenavegacao" method="post">
                     <input type="hidden" id="sair" name="sair" value="sair">
                     <input type="submit" class="btn btn-secondary" style="float: left; margin-left: 10px" value = "Sair">
                 </form> 
             </div>
-             
-       
-  </div>
 
-     <div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0; 
-     background-color: #7986cb;padding: 1px; color: white; font-size: small; ">
+
+        </div>
+
+      <div class="jumbotron jumbotron-fluid text-center" style="clear: both; margin-bottom:0; margin-top: 8%;
+             background-color: #7986cb; padding: 4px; color: white; font-size: 10pt;">
             &copy; Desenvolvido por Luciane Benetti e Marco Sena.
-     </div>
+        </div>
 
-</body>
+    </body>
 </html>

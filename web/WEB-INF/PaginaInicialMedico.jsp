@@ -4,7 +4,7 @@
 <html lang="pt-br">
 
     <head>        
-      <meta charset= "utf-8">
+        <meta charset= "utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -133,31 +133,26 @@
 
     </nav>
 
-     <div class="container" style="text-align: center">
+    <div class="container" style="text-align: center">
 
         <h3>Sistema AVICENA - Especialidades Médicas</h3>
-        <h5>
-            <%
-                Object obj1 = request.getAttribute("resultadotransacao");
+        <%
+            Object obj = request.getAttribute("resultadotransacao");
 
-                if (obj1 != null) {
-
-                    Boolean usuariocadastrado = (Boolean) obj1;
-                    if (usuariocadastrado) {%>
-            <input class="generico"  type="text" size="150" 
-                   value="<% out.println("Transação realizada com sucesso!");%>">
-            <%}
-                }%>
-        </h5>            
+            if (obj != null) {
+                Boolean usuariocadastrado = (Boolean) obj;
+                if (usuariocadastrado) {%>
+        <input class="generico" type="text" style="text-align: center" size="100" value="<% out.println("Transação realizada com sucesso!");%>">
+               <%} else {%> <input class="generico"  type="text" style="text-align: center" size="100" value="<% out.println("Transação nao foi realizada! Por gentileza,"
+                    + "verifique os dados inseridos e tente novamente.");%>">
+        <%
+                }
+            }%>                 
 
     </div>
-
-    <div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0px; margin-top: 20%; background-color: #7986cb; 
-         padding: 1px; color: white; ">
-        <p>&copy; Desenvolvido por Luciane Benetti e Marco Sena.</p>
+    <div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0px; margin-top: 20%; background-color: #7986cb; margin-top: 28%;
+         padding: 4px; color: white; font-size: small;">  
+        &copy; Desenvolvido por Luciane Benetti e Marco Sena.
     </div>
-
-
 </body>
-
 </html>

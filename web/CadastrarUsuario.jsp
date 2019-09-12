@@ -5,9 +5,8 @@
         <title>Avicena</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
-
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -25,9 +24,9 @@
             <p>Medicina Humanizada</p> 
         </div>
 
-        <div class="container" style="padding: 3px; margin-top: 1%; margin-bottom: 10%;" >
+        <div class="container" style="padding: 3px; margin-top: 2%; margin-bottom: 10%;" >
 
-            <div class="form" style="background-color: #b0bec5; padding: 10px; width: 60%;  
+            <div class="form" style="background-color: #c8e6c9; padding: 10px; width: 60%;  
                  border-radius: 10px; float: left; margin-left: 20%; ">
 
                 <p style="text-align: center; font-weight: bold">Insira os dados, a seguir, para cadastrar novo Usuário!</p>
@@ -77,8 +76,8 @@
                     if (!usuariocadastrado) {%>
 
             <input class="generico" type="text" size="125" value="<% out.println("Não "
-                                + "foi possível cadastrar o novo Usuário, pois já existe um cadastro com esse nome. "
-                                + "Forneça outro nome!");%>">
+                        + "foi possível cadastrar o novo Usuário, pois já existe um cadastro com esse nome. "
+                        + "Forneça outro nome!");%>">
         </div>
 
         <div class="Container" style="text-align: center">
@@ -87,20 +86,17 @@
                 }
                 if (obj2 != null) {
                     Boolean usuariovalidado = (Boolean) obj2;
-                            if (!usuariovalidado) {%>
+                    if (!usuariovalidado) {%>
             <br><br><br>
                    <input class="generico"  type="text" size="125" value="<% out.println("Não foi possível validar o Usuário. "
-                                       + "Você precisa se cadastrar para acessar o sistema Avicena!");%>">
+                               + "Você precisa se cadastrar para acessar o sistema Avicena!");%>">
 
             <%}
-                        }%>
-
-
+                }%>
         </div>      
 
-
-        <div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0; margin-top: 40%; 
-             background-color: #7986cb;padding: 1px; color: white; font-size: small; ">
+        <div class="jumbotron jumbotron-fluid text-center" style="clear: both; margin-bottom:0; margin-top: 36%; 
+             background-color: #7986cb;padding: 4px; color: white; font-size: small; ">
             &copy; Desenvolvido por Luciane Benetti e Marco Sena.
         </div>
 
