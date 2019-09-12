@@ -140,9 +140,9 @@
                 </div>
             </form>
 
-            <form action="../controledenavegacao" method="POST">
+             <form action="../controledenavegacao" method="POST">
                 <input type="hidden" id="voltarpaginainicial" name="voltarpaginainicial" value="voltarpaginainicial">
-                <input type="submit" value = "Sair" class="btn btn-primary" 
+                <input type="submit" value = "Voltar" class="btn btn-primary" 
                        style=" margin-left: 1%; float: left;">            
             </form>
 
