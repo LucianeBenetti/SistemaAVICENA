@@ -88,7 +88,7 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="Consulta/CadastrarConsulta.jsp">Cadastrar Consulta</a>
                     <a class="dropdown-item" href="Consulta/PesquisarConsultaPorPaciente.jsp">Pesquisar/Alterar Consulta</a>
-                    <a class="dropdown-item" href="Consulta/ExcluirConsulta.jsp">Excluir Consulta</a>
+                    <a class="dropdown-item" href="Consulta/PesquisarConsultaParaExcluir.jsp">Excluir Consulta</a>
                     <a class="dropdown-item" href="listarconsultas">Listar Todas Consultas</a>                             
 
                 </div>
@@ -136,7 +136,7 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="Especialidade/CadastrarEspecialidade.jsp">Cadastrar Especialidade</a>
                     <a class="dropdown-item" href="Especialidade/PesquisarEspecialidadePorNome.jsp">Pesquisar/Altear Especialidade</a>
-                    <a class="dropdown-item" href="Especialidade/ExcluirEspecialidadePorId.jsp">Excluir Especialidade</a>  
+                    <a class="dropdown-item" href="Especialidade/PesquisarEspecialidadeParaExcluir.jsp">Excluir Especialidade</a>  
                     <a class="dropdown-item" href="listarespecialidades">Listar Todas Especialidades</a>
 
                 </div>

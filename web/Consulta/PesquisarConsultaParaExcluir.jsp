@@ -9,7 +9,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="mascarasPaciente.js"></script>
+        <script type="text/javascript" src="mascarasConsulta.js"></script>
         <style>
             .generico
             {text-align: center; border-color: transparent; color: red; padding: 10px}
@@ -29,19 +29,19 @@
             <div class="form" style="background-color: #c8e6c9; padding: 10px; width: 60%;  
                  border-radius: 10px; float: left; margin-left: 20%;">
             
-            <p style="text-align: center; font-weight: bold">Digite o CPF do Paciente que deseja excluir da base de dados:</p>
+            <p style="text-align: center; font-weight: bold">Digite o CPF do Paciente para bscar Consulta na base de dados:</p>
 
                 
-            <form action="../crudpaciente" class="was-validated" method="post">
+            <form action="../pesquisarconsultaparaexcluir" class="was-validated" method="post">
                     <div class="form-group">
-                        <input type="hidden" id="excluir" name="excluir" value="excluir">
+                      
                         <label for="cpf">CPF:</label>
                         <input type="text" class="form-control" id="cpf" name="cpfpaciente" placeholder="Digite o CPF do paciente"  style="border-color: gray" required onkeyup="maskIt(this, event, '###.###.###-##')">
                         <div class="valid-feedback">Valido.</div>
                         <div class="invalid-feedback" style = "color: black">Campo obrigatório.</div>
                     </div>
                 
-                <button type="submit" class="btn btn-primary" style="float: left" >Excluir Paciente</button>
+                <button type="submit" class="btn btn-primary" style="float: left" >Pesquisar Consulta</button>
             </form>
              
             <form action="../controledenavegacao" method="post">

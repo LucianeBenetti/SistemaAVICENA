@@ -1,140 +1,61 @@
-<%-- 
-    Document   : ConsultarPacientePorCpf
-    Created on : 01/04/2019, 08:13:17
-    Author     : 80119050
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+    
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Sistema Avicena</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="mascarasPaciente.js"></script>
         <script type="text/javascript" src="Paciente/mascarasPaciente.js"></script>
-        <link type="text/css" rel="stylesheet" href="PacienteCRUD.css">
-        <link type="text/css" rel="stylesheet" href="Paciente/PacienteCRUD.css">
-        <title>Pesquisa de Pacientes por CPF</title>
-    </head>
-    <body class="body">
-
-        <div class="consultaCPF">
-            <h2>Pesquisar Paciente por CPF!</h2>
-
-            <form method="post" action="../pesquisarpacienteporcpf">
-
-                <fieldset><legend>Digite o CPF do Paciente a ser consultado na base de dados</legend>
-                    <p><a>*</a>Campos de preenchimento obrigatório</p>                    
-
-                    CPF<a>*</a>:<br> 
-                    <input type="text" name="cpfpaciente" required onkeyup="maskIt(this, event, '###.###.###-##')"><br><br>
-                    <input type="submit" value = "Pesquisar Paciente">                
-
-                </fieldset>
-            </form>
-            <br><br>
-<div>
-            <form action="../controledenavegacao" method="POST">
-                <input type="hidden" id="avicena" name="avicena" value="avicena">
-                <input type="submit" value="Voltar">
-            </form>
+    </head>        
+        
+<body>
+    
+    <div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0; background-color: #7986cb; padding: 5px; color: white">
+            <h4>Sistema Avicena</h4>
+            Medicina Humanizada 
         </div>
 
+    <div class="container" style="padding: 3px; margin-top: 2%; margin-bottom: 10%;" >
+        <div class="form" style="background-color: #c8e6c9; padding: 10px; width: 60%;border-radius: 10px; float: left; margin-left: 20%;">      
+     
+            <p style="text-align: center; font-weight: bold">Pesquisar Paciente por CPF:</p>      
+      
+            <form action="../pesquisarpacienteporcpf" class="was-validated" method="post">
+                    
+                <div class="form-group">
+                        <label for="cpf">CPF:</label>
+                        <input type="text" class="form-control" id="cpf" name="cpfpaciente" placeholder="Digite o CPF do paciente" 
+                               style="border-color: gray" required onkeyup="maskIt(this, event, '###.###.###-##')">
+                        <div class="valid-feedback">Valido.</div>
+                        <div class="invalid-feedback" style = "color: black">Campo obrigatório.</div>
+                    </div>
+                
+                <button type="submit" class="btn btn-primary" style="float: left">Pesquisar</button>
+            </form>
+             
+            <form action="../controledenavegacao" method="post">
+
+                    <input type="hidden" id="voltarpaginainicial" name="voltarpaginainicial" value="voltarpaginainicial">
+                    <input type="submit" value = "Voltar" class="btn btn-primary" 
+                           style=" margin-left: 1%; float: left;">            
+                </form>
+      
         </div>
+        
+    </div>
 
-        <div class="resultadodaconsultaCPF">
-            <h2>Resultado da pesquisa de Paciente por CPF:</h2>
-
-            <%
-                Object obj = request.getAttribute("pacientevoretornado");
-
-                if (obj != null) {
-                    Boolean PacienteVORetornado = (Boolean) obj;
-
-                    if (!PacienteVORetornado) {%>                     
-                   <input type="text" size="100" style="margin-left: 5px;" value="<% out.println("Paciente não encontrado!"
-                               + " Tente novamente. Se o Paciente não for cadastrado, por gentileza, cadastrá-lo!!");%>">               
-            <%} else {%>
-
-            <form action="atualizarpaciente" method="post">
-
-                <fieldset><legend>Dados do Paciente</legend>
-                    Nome: <br>                       
-                    <input type="text" name="nomepaciente" size="77" value="<%= request.getAttribute("nomepaciente")%>"><br><br>            
-
-                    <div style="width:61.5%">
-                        <div style="float:left"> Celular<a>*</a>: </div>
-                        <div style="float:right"> Fone Residencial: </div>
-                    </div>
-                    <br>
-                    <div style="width:80%">
-
-                        <div style="float:left"> <input type="text" name="celmenpaciente" onkeyup="maskIt(this, event, '(##)#####-####')" value="<%= request.getAttribute("celmenpaciente")%>" required size="31"></div>    
-                        <div style="float:right"><input type="text" name="foneresidencial" onkeyup="maskIt(this, event, '(##)####-####')" value="<%= request.getAttribute("foneresidencial")%>"size="31"></div>
-                    </div>
-                    <br><br>
-                    Fone Comercial: <br>
-                    <input type="text" name="fonecomercial" onkeyup="maskIt(this, event, '(##)####-####')" value="<%= request.getAttribute("fonecomercial")%>"size="31">
-                    <br><br>
-
-                    e-mail: <br>
-                    <input type="email" name="email" value="<%= request.getAttribute("email")%>" size="77"><br><br>
-
-                    <div style="width:51%">
-                        <div style="float:left"> CPF<a>*</a>: </div>
-                        <div style="float:right"> CNPJ: </div>
-                    </div>
-                    <br>
-                    <div style="width:80%">
-                        <div style="float:left">  <input type="text" name="cpfpaciente" size="31" onkeyup="maskIt(this, event, '###.###.###-##')" value="<%= request.getAttribute("cpfpaciente")%>" required ></div>    
-                        <div style="float:right"> <input type="text" name="cnpjpaciente" size="31" onkeyup="maskIt(this, event, '##.###.###/####-##')" value="<%= request.getAttribute("cnpjpaciente")%>"></div>
-                    </div>
-                    <br><br>
-
-                    <div style="width:79%">
-                        <div style="float:left"> Rua<a>*</a>: </div>
-                        <div style="float:right"> Num<a>*</a>: </div>
-                    </div>  
-                    <br>
-                    <div style="width:80%">
-                        <div style="float:left"> <input type="text" name="logradouro" value="<%= request.getAttribute("logradouro")%>"required size="65"></div>    
-                        <div style="float:right"> <input type="text" name="numlogradouro" value="<%= request.getAttribute("numlogradouro")%>" required size="3"></div>
-                    </div>  
-                    <br><br>
-                    Complemento: <br>
-                    <input type="text" name="complemento" value="<%= request.getAttribute("complemento")%>" size="77"><br><br>
-
-                    <div style="width:53%">
-                        <div style="float:left"> Bairro<a>*</a>: </div>
-                        <div style="float:right"> Cidade<a>*</a>: </div>
-                    </div>
-                    <br>
-                    <div style="width:80%">
-                        <div style="float:left"> <input type="text" size="31" name="bairro" value="<%= request.getAttribute("bairro")%>" required></div>    
-                        <div style="float:right"> <input type="text" size="31" name="cidade" value="<%= request.getAttribute("cidade")%>" required></div>
-                    </div>                    
-                    <br><br>
-
-                    <div style="width:50%">
-                        <div style="float:left"> UF<a>*</a>: </div>
-                        <div style="float:right"> CEP: </div>
-                    </div>
-                    <br>
-                    <div style="width:80%">
-                        <div style="float:left"> <input type="text" size="31" name="uf" value="<%= request.getAttribute("uf")%>"required></div>    
-                        <div style="float:right"> <input type="text" size="31" name="cep" onkeyup="maskIt(this, event, '#####-###')" value="<%= request.getAttribute("cep")%>"></div>
-                    </div>                    
-                    <br><br>
-
-                    <input type="submit" value="Atualizar Dados do Paciente">
-                </fieldset>
-            </form><br><br>
-            <%}
-                }%>      
-        </div>            
-
-        <footer class="footer">                
+        
+ <div class="jumbotron jumbotron-fluid text-center" style="clear: both; margin-bottom:0;margin-top: 25%; 
+             background-color: #7986cb;padding: 4px; color: white; font-size: small; ">
             &copy; Desenvolvido por Luciane Benetti e Marco Sena.
-        </footer>
-
-    </body>
+        </div>        
+        
+</body>
 </html>
