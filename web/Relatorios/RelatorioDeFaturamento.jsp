@@ -79,7 +79,7 @@
                         <td><%= consultaVO.getEspecializacaoVO().getEspecialidadeVO().getNomeEspecialidade()%></td>
                         <td hidden><%= consultaVO.getConvenioVO().getCodigoConvenio()%></td>
                         <td><%= consultaVO.getConvenioVO().getNomeConvenio()%></td>
-                        <td><%= consultaVO.getConvenioVO().getValor()%></td>
+                        <td><%= consultaVO.getValorConsulta()%></td>
                         <td ><%= consultaVO.getDataConsulta()%></td>
                         <td ><%= consultaVO.getHorarioConsulta()%></td>
                     </tr>     

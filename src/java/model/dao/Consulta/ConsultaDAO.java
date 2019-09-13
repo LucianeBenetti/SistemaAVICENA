@@ -40,8 +40,8 @@ public class ConsultaDAO {
 
         int novoId = 0;
 
-        String sql = "INSERT INTO consulta (codigoEspecializacao, codigoPaciente, codigoConvenio, dataConsulta, atencaoEspecial, horarioConsulta)"
-                + " VALUES (?,?,?,?,?,?)";
+        String sql = "INSERT INTO consulta (codigoEspecializacao, codigoPaciente, codigoConvenio, dataConsulta, atencaoEspecial, horarioConsulta, valorConsulta)"
+                + " VALUES (?,?,?,?,?,?,?)";
 
         Connection conn = ConexaoComBanco.getConnection();
         PreparedStatement prepStmt = ConexaoComBanco.getPreparedStatement(conn, sql, Statement.RETURN_GENERATED_KEYS);
@@ -54,6 +54,7 @@ public class ConsultaDAO {
             prepStmt.setDate(4, dataSQL);
             prepStmt.setString(5, consultaVO.getAtencaoEspecial());
             prepStmt.setString(6, consultaVO.getHorarioConsulta());
+            prepStmt.setString(7, consultaVO.getValorConsulta());
             prepStmt.executeUpdate();
 
             ResultSet generatedKeys = prepStmt.getGeneratedKeys();
@@ -98,6 +99,7 @@ public class ConsultaDAO {
                 consulta.setDataConsulta(result.getDate(5));
                 consulta.setAtencaoEspecial(result.getString(6));
                 consulta.setHorarioConsulta(result.getString(7));
+                consulta.setValorConsulta(result.getString(8));
                 listaConsultas.add(consulta);
             }
         } catch (SQLException ex) {
@@ -140,7 +142,7 @@ public class ConsultaDAO {
         Calendar c = Calendar.getInstance();
         c.setTime(consultaVO.getDataConsulta());
         Date dataSQL = new Date(c.getTimeInMillis());
-        String query = "UPDATE consulta SET codigoEspecializacao=?, codigoPaciente=?, codigoConvenio=?, dataConsulta=?, atencaoEspecial=?, horarioConsulta=?"
+        String query = "UPDATE consulta SET codigoEspecializacao=?, codigoPaciente=?, codigoConvenio=?, dataConsulta=?, atencaoEspecial=?, horarioConsulta=?, valorConsulta=?"
                 + " where codigoConsulta = ? ";
 
         Connection conn = ConexaoComBanco.getConnection();
@@ -154,7 +156,8 @@ public class ConsultaDAO {
             prepStmt.setDate(4, dataSQL);
             prepStmt.setString(5, consultaVO.getAtencaoEspecial());
             prepStmt.setString(6, consultaVO.getHorarioConsulta());
-            prepStmt.setInt(7, consultaVO.getCodigoConsulta());
+            prepStmt.setString(7, consultaVO.getValorConsulta());
+            prepStmt.setInt(8, consultaVO.getCodigoConsulta());
 
             int codigoRetorno = prepStmt.executeUpdate();
 
@@ -194,6 +197,7 @@ public class ConsultaDAO {
                 consulta.setDataConsulta(result.getDate(5));
                 consulta.setAtencaoEspecial(result.getString(6));
                 consulta.setHorarioConsulta(result.getString(7));
+                consulta.setValorConsulta(result.getString(8));
 
                 listaConsultas.add(consulta);
             }
@@ -227,6 +231,7 @@ public class ConsultaDAO {
                 consulta.setDataConsulta(result.getDate(5));
                 consulta.setAtencaoEspecial(result.getString(6));
                 consulta.setHorarioConsulta(result.getString(7));
+                consulta.setValorConsulta(result.getString(8));
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -267,6 +272,7 @@ public class ConsultaDAO {
                 consultaVO.setDataConsulta(result.getDate(5));
                 consultaVO.setAtencaoEspecial(result.getString(6));
                 consultaVO.setHorarioConsulta(result.getString(7));
+                consultaVO.setValorConsulta(result.getString(8));
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -300,6 +306,7 @@ public class ConsultaDAO {
                 consulta.setDataConsulta(result.getDate(5));
                 consulta.setAtencaoEspecial(result.getString(6));
                 consulta.setHorarioConsulta(result.getString(7));
+                consulta.setValorConsulta(result.getString(8));
                 listaConsultas.add(consulta);
             }
         } catch (SQLException ex) {
@@ -333,6 +340,7 @@ public class ConsultaDAO {
                 consulta.setDataConsulta(result.getDate(5));
                 consulta.setAtencaoEspecial(result.getString(6));
                 consulta.setHorarioConsulta(result.getString(7));
+                consulta.setValorConsulta(result.getString(8));
                 listaConsultas.add(consulta);
             }
         } catch (SQLException ex) {
@@ -345,7 +353,7 @@ public class ConsultaDAO {
     }
 
     public List<ConsultaVO> listarConsultasVOPorData(Date dataInicial, Date dataFinal) {
-        
+
         ArrayList<ConsultaVO> listaConsultas = new ArrayList<ConsultaVO>();
         String query = "SELECT * from consulta where dataConsulta between ? and ?";
 
@@ -368,6 +376,7 @@ public class ConsultaDAO {
                 consulta.setDataConsulta(result.getDate(5));
                 consulta.setAtencaoEspecial(result.getString(6));
                 consulta.setHorarioConsulta(result.getString(7));
+                consulta.setValorConsulta(result.getString(8));
                 listaConsultas.add(consulta);
             }
         } catch (SQLException ex) {
@@ -380,5 +389,4 @@ public class ConsultaDAO {
         return listaConsultas;
     }
 
-   
 }

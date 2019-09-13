@@ -93,6 +93,7 @@ function clickAtualizarConsulta(row) {
     var dataconsulta = row.cells[8].innerText;
     var horarioconsulta = row.cells[9].innerText;
     var atencaoespecial = row.cells[10].innerText;
+    var valorconsulta = row.cells[11].innerText;
     document.atualizarconsulta.codigoconsulta.value = codigoconsulta;
     document.atualizarconsulta.codigopaciente.value = codigopaciente;
     document.atualizarconsulta.nomepaciente.value = nomepaciente;
@@ -104,4 +105,5 @@ function clickAtualizarConsulta(row) {
     document.atualizarconsulta.dataconsulta.value = dataconsulta;
     document.atualizarconsulta.horarioconsulta.value = horarioconsulta;
     document.atualizarconsulta.atencaoespecial.value = atencaoespecial;
+    document.atualizarconsulta.valorconsulta.value = valorconsulta;
 }

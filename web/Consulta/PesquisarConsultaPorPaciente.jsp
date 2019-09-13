@@ -75,6 +75,7 @@
                         <td ><%= consultaVO.getDataConsulta()%></td>
                         <td ><%= consultaVO.getHorarioConsulta()%></td>
                         <td ><%= consultaVO.getAtencaoEspecial()%></td>
+                        <td hidden><%= consultaVO.getValorConsulta()%></td>
                     </tr>     
                     <% }  %>
                 </table>
@@ -95,7 +96,9 @@
                     Convênio <br> 
                     <input type="hidden" readonly name="codigoconvenio" size="50" >
                     <input type="text" readonly name="nomeconvenio"  size="50"><br><br>
-                           <input type="text" readonly name="atencaoespecial" size="50"><br><br>
+                    Atenção Especial <br>
+                    <input type="text" readonly name="atencaoespecial" size="50"><br><br>
+                    <input type="hidden" readonly name="valorconsulta" size="50" >
                     <div style="width:55%">
                         <div style="float:left"> Data<a>*</a>: </div>
                         <div style="float:right"> Horário<a>*</a>: </div>

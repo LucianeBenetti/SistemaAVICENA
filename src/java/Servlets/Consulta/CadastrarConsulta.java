@@ -81,6 +81,7 @@ public class CadastrarConsulta extends HttpServlet {
         consultaVO.setEspecializacaoVO(especializacaoVO);
         consultaVO.setHorarioConsulta(request.getParameter("horaconsulta"));
         consultaVO.setPacienteVO(pacienteVO);
+        consultaVO.setValorConsulta(request.getParameter("valorconvenio"));
 
         consultaController = new ConsultaController();
 
@@ -97,6 +98,7 @@ public class CadastrarConsulta extends HttpServlet {
             request.setAttribute("nomeespecialidade", nomeEspecialidade);
             request.setAttribute("nomeconvenio", nomeConvenio);
             request.setAttribute("atençãoespecial", consultaVO.getAtencaoEspecial());
+            request.setAttribute("valorconsulta", consultaVO.getValorConsulta());
 
             resultadoDoCadastro = true;
 

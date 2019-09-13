@@ -60,7 +60,7 @@ public class AtualizarConsulta extends HttpServlet {
         convenioVO.setCodigoConvenio(codigoConvenio);
         pacienteVO.setCodigoPaciente(codigoPaciente);
         String atencaoEspecial = request.getParameter("atencaoespecial");
-
+        
         String dataConsulta = request.getParameter("dataconsulta");
         DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         Calendar c = Calendar.getInstance();
@@ -80,6 +80,7 @@ public class AtualizarConsulta extends HttpServlet {
         consultaVO.setEspecializacaoVO(especializacaoVO);
         consultaVO.setHorarioConsulta(horarioConsulta);
         consultaVO.setPacienteVO(pacienteVO);
+        consultaVO.setValorConsulta(request.getParameter("valorconsulta"));
 
         consultaController = new ConsultaController();
         Boolean resultadoDaAtualizacao = false;
@@ -97,7 +98,7 @@ public class AtualizarConsulta extends HttpServlet {
                 request.setAttribute("nomeespecialidade", nomeEspecialidade);
                 request.setAttribute("nomeconvenio", nomeConvenio);
                 request.setAttribute("atencaoespecial", atencaoEspecial);
-
+                request.setAttribute("valorconsulta", consultaVO.getValorConsulta());
                 resultadoDaAtualizacao = true;
             } else {
                 request.setAttribute("consultaatualizada", resultadoDaAtualizacao);
@@ -177,7 +178,7 @@ public class AtualizarConsulta extends HttpServlet {
             } catch (MessagingException e) {
                 e.printStackTrace();
             }
-        } 
+        }
 
         request.setAttribute("consultaatualizada", resultadoDaAtualizacao);
         request.getRequestDispatcher("Consulta/ResultadoDaAtualizacao.jsp").forward(request, response);

@@ -75,7 +75,7 @@ public class GerarRelatorioFaturamentoPorData extends HttpServlet {
             novaLinha.createCell(1).setCellValue(dataFormatada);
             novaLinha.createCell(2).setCellValue(consulta.getHorarioConsulta());
             novaLinha.createCell(3).setCellValue(consulta.getConvenioVO().getNomeConvenio());
-            novaLinha.createCell(4).setCellValue(consulta.getConvenioVO().getValor());
+            novaLinha.createCell(4).setCellValue(consulta.getValorConsulta());
             novaLinha.createCell(5).setCellValue(consulta.getEspecializacaoVO().getMedicoVO().getNomeMedico());
             novaLinha.setRowStyle(textStyle);
         }

@@ -15,11 +15,12 @@ public class ConsultaVO {
     private Date dataConsulta;
     private String atencaoEspecial;
     private String horarioConsulta;
+    private String valorConsulta;
 
     public ConsultaVO() {
     }
 
-    public ConsultaVO(int codigoConsulta, EspecializacaoVO especializacaoVO, PacienteVO pacienteVO, ConvenioVO convenioVO, Date dataConsulta, String atencaoEspecial, String horarioConsulta) {
+    public ConsultaVO(int codigoConsulta, EspecializacaoVO especializacaoVO, PacienteVO pacienteVO, ConvenioVO convenioVO, Date dataConsulta, String atencaoEspecial, String horarioConsulta, String valorConsulta) {
         this.codigoConsulta = codigoConsulta;
         this.especializacaoVO = especializacaoVO;
         this.pacienteVO = pacienteVO;
@@ -27,8 +28,18 @@ public class ConsultaVO {
         this.dataConsulta = dataConsulta;
         this.atencaoEspecial = atencaoEspecial;
         this.horarioConsulta = horarioConsulta;
+        this.valorConsulta = valorConsulta;
     }
 
+    public String getValorConsulta() {
+        return valorConsulta;
+    }
+
+    public void setValorConsulta(String valorConsulta) {
+        this.valorConsulta = valorConsulta;
+    }
+
+    
     public Date getDataConsulta() {
         return dataConsulta;
     }
@@ -37,7 +48,6 @@ public class ConsultaVO {
         this.dataConsulta = dataConsulta;
     }
 
-   
     public int getCodigoConsulta() {
         return codigoConsulta;
     }
@@ -85,10 +95,10 @@ public class ConsultaVO {
     public void setAtencaoEspecial(String atencaoEspecial) {
         this.atencaoEspecial = atencaoEspecial;
     }
-    
+
     @Override
     public String toString() {
         return "ConsultaVO{" + "codigoConsulta=" + codigoConsulta + ", especializacaoVO=" + especializacaoVO + ", pacienteVO=" + pacienteVO + ", convenioVO=" + convenioVO + ", dataConsulta=" + dataConsulta + ", horarioConsulta=" + horarioConsulta + ", atencaoEspecial=" + atencaoEspecial + '}';
     }
-   
+
 }
