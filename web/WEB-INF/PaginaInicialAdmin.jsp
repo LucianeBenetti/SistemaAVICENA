@@ -86,7 +86,7 @@
                     Consultas
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="Consulta/CadastrarConsulta.jsp">Cadastrar Consulta</a>
+                    <a class="dropdown-item" href="Consulta/PesquisarPacienteParaCadastrarConsulta.jsp">Cadastrar Consulta</a>
                     <a class="dropdown-item" href="Consulta/PesquisarConsultaPorPaciente.jsp">Pesquisar/Alterar Consulta</a>
                     <a class="dropdown-item" href="Consulta/PesquisarConsultaParaExcluir.jsp">Excluir Consulta</a>
                     <a class="dropdown-item" href="listarconsultas">Listar Todas Consultas</a>                             
@@ -124,7 +124,7 @@
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="Prontuario/CadastrarProntuario.jsp">Cadastrar/Atualizar Prontuário</a>
                     <a class="dropdown-item" href="Prontuario/EmitirReceita.jsp">Emitir Receita</a>
-                    <a class="dropdown-item" href="Prontuario/ExcluirProntuario.jsp">Excluir Prontuário</a>
+                    <a class="dropdown-item" href="Prontuario/PesquisarProntuarioParaExcluir.jsp">Excluir Prontuário</a>
                     <a class="dropdown-item" href="listarprontuarios">Listar Todos Prontuários</a>
 
                 </div>

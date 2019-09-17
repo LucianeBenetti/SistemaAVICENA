@@ -1,90 +1,66 @@
-<%-- 
-    Document   : PesquisarConvenioPorCnpj
-    Created on : 17/05/2019, 14:16:20
-    Author     : 80130917
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Avicena</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="mascarasConvenio.js"></script>
-        <script type="text/javascript" src="Convenio/mascarasConvenio.js"></script>
-        <link type="text/css" rel="stylesheet" href="CRUDConvenio.css">
-        <link type="text/css" rel="stylesheet" href="Convenio/CRUDConvenio.css">
-        <title>Pesquisa de Convênios por CNPJ</title>
+
+        <style>
+            .generico
+            {text-align: center; border-color: transparent; color: red; padding: 10px}
+        </style>
     </head>
-    <body class="body">
+    <body>
 
-        <div class="consultaCPF">
-            <h2>Pesquisar Convênio por CNPJ!</h2>
+        <div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0; 
+             background-color: #7986cb; padding: 20px; color: white">
+            <h1>Sistema Avicena</h1>
+            <p>Medicina Humanizada</p> 
+        </div>
+        <div class="container" style="padding: 3px; margin-top: 2%; margin-bottom: 10%;" >
 
-            <form method="post" action="../pesquisarconvenioporcnpj">
+            <div class="container" style="padding: 3px; margin-top: 2%; margin-bottom: 10%;" >
 
-                <fieldset><legend>Digite o CNPJ do Convênio a ser consultado na base de dados</legend>
-                    <p><a>*</a>Campos de preenchimento obrigatório</p>                    
+                <div class="form" style="background-color: #c8e6c9; padding: 10px; width: 60%;  
+                     border-radius: 10px; float: left; margin-left: 20%;">
 
-                    CNPJ<a>*</a>:<br> 
-                    <input type="text" name="cnpjconvenio" required onkeyup="maskIt(this, event, '##.###.###/####-##')"><br><br>
-                    <input type="submit" value = "Pesquisar Convenio">                
+                    <p style="text-align: center; font-weight: bold">Digite o CNPJ do Convênio que deseja excluir da base de dados:</p>
 
-                </fieldset>
-            </form>
-            <br><br>
-            <div>
-                <form action="../controledenavegacao" method="POST">
-                    <input type="hidden" id="avicena" name="avicena" value="avicena">
-                    <input type="submit" value="Voltar">
-                </form>
+
+                    <form action="../pesquisarconvenioporcnpj" class="was-validated" method="post">
+                        <div class="form-group">
+                            <input type="hidden" id="excluir" name="excluir" value="excluir">
+                            <label for="cnpjconvenio">CNPJ</label>
+                            <input type="text" class="form-control" id="cpf" name="cnpjconvenio" placeholder="Digite o CNPJ do convênio"  style="border-color: gray" required onkeyup="maskIt(this, event, '##.###.###/####-##')">
+                            <div class="valid-feedback">Valido.</div>
+                            <div class="invalid-feedback" style = "color: black">Campo obrigatório.</div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="float: left" >Pesquisar Convênio</button>
+                    </form>
+
+                    <form action="../controledenavegacao" method="post">
+
+                        <input type="hidden" id="voltarpaginainicial" name="voltarpaginainicial" value="voltarpaginainicial">
+                        <input type="submit" value = "Voltar" class="btn btn-primary" 
+                               style=" margin-left: 20px; float: left;">            
+                    </form>            
+
+                </div>
+
             </div>
         </div>
 
-        <div class="resultadodaconsultaCPF">
-            <h2>Resultado da pesquisa de Convenio por CPF:</h2>
-
-            <%
-                Object obj = request.getAttribute("conveniovoretornado");
-
-                if (obj != null) {
-                    Boolean ConvenioVORetornado = (Boolean) obj;
-
-                    if (!ConvenioVORetornado) {%>                     
-                   <input type="text" size="100" style="margin-left: 5px;" value="<% out.println("Convênio não encontrado!"
-                        + " Tente novamente. Se o Convênio não for cadastrado, por gentileza, cadastrá-lo!!");%>">               
-            <%} else {%>
-
-            <form action="atualizarconvenio" method="post">
-
-                <fieldset><legend>Dados do Convenio</legend>
-                    Nome: <br>                       
-                    <input type="text" name="nomeconvenio" size="77" value="<%= request.getAttribute("nomeconvenio")%>"><br><br>            
-
-                    <div style="width:61.5%">
-                        <div style="float:left"> CNPJ<a>*</a>: </div>
-                        <div style="float:right"> Valor<a>*</a>: </div>
-                    </div>
-                    <br>
-                    <div style="width:80%">
-
-                        <div style="float:left"><input type="text" name="cnpjconvenio" onkeyup="maskIt(this, event, '##.###.###/####-##')" value="<%= request.getAttribute("cnpjconvenio")%>" required size="31"></div>    
-                        <div style="float:right"><input type="text" name="valor" onkeyup="maskIt(this, event, '###.###.###,##', true, {pre: 'R$', pos: ''})" value="<%= request.getAttribute("valor")%>" required size="31"></div>
-                    </div>
-                    <br><br>
-                  
-                    <br><br>
-
-                    <input type="submit" value="Atualizar Dados do Convênio">
-                </fieldset>
-            </form><br><br>
-            <%}
-                }%>      
-        </div>            
-
-        <footer class="footer">                
+        <div class="jumbotron jumbotron-fluid text-center" style="clear: both; margin-bottom:0; margin-top: 25%; 
+             background-color: #7986cb;padding: 4px; color: white; font-size: small; ">
             &copy; Desenvolvido por Luciane Benetti e Marco Sena.
-        </footer>
+        </div>
 
     </body>
 </html>
-

@@ -26,7 +26,7 @@ public class PesquisarMedicoParaExcluir extends HttpServlet {
             request.setAttribute("listaMedicosVO", listaMedicosVO);
 
         }
-            request.getRequestDispatcher("Especializacao/ExcluirEspecializacaoPorMedico.jsp").forward(request, response);
+            request.getRequestDispatcher("Especializacao/PesquisarEspecializacaoParaExcluir.jsp").forward(request, response);
 
     }
 

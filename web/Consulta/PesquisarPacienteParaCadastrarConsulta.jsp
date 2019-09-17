@@ -11,7 +11,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="mascarasPaciente.js"></script>
-        <script type="text/javascript" src="Paciente/mascarasPaciente.js"></script>
     </head>        
 
     <body>
@@ -26,7 +25,7 @@
 
                 <p style="text-align: center; font-weight: bold">Pesquisar Paciente por CPF:</p>      
 
-                <form action="../pesquisarpacienteporcpf" class="was-validated" method="post">
+                <form action="../pesquisardadosparaconsulta" class="was-validated" method="post">
 
                     <div class="form-group">
                         <label for="cpf">CPF:</label>
@@ -49,7 +48,6 @@
             </div>
 
         </div>
-
 
         <div class="jumbotron jumbotron-fluid text-center" style="clear: both; margin-bottom:0;margin-top: 25%; 
              background-color: #7986cb;padding: 4px; color: white; font-size: small; ">

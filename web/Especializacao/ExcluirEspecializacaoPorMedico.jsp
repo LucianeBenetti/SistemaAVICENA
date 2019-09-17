@@ -1,123 +1,121 @@
-<%-- 
-    Document   : ExcluirEspecializacoPorId
-    Created on : 22/05/2019, 14:34:25
-    Author     : 80130917
---%>
-
-<%@page import="model.vo.Medico.MedicoVO"%>
 <%@page import="model.vo.Especializacao.EspecializacaoVO"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="model.vo.Especialidade.EspecialidadeVO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <script type="text/javascript" src="Especializacao/selecionarLinhaTabela.js"></script>
-    <link type="text/css" rel="stylesheet" href="CRUDEspecializacao.css">
-    <link type="text/css" rel="stylesheet" href="Especializacao/CRUDEspecializacao.css">
-    <title>Exclusão de Especializações por Médico</title>
-</head>
-<body class="body">
+    <head>
+        <title>Avicena</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+       <script type="text/javascript" src="Especializacao/selecionarLinhaTabela.js"></script>
 
-    <div class="consultaNome">
-        <h2>Exclusão de Especialização</h2>
-        <form action="pesquisarparaexcluirespecializacao" method="POST">
+        <style>
+            .generico
+            {text-align: center; border-color: transparent; color: red; padding: 10px}
+        </style>
+    </head>
+    <body>
 
-            <%
-                Object listaMedicos = request.getAttribute("listaMedicosVO");
-                if (listaMedicos != null) {
-                    ArrayList<MedicoVO> medicos = (ArrayList<MedicoVO>) listaMedicos;
-
-            %>
-            <fieldset><legend>Por gentileza, selecionar o nome do Médico a ser pesquisado:</legend>
-                <select name="medicoSelecionado" >
-                    <option selected disabled >Selecione um Médico</option>
-                    <% for (int i = 0; i < medicos.size(); i++) {%>
-                    <option name="medicoSelecionado" value="<%=(medicos.get(i).getNomeMedico())%>"><%out.println(medicos.get(i).getNomeMedico());%></option>
-                    <%} %>  
-                </select>
-                <br /><br />
-                <input type="submit" value = "Buscar Médico Selecionado">   
-            </fieldset>
-
-        </form>  
-        <%} %>  
-        <br><br>
-        <div>
-            <form action="../controledenavegacao" method="POST">
-                <input type="hidden" id="avicena" name="avicena" value="avicena">
-                <input type="submit" value="Voltar">
-            </form>
+        <div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0; 
+             background-color: #7986cb; padding: 20px; color: white">
+            <h1>Sistema Avicena</h1>
+            <p>Medicina Humanizada</p> 
         </div>
-    </div>
+        <div class="container" style="padding: 3px; margin-top: 2%; margin-bottom: 10%;" >
 
-    <div class="resultadodaconsultaNome">
-        <h2>Resultado da pesquisa de Especialização por Nome</h2>
+            <div class="container" style="padding: 3px; margin-top: 2%; margin-bottom: 10%;" >
 
-        <%
-            Object obj = request.getAttribute("especializacaovoretornada");
+                <div class="form" style="background-color: #c8e6c9; padding: 10px; width: 60%;  
+                     border-radius: 10px; float: left; margin-left: 20%;">
 
-            if (obj != null) {
-                Boolean EspecializacaoVORetornada = (Boolean) obj;
+                    <p style="text-align: center; font-weight: bold">Lista das especializações cadastradas para o médico selecionado:</p>
 
-                if (!EspecializacaoVORetornada) {%>                     
-        <input type="text" size="100" style="margin-left: 5px;" value="<% out.println("Especialização não encontrada!"
-                               + " Tente novamente. Se a Especialização não for cadastrada, por gentileza, cadastrá-la!!");%>">               
-        <%} else {%>
-
-        <form name="atualizarespecializacao" action="crudespecializacao" method="post">
-
-            <fieldset><legend>Dados do Especialização</legend>
-                <table id="tabelaEspecializacao">
-                    <tr>
-                        <th>Id</th>
-                        <th>Nome</th> 
-                        <th>Especialidade</th> 
-                        <th>Instituição</th> 
-                        <th>Ano</th> 
-                    </tr>        
                     <%
-                        ArrayList<EspecializacaoVO> especializacoesVO = (ArrayList<EspecializacaoVO>) request.getAttribute("especializacoesBuscadas");
-                        for (EspecializacaoVO especializacaoVO : especializacoesVO) {%>   
-                    <tr onclick="clickLinhaTabela(this)">
-                        <td><%= especializacaoVO.getCodigoEspecializacao()%></td>
-                        <td hidden><%= especializacaoVO.getMedicoVO().getCodigoMedico()%></td>
-                        <td><%= especializacaoVO.getMedicoVO().getNomeMedico()%></td>
-                        <td hidden><%= especializacaoVO.getEspecialidadeVO().getCodigoEspecialidade()%></td>
-                        <td><%= especializacaoVO.getEspecialidadeVO().getNomeEspecialidade()%></td>
-                        <td><%= especializacaoVO.getEspecialidadeVO().getInstituicao()%></td>
-                        <td><%= especializacaoVO.getAnoEspecializacao()%></td>
-                    </tr>     
-                    <% }     %>
-                </table>
+                        Object obj = request.getAttribute("especializacaovoretornada");
 
-                <br><br>
-                ID Especialização: <br>
-                <input type="text" name="codigoespecializacao" size="4" readonly> <br><br>
-                <input type="hidden"  name="codigomedico" size="4" readonly>
-                Nome do Médico: <br>
-                <input type="text" name="nomemedico" size="80" readonly> <br><br>
-                <input type="hidden" name="codigoespecialidade" size="4" readonly>
-                Nome da Especialidade: <br>
-                <input type="text" name="nomeespecialidade" size="80" readonly> <br><br>
-                Instituicao:<br>
-                <input type="text" name="instituicaoespecialidade" size="80" readonly> <br><br>
-                Ano:<br>
-                <input type="text" name="anoespecializacao" size="8" readonly> <br><br>
-                <br><br>
-                
-                <input type="hidden" id="excluir" name="excluir" value="excluir">
-                <input type="submit" value="Excluir Especializacao">
-            </fieldset>
-        </form><br><br>
-        <%}
-                }%>      
-    </div>            
+                        if (obj != null) {
+                            Boolean EspecializacaoVORetornada = (Boolean) obj;
+
+                            if (!EspecializacaoVORetornada) {%>                     
+                           <input type="text" size="100" style="margin-left: 5px;" value="<% out.println("Especialização não encontrada!"
+                                       + " Tente novamente. Se a Especialização não for cadastrada, por gentileza, cadastrá-la!!");%>">               
+                    <%} else {%>
+
+                    <form name="atualizarespecializacao" action="crudespecializacao" method="post">
+
+                        <div class="container-fluid">
+
+                            <div style="overflow-x:auto;">
+                                <table class="table table-borderless table-sm table-hover table-primary table-striped">
+                                    <thead>
+                                        <tr class="table-success" >
+                                            <th>Id</th>
+                                            <th>Nome</th> 
+                                            <th>Especialidade</th> 
+                                            <th>Instituição</th> 
+                                            <th>Ano</th> 
+                                        </tr>        
+                                        <%
+                                            ArrayList<EspecializacaoVO> especializacoesVO = (ArrayList<EspecializacaoVO>) request.getAttribute("especializacoesBuscadas");
+                                            for (EspecializacaoVO especializacaoVO : especializacoesVO) {%>   
+                                        <tr onclick="clickLinhaTabela(this)">
+                                            <td><%= especializacaoVO.getCodigoEspecializacao()%></td>
+                                            <td hidden><%= especializacaoVO.getMedicoVO().getCodigoMedico()%></td>
+                                            <td><%= especializacaoVO.getMedicoVO().getNomeMedico()%></td>
+                                            <td hidden><%= especializacaoVO.getEspecialidadeVO().getCodigoEspecialidade()%></td>
+                                            <td><%= especializacaoVO.getEspecialidadeVO().getNomeEspecialidade()%></td>
+                                            <td><%= especializacaoVO.getEspecialidadeVO().getInstituicao()%></td>
+                                            <td><%= especializacaoVO.getAnoEspecializacao()%></td>
+                                        </tr>     
+                                        <% }     %>
+                                </table>
+
+                                <br><br>
+                                ID Especialização: <br>
+                                <input type="text" name="codigoespecializacao" size="4" readonly> <br><br>
+                                <input type="hidden"  name="codigomedico" size="4" readonly>
+                                Nome do Médico: <br>
+                                <input type="text" name="nomemedico" size="65" readonly> <br><br>
+                                <input type="hidden" name="codigoespecialidade" size="4" readonly>
+                                Nome da Especialidade: <br>
+                                <input type="text" name="nomeespecialidade" size="65" readonly> <br><br>
+                                Instituicao:<br>
+                                <input type="text" name="instituicaoespecialidade" size="65" readonly> <br><br>
+                                Ano:<br>
+                                <input type="text" name="anoespecializacao" size="8" readonly> <br><br>
+                                <br><br>
+
+                                <input type="hidden" id="excluir" name="excluir" value="excluir">
+                                <button type="submit" class="btn btn-primary" style="float: left" >Excluir Especialização</button>
+                            </div>
+
+                        </div>
+                        <%}
+                            }%>  
+                    </form><br><br>
 
 
-    <footer class="footer">                
-        &copy; Desenvolvido por Luciane Benetti e Marco Sena.
-    </footer>
+                    <form action="controledenavegacao" method="post">
 
-</body>
+                        <input type="hidden" id="voltarpaginainicial" name="voltarpaginainicial" value="voltarpaginainicial">
+                        <input type="submit" value = "Voltar" class="btn btn-primary" 
+                               style=" margin-left: 20px; float: left;">            
+                    </form> 
+
+                </div>
+            </div>
+        </div>
+        <div class="jumbotron jumbotron-fluid text-center" style="clear: both; margin-bottom:0; margin-top: 25%; 
+             background-color: #7986cb;padding: 4px; color: white; font-size: small; ">
+            &copy; Desenvolvido por Luciane Benetti e Marco Sena.
+        </div>
+
+    </body>
 </html>
 

@@ -1,4 +1,3 @@
-
 package Servlets.Convenio;
 
 import controller.Convenio.ConvenioController;
@@ -11,28 +10,37 @@ import javax.servlet.http.HttpServletResponse;
 import model.vo.Convenio.ConvenioVO;
 
 public class AtualizarConvenio extends HttpServlet {
- ConvenioVO convenioVO = new ConvenioVO();
+
+    ConvenioVO convenioVO = new ConvenioVO();
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        Object usuarioValidado = request.getSession().getAttribute("perfil");
 
         convenioVO.setNomeConvenio(request.getParameter("nomeconvenio"));
         convenioVO.setCnpjConvenio(request.getParameter("cnpjconvenio"));
         convenioVO.setValor(request.getParameter("valor"));
-       
+
         ConvenioController conveniocontroller = new ConvenioController();
         boolean atualizado = conveniocontroller.atualizarConvenioVO(convenioVO);
         Boolean resultadoDaAtualizacao = false;
 
         if (atualizado) {
             resultadoDaAtualizacao = true;
-            request.setAttribute("atualizacao", resultadoDaAtualizacao);
-            request.getRequestDispatcher("Convenio/ResultadoDaAtualizacao.jsp").forward(request, response);
+            request.setAttribute("resultadotransacao", resultadoDaAtualizacao);
+            if (usuarioValidado.equals("admin")) {
+                request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
+            } else if (usuarioValidado.equals("atendente")) {
+                request.getRequestDispatcher("WEB-INF/PaginaInicialAtendente.jsp").forward(request, response);
+            }
         } else {
-            request.setAttribute("atualizacao", resultadoDaAtualizacao);
+            request.setAttribute("resultadotransacao", resultadoDaAtualizacao);
+            if (usuarioValidado.equals("admin")) {
+                request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
+            } else if (usuarioValidado.equals("atendente")) {
+                request.getRequestDispatcher("WEB-INF/PaginaInicialAtendente.jsp").forward(request, response);
+            }
         }
-        request.getRequestDispatcher("Convenio/ResultadoDaAtualizacao.jsp").forward(request, response);
-
     }
 }

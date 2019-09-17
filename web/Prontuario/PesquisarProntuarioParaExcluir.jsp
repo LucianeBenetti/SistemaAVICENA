@@ -35,23 +35,24 @@
                     <p style="text-align: center; font-weight: bold">Digite o nome da Especialidade que deseja excluir da base de dados:</p>
 
 
-                    <form action="../pesquisarparaexcluir" class="was-validated" method="post">
+                    <form action="../pesquisarprontuarioparaexcluir" class="was-validated" method="post">
                         <div class="form-group">
-                            <input type="text" class="form-control" id="nomeespecialidade" name="nomeespecialidade" placeholder="Digite o nome da Especialidade"  style="border-color: gray" required>
+                            <label for="cpf">CPF:</label>
+                            <input type="text" class="form-control" id="cpf" name="cpfpaciente" placeholder="Digite o CPF do paciente" 
+                                   style="border-color: gray" required onkeyup="maskIt(this, event, '###.###.###-##')">
                             <div class="valid-feedback">Valido.</div>
                             <div class="invalid-feedback" style = "color: black">Campo obrigatório.</div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary" style="float: left" >Pesquisar Especialidade</button>
+                        <button type="submit" class="btn btn-primary" style="float: left">Pesquisar</button>
                     </form>
 
                     <form action="../controledenavegacao" method="post">
 
                         <input type="hidden" id="voltarpaginainicial" name="voltarpaginainicial" value="voltarpaginainicial">
                         <input type="submit" value = "Voltar" class="btn btn-primary" 
-                               style=" margin-left: 20px; float: left;">            
-                    </form>              
-
+                               style=" margin-left: 1%; float: left;">            
+                    </form>
                 </div>
 
             </div>

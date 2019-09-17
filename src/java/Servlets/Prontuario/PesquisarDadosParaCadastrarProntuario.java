@@ -39,7 +39,6 @@ public class PesquisarDadosParaCadastrarProntuario extends HttpServlet {
 
             ProntuarioController prontuarioController = new ProntuarioController();
             listaProntuarios = prontuarioController.listarProntuarioPorPaciente(codigoPaciente);
-            System.out.println("Servlets.Prontuario " + listaProntuarios);
             ConsultaVO consultaVO = new ConsultaVO();
             consultaVO.setPacienteVO(pacienteVO);
             ConsultaController consultaController = new ConsultaController();

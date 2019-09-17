@@ -36,12 +36,12 @@ public class PesquisarConvenioPorCnpj extends HttpServlet {
             session.setAttribute("codigoconvenio", convenioVO.getCodigoConvenio());
             
             request.setAttribute("conveniovoretornado", resultadoDaPesquisaPorCpf);
-            request.getRequestDispatcher("Convenio/PesquisarConvenioPorCnpj.jsp").forward(request, response);
+            request.getRequestDispatcher("Convenio/AtualizarConvenio.jsp").forward(request, response);
 
         } else {
             System.out.println("O convenio não foi encontrado!");
             request.setAttribute("conveniovoretornado", resultadoDaPesquisaPorCpf);
-            request.getRequestDispatcher("Convenio/PesquisarConvenioPorCnpj.jsp").forward(request, response);
+            request.getRequestDispatcher("Convenio/AtualizarConvenio.jsp").forward(request, response);
         }
 
     }

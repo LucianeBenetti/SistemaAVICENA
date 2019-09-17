@@ -3,7 +3,6 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link type="text/css" rel="stylesheet" href="Paciente/PacienteCRUD.css">
         <title>Sistema Avicena</title>
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -41,8 +40,8 @@
                     if (!PacienteVORetornado) {%>
 
             <div class="container-fluid" style="margin-right: auto; margin-left: auto;">
-                   <input class="generico" type="text" size="200" value="<% out.println("Paciente não encontrado!"
-                                    + " Tente novamente, ou contate o Administrador da Clínica.");%>">
+                <input class="generico" type="text" size="100" value="<% out.println("Paciente não encontrado!"
+                               + " Tente novamente, ou contate o Administrador da Clínica.");%>">
             </div>
 
             <%} else {%>            
@@ -170,9 +169,11 @@
                     <button type="submit" class="btn btn-primary" style=" float: left; margin-left: 1.5%">Alterar Paciente</button> 
 
                 </div>
+
+                <%}
+                    }%>
             </form>         
-            <%}
-                        }%>
+
 
             <form action="controledenavegacao" method="POST">
                 <input type="hidden" id="voltarpaginainicial" name="voltarpaginainicial" value="voltarpaginainicial">
