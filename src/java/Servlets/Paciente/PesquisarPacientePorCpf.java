@@ -18,6 +18,8 @@ public class PesquisarPacientePorCpf extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+              Object usuarioValidado = request.getSession().getAttribute("perfil");
+
         pacienteVO.setCpfPaciente(request.getParameter("cpfpaciente"));
         PacienteController pacientecontroller = new PacienteController();
         Boolean resultadoDaPesquisaPorCpf = false;
@@ -42,14 +44,17 @@ public class PesquisarPacientePorCpf extends HttpServlet {
             request.setAttribute("cep", pacienteVO.getCep());
 
             resultadoDaPesquisaPorCpf = true;
-         
+
             request.setAttribute("pacientevoretornado", resultadoDaPesquisaPorCpf);
             request.getRequestDispatcher("Paciente/ResultadoDaPesquisaPorCpf.jsp").forward(request, response);
 
         } else {
-            System.out.println("O paciente não foi encontrado!");
-            request.setAttribute("pacientevoretornado", resultadoDaPesquisaPorCpf);
-            request.getRequestDispatcher("Paciente/ResultadoDaPesquisaPorCpf.jsp").forward(request, response);
+            request.setAttribute("resultadotransacao", resultadoDaPesquisaPorCpf);
+            if (usuarioValidado.equals("admin")) {
+                request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
+            } else if (usuarioValidado.equals("atendente")) {
+                request.getRequestDispatcher("WEB-INF/PaginaInicialAtendente.jsp").forward(request, response);
+            }
         }
 
     }

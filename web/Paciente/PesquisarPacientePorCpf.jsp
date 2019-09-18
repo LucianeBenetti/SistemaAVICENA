@@ -39,12 +39,11 @@
                     <button type="submit" class="btn btn-primary" style="float: left">Pesquisar</button>
                 </form>
 
-                <form action="../controledenavegacao" method="post">
-
-                    <input type="hidden" id="voltarpaginainicial" name="voltarpaginainicial" value="voltarpaginainicial">
-                    <input type="submit" value = "Voltar" class="btn btn-primary" 
-                           style=" margin-left: 1%; float: left;">            
-                </form>
+               <form action="../controledenavegacao" method="POST">
+                <input type="hidden" id="voltarpaginainicial" name="voltarpaginainicial" value="voltarpaginainicial">
+                <input type="submit" value = "Voltar" class="btn btn-primary" 
+                       style=" margin-left: 1%; float: left;">            
+            </form>
 
             </div>
 

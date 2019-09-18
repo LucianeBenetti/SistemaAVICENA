@@ -41,10 +41,7 @@
                         if (obj != null) {
                             Boolean EspecialidadeVORetornada = (Boolean) obj;
 
-                            if (!EspecialidadeVORetornada) {%>                     
-                           <input type="text" size="65" style="margin-left: 5px;" value="<% out.println("Especialidade não encontrada!"
-                                       + " Tente novamente!");%>">               
-                    <%} else {%>
+                            if (EspecialidadeVORetornada) {%>                     
 
                     <form name="atualizarespecialidade" action="crudespecialidade" method="post">
                         <div class="container-fluid">
@@ -65,7 +62,7 @@
                                             <td><%= especialidadeVO.getNomeEspecialidade()%></td>
                                             <td><%= especialidadeVO.getInstituicao()%></td>
                                         </tr>     
-                                        <% }     %>
+                                        <% }%>
                                 </table>
 
                                 ID: <br>
@@ -74,15 +71,15 @@
                                 <input type="text" name="nomeespecialidade" size="65" readonly> <br><br>
                                 Instituicao:<br>
                                 <input type="text" name="instituicaoespecialidade" size="65" readonly> <br><br>
-                                <br><br>
+                         
 
                                 <input type="hidden" id="excluir" name="excluir" value="excluir">
                                 <button type="submit" class="btn btn-primary" style="float: left" >Excluir Especialidade</button>
                             </div>
 
                         </div>
-                        <%}
-                            }%>  
+
+                   <%    } }%>  
                     </form>
 
                     <form action="controledenavegacao" method="post">

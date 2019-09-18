@@ -46,7 +46,8 @@
                             ArrayList<EspecialidadeVO> especialidades = (ArrayList<EspecialidadeVO>) listaEspecialidades;
                     %>
 
-                    <h4>Selecione o Médico</h4>
+                    <p style="text-align: left; font-weight: bold">Selecione o nome da Médico:</p>
+
                     <form action="pesquisarmedicoespecialidadeparacadastrar" method="POST">
 
                         <select name="medicoSelecionado" >
@@ -55,8 +56,9 @@
                             <option name="medicoSelecionado" value="<%=(medicos.get(i).getNomeMedico())%>"><%out.println(medicos.get(i).getNomeMedico());%></option>
                             <%} %>  
                         </select>
+                        <br>   <br>
 
-                        <h4>Selecione a Especialidade do Médico</h4>
+                        <p style="text-align: left; font-weight: bold">Selecione a Especialidade:</p>
 
                         <select name="especialidadeSelecionada" >
                             <option selected disabled >Selecione uma Especialidade</option>
@@ -65,7 +67,7 @@
 
                             <%}%>
                         </select>
-            
+                        <br><br>
                         <button type="submit" class="btn btn-primary" style="float: left" >Pesquisar Dados Selecionados</button> 
 
                     </form> 

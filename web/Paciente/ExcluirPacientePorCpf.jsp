@@ -43,13 +43,12 @@
 
                         <button type="submit" class="btn btn-primary" style="float: left" >Excluir Paciente</button>
                     </form>
-
-                    <form action="../controledenavegacao" method="post">
-
+                    
+                    <form action="../controledenavegacao" method="POST">
                         <input type="hidden" id="voltarpaginainicial" name="voltarpaginainicial" value="voltarpaginainicial">
                         <input type="submit" value = "Voltar" class="btn btn-primary" 
-                               style=" margin-left: 20px; float: left;">            
-                    </form>            
+                               style=" margin-left: 1%; float: left;">            
+                    </form>         
 
                 </div>
 

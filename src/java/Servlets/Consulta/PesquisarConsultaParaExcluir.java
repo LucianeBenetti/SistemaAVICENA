@@ -23,6 +23,8 @@ public class PesquisarConsultaParaExcluir extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
+        Object usuarioValidado = request.getSession().getAttribute("perfil");
+
         pacienteVO.setCpfPaciente(request.getParameter("cpfpaciente"));
         PacienteController pacientecontroller = new PacienteController();
         Boolean resultadoDaPesquisaPorCpf = false;
@@ -51,6 +53,14 @@ public class PesquisarConsultaParaExcluir extends HttpServlet {
                 request.setAttribute("consultavoretornada", resultadoDaPesquisaDeConsultas);
             }
             request.getRequestDispatcher("Consulta/ExcluirConsulta.jsp").forward(request, response);
+        }
+        else {
+                request.setAttribute("resultadotransacao", resultadoDaPesquisaPorCpf);
+                if (usuarioValidado.equals("admin")) {
+                    request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
+                } else if (usuarioValidado.equals("atendente")) {
+                    request.getRequestDispatcher("WEB-INF/PaginaInicialAtendente.jsp").forward(request, response);
+                }
         }
     }
 

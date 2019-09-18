@@ -19,6 +19,8 @@ public class PesquisarParaExcluir extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        Object usuarioValidado = request.getSession().getAttribute("perfil");
+
         especialidadeVO.setNomeEspecialidade(request.getParameter("nomeespecialidade"));
         EspecialidadeController especialidadecontroller = new EspecialidadeController();
         List<EspecialidadeVO> especialidadesBuscadas = especialidadecontroller.exibirEspecialidadePorNome(especialidadeVO.getNomeEspecialidade());
@@ -27,18 +29,21 @@ public class PesquisarParaExcluir extends HttpServlet {
         System.out.println("Servlets.Especialidade: " + especialidadesBuscadas);
 
         if (especialidadesBuscadas.size() > 0) {
-            
+
             resultadoDaPesquisaPorNome = true;
             request.setAttribute("especialidadesBuscadas", especialidadesBuscadas);
             request.setAttribute("especialidadevoretornada", resultadoDaPesquisaPorNome);
             request.getRequestDispatcher("Especialidade/ExcluirEspecialidadePorId.jsp").forward(request, response);
 
         } else {
-            System.out.println("O especialidade não foi encontrada!");
-            request.setAttribute("especialidadevoretornada", resultadoDaPesquisaPorNome);
-            request.getRequestDispatcher("Especialidade/ExcluirEspecialidadePorId.jsp").forward(request, response);
-        }
+            request.setAttribute("resultadotransacao", resultadoDaPesquisaPorNome);
+            if (usuarioValidado.equals("admin")) {
+                request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
+            } else if (usuarioValidado.equals("atendente")) {
+                request.getRequestDispatcher("WEB-INF/PaginaInicialAtendente.jsp").forward(request, response);
+            }
 
-        System.out.println("Resultado: " + resultadoDaPesquisaPorNome);
+            System.out.println("Resultado: " + resultadoDaPesquisaPorNome);
+        }
     }
 }

@@ -24,6 +24,8 @@ public class CrudEspecializacao extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
+        Object usuarioValidado = request.getSession().getAttribute("perfil");
+
         String var1 = request.getParameter("cadastrar");
         String var2 = request.getParameter("excluir");
 
@@ -84,12 +86,19 @@ public class CrudEspecializacao extends HttpServlet {
                             request.setAttribute("anoespecializacao", especializacaoVO.getAnoEspecializacao());
 
                             resultadoDoCadastro = true;
-                            request.setAttribute("resultado", resultadoDoCadastro);
-                            request.getRequestDispatcher("Especializacao/ResultadoDaTransacao.jsp").forward(request, response);
-
+                            request.setAttribute("resultadotransacao", resultadoDoCadastro);
+                            if (usuarioValidado.equals("admin")) {
+                                request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
+                            } else if (usuarioValidado.equals("medico")) {
+                                request.getRequestDispatcher("WEB-INF/PaginaInicialMedico.jsp").forward(request, response);
+                            }
                         } else {
-                            request.setAttribute("resultado", resultadoDoCadastro);
-                            request.getRequestDispatcher("Especializacao/ResultadoDaTransacao.jsp").forward(request, response);
+                            request.setAttribute("resultadotransacao", resultadoDoCadastro);
+                            if (usuarioValidado.equals("admin")) {
+                                request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
+                            } else if (usuarioValidado.equals("medico")) {
+                                request.getRequestDispatcher("WEB-INF/PaginaInicialMedico.jsp").forward(request, response);
+                            }
                         }
 
                         break;

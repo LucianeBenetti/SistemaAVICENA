@@ -37,7 +37,7 @@
                     if (!PacienteVORetornado) {%>
 
             <div class="container-fluid" style="margin-right: auto; margin-left: auto;">
-                   <input class="generico" type="text" size="100" value="<% out.println("Paciente não encontrado!"
+                <input class="generico" type="text" size="100" value="<% out.println("Paciente não encontrado!"
                                + " Tente novamente, ou contate o Administrador da Clínica.");%>">
             </div>
 
@@ -162,15 +162,12 @@
                 </div><br><br>               
 
                 <div class="form-row">
-
                     <button type="submit" class="btn btn-primary" style=" float: left; margin-left: 1.5%">Alterar Paciente</button> 
-
                 </div>
 
                 <%}
                     }%>
-            </form>         
-
+            </form> 
             <form action="controledenavegacao" method="POST">
                 <input type="hidden" id="voltarpaginainicial" name="voltarpaginainicial" value="voltarpaginainicial">
                 <input type="submit" value = "Nova Pesquisa de Paciente" class="btn btn-primary" 
@@ -178,8 +175,6 @@
             </form>        
 
         </div>    
-
-
         <div class="jumbotron jumbotron-fluid text-center" style="clear: both; margin-bottom:0;margin-top: 45%; 
              background-color: #7986cb;padding: 4px; color: white; font-size: small; ">
             &copy; Desenvolvido por Luciane Benetti e Marco Sena.
