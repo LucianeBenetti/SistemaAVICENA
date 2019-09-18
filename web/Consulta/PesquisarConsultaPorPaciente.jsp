@@ -1,9 +1,3 @@
-<%-- 
-    Document   : PesquisarConsultaPorPaciente
-    Created on : 13/08/2019, 13:28:50
-    Author     : 80130917
---%>
-
 <%@page import="model.vo.Consulta.ConsultaVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

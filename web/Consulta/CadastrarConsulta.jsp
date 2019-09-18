@@ -176,13 +176,9 @@
                         <input type="submit" value = "Voltar" class="btn btn-primary" 
                                style=" margin-left: 20px; float: left;">            
                     </form>   
-
                 </div>
             </div>
-
         </div>
-
-
         <div class="jumbotron jumbotron-fluid text-center" style="clear: both; margin-bottom:0; margin-top: 25%; 
              background-color: #7986cb;padding: 4px; color: white; font-size: small; ">
             &copy; Desenvolvido por Luciane Benetti e Marco Sena.

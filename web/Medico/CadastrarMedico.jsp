@@ -12,9 +12,7 @@
         <script type="text/javascript" src="mascarasMedico.js"></script>
 
     </head>
-
     <body> 
-
         <div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0; background-color: #7986cb; padding: 5px; color: white">
             <h4>Sistema Avicena</h4>
             Medicina Humanizada 
@@ -24,7 +22,6 @@
              padding: 20px; border-radius: 10px;">
 
             <h3 style="text-align: center;">Por gentileza, preencher os dados do médico a ser cadastrado:</h3>            
-
 
             <form action="../crudmedico" method="post" style="padding: 10px;" >
 

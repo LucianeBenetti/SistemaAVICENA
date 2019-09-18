@@ -28,7 +28,6 @@
 
             <p style="text-align: center; font-weight: bold">Resultado do Cadastro de Consulta:</p>
 
-
             <%
                 Object obj1 = request.getAttribute("consultacadastrada");
 
@@ -36,7 +35,6 @@
                     Boolean consultaCadastrada = (Boolean) obj1;
 
                     if (!consultaCadastrada) {%> 
-
 
             <div class="container-fluid" style="margin-right: auto; margin-left: auto;">
                    <input class="generico" type="text" size="100" value="<% out.println("Consulta já cadastrada na base de dados ou a data da consulta é inferior ou igual a data atual!" + "\n"
@@ -91,9 +89,7 @@
             <input type="submit" value = "Voltar" class="btn btn-primary" 
                    style="margin-top: 2%; margin-left: 1%; float: left;">            
         </form>        
-
     </div>    
-
 
     <div class="jumbotron jumbotron-fluid text-center" style="clear: both; margin-bottom:0;margin-top: 45%; 
          background-color: #7986cb;padding: 4px; color: white; font-size: small; ">

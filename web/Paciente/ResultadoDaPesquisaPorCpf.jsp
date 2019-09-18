@@ -34,16 +34,9 @@
                 if (obj != null) {
                     Boolean PacienteVORetornado = (Boolean) obj;
 
-                    if (!PacienteVORetornado) {%>
+                    if (PacienteVORetornado) {%>
 
-            <div class="container-fluid" style="margin-right: auto; margin-left: auto;">
-                <input class="generico" type="text" size="100" value="<% out.println("Paciente não encontrado!"
-                               + " Tente novamente, ou contate o Administrador da Clínica.");%>">
-            </div>
-
-            <%} else {%>            
-
-            <form action="atualizarpaciente" method="post" style="padding: 10px;">               
+                 <form action="atualizarpaciente" method="post" style="padding: 10px;">               
 
                 <div class="form-row">
                     <div class="form-group col-md-6">

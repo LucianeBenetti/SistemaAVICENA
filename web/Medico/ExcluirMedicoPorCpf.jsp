@@ -31,8 +31,7 @@
                  border-radius: 10px; float: left; margin-left: 20%;">
             
             <p style="text-align: center; font-weight: bold">Digite o CPF do Médico que deseja excluir da base de dados:</p>
-
-                
+             
             <form action="../crudmedico" class="was-validated" method="post">
                     <div class="form-group">
                         <input type="hidden" id="excluir" name="excluir" value="excluir">
