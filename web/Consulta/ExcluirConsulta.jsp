@@ -34,7 +34,7 @@
                 <div class="form" style="background-color: #c8e6c9; padding: 10px; width: 60%;  
                      border-radius: 10px; float: left; margin-left: 20%;">
 
-                    <p style="text-align: center; font-weight: bold">Lista das especialidades cadastradas na clínica AVICENA:</p>
+                    <p style="text-align: center; font-weight: bold">Lista das consultas cadastradas para o paciente selecionado:</p>
 
                     <form name="excluirconsulta" action="excluirconsulta" method="post">
                         <div class="resultadodaconsultaNome">         
@@ -66,40 +66,64 @@
                                                 <td><%= consultaVO.getConvenioVO().getNomeConvenio()%></td>
                                                 <td ><%= consultaVO.getDataConsulta()%></td>
                                                 <td ><%= consultaVO.getHorarioConsulta()%></td>
+                                                <td ><%= consultaVO.getAtencaoEspecial()%></td>
                                             </tr>     
-                                            <% }  %>
+                                            <% }%>
                                     </table>
-                                    <br><br>
+
                                 </div>
 
-
-                                <br><br>
                                 <input type="hidden" name="codigoconsulta" size="4" readonly>
-                                Nome: <br>                       
-                                <input type="text" readonly name="nomepaciente" size="50" ><br><br>  
-                                Nome do Médico: <br>
-                                <input type="text" name="nomemedico"  size="50" readonly> <br><br>
-                                Nome da Especialidade: <br>
-                                <input type="text" name="nomeespecialidade"  size="50" readonly> <br><br>
-                                Convênio <br>                       
-                                <input type="text" readonly name="nomeconvenio"  size="50"><br><br>
-                                <div style="width:55%">
-                                    <div style="float:left"> Data<a>*</a>: </div>
-                                    <div style="float:right"> Horário<a>*</a>: </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputnome">Nome:</label>
+                                        <input type="text" class="form-control" id="inputnome" name="nomepaciente" required readonly value="<%= request.getAttribute("nomepaciente")%>">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputnomeconvenio">Convênio:</label>
+                                        <input type="text" class="form-control"  readonly id="inputnomeconvenio" name="nomeconvenio">
+                                    </div>
                                 </div>
-                                <br>
-                                <div style="width:80%">
-                                    <div style="float:left"> <input type="text" name="dataconsulta" readonly size="15"></div>    
-                                    <div style="float:right"> <input type="text" name="horarioconsulta" readonly size="15"></div><br><br> 
 
-                                </div> 
-                                <input type="hidden" id="excluir" name="excluir" value="excluir">
-                                <button type="submit" class="btn btn-primary" style="float: left" >Excluir Consulta</button>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputnomemedico">Nome do Médico:</label>
+                                        <input type="nomemedico" class="form-control" readonly id="inputnomemedico" name="nomemedico">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputnomeespecialidade">Especialidade</label>
+                                        <input type="text" class="form-control"  readonly id="inputnomeespecialidade" name="nomeespecialidade">
+                                    </div>
+
+                                </div>              
+                                <div class="form-group col-md-4">
+                                    <label for="inputdataconsulta">Data da Consulta:</label>
+                                    <input type="text" class="form-control" readonly id="inputdataconsulta" name="dataconsulta">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="inputhorarioconsulta">Horário da Consulta:</label>
+                                    <input type="text" class="form-control" readonly id="inputhorarioconsulta" name="horarioconsulta">
+                                </div>
+
+
+                                <div class="form-group col-md-3">
+                                    <label for="inputatencaoespecial">Atenção Especial:</label>
+                                    <textarea disabled class="form-control" readonly id="inputatencaoespecial" name="atencaoespecial"></textarea>
+                                </div>
+
+                                <div>
+                                    <input type="hidden" id="excluir" name="excluir" value="excluir">
+                                    <button type="submit" class="btn btn-primary" style="float: left" >Excluir Consulta</button>
+                                </div>
+
                             </div>
+                            <%} else {%>
 
+                            <% out.println("Não foi possível atualizar os dados da Consulta! Por gentileza, tente novamente");%>
+
+                            <%}%>
                         </div>
-                        <%}%>
-                            
+
                     </form><br><br>
 
 
@@ -110,13 +134,13 @@
                                style=" margin-left: 20px; float: left;">            
                     </form> 
 
+
                 </div>
             </div>
-        </div>
-        <div class="jumbotron jumbotron-fluid text-center" style="clear: both; margin-bottom:0; margin-top: 25%; 
-             background-color: #7986cb;padding: 4px; color: white; font-size: small; ">
-            &copy; Desenvolvido por Luciane Benetti e Marco Sena.
-        </div>
+            <div class="jumbotron jumbotron-fluid text-center" style="clear: both; margin-bottom:0; margin-top: 25%; 
+                 background-color: #7986cb;padding: 4px; color: white; font-size: small; ">
+                &copy; Desenvolvido por Luciane Benetti e Marco Sena.
+            </div>
 
     </body>
 </html>

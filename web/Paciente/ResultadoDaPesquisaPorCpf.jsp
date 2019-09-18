@@ -23,13 +23,10 @@
             <h4>Sistema Avicena</h4>
             Medicina Humanizada 
         </div>
-
-
         <div class="form" style="float: left; background-color: #c8e6c9; padding: 10px; width: 80%; margin-left: 10%; margin-top: 2%; background-color: #c8e6c9; 
              padding: 20px; border-radius: 10px;">
 
             <p style="text-align: center; font-weight: bold">Resultado da pesquisa de Paciente por CPF:</p>
-
 
             <%
                 Object obj = request.getAttribute("pacientevoretornado");
@@ -40,7 +37,7 @@
                     if (!PacienteVORetornado) {%>
 
             <div class="container-fluid" style="margin-right: auto; margin-left: auto;">
-                <input class="generico" type="text" size="100" value="<% out.println("Paciente não encontrado!"
+                   <input class="generico" type="text" size="100" value="<% out.println("Paciente não encontrado!"
                                + " Tente novamente, ou contate o Administrador da Clínica.");%>">
             </div>
 
@@ -173,7 +170,6 @@
                 <%}
                     }%>
             </form>         
-
 
             <form action="controledenavegacao" method="POST">
                 <input type="hidden" id="voltarpaginainicial" name="voltarpaginainicial" value="voltarpaginainicial">

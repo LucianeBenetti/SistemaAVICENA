@@ -68,7 +68,6 @@
                                         <% }     %>
                                 </table>
 
-                                <br><br>
                                 ID: <br>
                                 <input type="text" name="codigoespecialidade" size="4" readonly> <br><br>
                                 Nome: <br>
@@ -84,8 +83,7 @@
                         </div>
                         <%}
                             }%>  
-                    </form><br><br>
-
+                    </form>
 
                     <form action="controledenavegacao" method="post">
 

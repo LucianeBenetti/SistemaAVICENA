@@ -30,7 +30,7 @@
                 <div class="form" style="background-color: #c8e6c9; padding: 10px; width: 60%;  
                      border-radius: 10px; float: left; margin-left: 20%;">
 
-                    <p style="text-align: center; font-weight: bold">Digite o CNPJ do Convênio que deseja excluir da base de dados:</p>
+                    <p style="text-align: center; font-weight: bold">Digite o CNPJ do Convênio que deseja alterar da base de dados:</p>
 
 
                     <form action="../pesquisarconvenioporcnpj" class="was-validated" method="post">

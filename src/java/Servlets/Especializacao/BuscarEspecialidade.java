@@ -38,7 +38,7 @@ public class BuscarEspecialidade extends HttpServlet {
             request.setAttribute("listaMedicosVO", listaMedicosVO);
         }
 
-        request.getRequestDispatcher("Especializacao/CadastrarEspecializacao.jsp").forward(request, response);
+        request.getRequestDispatcher("Especializacao/PesquisarEspecializacaoParaCadastrar.jsp").forward(request, response);
 
     }
 

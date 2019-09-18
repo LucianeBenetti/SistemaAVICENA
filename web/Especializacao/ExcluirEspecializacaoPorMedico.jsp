@@ -89,8 +89,7 @@
                                 <input type="text" name="instituicaoespecialidade" size="65" readonly> <br><br>
                                 Ano:<br>
                                 <input type="text" name="anoespecializacao" size="8" readonly> <br><br>
-                                <br><br>
-
+                        
                                 <input type="hidden" id="excluir" name="excluir" value="excluir">
                                 <button type="submit" class="btn btn-primary" style="float: left" >Excluir Especialização</button>
                             </div>

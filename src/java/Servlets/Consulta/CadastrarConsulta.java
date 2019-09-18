@@ -97,7 +97,7 @@ public class CadastrarConsulta extends HttpServlet {
             request.setAttribute("nomemedico", nomeMedico);
             request.setAttribute("nomeespecialidade", nomeEspecialidade);
             request.setAttribute("nomeconvenio", nomeConvenio);
-            request.setAttribute("atençãoespecial", consultaVO.getAtencaoEspecial());
+            request.setAttribute("atencaoespecial", consultaVO.getAtencaoEspecial());
             request.setAttribute("valorconsulta", consultaVO.getValorConsulta());
 
             resultadoDoCadastro = true;

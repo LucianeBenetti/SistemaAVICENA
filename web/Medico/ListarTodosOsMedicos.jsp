@@ -62,8 +62,7 @@
                 </tr>                   
                 <%}%>
             </table>      
-            <br><br>
-        </div>
+             </div>
 
         <div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0; margin-top: 5%;
              background-color: #7986cb; padding: 5px; color: white; font-size: 10pt;">

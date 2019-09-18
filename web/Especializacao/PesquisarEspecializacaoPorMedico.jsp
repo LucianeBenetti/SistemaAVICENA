@@ -90,7 +90,6 @@
                         <% }     %>
                     </table>
 
-                    <br><br>
                     ID Especialização: <br>
                     <input type="text" name="codigoespecializacao" size="4" readonly> <br><br>
                     <input type="hidden"  name="codigomedico" size="4" readonly>
@@ -107,7 +106,7 @@
 
                     <input type="submit" value="Atualizar Dados da Especialização">
                 </fieldset>
-            </form><br><br>
+            </form>
             <%}
                 }%>      
         </div>            

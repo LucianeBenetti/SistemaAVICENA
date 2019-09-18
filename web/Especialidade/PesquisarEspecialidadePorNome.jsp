@@ -73,18 +73,16 @@
                         <% }     %>
                     </table>
 
-                    <br><br>
                     ID: <br>
                     <input type="text" readonly="" name="codigoespecialidade" size="4"> <br><br>
                     Nome: <br>
                     <input type="text" name="nomeespecialidade" size="80"> <br><br>
                     Instituicao:<br>
                     <input type="text" name="instituicaoespecialidade" size="80"> <br><br>
-                    <br><br>
-
+    
                     <input type="submit" value="Atualizar Dados da Especialidade">
                 </fieldset>
-            </form><br><br>
+            </form>
             <%}
                 }%>      
         </div>            

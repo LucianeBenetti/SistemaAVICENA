@@ -29,7 +29,7 @@
             <div class="form" style="background-color: #c8e6c9; padding: 10px; width: 60%;  
                  border-radius: 10px; float: left; margin-left: 20%;">
             
-            <p style="text-align: center; font-weight: bold">Digite o CPF do Paciente para bscar Consulta na base de dados:</p>
+            <p style="text-align: center; font-weight: bold">Digite o CPF do Paciente para buscar Consulta na base de dados:</p>
 
                 
             <form action="../pesquisarconsultaparaexcluir" class="was-validated" method="post">

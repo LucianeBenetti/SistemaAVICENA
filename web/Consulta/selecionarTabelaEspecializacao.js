@@ -72,6 +72,7 @@ function clickExcluirConsulta(row) {
     var nomeconvenio = row.cells[4].innerText;
     var dataconsulta = row.cells[5].innerText;
     var horarioconsulta = row.cells[6].innerText;
+    var atencaoespecial = row.cells[7].innerText;
     document.excluirconsulta.codigoconsulta.value = codigoconsulta;
     document.excluirconsulta.nomepaciente.value = nomepaciente;
     document.excluirconsulta.nomemedico.value = nomemedico;
@@ -79,6 +80,7 @@ function clickExcluirConsulta(row) {
     document.excluirconsulta.nomeconvenio.value = nomeconvenio;
     document.excluirconsulta.dataconsulta.value = dataconsulta;
     document.excluirconsulta.horarioconsulta.value = horarioconsulta;
+    document.atualizarconsulta.atencaoespecial.value = atencaoespecial;
 }
 
 function clickAtualizarConsulta(row) {
