@@ -13,7 +13,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-       <script type="text/javascript" src="Especializacao/selecionarLinhaTabela.js"></script>
+        <script type="text/javascript" src="Especializacao/selecionarLinhaTabela.js"></script>
 
         <style>
             .generico
@@ -73,23 +73,35 @@
                                             <td><%= especializacaoVO.getEspecialidadeVO().getInstituicao()%></td>
                                             <td><%= especializacaoVO.getAnoEspecializacao()%></td>
                                         </tr>     
-                                        <% }     %>
+                                        <% }%>
                                 </table>
 
-                                <br><br>
-                                ID Especialização: <br>
-                                <input type="text" name="codigoespecializacao" size="4" readonly> <br><br>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="inputnomemedico">Nome do Médico:</label>
+                                        <input type="text" class="form-control" name="nomemedico" readonly>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="inputnomeespecialidade">Nome da Especialidade:</label>
+                                        <input type="text" class="form-control" name="nomeespecialidade" readonly >
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-8">
+                                        <label for="inputinstituicaoespecialidade">Instituição:</label>
+                                        <input type="text" class="form-control" name="instituicaoespecialidade" required readonly>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="inputanoespecializacao">Ano<a>*</a>:</label>
+                                        <input type="text" readonly class="form-control"  name="anoespecializacao">
+                                    </div>
+                                </div>
+
                                 <input type="hidden"  name="codigomedico" size="4" readonly>
-                                Nome do Médico: <br>
-                                <input type="text" name="nomemedico" size="65" readonly> <br><br>
                                 <input type="hidden" name="codigoespecialidade" size="4" readonly>
-                                Nome da Especialidade: <br>
-                                <input type="text" name="nomeespecialidade" size="65" readonly> <br><br>
-                                Instituicao:<br>
-                                <input type="text" name="instituicaoespecialidade" size="65" readonly> <br><br>
-                                Ano:<br>
-                                <input type="text" name="anoespecializacao" size="8" readonly> <br><br>
-                        
+                                <input type="hidden" name="codigoespecializacao" size="4" readonly>
                                 <input type="hidden" id="excluir" name="excluir" value="excluir">
                                 <button type="submit" class="btn btn-primary" style="float: left" >Excluir Especialização</button>
                             </div>
