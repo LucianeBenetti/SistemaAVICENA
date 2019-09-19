@@ -20,17 +20,17 @@
     </head>
     <body>
 
-        <div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0; 
-             background-color: #7986cb; padding: 20px; color: white">
-            <h1>Sistema Avicena</h1>
-            <p>Medicina Humanizada</p> 
-        </div>
+    <div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0; 
+         background-color: #7986cb; padding: 20px; color: white">
+        <h1>Sistema Avicena</h1>
+        <p>Medicina Humanizada</p> 
+    </div>
+    <div class="container" style="padding: 3px; margin-top: 2%; margin-bottom: 10%;" >
+
         <div class="container" style="padding: 3px; margin-top: 2%; margin-bottom: 10%;" >
 
-            <div class="container" style="padding: 3px; margin-top: 2%; margin-bottom: 10%;" >
-
-                <div class="form" style="background-color: #c8e6c9; padding: 10px; width: 60%;  
-                     border-radius: 10px; float: left; margin-left: 20%;">
+            <div class="form" style="background-color: #c8e6c9; padding: 10px; width: 60%;  
+                 border-radius: 10px; float: left; margin-left: 20%;">
 
                     <p style="text-align: center; font-weight: bold">Informe o ano da especialização para cadastrar na base de dados:</p>
 

@@ -41,7 +41,7 @@
                         if (especializacoesVO != null) {%>
                     <div class="container-fluid">
 
-                        <div style="overflow-x:auto;">
+                        <div >
                             <table class="table table-borderless table-sm table-hover table-primary table-striped">
                                 <thead>
                                     <tr class="table-success" >
@@ -174,7 +174,7 @@
                     <form action="controledenavegacao" method="post">
                         <input type="hidden" id="voltarpaginainicial" name="voltarpaginainicial" value="voltarpaginainicial">
                         <input type="submit" value = "Voltar" class="btn btn-primary" 
-                               style=" margin-left: 20px; float: left;">            
+                               style=" margin-left: 20px; clear: both">            
                     </form>   
                 </div>
             </div>

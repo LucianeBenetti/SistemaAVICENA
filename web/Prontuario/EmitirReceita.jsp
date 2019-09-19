@@ -1,146 +1,142 @@
-<%@page import="model.vo.Consulta.ConsultaVO"%>
 <%@page import="model.vo.Prontuario.ReceitaVO"%>
+<%@page import="model.vo.Consulta.ConsultaVO"%>
+<%@page import="model.vo.Prontuario.ProntuarioVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <script type="text/javascript" src="mascarasProntuario.js"></script>
+        <title>Sistema Avicena</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="Prontuario/selecionarTabelaProntuario.js"></script>
-        <link type="text/css" rel="stylesheet" href="ProntuarioCRUD.css">
-        <link type="text/css" rel="stylesheet" href="Prontuario/ProntuarioCRUD.css">
-        <title>Emitir Receita</title>
-    </head>
-    <body class="body">
-        <div class="form1">
-            <h2>Emitir Receita!</h2>
+    </head>        
 
-            <fieldset><legend>Digite o CPF do Paciente</legend>
-                <div>
-                    <form method="post" action="../pesquisardadosparaemitirreceita">
+    <body>
 
-                        <p><a>*</a>Campos de preenchimento obrigatório</p>                    
-
-                        CPF<a>*</a>:<br> 
-                        <input type="text" name="cpfpaciente" required onkeyup="maskIt(this, event, '###.###.###-##')">
-                        <input type="submit" value="Buscar Paciente"><br><br>
-                    </form>
-                </div> 
-
-            </fieldset>
-
-            <form name="emitirreceita" action="emitirreceita" method="post">
-                <fieldset>
-                    Nome: <br>   
-                    <input type="hidden" readonly name="codigoreceita"> 
-                    <input type="hidden" readonly name="codigoconsulta"> 
-                    <input type="hidden" readonly name="codigopaciente"> 
-                    <input type="text" readonly name="nomepaciente" size="50"><br><br> 
-                    <input type="hidden" readonly name="codigoespecializacao" > 
-                    <input type="text" readonly name="nomemedico" size="50"> <br><br>
-                    <input type="text" readonly name="nomeespecialidade" size="50"> <br><br>
-                    <div style="width:55%">
-                        <div style="float:left"> Data: </div>
-                        <div style="float:right"> Horário: </div>
-                    </div>
-                    <br>
-                    <div style="width:80%">
-                        <div style="float:left"> <input type="text" readonly name="dataconsulta" size="20" ></div>    
-                        <div style="float:right"> <input type="text" readonly name="horarioconsulta" size="20"></div>  <br><br>  
-                    </div>
-                    <input type="hidden" readonly name="codigoprontuario"> 
-                    Medicamentos:<br>
-                    <textarea name="medicamentos"></textarea><br><br>
-                    Exames:<br>
-                    <textarea name="exames"></textarea><br><br>
-                    Registro de Observações:<br>
-                    <textarea name="registroobservacao" ></textarea><br><br>
-
-                    <input type="submit" value="Emitir Receita">
-
-                    <br><br>    
-
-                </fieldset>
-            </form>
-        </div><br><br> 
-
-
-        <div class="resultadodaconsulta">  
-
-            <%
-                Object consultas = request.getAttribute("listaconsultas");
-                ArrayList<ConsultaVO> consultasVO = (ArrayList<ConsultaVO>) consultas;
-                if (consultasVO != null) {%>
-            <h2>Consultas do Paciente</h2>
-            <table id="tabelaConsulta">
-                <tr>
-                    <th>Id</th>
-                    <th>Nome do Paciente</th> 
-                    <th>Nome do Médico</th> 
-                    <th>Especialidade</th>
-                    <th>Data da Consulta</th>
-                    <th>Horário da Consulta</th>
-                </tr>        
-                <% for (ConsultaVO consultaVO : consultasVO) {%>  
-
-                <tr onclick="clickLinhaTabelaConsultaReceita(this)">
-                    <td><%= consultaVO.getCodigoConsulta()%></td>
-                    <td hidden><%= consultaVO.getPacienteVO().getCodigoPaciente()%></td>
-                    <td><%= consultaVO.getPacienteVO().getNomePaciente()%></td>
-                    <td hidden><%= consultaVO.getEspecializacaoVO().getCodigoEspecializacao()%></td>
-                    <td><%= consultaVO.getEspecializacaoVO().getMedicoVO().getNomeMedico()%></td>
-                    <td><%= consultaVO.getEspecializacaoVO().getEspecialidadeVO().getNomeEspecialidade()%></td>
-                    <td ><%= consultaVO.getDataConsulta()%></td>
-                    <td ><%= consultaVO.getHorarioConsulta()%></td>
-                </tr>     
-                <% }
-                    } %>
-            </table>
-            <br><br>
-
-            <%
-                Object receitas = request.getAttribute("listareceitas");
-                ArrayList<ReceitaVO> receitasVO = (ArrayList<ReceitaVO>) receitas;
-                if (receitasVO != null) {%>
-            <h2>Receitas do Paciente</h2>
-            <table id="tabelaConsulta">
-                <tr>
-                    <th>Id</th>
-                    <th>Nome do Paciente</th> 
-                    <th>Nome do Médico</th> 
-                    <th>Especialidade</th>
-                    <th>Data da Consulta</th>
-                    <th>Horário da Consulta</th>
-                    <th>Medicamento</th>
-                    <th>Exames</th>
-                    <th>Observações</th>
-                </tr>        
-                <% for (ReceitaVO receitaVO : receitasVO) {%>  
-
-                    <td><%= receitaVO.getCodigoReceita()%></td>
-                    <td hidden><%= receitaVO.getConsultaVO().getCodigoConsulta()%></td>
-                    <td hidden><%= receitaVO.getConsultaVO().getPacienteVO().getCodigoPaciente()%></td>
-                    <td><%= receitaVO.getConsultaVO().getPacienteVO().getNomePaciente()%></td>
-                    <td hidden><%= receitaVO.getConsultaVO().getEspecializacaoVO().getCodigoEspecializacao()%></td>
-                    <td><%= receitaVO.getConsultaVO().getEspecializacaoVO().getMedicoVO().getNomeMedico()%></td>
-                    <td><%= receitaVO.getConsultaVO().getEspecializacaoVO().getEspecialidadeVO().getNomeEspecialidade()%></td>
-                    <td ><%= receitaVO.getConsultaVO().getDataConsulta()%></td>
-                    <td ><%= receitaVO.getConsultaVO().getHorarioConsulta()%></td>
-                    <td ><%= receitaVO.getMedicamento()%></td>
-                    <td ><%= receitaVO.getExame()%></td>
-                    <td><%= receitaVO.getObservacao()%></td>
-
-                </tr>     
-                <% }
-                    }%>
-            </table>
-            <br><br>
+        <div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0; background-color: #7986cb; padding: 5px; color: white">
+            <h4>Sistema Avicena</h4>
+            Medicina Humanizada 
         </div>
-        <br><br>   
-        <br><br>
-        <footer class="footer">                
+
+        <div class="container" style="padding: 3px; margin-top: 2%; margin-bottom: 10%;" >
+            <div class="form" style="background-color: #c8e6c9; padding: 10px; width: 60%;border-radius: 10px; float: left; margin-left: 20%;">      
+
+                <p style="text-align: center; font-weight: bold">Selecionar a Consulta para Emitir a Receita</p>      
+
+                <%  Object consultas = request.getAttribute("listaconsultas");
+                    ArrayList<ConsultaVO> consultasVO = (ArrayList<ConsultaVO>) consultas;
+                    if (consultasVO != null) {%>
+                <div class="container-fluid">
+
+                    <div >
+                        <table class="table table-borderless table-sm table-hover table-primary table-striped">
+                            <thead>
+                                <tr class="table-success" >
+                                    <th>Id</th>
+                                    <th>Nome do Paciente</th> 
+                                    <th>Nome do Médico</th> 
+                                    <th>Especialidade</th>
+                                    <th>Data da Consulta</th>
+                                    <th>Horário da Consulta</th>
+                                </tr>        
+                                <% for (ConsultaVO consultaVO : consultasVO) {%>  
+
+                                <tr onclick="clickLinhaTabelaConsultaReceita(this)">
+                                    <td><%= consultaVO.getCodigoConsulta()%></td>
+                                    <td hidden><%= consultaVO.getPacienteVO().getCodigoPaciente()%></td>
+                                    <td><%= consultaVO.getPacienteVO().getNomePaciente()%></td>
+                                    <td hidden><%= consultaVO.getEspecializacaoVO().getCodigoEspecializacao()%></td>
+                                    <td><%= consultaVO.getEspecializacaoVO().getMedicoVO().getNomeMedico()%></td>
+                                    <td><%= consultaVO.getEspecializacaoVO().getEspecialidadeVO().getNomeEspecialidade()%></td>
+                                    <td ><%= consultaVO.getDataConsulta()%></td>
+                                    <td ><%= consultaVO.getHorarioConsulta()%></td>
+                                </tr>     
+                                <% }%>
+                                <% }%>
+
+                        </table>
+                
+                        <form name="emitirreceita" action="emitirreceita" method="post">
+                            <input type="hidden" readonly name="codigoreceita"> 
+                            <input type="hidden" readonly name="codigoconsulta"> 
+                            <input type="hidden" readonly name="codigopaciente"> 
+                            <input type="hidden" readonly name="codigoespecializacao" > 
+                            <input type="hidden" readonly name="codigoprontuario"> 
+
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="inputnomepaciente">Nome do Paciente</label>
+                                    <input type="nomepaciente" readonly class="form-control" id="inputnomepaciente" name="nomepaciente">
+                                </div>
+                            </div>
+
+                            <div class="form-row">   
+                                <div class="form-group col-md-6">
+                                    <label for="inputnomemedico">Nome do Médico:</label>
+                                    <input type="text" readonly class="form-control" id="nomemedico" name="dataconsulta">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputnomeespecialidade">Especialidade Médica:</label>
+                                    <input type="text" readonly class="form-control" id="nomeespecialidade" name="horarioconsulta">
+                                </div>                       
+                            </div>
+
+                            <div class="form-row">   
+                                <div class="form-group col-md-6">
+                                    <label for="inputdataconsulta">Data:</label>
+                                    <input type="text" readonly class="form-control" id="dataconsulta" name="dataconsulta">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputhorarioconsulta">Horário:</label>
+                                    <input type="text" readonly class="form-control" id="inputhorarioconsulta" name="horarioconsulta">
+                                </div>                       
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="inputmedicamentos">Medicamentos:</label>
+                                    <textarea  class="form-control" name="medicamentos"></textarea>
+                                </div>
+                            </div> 
+
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="inputexames">Exames:</label>
+                                    <textarea class="form-control" name="exames"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="inputregistro">Registro de Observações:</label>
+                                    <textarea class="form-control" name="registro"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <button type="submit" class="btn btn-primary" style=" float: left; margin-left: 1.5%">Emitir Receita</button> 
+                            </div>
+
+                        </form>
+                        <form action="controledenavegacao" method="post">
+                            <input type="hidden" id="voltarpaginainicial" name="voltarpaginainicial" value="voltarpaginainicial">
+                            <input type="submit" value = "Voltar" class="btn btn-primary" 
+                                   style=" margin-left: 20px; clear: both">            
+                        </form> 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="jumbotron jumbotron-fluid text-center" style="clear: both; margin-bottom:0; margin-top: 45%;
+             background-color: #7986cb; padding: 4px; color: white; font-size: 10pt;">
             &copy; Desenvolvido por Luciane Benetti e Marco Sena.
-        </footer>
+        </div>
     </body>
 </html>
+
+

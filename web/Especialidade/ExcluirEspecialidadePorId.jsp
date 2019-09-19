@@ -46,7 +46,7 @@
                     <form name="atualizarespecialidade" action="crudespecialidade" method="post">
                         <div class="container-fluid">
 
-                            <div style="overflow-x:auto;">
+                            <div >
                                 <table class="table table-borderless table-sm table-hover table-primary table-striped">
                                     <thead>
                                         <tr class="table-success" >
@@ -64,29 +64,35 @@
                                         </tr>     
                                         <% }%>
                                 </table>
+                                <div class="form-row">
 
-                                ID: <br>
-                                <input type="text" name="codigoespecialidade" size="4" readonly> <br><br>
-                                Nome: <br>
-                                <input type="text" name="nomeespecialidade" size="65" readonly> <br><br>
-                                Instituicao:<br>
-                                <input type="text" name="instituicaoespecialidade" size="65" readonly> <br><br>
-                         
+                                    <div class="form-group col-md-6" style="size:30px">
+                                        <label for="inputnomeespecialidade">Nome: </label>
+                                        <input type="text" class="form-control" id="inputnomeespecialidade" name="nomeespecialidade">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputinstituicaoespecialidade">Instituicao:</label>
+                                        <input type="text" class="form-control" id="inputinstituicaoespecialidade" name="instituicaoespecialidade">
+                                    </div>
+                                </div>
 
+                                  <input type="hidden" name="codigoespecialidade">
+                            
                                 <input type="hidden" id="excluir" name="excluir" value="excluir">
                                 <button type="submit" class="btn btn-primary" style="float: left" >Excluir Especialidade</button>
                             </div>
 
                         </div>
 
-                   <%    } }%>  
+                        <%    }
+                       }%>  
                     </form>
 
                     <form action="controledenavegacao" method="post">
 
                         <input type="hidden" id="voltarpaginainicial" name="voltarpaginainicial" value="voltarpaginainicial">
                         <input type="submit" value = "Voltar" class="btn btn-primary" 
-                               style=" margin-left: 20px; float: left;">            
+                               style="margin-left: 20px; clear: both">            
                     </form> 
 
                 </div>

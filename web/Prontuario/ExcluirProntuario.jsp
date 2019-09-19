@@ -69,38 +69,53 @@
                                         <% }
                                             }%>
                                 </table>
-                                <br><br>      
+
+                            </div>
+                            <input type="hidden" readonly name="codigoprontuario"> 
+                            <input type="hidden" readonly name="codigopaciente"> 
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="inputnomepaciente">Nome do Paciente</label>
+                                    <input type="nomepaciente" readonly class="form-control" id="inputnomepaciente" name="nomepaciente">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="inputmedicamentos">Medicamentos:</label>
+                                    <textarea readonly class="form-control" name="medicamentos"></textarea>
+                                </div>
+                            </div> 
+
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="inputexames">Exames:</label>
+                                    <textarea readonly class="form-control" name="exames"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="inputprocedimento">Procedimentos:</label>
+                                    <textarea readonly class="form-control" name="procedimento"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="inputregistro">Registro de Observações:</label>
+                                    <textarea readonly class="form-control" name="registro"></textarea>
+                                </div>
                             </div>
 
-                            <fieldset>
-                                Nome: <br>   
-                                <input type="text" readonly name="nomepaciente" size="50" required ><br><br> 
-                                <input type="hidden" readonly name="codigoprontuario"> 
-                                <input type="hidden" readonly name="codigopaciente"> 
-                                Medicamentos:<br>
-                                <textarea name="medicamentos" readonly></textarea><br><br>
-                                Exames:<br>
-                                <textarea name="exames" readonly></textarea><br><br>
-                                Procedimentos:<br>
-                                <textarea name="procedimento"readonly ></textarea><br><br>
-                                Registro de Observações:<br>
-                                <textarea name="registro" readonly></textarea><br><br>
+                            <input type="hidden" id="excluir" name="excluir" value="excluir">
+                            <button type="submit" class="btn btn-primary" style="float: left" >Excluir Prontuario</button>
 
-                                <input type="hidden" id="excluir" name="excluir" value="excluir">
-                                <button type="submit" class="btn btn-primary" style="float: left" >Excluir Prontuario</button>
-
-                                <br><br>    
-
-                            </fieldset>
-
-                        </div><br><br> 
+                        </div>
 
                     </form>
                     <form action="controledenavegacao" method="post">
 
                         <input type="hidden" id="voltarpaginainicial" name="voltarpaginainicial" value="voltarpaginainicial">
                         <input type="submit" value = "Voltar" class="btn btn-primary" 
-                               style=" margin-left: 20px; float: left;">            
+                               style=" margin-left: 20px; clear: both">            
                     </form> 
 
                 </div>

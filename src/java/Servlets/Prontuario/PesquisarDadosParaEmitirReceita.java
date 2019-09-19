@@ -25,6 +25,8 @@ public class PesquisarDadosParaEmitirReceita extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
+        Object usuarioValidado = request.getSession().getAttribute("perfil");
+
         pacienteVO.setCpfPaciente(request.getParameter("cpfpaciente"));
         PacienteController pacientecontroller = new PacienteController();
         pacienteVO = pacientecontroller.pesquisarPacienteVOPorCpf(pacienteVO.getCpfPaciente());
@@ -33,29 +35,24 @@ public class PesquisarDadosParaEmitirReceita extends HttpServlet {
         int codigoPaciente = 0;
         if (pacienteVO != null) {
 
+            resultadoDaPesquisaDeConsultas = true;
             codigoPaciente = pacienteVO.getCodigoPaciente();
             ConsultaVO consultaVO = new ConsultaVO();
             consultaVO.setPacienteVO(pacienteVO);
             ConsultaController consultaController = new ConsultaController();
             listaConsultas = consultaController.listarConsultasVOPorID(pacienteVO.getCodigoPaciente());
 
-            int codigoConsulta = 0;
-
-            List<ReceitaVO> listaReceitas = new ArrayList<ReceitaVO>();
-            ArrayList<ConsultaVO> listaConsultasVO = (ArrayList<ConsultaVO>) listaConsultas;
-
-            ReceitaController receitaController = new ReceitaController();
-            for (int i = 0; i < listaConsultasVO.size(); i++) {
-
-                codigoConsulta = listaConsultasVO.get(i).getCodigoConsulta();
-                listaReceitas = receitaController.buscarReceitasPorConsulta(codigoConsulta);
-            }
-            request.setAttribute("listareceitas", listaReceitas);
+            request.setAttribute("listaconsultas", listaConsultas);
+            request.setAttribute("codigoPaciente", codigoPaciente);
+            request.getRequestDispatcher("Prontuario/EmitirReceita.jsp").forward(request, response);
+        }
+        request.setAttribute("resultadotransacao", resultadoDaPesquisaDeConsultas);
+        if (usuarioValidado.equals("admin")) {
+            request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
+        } else if (usuarioValidado.equals("medico")) {
+            request.getRequestDispatcher("WEB-INF/PaginaInicialMedico.jsp").forward(request, response);
         }
 
-        request.setAttribute("listaconsultas", listaConsultas);
-        request.setAttribute("codigoPaciente", codigoPaciente);
-        request.getRequestDispatcher("Prontuario/EmitirReceita.jsp").forward(request, response);
     }
 
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -24,6 +24,7 @@ public class PesquisarDadosParaCadastrarProntuario extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
+        Object usuarioValidado = request.getSession().getAttribute("perfil");
         pacienteVO.setCpfPaciente(request.getParameter("cpfpaciente"));
         PacienteController pacientecontroller = new PacienteController();
         Boolean resultadoDaPesquisaPorCpf = false;
@@ -59,13 +60,17 @@ public class PesquisarDadosParaCadastrarProntuario extends HttpServlet {
             request.setAttribute("pacientevoretornado", resultadoDaPesquisaPorCpf);
             request.setAttribute("pacientevoretornado", resultadoDaPesquisaDeProntuarios);
             request.setAttribute("listaProntuarios", listaProntuarios);
-        } else {
-            System.out.println("O consulta não foi encontrada!");
-            request.setAttribute("pacientevoretornado", resultadoDaPesquisaDeProntuarios);
-            request.setAttribute("consultavoretornada", resultadoDaPesquisaDeConsultas);
-        }
+            request.getRequestDispatcher("Prontuario/CadastrarProntuario.jsp").forward(request, response);
 
-        request.getRequestDispatcher("Prontuario/CadastrarProntuario.jsp").forward(request, response);
+        } else{
+            request.setAttribute("resultadotransacao", resultadoDaPesquisaPorCpf);
+            if (usuarioValidado.equals("admin")) {
+                request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
+            } else if (usuarioValidado.equals("medico")) {
+                request.getRequestDispatcher("WEB-INF/PaginaInicialMedico.jsp").forward(request, response);
+            }
+
+        }
 
     }
 

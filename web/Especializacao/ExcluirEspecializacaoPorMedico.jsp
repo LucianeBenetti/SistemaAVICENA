@@ -21,7 +21,6 @@
         </style>
     </head>
     <body>
-
         <div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0; 
              background-color: #7986cb; padding: 20px; color: white">
             <h1>Sistema Avicena</h1>
@@ -44,14 +43,12 @@
 
                             if (!EspecializacaoVORetornada) {%>                     
                            <input type="text" size="100" style="margin-left: 5px;" value="<% out.println("Especialização não encontrada!"
-                                       + " Tente novamente. Se a Especialização não for cadastrada, por gentileza, cadastrá-la!!");%>">               
+                                + " Tente novamente. Se a Especialização não for cadastrada, por gentileza, cadastrá-la!!");%>">               
                     <%} else {%>
+                    <div class="container-fluid">
+                        <form name="atualizarespecializacao" action="crudespecializacao" method="post">
 
-                    <form name="atualizarespecializacao" action="crudespecializacao" method="post">
-
-                        <div class="container-fluid">
-
-                            <div style="overflow-x:auto;">
+                            <div>
                                 <table class="table table-borderless table-sm table-hover table-primary table-striped">
                                     <thead>
                                         <tr class="table-success" >
@@ -99,29 +96,33 @@
                                     </div>
                                 </div>
 
-                                <input type="hidden"  name="codigomedico" size="4" readonly>
-                                <input type="hidden" name="codigoespecialidade" size="4" readonly>
-                                <input type="hidden" name="codigoespecializacao" size="4" readonly>
-                                <input type="hidden" id="excluir" name="excluir" value="excluir">
-                                <button type="submit" class="btn btn-primary" style="float: left" >Excluir Especialização</button>
+                                <input type="hidden"  name="codigomedico"  readonly>
+                                <input type="hidden" name="codigoespecialidade" readonly>
+                                <input type="hidden" name="codigoespecializacao" readonly>
+
                             </div>
 
-                        </div>
-                        <%}
-                            }%>  
-                    </form><br><br>
 
+                            <%}
+                                }%>  
+                            <div class="form-row">
+                                <input type="hidden" id="excluir" name="excluir" value="excluir">
+                                <button type="submit" class="btn btn-primary" style=" float: left; margin-left: 1.5%" >Excluir Especialização</button>
+                            </div>
+                        </form>
 
-                    <form action="controledenavegacao" method="post">
+                        <form action="controledenavegacao" method="post">
+                            <input type="hidden" id="voltarpaginainicial" name="voltarpaginainicial" value="voltarpaginainicial">
+                            <input type="submit" value = "Voltar" class="btn btn-primary" 
+                                   style=" margin-left: 20px; clear: both">            
+                        </form>   
 
-                        <input type="hidden" id="voltarpaginainicial" name="voltarpaginainicial" value="voltarpaginainicial">
-                        <input type="submit" value = "Voltar" class="btn btn-primary" 
-                               style=" margin-left: 20px; float: left;">            
-                    </form> 
-
+                    </div>
                 </div>
+
             </div>
         </div>
+
         <div class="jumbotron jumbotron-fluid text-center" style="clear: both; margin-bottom:0; margin-top: 25%; 
              background-color: #7986cb;padding: 4px; color: white; font-size: small; ">
             &copy; Desenvolvido por Luciane Benetti e Marco Sena.
@@ -129,4 +130,3 @@
 
     </body>
 </html>
-

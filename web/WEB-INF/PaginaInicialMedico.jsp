@@ -94,8 +94,8 @@
                     Prontuário
                 </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="Prontuario/CadastrarProntuario.jsp">Cadastrar/Atualizar Prontuário</a>
-                    <a class="dropdown-item" href="Prontuario/EmitirReceita.jsp">Emitir Receita</a>
+                    <a class="dropdown-item" href="Prontuario/PesquisarPacienteParaCadastrarProntuario.jsp">Cadastrar/Atualizar Prontuário</a>
+                    <a class="dropdown-item" href="Prontuario/PesquisarPacienteParaEmitirReceita.jsp">Emitir Receita</a>
                     <a class="dropdown-item" href="listarprontuarios">Listar Todos Prontuários</a>
 
                 </div>

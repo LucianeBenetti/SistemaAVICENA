@@ -21,6 +21,7 @@ public class CadastrarProntuario extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        Object usuarioValidado = request.getSession().getAttribute("perfil");
         PacienteVO pacienteVO = new PacienteVO();
         String nomepaciente = request.getParameter("nomepaciente");
         int codigoPaciente = new Integer(request.getParameter("codigopaciente"));
@@ -53,8 +54,11 @@ public class CadastrarProntuario extends HttpServlet {
         request.setAttribute("procedimento", prontuarioVO.getProcedimento());
         request.setAttribute("registro", prontuarioVO.getRegistro());
         resultadoDoCadastro = true;
-        request.setAttribute("prontuariocadastrado", resultadoDoCadastro);
-        request.getRequestDispatcher("Prontuario/MostrarProntuarioCadastrado.jsp").forward(request, response);
+        request.setAttribute("resultadotransacao", resultadoDoCadastro);
+        if (usuarioValidado.equals("admin")) {
+            request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
+        } else if (usuarioValidado.equals("medico")) {
+            request.getRequestDispatcher("WEB-INF/PaginaInicialMedico.jsp").forward(request, response);
+        }
     }
-
 }

@@ -50,7 +50,7 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label for="inputconvenio">Convênio:</label>
-                    <input type="convenio" class="form-control" id="inputconvenio" name="nomeconvenio" value="<%= request.getAttribute("nomeconvenio")%>">">
+                    <input type="convenio" class="form-control" id="inputconvenio" name="nomeconvenio" value="<%= request.getAttribute("nomeconvenio")%>">
                 </div>
             </div>
 
@@ -82,7 +82,7 @@
             <label for="inputatencaoespecial">Atenção Especial:</label>
             <textarea disabled class="form-control" id="inputatencaoespecial" name="atencaoespecial" value="<%= request.getAttribute("atencaoespecial")%>"></textarea>
         </div>
-    </div>
+
         <% }}%> 
         <form action="controledenavegacao" method="POST">
             <input type="hidden" id="voltarpaginainicial" name="voltarpaginainicial" value="voltarpaginainicial">

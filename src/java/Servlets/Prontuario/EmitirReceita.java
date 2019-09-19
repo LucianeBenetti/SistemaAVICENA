@@ -29,6 +29,8 @@ public class EmitirReceita extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        Object usuarioValidado = request.getSession().getAttribute("perfil");
+
         PacienteVO pacienteVO = new PacienteVO();
         ConsultaVO consultaVO = new ConsultaVO();
         String nomePaciente = request.getParameter("nomepaciente");
@@ -62,12 +64,12 @@ public class EmitirReceita extends HttpServlet {
 
             Image figura = Image.getInstance("D:\\SENAC\\coracao.png");
             document.add(figura);
-            Paragraph pTitulo = new Paragraph(new Phrase(20F , "AVICENA - Medicina Humanizada", FontFactory.getFont(FontFactory.HELVETICA, 18F)));
+            Paragraph pTitulo = new Paragraph(new Phrase(20F, "AVICENA - Medicina Humanizada", FontFactory.getFont(FontFactory.HELVETICA, 18F)));
             pTitulo.setAlignment(Element.ALIGN_CENTER);
             document.add(pTitulo);
             Paragraph pSubTitulo = new Paragraph(new Phrase("Receita Médica", FontFactory.getFont(FontFactory.HELVETICA, 16F)));
             pSubTitulo.setAlignment(Element.ALIGN_CENTER);
-            document.add(pSubTitulo );
+            document.add(pSubTitulo);
             document.add(new Paragraph("\n\n"));
             document.add(new Paragraph("Paciente: " + nomePaciente + "\n\n"));
             document.add(new Paragraph("Solicitação de Medicamentos: "));
@@ -76,15 +78,15 @@ public class EmitirReceita extends HttpServlet {
             document.add(new Paragraph(exames + "\n\n"));
             document.add(new Paragraph("Observações: "));
             document.add(new Paragraph(registros + "\n\n"));
-            
+
         } catch (DocumentException de) {
             System.err.println(de.getMessage());
         } catch (IOException ioe) {
             System.err.println(ioe.getMessage());
         }
         document.close();
-        
-        Runtime.getRuntime().exec (new String[]{"cmd.exe", "/c", "start", "D://SENAC//Receita.pdf"}); 
+
+        Runtime.getRuntime().exec(new String[]{"cmd.exe", "/c", "start", "D://SENAC//Receita.pdf"});
 
         request.setAttribute("codigoPaciente", codigoPaciente);
         request.setAttribute("nomepaciente", nomePaciente);
@@ -92,8 +94,12 @@ public class EmitirReceita extends HttpServlet {
         request.setAttribute("exames", receitaVO.getExame());
         request.setAttribute("registro", receitaVO.getObservacao());
         resultadoDoCadastro = true;
-        request.setAttribute("receitacadastrada", resultadoDoCadastro);
-        request.getRequestDispatcher("Prontuario/MostrarReceitaCadastrada.jsp").forward(request, response);
+        request.setAttribute("resultadotransacao", resultadoDoCadastro);
+        if (usuarioValidado.equals("admin")) {
+            request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
+        } else if (usuarioValidado.equals("medico")) {
+            request.getRequestDispatcher("WEB-INF/PaginaInicialMedico.jsp").forward(request, response);
+        }
     }
 
 }
