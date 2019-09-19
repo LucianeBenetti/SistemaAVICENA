@@ -21,6 +21,8 @@ public class PesquisarConsultaPorConvenio extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
+        Object usuarioValidado = request.getSession().getAttribute("perfil");
+
         convenioVO.setCnpjConvenio(request.getParameter("convenioselecionado"));
         ConvenioController conveniocontroller = new ConvenioController();
         Boolean resultadoDaPesquisaPorCpf = false;
@@ -30,7 +32,6 @@ public class PesquisarConsultaPorConvenio extends HttpServlet {
 
             int codigoConvenio = convenioVO.getCodigoConvenio();
             List<ConsultaVO> listaConsultas = null;
-            Boolean resultadoDaPesquisaDeConsultas = false;
             ConsultaController consultaController = new ConsultaController();
             listaConsultas = consultaController.listarConsultasVOPorConvenio(codigoConvenio);
             if (listaConsultas.size() > 0) {
@@ -38,12 +39,18 @@ public class PesquisarConsultaPorConvenio extends HttpServlet {
                 HttpSession session = request.getSession();
                 session.setAttribute("listaconsultas", listaConsultas);
                 request.setAttribute("listaconsultas", listaConsultas);
+                request.getRequestDispatcher("Relatorios/RelatorioDeConsultaPorConvenio.jsp").forward(request, response);
 
             } else {
-                System.out.println("O consulta não foi encontrada!");
-                request.setAttribute("consultavoretornada", resultadoDaPesquisaDeConsultas);
+                request.setAttribute("resultadotransacao", resultadoDaPesquisaPorCpf);
+                if (usuarioValidado.equals("admin")) {
+                    request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
+                } else if (usuarioValidado.equals("atendente")) {
+                    request.getRequestDispatcher("WEB-INF/PaginaInicialAtendente.jsp").forward(request, response);
+                } else if (usuarioValidado.equals("medico")) {
+                    request.getRequestDispatcher("WEB-INF/PaginaInicialMedico.jsp").forward(request, response);
+                }
             }
-            request.getRequestDispatcher("Relatorios/RelatorioDeConsultaPorConvenio.jsp").forward(request, response);
         }
 
     }

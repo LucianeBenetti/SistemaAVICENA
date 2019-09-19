@@ -23,17 +23,18 @@ public class PesquisarConsultaPorMedico extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        Object usuarioValidado = request.getSession().getAttribute("perfil");
 
         MedicoVO medicoVO = new MedicoVO();
         List<MedicoVO> listaMedicos = null;
         medicoVO.setNomeMedico(request.getParameter("medicoselecionado"));
         MedicoController medicoController = new MedicoController();
         listaMedicos = medicoController.listarTodosOsMedicosVO();
-
+        Boolean resultadoDaPesquisaDeConsultas = false;
         for (int i = 0; i < listaMedicos.size(); i++) {
             if (medicoVO.getNomeMedico().equals(listaMedicos.get(i).getNomeMedico())) {
-                medicoVO.setCodigoMedico(listaMedicos.get(i).getCodigoMedico());            
-         }
+                medicoVO.setCodigoMedico(listaMedicos.get(i).getCodigoMedico());
+            }
 
         }
         if (medicoVO != null) {
@@ -44,7 +45,7 @@ public class PesquisarConsultaPorMedico extends HttpServlet {
             EspecializacaoController especializacaoController = new EspecializacaoController();
             listaEspecializacoes = especializacaoController.pesquisarEspecializacaoPorIdDoMedico(codigoMedico);
             List<ConsultaVO> listaConsultas = null;
-            Boolean resultadoDaPesquisaDeConsultas = false;
+           
             ConsultaController consultaController = new ConsultaController();
 
             for (int i = 0; i < listaEspecializacoes.size(); i++) {
@@ -59,12 +60,18 @@ public class PesquisarConsultaPorMedico extends HttpServlet {
                 session.setAttribute("listadeconsultas", listaConsultas);
                 session.setAttribute("medicovo", medicoVO);
                 request.setAttribute("listadeconsultas", listaConsultas);
+                request.getRequestDispatcher("Relatorios/RelatorioDeConsultaPorMedico.jsp").forward(request, response);
 
             } else {
-                System.out.println("O consulta não foi encontrada!");
-                request.setAttribute("consultavoretornada", resultadoDaPesquisaDeConsultas);
+                request.setAttribute("resultadotransacao", resultadoDaPesquisaDeConsultas);
+                if (usuarioValidado.equals("admin")) {
+                    request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
+                } else if (usuarioValidado.equals("atendente")) {
+                    request.getRequestDispatcher("WEB-INF/PaginaInicialAtendente.jsp").forward(request, response);
+                } else if (usuarioValidado.equals("medico")) {
+                    request.getRequestDispatcher("WEB-INF/PaginaInicialMedico.jsp").forward(request, response);
+                }
             }
-            request.getRequestDispatcher("Relatorios/RelatorioDeConsultaPorMedico.jsp").forward(request, response);
         }
     }
 

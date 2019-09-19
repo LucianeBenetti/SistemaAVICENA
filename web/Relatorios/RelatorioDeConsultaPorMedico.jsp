@@ -108,10 +108,7 @@
                     <br><br>
                     <input type="hidden" id="gerarrelatorio" name="gerarrelatorio" value="gerarrelatorio">
                     <input type="submit" value="Gerar Relatório">
-                    <%  } else { %>
-                    <input class="generico"  type="text" size="150" 
-                           value="<% out.println("Consulta, com este médico selecionado, não encotrada na base de dados. Por gentileza, tente novamente!");%>">
-                    <% }%>    
+                    <%  }%>    
 
                     <br><br>         
                 </div>
