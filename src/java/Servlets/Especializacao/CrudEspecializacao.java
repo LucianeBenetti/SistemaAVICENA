@@ -17,13 +17,11 @@ import model.vo.Medico.MedicoVO;
 
 public class CrudEspecializacao extends HttpServlet {
 
-    EspecializacaoVO especializacaoVO;
-    EspecializacaoController especializacaoController;
-
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
+        EspecializacaoController especializacaoController;
         Object usuarioValidado = request.getSession().getAttribute("perfil");
 
         String var1 = request.getParameter("cadastrar");

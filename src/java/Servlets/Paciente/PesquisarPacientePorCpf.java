@@ -12,13 +12,11 @@ import model.vo.Paciente.PacienteVO;
 
 public class PesquisarPacientePorCpf extends HttpServlet {
 
-    PacienteVO pacienteVO = new PacienteVO();
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-              Object usuarioValidado = request.getSession().getAttribute("perfil");
+        PacienteVO pacienteVO = new PacienteVO();
+        Object usuarioValidado = request.getSession().getAttribute("perfil");
 
         pacienteVO.setCpfPaciente(request.getParameter("cpfpaciente"));
         PacienteController pacientecontroller = new PacienteController();

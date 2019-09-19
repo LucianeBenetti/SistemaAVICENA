@@ -12,12 +12,11 @@ import model.vo.Convenio.ConvenioVO;
 
 public class CrudConvenio extends HttpServlet {
 
-    ConvenioVO convenioVO;
-    ConvenioController convenioController;
-
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+
+        ConvenioController convenioController;
 
         Object usuarioValidado = request.getSession().getAttribute("perfil");
 

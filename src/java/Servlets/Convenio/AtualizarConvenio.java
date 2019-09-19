@@ -11,12 +11,11 @@ import model.vo.Convenio.ConvenioVO;
 
 public class AtualizarConvenio extends HttpServlet {
 
-    ConvenioVO convenioVO = new ConvenioVO();
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Object usuarioValidado = request.getSession().getAttribute("perfil");
+        ConvenioVO convenioVO = new ConvenioVO();
 
         convenioVO.setNomeConvenio(request.getParameter("nomeconvenio"));
         convenioVO.setCnpjConvenio(request.getParameter("cnpjconvenio"));

@@ -12,13 +12,11 @@ import model.vo.Medico.MedicoVO;
 
 public class CrudMedico extends HttpServlet {
 
-    MedicoVO medicoVO;
-    MedicoController medicoController;
-
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
+        MedicoController medicoController;
         Object usuarioValidado = request.getSession().getAttribute("perfil");
 
         String var1 = request.getParameter("cadastrar");

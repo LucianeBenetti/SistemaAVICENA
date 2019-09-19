@@ -17,13 +17,12 @@ import model.vo.Prontuario.ProntuarioVO;
 
 public class PesquisarDadosParaCadastrarProntuario extends HttpServlet {
 
-    PacienteVO pacienteVO = new PacienteVO();
-    ProntuarioVO prontuarioVO = new ProntuarioVO();
-
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
+        PacienteVO pacienteVO = new PacienteVO();
+        ProntuarioVO prontuarioVO = new ProntuarioVO();
         Object usuarioValidado = request.getSession().getAttribute("perfil");
         pacienteVO.setCpfPaciente(request.getParameter("cpfpaciente"));
         PacienteController pacientecontroller = new PacienteController();
@@ -62,7 +61,7 @@ public class PesquisarDadosParaCadastrarProntuario extends HttpServlet {
             request.setAttribute("listaProntuarios", listaProntuarios);
             request.getRequestDispatcher("Prontuario/CadastrarProntuario.jsp").forward(request, response);
 
-        } else{
+        } else {
             request.setAttribute("resultadotransacao", resultadoDaPesquisaPorCpf);
             if (usuarioValidado.equals("admin")) {
                 request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);

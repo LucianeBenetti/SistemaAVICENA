@@ -17,11 +17,12 @@ import model.vo.Paciente.PacienteVO;
 
 public class PesquisarConsultaParaExcluir extends HttpServlet {
 
-    PacienteVO pacienteVO = new PacienteVO();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+
+            PacienteVO pacienteVO = new PacienteVO();
 
         Object usuarioValidado = request.getSession().getAttribute("perfil");
 

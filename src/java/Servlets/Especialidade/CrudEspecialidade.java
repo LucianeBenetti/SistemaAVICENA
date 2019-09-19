@@ -12,12 +12,11 @@ import model.vo.Especialidade.EspecialidadeVO;
 
 public class CrudEspecialidade extends HttpServlet {
 
-    EspecialidadeVO especialidadeVO;
-    EspecialidadeController especialidadeController;
-
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+
+        EspecialidadeController especialidadeController;
 
         Object usuarioValidado = request.getSession().getAttribute("perfil");
 

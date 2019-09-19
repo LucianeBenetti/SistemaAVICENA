@@ -19,12 +19,11 @@ import model.vo.Prontuario.ReceitaVO;
 
 public class PesquisarDadosParaEmitirReceita extends HttpServlet {
 
-    PacienteVO pacienteVO = new PacienteVO();
-
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
+        PacienteVO pacienteVO = new PacienteVO();
         Object usuarioValidado = request.getSession().getAttribute("perfil");
 
         pacienteVO.setCpfPaciente(request.getParameter("cpfpaciente"));

@@ -1,4 +1,3 @@
-
 package Servlets.Convenio;
 
 import controller.Convenio.ConvenioController;
@@ -13,12 +12,12 @@ import model.vo.Convenio.ConvenioVO;
 
 public class PesquisarConvenioPorCnpj extends HttpServlet {
 
-     ConvenioVO convenioVO = new ConvenioVO();
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        Object usuarioValidado = request.getSession().getAttribute("perfil");
 
+        ConvenioVO convenioVO = new ConvenioVO();
         convenioVO.setCnpjConvenio(request.getParameter("cnpjconvenio"));
         ConvenioController conveniocontroller = new ConvenioController();
         Boolean resultadoDaPesquisaPorCpf = false;
@@ -30,19 +29,22 @@ public class PesquisarConvenioPorCnpj extends HttpServlet {
             request.setAttribute("nomeconvenio", convenioVO.getNomeConvenio());
             request.setAttribute("cnpjconvenio", convenioVO.getCnpjConvenio());
             request.setAttribute("valor", convenioVO.getValor());
-            
+
             resultadoDaPesquisaPorCpf = true;
             HttpSession session = request.getSession();
             session.setAttribute("codigoconvenio", convenioVO.getCodigoConvenio());
-            
+
             request.setAttribute("conveniovoretornado", resultadoDaPesquisaPorCpf);
             request.getRequestDispatcher("Convenio/AtualizarConvenio.jsp").forward(request, response);
 
         } else {
-            System.out.println("O convenio não foi encontrado!");
-            request.setAttribute("conveniovoretornado", resultadoDaPesquisaPorCpf);
-            request.getRequestDispatcher("Convenio/AtualizarConvenio.jsp").forward(request, response);
-        }
+            request.setAttribute("resultadotransacao", resultadoDaPesquisaPorCpf);
+            if (usuarioValidado.equals("admin")) {
+                request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
+            } else if (usuarioValidado.equals("atendente")) {
+                request.getRequestDispatcher("WEB-INF/PaginaInicialAtendente.jsp").forward(request, response);
+            }
 
+        }
     }
 }

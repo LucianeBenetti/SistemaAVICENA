@@ -12,13 +12,11 @@ import model.vo.Especialidade.EspecialidadeVO;
 
 public class PesquisarParaExcluir extends HttpServlet {
 
-    EspecialidadeVO especialidadeVO = new EspecialidadeVO();
-    List<EspecialidadeVO> especialidadesBuscadas = null;
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        EspecialidadeVO especialidadeVO = new EspecialidadeVO();
         Object usuarioValidado = request.getSession().getAttribute("perfil");
 
         especialidadeVO.setNomeEspecialidade(request.getParameter("nomeespecialidade"));

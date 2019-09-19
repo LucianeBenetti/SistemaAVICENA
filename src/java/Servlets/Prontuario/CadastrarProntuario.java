@@ -13,14 +13,13 @@ import model.vo.Prontuario.ProntuarioVO;
 
 public class CadastrarProntuario extends HttpServlet {
 
-    ProntuarioVO prontuarioVO;
-    ProntuarioController prontuarioController;
-    List<ProntuarioVO> listaProntuarios = null;
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
+        ProntuarioVO prontuarioVO;
+        ProntuarioController prontuarioController;
+        List<ProntuarioVO> listaProntuarios = null;
         Object usuarioValidado = request.getSession().getAttribute("perfil");
         PacienteVO pacienteVO = new PacienteVO();
         String nomepaciente = request.getParameter("nomepaciente");

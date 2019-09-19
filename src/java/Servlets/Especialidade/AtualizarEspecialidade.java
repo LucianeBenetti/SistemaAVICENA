@@ -11,12 +11,11 @@ import model.vo.Especialidade.EspecialidadeVO;
 
 public class AtualizarEspecialidade extends HttpServlet {
 
-    EspecialidadeVO especialidadeVO = new EspecialidadeVO();
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        EspecialidadeVO especialidadeVO = new EspecialidadeVO();
         especialidadeVO.setCodigoEspecialidade(Integer.parseInt(request.getParameter("codigoespecialidade")));
         especialidadeVO.setNomeEspecialidade(request.getParameter("nomeespecialidade"));
         especialidadeVO.setInstituicao(request.getParameter("instituicaoespecialidade"));

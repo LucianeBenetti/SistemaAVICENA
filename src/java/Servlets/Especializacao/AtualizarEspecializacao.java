@@ -13,14 +13,13 @@ import model.vo.Medico.MedicoVO;
 
 public class AtualizarEspecializacao extends HttpServlet {
 
-    EspecializacaoVO especializacaoVO = new EspecializacaoVO();
-    MedicoVO medicoVO = new MedicoVO();
-    EspecialidadeVO especialidadeVO = new EspecialidadeVO();
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        EspecializacaoVO especializacaoVO = new EspecializacaoVO();
+        MedicoVO medicoVO = new MedicoVO();
+        EspecialidadeVO especialidadeVO = new EspecialidadeVO();
         int codigoMedico = new Integer(request.getParameter("codigomedico"));
         int codigoEspecialidade = new Integer(request.getParameter("codigoespecialidade"));
         int codigoEspecialização = new Integer(request.getParameter("codigoespecializacao"));

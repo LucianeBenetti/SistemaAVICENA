@@ -9,19 +9,13 @@ import controller.Paciente.PacienteController;
 import java.util.ArrayList;
 import model.vo.Paciente.PacienteVO;
 
-/**
- *
- * @author 80119050
- */
 public class CrudPaciente extends HttpServlet {
-
-    PacienteVO pacienteVO;
-    PacienteController pacienteController;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
+        PacienteController pacienteController;
         Object usuarioValidado = request.getSession().getAttribute("perfil");
         String var1 = request.getParameter("cadastrarpaciente");
         String var2 = request.getParameter("excluir");

@@ -95,18 +95,19 @@
                                         <input type="text" class="form-control"  readonly id="inputnomeespecialidade" name="nomeespecialidade">
                                     </div>
 
-                                </div>              
-                                <div class="form-group col-md-4">
-                                    <label for="inputdataconsulta">Data da Consulta:</label>
-                                    <input type="text" class="form-control" readonly id="inputdataconsulta" name="dataconsulta">
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label for="inputhorarioconsulta">Horário da Consulta:</label>
-                                    <input type="text" class="form-control" readonly id="inputhorarioconsulta" name="horarioconsulta">
+                                </div>    
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputdataconsulta">Data da Consulta:</label>
+                                        <input type="text" class="form-control" readonly id="inputdataconsulta" name="dataconsulta">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputhorarioconsulta">Horário da Consulta:</label>
+                                        <input type="text" class="form-control" readonly id="inputhorarioconsulta" name="horarioconsulta">
+                                    </div>
                                 </div>
 
-
-                                <div class="form-group col-md-3">
+                                <div class="form-group col-md-12">
                                     <label for="inputatencaoespecial">Atenção Especial:</label>
                                     <textarea disabled class="form-control" readonly id="inputatencaoespecial" name="atencaoespecial"></textarea>
                                 </div>

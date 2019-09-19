@@ -11,12 +11,11 @@ import model.vo.Medico.MedicoVO;
 
 public class PesquisarMedicoPorCpf extends HttpServlet {
 
-    MedicoVO medicoVO = new MedicoVO();
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        MedicoVO medicoVO = new MedicoVO();
         medicoVO.setCpfMedico(request.getParameter("cpfmedico"));
         MedicoController medicocontroller = new MedicoController();
         Boolean resultadoDaPesquisaPorCpf = false;

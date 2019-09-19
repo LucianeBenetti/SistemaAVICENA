@@ -11,12 +11,10 @@ import model.vo.Medico.MedicoVO;
 
 public class AtualizarMedico extends HttpServlet {
 
-    MedicoVO medicoVO = new MedicoVO();
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        MedicoVO medicoVO = new MedicoVO();
         medicoVO.setNomeMedico(request.getParameter("nomemedico"));
         medicoVO.setCrm(request.getParameter("crm"));
         medicoVO.setCelMensagemMedico(request.getParameter("celularwhats"));

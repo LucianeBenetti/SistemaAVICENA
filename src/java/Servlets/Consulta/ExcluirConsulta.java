@@ -26,13 +26,13 @@ import model.vo.Paciente.PacienteVO;
 
 public class ExcluirConsulta extends HttpServlet {
 
-    ConsultaVO consultaVO;
-    ConsultaController consultaController;
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+
+        ConsultaVO consultaVO;
+        ConsultaController consultaController;
 
         Object usuarioValidado = request.getSession().getAttribute("perfil");
         String var1 = request.getParameter("excluirconsulta");

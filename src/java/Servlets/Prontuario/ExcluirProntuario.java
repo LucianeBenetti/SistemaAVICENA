@@ -11,13 +11,13 @@ import model.vo.Prontuario.ProntuarioVO;
 
 public class ExcluirProntuario extends HttpServlet {
 
-    ProntuarioVO prontuarioVO;
-    ProntuarioController prontuarioController;
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+
+        ProntuarioVO prontuarioVO;
+        ProntuarioController prontuarioController;
 
         String var1 = request.getParameter("excluirprontuario");
 

@@ -11,12 +11,10 @@ import model.vo.Paciente.PacienteVO;
 
 public class AtualizarPaciente extends HttpServlet {
 
-    PacienteVO pacienteVO = new PacienteVO();
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        PacienteVO pacienteVO = new PacienteVO();
         Object usuarioValidado = request.getSession().getAttribute("perfil");
 
         pacienteVO.setNomePaciente(request.getParameter("nomepaciente"));

@@ -15,12 +15,10 @@ import model.vo.Convenio.ConvenioVO;
 
 public class PesquisarConsultaPorConvenio extends HttpServlet {
 
-    ConvenioVO convenioVO = new ConvenioVO();
-
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
+        ConvenioVO convenioVO = new ConvenioVO();
         Object usuarioValidado = request.getSession().getAttribute("perfil");
 
         convenioVO.setCnpjConvenio(request.getParameter("convenioselecionado"));

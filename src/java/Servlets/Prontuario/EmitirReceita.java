@@ -21,14 +21,13 @@ import model.vo.Prontuario.ReceitaVO;
 
 public class EmitirReceita extends HttpServlet {
 
-    ReceitaVO receitaVO;
-    ReceitaController receitaController;
-    java.util.List<ReceitaVO> listaReceitas = null;
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        ReceitaVO receitaVO;
+        ReceitaController receitaController;
+        java.util.List<ReceitaVO> listaReceitas = null;
         Object usuarioValidado = request.getSession().getAttribute("perfil");
 
         PacienteVO pacienteVO = new PacienteVO();

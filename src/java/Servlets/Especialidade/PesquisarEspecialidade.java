@@ -12,12 +12,11 @@ import model.vo.Especialidade.EspecialidadeVO;
 
 public class PesquisarEspecialidade extends HttpServlet {
 
-    EspecialidadeVO especialidadeVO = new EspecialidadeVO();
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
+        EspecialidadeVO especialidadeVO = new EspecialidadeVO();
         especialidadeVO.setNomeEspecialidade(request.getParameter("nomeespecialidade"));
         EspecialidadeController especialidadecontroller = new EspecialidadeController();
         List<EspecialidadeVO> especialidadesBuscadas = especialidadecontroller.exibirEspecialidadePorNome(especialidadeVO.getNomeEspecialidade());
@@ -25,8 +24,8 @@ public class PesquisarEspecialidade extends HttpServlet {
 
         System.out.println("Servlets.Especialidade: " + especialidadesBuscadas);
 
-        if (especialidadesBuscadas.size() >0) {
-            
+        if (especialidadesBuscadas.size() > 0) {
+
             resultadoDaPesquisaPorNome = true;
             request.setAttribute("especialidadesBuscadas", especialidadesBuscadas);
             request.setAttribute("especialidadevoretornada", resultadoDaPesquisaPorNome);

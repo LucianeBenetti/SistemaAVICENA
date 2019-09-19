@@ -35,13 +35,12 @@ import model.vo.Paciente.PacienteVO;
 
 public class AtualizarConsulta extends HttpServlet {
 
-    ConsultaVO consultaVO;
-    ConsultaController consultaController;
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        ConsultaVO consultaVO;
+        ConsultaController consultaController;
         Object usuarioValidado = request.getSession().getAttribute("perfil");
         EspecializacaoVO especializacaoVO = new EspecializacaoVO();
         ConvenioVO convenioVO = new ConvenioVO();
@@ -60,7 +59,7 @@ public class AtualizarConsulta extends HttpServlet {
         convenioVO.setCodigoConvenio(codigoConvenio);
         pacienteVO.setCodigoPaciente(codigoPaciente);
         String atencaoEspecial = request.getParameter("atencaoespecial");
-        
+
         String dataConsulta = request.getParameter("dataconsulta");
         DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         Calendar c = Calendar.getInstance();

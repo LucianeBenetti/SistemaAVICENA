@@ -42,12 +42,12 @@ import javax.mail.internet.MimeMultipart;
 
 public class CadastrarConsulta extends HttpServlet {
 
-    ConsultaVO consultaVO;
-    ConsultaController consultaController;
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        ConsultaVO consultaVO;
+        ConsultaController consultaController;
 
         EspecializacaoVO especializacaoVO = new EspecializacaoVO();
         ConvenioVO convenioVO = new ConvenioVO();

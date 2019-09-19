@@ -1,4 +1,3 @@
-
 package Servlets.Consulta;
 
 import controller.Consulta.ConsultaController;
@@ -15,12 +14,10 @@ import model.vo.Paciente.PacienteVO;
 
 public class PesquisarConsultaParaAtualizar extends HttpServlet {
 
-   PacienteVO pacienteVO = new PacienteVO();
-
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
+        PacienteVO pacienteVO = new PacienteVO();
         pacienteVO.setCpfPaciente(request.getParameter("cpfpaciente"));
         PacienteController pacientecontroller = new PacienteController();
         Boolean resultadoDaPesquisaPorCpf = false;

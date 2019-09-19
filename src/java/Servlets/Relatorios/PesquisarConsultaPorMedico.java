@@ -18,12 +18,11 @@ import model.vo.Medico.MedicoVO;
 
 public class PesquisarConsultaPorMedico extends HttpServlet {
 
-    MedicoVO medicoVO = new MedicoVO();
-    ConsultaVO consultaVO = new ConsultaVO();
-
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Object usuarioValidado = request.getSession().getAttribute("perfil");
+
+        ConsultaVO consultaVO = new ConsultaVO();
 
         MedicoVO medicoVO = new MedicoVO();
         List<MedicoVO> listaMedicos = null;
@@ -45,7 +44,7 @@ public class PesquisarConsultaPorMedico extends HttpServlet {
             EspecializacaoController especializacaoController = new EspecializacaoController();
             listaEspecializacoes = especializacaoController.pesquisarEspecializacaoPorIdDoMedico(codigoMedico);
             List<ConsultaVO> listaConsultas = null;
-           
+
             ConsultaController consultaController = new ConsultaController();
 
             for (int i = 0; i < listaEspecializacoes.size(); i++) {
