@@ -35,10 +35,7 @@
                 if (obj != null) {
                     Boolean ConvenioVORetornado = (Boolean) obj;
 
-                    if (!ConvenioVORetornado) {%>                     
-            <input type="text" size="100" style="margin-left: 5px;" value="<% out.println("Convênio não encontrado!"
-                               + " Tente novamente. Se o Convênio não for cadastrado, por gentileza, cadastrá-lo!!");%>">               
-            <%} else {%>
+                    if (ConvenioVORetornado) {%>                     
 
             <form action="atualizarconvenio" method="post">
                 <p style="text-align: center; font-weight: bold">Resultado da pesquisa de Convênio por CNPJ</p>
@@ -71,17 +68,17 @@
                     <button type="submit" class="btn btn-primary" style=" float: left; margin-left: 1.5%">Atualizar Convênio</button> 
                 </div>
             </form><br><br>
-      
-        <form action="controledenavegacao" method="POST">
-            <input type="hidden" id="voltarpaginainicial" name="voltarpaginainicial" value="voltarpaginainicial">
-            <input type="submit" value = "Voltar" class="btn btn-primary" 
-                   style=" margin-left: 1%; float: left;">            
-        </form>
-    </div>
 
-    <div class="jumbotron jumbotron-fluid text-center" style="clear: both; margin-bottom:0; margin-top: 45%;
-         background-color: #7986cb; padding: 4px; color: white; font-size: 10pt;">
-        &copy; Desenvolvido por Luciane Benetti e Marco Sena.
-    </div>
-</body>   
+            <form action="controledenavegacao" method="POST">
+                <input type="hidden" id="voltarpaginainicial" name="voltarpaginainicial" value="voltarpaginainicial">
+                <input type="submit" value = "Voltar" class="btn btn-primary" 
+                       style=" margin-left: 1%; float: left;">            
+            </form>
+        </div>
+
+        <div class="jumbotron jumbotron-fluid text-center" style="clear: both; margin-bottom:0; margin-top: 45%;
+             background-color: #7986cb; padding: 4px; color: white; font-size: 10pt;">
+            &copy; Desenvolvido por Luciane Benetti e Marco Sena.
+        </div>
+    </body>   
 </html>
