@@ -14,14 +14,12 @@ import model.vo.Medico.MedicoVO;
 
 public class PesquisarParaExcluirEspecializacao extends HttpServlet {
 
-    EspecializacaoVO especializacaoVO = new EspecializacaoVO();
-    List<EspecializacaoVO> especializacoesBuscadas = null;
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-       EspecializacaoVO especializacaoVO = new EspecializacaoVO();
+        Object usuarioValidado = request.getSession().getAttribute("perfil");
+        EspecializacaoVO especializacaoVO = new EspecializacaoVO();
         List<EspecializacaoVO> especializacoesBuscadas = null;
         MedicoVO medicoVO = new MedicoVO();
         List<MedicoVO> listaMedicos = null;
@@ -50,11 +48,12 @@ public class PesquisarParaExcluirEspecializacao extends HttpServlet {
             request.getRequestDispatcher("Especializacao/ExcluirEspecializacaoPorMedico.jsp").forward(request, response);
 
         } else {
-            System.out.println("O especializacao não foi encontrada!");
-            request.setAttribute("especializacaovoretornada", resultadoDaPesquisaPorNome);
-            request.getRequestDispatcher("Especializacao/ExcluirEspecializacaoPorMedico.jsp").forward(request, response);
-        }
-        request.getRequestDispatcher("Especializacao/ExcluirEspecializacaoPorMedico.jsp").forward(request, response);
 
-}
+            request.setAttribute("resultadotransacao", resultadoDaPesquisaPorNome);
+            if (usuarioValidado.equals("admin")) {
+                request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
+            }
+        }
+
+    }
 }

@@ -36,7 +36,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label for="inputemail">E-mail:</label>
-                        <input type="email" class="form-control" id="inputemail" name="emailpaciente" placeholder="Digite o email do paciente">
+                        <input type="email" class="form-control" id="inputemail" name="email" placeholder="Digite o email do paciente">
                     </div>
                 </div>
 

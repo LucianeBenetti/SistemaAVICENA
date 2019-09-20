@@ -43,7 +43,7 @@
                     </div>
                     <div class="form-group col-md-4">
                         <label for="inputvalor">Valor</label>
-                        <input type="text" class="form-control" id="inputvalor" name="valor" placeholder="Digite o valor do convênio" required onkeyup="maskIt(this, event, '###.###.###,##', true, {pre: 'R$ ', pos: ''})"">
+                        <input type="text" class="form-control" id="inputvalor" name="valor" placeholder="Digite o valor do convênio" required onkeyup="maskIt(this, event, '###.###.###,##', true, {pre: 'R$ ', pos: ' '})">
                     </div>
                 </div>
                 <br><br>               

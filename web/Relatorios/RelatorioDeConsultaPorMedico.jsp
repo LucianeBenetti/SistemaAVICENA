@@ -64,7 +64,10 @@
                     <%} %>  
                 </select>
                 <br /><br />
-                <input type="submit" value = "Buscar Médico Selecionado">   
+
+                <div class="form-row">
+                    <button type="submit" class="btn btn-primary" style=" float: left; margin-left: 1.5%">Buscar Médico Selecionado</button> 
+                </div>
 
                 <%} %>  
                 <br><br>
@@ -76,7 +79,7 @@
                     Object consultas = request.getAttribute("listadeconsultas");
                     ArrayList<ConsultaVO> consultasVO = (ArrayList<ConsultaVO>) consultas;
                     if (consultasVO != null) {%>
-                <div style="overflow-x:auto;">
+                <div>
                     <table class="table table-borderless table-sm table-hover table-primary table-striped">
                         <thead>
                             <tr class="table-success" >
@@ -105,15 +108,19 @@
                         </tr>     
                         <% }  %>
                     </table>
-                    <br><br>
-                    <input type="hidden" id="gerarrelatorio" name="gerarrelatorio" value="gerarrelatorio">
-                    <input type="submit" value="Gerar Relatório">
+
+                    <div class="form-row">
+                        <input type="hidden" id="gerarrelatorio" name="gerarrelatorio" value="gerarrelatorio">
+                        <button type="submit" class="btn btn-primary" style=" float: left; margin-left: 1.5%">Gerar Relatório</button> 
+                    </div>
+
                     <%  }%>    
 
                     <br><br>         
                 </div>
+            </div>
         </form>
-     
+
         <div class="jumbotron jumbotron-fluid text-center" style="clear: both; margin-bottom:0; margin-top: 45%;
              background-color: #7986cb; padding: 4px; color: white; font-size: 10pt;">
             &copy; Desenvolvido por Luciane Benetti e Marco Sena.

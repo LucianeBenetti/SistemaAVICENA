@@ -55,15 +55,17 @@
                     if (conveniosVO != null) {%>
 
                 <h5>Por gentileza, selecionar o nome do Convênio a ser pesquisado:</h5>
-                    <select name="convenioselecionado" >
-                        <option selected disabled >Selecione um Convênio</option>
-                        <% for (int i = 0; i < conveniosVO.size(); i++) {%>
-                        <option name="convenioselecionado" value="<%=(conveniosVO.get(i).getCnpjConvenio())%>"><%out.println(conveniosVO.get(i).getNomeConvenio());%></option>
-                        <%} %>  
-                    </select>
-                    <br /><br />
-                    <input type="submit" value = "Buscar Convênio Selecionado">   
-           
+                <select name="convenioselecionado" >
+                    <option selected disabled >Selecione um Convênio</option>
+                    <% for (int i = 0; i < conveniosVO.size(); i++) {%>
+                    <option name="convenioselecionado" value="<%=(conveniosVO.get(i).getCnpjConvenio())%>"><%out.println(conveniosVO.get(i).getNomeConvenio());%></option>
+                    <%} %>  
+                </select>
+                <br /><br />
+                <div class="form-row">
+                    <button type="submit" class="btn btn-primary" style=" float: left; margin-left: 1.5%">Buscar Convênio Selecionado</button> 
+                </div>
+
                 <%} %>  
                 <br><br>
             </form>
@@ -76,7 +78,7 @@
                     Object consultas = request.getAttribute("listaconsultas");
                     ArrayList<ConsultaVO> consultasVO = (ArrayList<ConsultaVO>) consultas;
                     if (consultasVO != null) {%>
-                <div style="overflow-x:auto;">
+                <div>
                     <table class="table table-borderless table-sm table-hover table-primary table-striped">
                         <thead>
                             <tr class="table-success" >
@@ -108,22 +110,17 @@
                     </table>
 
                 </div>
-                
-                <br><br>
 
-                <input type="hidden" id="gerarrelatorio" name="gerarrelatorio" value="gerarrelatorio">
-                <input type="submit" value="Gerar Relatório">
-                <%  } %>
+                <div class="form-row">
+                    <input type="hidden" id="gerarrelatorio" name="gerarrelatorio" value="gerarrelatorio">
+                    <button type="submit" class="btn btn-primary" style=" float: left; margin-left: 1.5%">Gerar Relatório</button> 
+                </div>
+                <%  }%>
 
             </div>
         </form><br><br>  
 
 
-        <div >
-
-        </div>
-
-     
         <div class="jumbotron jumbotron-fluid text-center" style="clear: both; margin-bottom:0; margin-top: 45%;
              background-color: #7986cb; padding: 4px; color: white; font-size: 10pt;">
             &copy; Desenvolvido por Luciane Benetti e Marco Sena.

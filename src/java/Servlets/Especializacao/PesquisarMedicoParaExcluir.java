@@ -1,4 +1,3 @@
-
 package Servlets.Especializacao;
 
 import controller.Medico.MedicoController;
@@ -16,18 +15,25 @@ public class PesquisarMedicoParaExcluir extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-         MedicoController medicoController = new MedicoController();
-        ArrayList<MedicoVO> listaMedicosVO = new ArrayList<MedicoVO>();
 
+        Object usuarioValidado = request.getSession().getAttribute("perfil");
+
+        MedicoController medicoController = new MedicoController();
+        ArrayList<MedicoVO> listaMedicosVO = new ArrayList<MedicoVO>();
+        Boolean resultadoDoCadastro = false;
         listaMedicosVO = medicoController.listarTodosOsMedicosVO();
 
         if (listaMedicosVO != null) {
 
             request.setAttribute("listaMedicosVO", listaMedicosVO);
-
-        }
             request.getRequestDispatcher("Especializacao/PesquisarEspecializacaoParaExcluir.jsp").forward(request, response);
 
+        } else {
+            request.setAttribute("resultadotransacao", resultadoDoCadastro);
+            if (usuarioValidado.equals("admin")) {
+                request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
+            }
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

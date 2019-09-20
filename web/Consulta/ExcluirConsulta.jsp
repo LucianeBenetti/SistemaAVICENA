@@ -55,6 +55,7 @@
                                                 <th>Convenio</th>
                                                 <th>Data da Consulta</th>
                                                 <th>Horário da Consulta</th>
+                                                <th>Atenção Especial</th>
                                             </tr>        
                                             <% for (ConsultaVO consultaVO : consultasVO) {%>  
 

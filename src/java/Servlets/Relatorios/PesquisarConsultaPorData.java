@@ -25,6 +25,7 @@ public class PesquisarConsultaPorData extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
+        Object usuarioValidado = request.getSession().getAttribute("perfil");
         String dataInicial = request.getParameter("datainicial");
         String dataFinal = request.getParameter("datafinal");
 
@@ -51,13 +52,14 @@ public class PesquisarConsultaPorData extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("listadeconsultas", listaConsultas);
             request.setAttribute("listadeconsultas", listaConsultas);
+            request.getRequestDispatcher("Relatorios/RelatorioDeFaturamento.jsp").forward(request, response);
 
         } else {
-            System.out.println("O consulta não foi encontrada!");
-            request.setAttribute("consultavoretornada", resultadoDaPesquisaDeConsultas);
+            request.setAttribute("resultadotransacao", resultadoDaPesquisaDeConsultas);
+            if (usuarioValidado.equals("admin")) {
+                request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
+            }
         }
-        System.out.println("Servlets.Relatorios.PesquisarConsultaPorData.processRequest()" + listaConsultas.size());
-        request.getRequestDispatcher("Relatorios/RelatorioDeFaturamento.jsp").forward(request, response);
 
     }
 

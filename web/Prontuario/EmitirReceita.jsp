@@ -61,14 +61,15 @@
                                 <% }%>
 
                         </table>
-                
+
                         <form name="emitirreceita" action="emitirreceita" method="post">
                             <input type="hidden" readonly name="codigoreceita"> 
                             <input type="hidden" readonly name="codigoconsulta"> 
                             <input type="hidden" readonly name="codigopaciente"> 
                             <input type="hidden" readonly name="codigoespecializacao" > 
                             <input type="hidden" readonly name="codigoprontuario"> 
-
+                            <input type="hidden" readonly name="dataconsulta"> 
+                            <input type="hidden" readonly name="horarioconsulta"> 
                             <div class="form-row">
                                 <div class="form-group col-md-12">
                                     <label for="inputnomepaciente">Nome do Paciente</label>
@@ -84,17 +85,6 @@
                                 <div class="form-group col-md-6">
                                     <label for="inputnomeespecialidade">Especialidade Médica:</label>
                                     <input type="text" readonly class="form-control" id="nomeespecialidade" name="horarioconsulta">
-                                </div>                       
-                            </div>
-
-                            <div class="form-row">   
-                                <div class="form-group col-md-6">
-                                    <label for="inputdataconsulta">Data:</label>
-                                    <input type="text" readonly class="form-control" id="dataconsulta" name="dataconsulta">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="inputhorarioconsulta">Horário:</label>
-                                    <input type="text" readonly class="form-control" id="inputhorarioconsulta" name="horarioconsulta">
                                 </div>                       
                             </div>
 
@@ -114,7 +104,7 @@
                             <div class="form-row">
                                 <div class="form-group col-md-12">
                                     <label for="inputregistro">Registro de Observações:</label>
-                                    <textarea class="form-control" name="registro"></textarea>
+                                    <textarea class="form-control" name="registroobservacao"></textarea>
                                 </div>
                             </div>
 

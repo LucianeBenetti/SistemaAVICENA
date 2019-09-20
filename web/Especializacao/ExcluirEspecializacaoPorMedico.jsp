@@ -41,10 +41,8 @@
                         if (obj != null) {
                             Boolean EspecializacaoVORetornada = (Boolean) obj;
 
-                            if (!EspecializacaoVORetornada) {%>                     
-                           <input type="text" size="100" style="margin-left: 5px;" value="<% out.println("Especialização não encontrada!"
-                                + " Tente novamente. Se a Especialização não for cadastrada, por gentileza, cadastrá-la!!");%>">               
-                    <%} else {%>
+                            if (EspecializacaoVORetornada) {%>                     
+                          
                     <div class="container-fluid">
                         <form name="atualizarespecializacao" action="crudespecializacao" method="post">
 

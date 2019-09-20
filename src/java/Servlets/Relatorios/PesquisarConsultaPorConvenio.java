@@ -18,9 +18,9 @@ public class PesquisarConsultaPorConvenio extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        ConvenioVO convenioVO = new ConvenioVO();
-        Object usuarioValidado = request.getSession().getAttribute("perfil");
 
+        Object usuarioValidado = request.getSession().getAttribute("perfil");
+        ConvenioVO convenioVO = new ConvenioVO();
         convenioVO.setCnpjConvenio(request.getParameter("convenioselecionado"));
         ConvenioController conveniocontroller = new ConvenioController();
         Boolean resultadoDaPesquisaPorCpf = false;
