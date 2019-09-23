@@ -79,7 +79,7 @@ public class CadastrarConsulta extends HttpServlet {
         consultaVO.setConvenioVO(convenioVO);
         consultaVO.setDataConsulta(dataSQL);
         consultaVO.setEspecializacaoVO(especializacaoVO);
-        consultaVO.setHorarioConsulta(request.getParameter("horaconsulta"));
+        consultaVO.setHorarioConsulta(request.getParameter("horarioconsulta"));
         consultaVO.setPacienteVO(pacienteVO);
         consultaVO.setValorConsulta(request.getParameter("valorconvenio"));
 

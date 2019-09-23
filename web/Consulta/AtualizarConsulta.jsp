@@ -1,7 +1,5 @@
-<%@page import="model.vo.Convenio.ConvenioVO"%>
-<%@page import="model.vo.Especializacao.EspecializacaoVO"%>
+<%@page import="model.vo.Consulta.ConsultaVO"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="model.vo.Especialidade.EspecialidadeVO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -36,9 +34,10 @@
 
                     <p style="text-align: center; font-weight: bold">Lista das especialidades cadastradas na clínica AVICENA:</p>
 
-                    <%  Object obj = request.getAttribute("listaEspecializacoes");
-                        ArrayList<EspecializacaoVO> especializacoesVO = (ArrayList<EspecializacaoVO>) obj;
-                        if (especializacoesVO != null) {%>
+                    <%
+                        Object consultas = request.getAttribute("listaconsultas");
+                        ArrayList<ConsultaVO> consultasVO = (ArrayList<ConsultaVO>) consultas;
+                        if (consultasVO != null) {%>
                     <div class="container-fluid">
 
                         <div >
@@ -46,81 +45,61 @@
                                 <thead>
                                     <tr class="table-success" >
                                         <th>Id</th>
+                                        <th>Nome do Paciente</th> 
                                         <th>Nome do Médico</th> 
-                                        <th>Especialidade</th> 
+                                        <th>Especialidade</th>
+                                        <th>Convenio</th>
+                                        <th>Data da Consulta</th>
+                                        <th>Horário da Consulta</th>
+                                        <th>Atenção Especial</th>
                                     </tr>        
-                                    <% for (EspecializacaoVO especializacaoVO : especializacoesVO) {%>  
+                                    <% for (ConsultaVO consultaVO : consultasVO) {%>  
 
-                                    <tr onclick="clickLinhaTabela(this)">
-                                        <td><%= especializacaoVO.getCodigoEspecializacao()%></td>
-                                        <td hidden><%= especializacaoVO.getMedicoVO().getCodigoMedico()%></td>
-                                        <td><%= especializacaoVO.getMedicoVO().getNomeMedico()%></td>
-                                        <td hidden><%= especializacaoVO.getEspecialidadeVO().getCodigoEspecialidade()%></td>
-                                        <td><%= especializacaoVO.getEspecialidadeVO().getNomeEspecialidade()%></td>
-                                        <td hidden><%= especializacaoVO.getEspecialidadeVO().getInstituicao()%></td>
-                                        <td hidden><%= especializacaoVO.getAnoEspecializacao()%></td>
+                                    <tr onclick="clickAtualizarConsulta(this)">
+                                        <td><%= consultaVO.getCodigoConsulta()%></td>
+                                        <td hidden><%= consultaVO.getPacienteVO().getCodigoPaciente()%></td>
+                                        <td><%= consultaVO.getPacienteVO().getNomePaciente()%></td>
+                                        <td hidden><%= consultaVO.getEspecializacaoVO().getCodigoEspecializacao()%></td>
+                                        <td><%= consultaVO.getEspecializacaoVO().getMedicoVO().getNomeMedico()%></td>
+                                        <td><%= consultaVO.getEspecializacaoVO().getEspecialidadeVO().getNomeEspecialidade()%></td>
+                                        <td hidden><%= consultaVO.getConvenioVO().getCodigoConvenio()%></td>
+                                        <td><%= consultaVO.getConvenioVO().getNomeConvenio()%></td>
+                                        <td ><%= consultaVO.getDataConsulta()%></td>
+                                        <td ><%= consultaVO.getHorarioConsulta()%></td>
+                                        <td ><%= consultaVO.getAtencaoEspecial()%></td>
+                                        <td hidden><%= consultaVO.getValorConsulta()%></td>
                                     </tr>     
-                                    <% }     %>
-                                    <% }     %>
+                                    <% }
+                                        }%>
                             </table>
-                            <%
-                                Object objconvenio = request.getAttribute("convenios");
-                                ArrayList<ConvenioVO> conveniosVO = (ArrayList<ConvenioVO>) objconvenio;
-                                if (conveniosVO != null) {%>
-                            <div class="container-fluid">
-
-                                <div style="overflow-x:auto;">
-                                    <table class="table table-borderless table-sm table-hover table-primary table-striped">
-                                        <thead>
-                                            <tr class="table-success" >
-                                                <th>Id</th>
-                                                <th>Nome do Convênio</th> 
-                                                <th>Valor (R$)</th> 
-                                            </tr>        
-                                            <%
-                                                for (ConvenioVO convenioVO : conveniosVO) {%>   
-                                            <tr onclick="clickLinhaTabelaConvenio(this)">
-                                                <td><%= convenioVO.getCodigoConvenio()%></td>
-                                                <td><%= convenioVO.getNomeConvenio()%></td>
-                                                <td><%= convenioVO.getValor()%></td>
-                                            </tr>     
-                                            <% }     %>
-                                            <% }%>
-                                    </table>
-                                </div>    
-                            </div>
-                        </div>
+                        </div>    
                     </div>
 
-                    <form name="cadastrarconsulta" action="cadastrarconsulta" method="post">
-
+                    <form name="atualizarconsulta" action="atualizarconsulta" method="post">
+                        <input type="hidden" name="codigoconsulta" size="4" readonly>
                         <input type="hidden" name="codigoespecializacao" size="4" readonly>
-                        <input type="hidden" name="codigoespecialidade" size="4" readonly>
                         <input type="hidden" readonly name="codigoconvenio" size="50">
-                        <input type="hidden" readonly name="valorconvenio" size="50">
-                        <input type="hidden" name="ano" size="8"> 
-                        <input type="hidden"  name="codigomedico" size="4" readonly>
-                        <input type="hidden" name="instituicao" size="50" readonly>
-                        <input type="hidden" name="codigopaciente" value="<%= request.getAttribute("codigopaciente")%>">
+                        <input type="hidden" readonly name="valorconsulta" size="50">
+                        <input type="hidden" name="codigopaciente">
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="inputnome">Nome:</label>
-                                <input type="text" class="form-control" id="inputnome" name="nomepaciente" required readonly value="<%= request.getAttribute("nomepaciente")%>">
+                                <input type="text" class="form-control" id="inputnome" name="nomepaciente" readonly>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputnomeconvenio">Convênio:</label>
-                                <input type="text" class="form-control" id="inputnomeconvenio" name="nomeconvenio">
+                                <input type="text" class="form-control" id="inputnomeconvenio" name="nomeconvenio" readonly>
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="inputnomemedico">Nome do Médico:</label>
-                                <input type="nomemedico" class="form-control" id="inputnomemedico" name="nomemedico">
+                                <input type="nomemedico" class="form-control" id="inputnomemedico" name="nomemedico" readonly>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputnomeespecialidade">Especialidade</label>
-                                <input type="text" class="form-control" id="inputnomeespecialidade" name="nomeespecialidade">
+                                <input type="text" class="form-control" id="inputnomeespecialidade" name="nomeespecialidade" readonly>
                             </div>
 
                         </div>
@@ -161,13 +140,12 @@
 
                         <div class="form-row">
                             <div class="form-group col-md-12">
-                                <input type="checkbox" id="click" onclick="clickCheckbox(this)"> Necessita de atenção especial?
-                                <textarea disabled class="form-control" name="atencaoespecial" id="tornarVisivel"></textarea>
+                                <textarea readonly class="form-control" name="atencaoespecial"></textarea>
                             </div>
                         </div> 
 
                         <div class="form-row">
-                            <button type="submit" class="btn btn-primary" style=" float: left; margin-left: 1.5%">Cadastrar Consulta</button> 
+                            <button type="submit" class="btn btn-primary" style=" float: left; margin-left: 1.5%">Atualizar Consulta</button> 
                         </div>
                     </form>
 

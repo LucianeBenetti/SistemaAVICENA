@@ -45,7 +45,7 @@ public class PesquisarConsultaParaAtualizar extends HttpServlet {
                 System.out.println("O consulta não foi encontrada!");
                 request.setAttribute("consultavoretornada", resultadoDaPesquisaDeConsultas);
             }
-            request.getRequestDispatcher("Consulta/PesquisarConsultaPorPaciente.jsp").forward(request, response);
+            request.getRequestDispatcher("Consulta/AtualizarConsulta.jsp").forward(request, response);
         }
     }
 

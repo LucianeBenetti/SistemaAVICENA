@@ -99,9 +99,19 @@ public class AtualizarConsulta extends HttpServlet {
                 request.setAttribute("atencaoespecial", atencaoEspecial);
                 request.setAttribute("valorconsulta", consultaVO.getValorConsulta());
                 resultadoDaAtualizacao = true;
+                request.setAttribute("resultadotransacao", resultadoDaAtualizacao);
+                if (usuarioValidado.equals("admin")) {
+                    request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
+                } else if (usuarioValidado.equals("atendente")) {
+                    request.getRequestDispatcher("WEB-INF/PaginaInicialAtendente.jsp").forward(request, response);
+                }
             } else {
-                request.setAttribute("consultaatualizada", resultadoDaAtualizacao);
-                request.getRequestDispatcher("Consulta/ResultadoDaAtualizacao.jsp").forward(request, response);
+                request.setAttribute("resultadotransacao", resultadoDaAtualizacao);
+                if (usuarioValidado.equals("admin")) {
+                    request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
+                } else if (usuarioValidado.equals("atendente")) {
+                    request.getRequestDispatcher("WEB-INF/PaginaInicialAtendente.jsp").forward(request, response);
+                }
             }
         }
         if (!atencaoEspecial.equals("null") && atencaoEspecial != null && !atencaoEspecial.isEmpty()) {
@@ -178,10 +188,12 @@ public class AtualizarConsulta extends HttpServlet {
                 e.printStackTrace();
             }
         }
-
-        request.setAttribute("consultaatualizada", resultadoDaAtualizacao);
-        request.getRequestDispatcher("Consulta/ResultadoDaAtualizacao.jsp").forward(request, response);
-
+        request.setAttribute("resultadotransacao", resultadoDaAtualizacao);
+        if (usuarioValidado.equals("admin")) {
+            request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
+        } else if (usuarioValidado.equals("atendente")) {
+            request.getRequestDispatcher("WEB-INF/PaginaInicialAtendente.jsp").forward(request, response);
+        }
     }
 
 }

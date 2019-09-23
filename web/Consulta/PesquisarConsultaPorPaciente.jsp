@@ -1,139 +1,63 @@
-<%@page import="model.vo.Consulta.ConsultaVO"%>
-<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Avicena</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="mascarasConsulta.js"></script>
-        <script type="text/javascript" src="Consulta/selecionarTabelaEspecializacao.js"></script>
-        <link type="text/css" rel="stylesheet" href="CRUDConsulta.css">
-        <link type="text/css" rel="stylesheet" href="Consulta/CRUDConsulta.css">
-        <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
-        <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
-        <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
-        <script>
-            $(function () {
-                $("#calendario").datepicker({dateFormat: 'dd/mm/yy'});
-            });
-        </script>
+        <style>
+            .generico
+            {text-align: center; border-color: transparent; color: red; padding: 10px}
+        </style>
     </head>
-    <body class="body">
+    <body>
 
-        <div class="form1">
-            <h2>Pesquisar Consulta!</h2>
-
-            <fieldset><legend>Digite o CPF do Paciente</legend>
-                <div>
-                    <form method="post" action="../pesquisarconsultaparaatualizar">
-
-                        <p><a>*</a>Campos de preenchimento obrigatório</p>                    
-
-                        CPF<a>*</a>:<br> 
-                        <input type="text" name="cpfpaciente" required onkeyup="maskIt(this, event, '###.###.###-##')">
-                        <input type="submit" value="Buscar Paciente">
-
-                    </form>
-                </div>
-            </fieldset>
+        <div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0; 
+             background-color: #7986cb; padding: 20px; color: white">
+            <h1>Sistema Avicena</h1>
+            <p>Medicina Humanizada</p> 
         </div>
-        <form name="atualizarconsulta" action="atualizarconsulta" method="post">
-            <div class="resultadodaconsultaNome">
-                <%
-                    Object consultas = request.getAttribute("listaconsultas");
-                    ArrayList<ConsultaVO> consultasVO = (ArrayList<ConsultaVO>) consultas;
-                    if (consultasVO != null) {%>
-                <h2>Selecione a Consulta a ser atualizada</h2>
-                <table id="tabelaConsulta">
-                    <tr>
-                        <th>Id</th>
-                        <th>Nome do Paciente</th> 
-                        <th>Nome do Médico</th> 
-                        <th>Especialidade</th>
-                        <th>Convenio</th>
-                        <th>Data da Consulta</th>
-                        <th>Horário da Consulta</th>
-                        <th>Atenção Especial</th>
-                    </tr>        
-                    <% for (ConsultaVO consultaVO : consultasVO) {%>  
+        <div class="container" style="padding: 3px; margin-top: 2%; margin-bottom: 10%;" >
 
-                    <tr onclick="clickAtualizarConsulta(this)">
-                        <td><%= consultaVO.getCodigoConsulta()%></td>
-                        <td hidden><%= consultaVO.getPacienteVO().getCodigoPaciente()%></td>
-                        <td><%= consultaVO.getPacienteVO().getNomePaciente()%></td>
-                        <td hidden><%= consultaVO.getEspecializacaoVO().getCodigoEspecializacao()%></td>
-                        <td><%= consultaVO.getEspecializacaoVO().getMedicoVO().getNomeMedico()%></td>
-                        <td><%= consultaVO.getEspecializacaoVO().getEspecialidadeVO().getNomeEspecialidade()%></td>
-                        <td hidden><%= consultaVO.getConvenioVO().getCodigoConvenio()%></td>
-                        <td><%= consultaVO.getConvenioVO().getNomeConvenio()%></td>
-                        <td ><%= consultaVO.getDataConsulta()%></td>
-                        <td ><%= consultaVO.getHorarioConsulta()%></td>
-                        <td ><%= consultaVO.getAtencaoEspecial()%></td>
-                        <td hidden><%= consultaVO.getValorConsulta()%></td>
-                    </tr>     
-                    <% }  %>
-                </table>
-                <br><br>
+            <div class="container" style="padding: 3px; margin-top: 2%; margin-bottom: 10%;" >
+
+                <div class="form" style="background-color: #c8e6c9; padding: 10px; width: 60%;  
+                     border-radius: 10px; float: left; margin-left: 20%;">
+
+                    <p style="text-align: center; font-weight: bold">Digite o CPF do Paciente para buscar Consulta na base de dados:</p>
+
+                    <form action="../pesquisarconsultaparaatualizar" class="was-validated" method="post">
+                        <div class="form-group">
+
+                            <label for="cpf">CPF:</label>
+                            <input type="text" class="form-control" id="cpf" name="cpfpaciente" placeholder="Digite o CPF do paciente"  style="border-color: gray" required onkeyup="maskIt(this, event, '###.###.###-##')">
+                            <div class="valid-feedback">Valido.</div>
+                            <div class="invalid-feedback" style = "color: black">Campo obrigatório.</div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="float: left" >Pesquisar Consulta</button>
+                    </form>
+
+                    <form action="../controledenavegacao" method="post">
+                        <input type="hidden" id="voltarpaginainicial" name="voltarpaginainicial" value="voltarpaginainicial">
+                        <input type="submit" value = "Voltar" class="btn btn-primary" 
+                               style=" margin-left: 20px; float: left;">            
+                    </form>            
+
+                </div>
+
             </div>
-            <div class="form3">
-                <fieldset>
-                    <br><br>
-                    <input type="hidden" name="codigoconsulta" size="4" readonly>
-                    Nome: <br>    
-                    <input type="hidden" readonly name="codigopaciente" size="50" >
-                    <input type="text" readonly name="nomepaciente" size="50" ><br><br>  
-                    Nome do Médico: <br>
-                    <input type="hidden" readonly name="codigoespecializacao" size="50" >
-                    <input type="text" readonly name="nomemedico"  size="50" required> <br><br>
-                    Nome da Especialidade: <br>
-                    <input type="text" readonly name="nomeespecialidade"  size="50" required> <br><br>
-                    Convênio <br> 
-                    <input type="hidden" readonly name="codigoconvenio" size="50" >
-                    <input type="text" readonly name="nomeconvenio"  size="50"><br><br>
-                    Atenção Especial <br>
-                    <input type="text" readonly name="atencaoespecial" size="50"><br><br>
-                    <input type="hidden" readonly name="valorconsulta" size="50" >
-                    <div style="width:55%">
-                        <div style="float:left"> Data<a>*</a>: </div>
-                        <div style="float:right"> Horário<a>*</a>: </div>
-                    </div>
-                    <br>
-                    <div style="width:80%">
-                        <div style="float:left"> <input type="text" name="dataconsulta" id="calendario" size="20" required></div>    
-                        <select style="width:180px; margin-left: 30px;" name="horarioconsulta" required><option selected disabled>Selecione um horário</option><br><br>
-                            <option>08:00</option>
-                            <option>08:30</option>
-                            <option>09:00</option>
-                            <option>09:30</option>
-                            <option>10:00</option>
-                            <option>10:30</option>
-                            <option>11:00</option>
-                            <option>11:30</option>
-                            <option>13:30</option>
-                            <option>14:00</option>
-                            <option>14:30</option>
-                            <option>15:00</option>
-                            <option>15:30</option>
-                            <option>16:00</option>
-                            <option>16:30</option>
-                            <option>17:00</option>
-                            <option>17:30</option>                                                                 
-                        </select><br><br> 
-                    </div>   
-             
-                    
-                    <input type="hidden" id="excluir" name="excluir" value="excluir">
-                    <input type="submit" value="Atualizar Dados da Consulta">
-                </fieldset>
+        </div>
 
-                <%  }%>      
-            </div>    
-
-        </form><br><br>
-        <footer class="footer">                
+        <div class="jumbotron jumbotron-fluid text-center" style="clear: both; margin-bottom:0; margin-top: 25%; 
+             background-color: #7986cb;padding: 4px; color: white; font-size: small; ">
             &copy; Desenvolvido por Luciane Benetti e Marco Sena.
-        </footer>
-
+        </div>
 
     </body>
 </html>
