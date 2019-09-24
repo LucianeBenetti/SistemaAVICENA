@@ -1,5 +1,3 @@
-<%@page import="model.vo.Convenio.ConvenioVO"%>
-<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -21,44 +19,42 @@
             {text-align: center; border-color: transparent; color: red; padding: 10px}
 
         </style> 
-        <script>
-            $(function () {
-                $("#datainicial").datepicker({dateFormat: 'dd/mm/yy'});
-            });
-            $(function () {
-                $("#datafinal").datepicker({dateFormat: 'dd/mm/yy'});
-            });
-        </script>
         <title>Sistema Avicena</title> 
     </head>
-    <title>Sistema Avicena</title> 
-</head>
-<body>  
-    <nav class="navbar navbar-expand-sm navbar-dark justify-content-left" 
-         style= "background-color: #7986cb; font-size: 18px; color: #ffffff; ">
-        <a class="navbar-brand">
-            <img src="icon2.png" alt="logo" style="width:50px; height: 30px;">
-        </a>
-        <ul class="navbar-nav">
-            <form action="controledenavegacao" method="POST">
-                <input type="hidden" id="voltarpaginainicial" name="voltarpaginainicial" value="voltarpaginainicial">
-                <input type="submit" value="Inicio" style="border:none; background-color: #7986cb; color: white; padding: 8px;">
-            </form>  
-            <li>
-                <form action="controledenavegacao" method="POST">
-                    <input type="hidden" id="sair" name="sair" value="sair">
-                    <input type="submit" value="Sair" style="border:none; background-color: #7986cb; color: white; padding: 8px;">
-                </form>
-            </li>
-        </ul>
-    </nav>
+    <body>  
+        <nav class="navbar navbar-expand-sm navbar-dark justify-content-left" 
+             style= "background-color: #7986cb; font-size: 18px; color: #ffffff; ">
+            <a class="navbar-brand">
+                <img src="../icon2.png" alt="logo" style="width:50px; height: 30px;">
+            </a>
+            <ul class="navbar-nav">
+                <form action="../controledenavegacao" method="POST">
+                    <input type="hidden" id="voltarpaginainicial" name="voltarpaginainicial" value="voltarpaginainicial">
+                    <input type="submit" value="Inicio" style="border:none; background-color: #7986cb; color: white; padding: 8px;">
+                </form>  
+                <li>
+                    <form action="../controledenavegacao" method="POST">
+                        <input type="hidden" id="sair" name="sair" value="sair">
+                        <input type="submit" value="Sair" style="border:none; background-color: #7986cb; color: white; padding: 8px;">
+                    </form>
+                </li>
+            </ul>
+        </nav>
 
-    <div class="container-fluid">
+        <div class="container-fluid">
+            
         <h3>Relatório de Faturamento</h3>
         <h5>Por gentileza, escolher o período para gerar o relatório de faturamento</h5>
         <br><br>
         <form method="post" action="../pesquisarconsultapordata">
-
+            <script>
+                $(function () {
+                    $("#datainicial").datepicker({dateFormat: 'dd/mm/yy'});
+                });
+                $(function () {
+                    $("#datafinal").datepicker({dateFormat: 'dd/mm/yy'});
+                });
+            </script>
             <div class="form-row">   
                 <div class="form-group col-md-4">
                     <label for="inputdatainicial">Data Inicial:</label>
