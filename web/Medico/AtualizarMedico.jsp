@@ -28,9 +28,9 @@
                 Object obj = request.getAttribute("medicovoretornado");
 
                 if (obj != null) {
-                    Boolean MedicoVORetornado = (Boolean) obj;
+                    Boolean medicoVORetornado = (Boolean) obj;
 
-                    if (MedicoVORetornado) {%>                     
+                    if (medicoVORetornado) {%>                     
 
             <form action="atualizarmedico" method="post">
 

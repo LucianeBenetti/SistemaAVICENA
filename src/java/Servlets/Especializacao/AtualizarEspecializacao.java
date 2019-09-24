@@ -17,6 +17,8 @@ public class AtualizarEspecializacao extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        Object usuarioValidado = request.getSession().getAttribute("perfil");
+
         EspecializacaoVO especializacaoVO = new EspecializacaoVO();
         MedicoVO medicoVO = new MedicoVO();
         EspecialidadeVO especialidadeVO = new EspecialidadeVO();
@@ -38,13 +40,20 @@ public class AtualizarEspecializacao extends HttpServlet {
 
         if (especializacaocontroller.atualizarEspecializacaoVO(especializacaoVO, especializacaoVO.getCodigoEspecializacao()) != null) {
             resultadoDaAtualizacao = true;
-            request.setAttribute("resultado", resultadoDaAtualizacao);
-            request.getRequestDispatcher("Especializacao/ResultadoDaTransacao.jsp").forward(request, response);
+            request.setAttribute("resultadotransacao", resultadoDaAtualizacao);
+            if (usuarioValidado.equals("admin")) {
+                request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
+            } else if (usuarioValidado.equals("medico")) {
+                request.getRequestDispatcher("WEB-INF/PaginaInicialMedico.jsp").forward(request, response);
+            }
         } else {
-            request.setAttribute("resultado", resultadoDaAtualizacao);
+            request.setAttribute("resultadotransacao", resultadoDaAtualizacao);
+            if (usuarioValidado.equals("admin")) {
+                request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
+            } else if (usuarioValidado.equals("medico")) {
+                request.getRequestDispatcher("WEB-INF/PaginaInicialMedico.jsp").forward(request, response);
+            }
         }
-
-        request.getRequestDispatcher("Especializacao/ResultadoDaTransacao.jsp").forward(request, response);
 
     }
 }
