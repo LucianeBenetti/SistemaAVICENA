@@ -15,6 +15,8 @@ public class PesquisarMedicoPorCpf extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        Object usuarioValidado = request.getSession().getAttribute("perfil");
+
         MedicoVO medicoVO = new MedicoVO();
         medicoVO.setCpfMedico(request.getParameter("cpfmedico"));
         MedicoController medicocontroller = new MedicoController();
@@ -34,13 +36,16 @@ public class PesquisarMedicoPorCpf extends HttpServlet {
 
             resultadoDaPesquisaPorCpf = true;
             request.setAttribute("medicovoretornado", resultadoDaPesquisaPorCpf);
-            request.getRequestDispatcher("Medico/PesquisarMedicoPorCpf.jsp").forward(request, response);
+            request.getRequestDispatcher("Medico/AtualizarMedico.jsp").forward(request, response);
 
         } else {
-            System.out.println("O medico não foi encontrado!");
-            request.setAttribute("medicovoretornado", resultadoDaPesquisaPorCpf);
-            request.getRequestDispatcher("Medico/PesquisarMedicoPorCpf.jsp").forward(request, response);
-        }
+            request.setAttribute("resultadotransacao", resultadoDaPesquisaPorCpf);
+            if (usuarioValidado.equals("admin")) {
+                request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
+            } else if (usuarioValidado.equals("atendente")) {
+                request.getRequestDispatcher("WEB-INF/PaginaInicialAtendente.jsp").forward(request, response);
+            }
 
+        }
     }
 }

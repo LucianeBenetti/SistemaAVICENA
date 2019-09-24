@@ -14,6 +14,9 @@ public class AtualizarMedico extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        Object usuarioValidado = request.getSession().getAttribute("perfil");
+
         MedicoVO medicoVO = new MedicoVO();
         medicoVO.setNomeMedico(request.getParameter("nomemedico"));
         medicoVO.setCrm(request.getParameter("crm"));
@@ -29,12 +32,19 @@ public class AtualizarMedico extends HttpServlet {
 
         if (atualizado) {
             resultadoDaAtualizacao = true;
-            request.setAttribute("atualizacao", resultadoDaAtualizacao);
-            request.getRequestDispatcher("Medico/ResultadoDaAtualizacao.jsp").forward(request, response);
+            request.setAttribute("resultadotransacao", resultadoDaAtualizacao);
+            if (usuarioValidado.equals("admin")) {
+                request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
+            } else if (usuarioValidado.equals("atendente")) {
+                request.getRequestDispatcher("WEB-INF/PaginaInicialAtendente.jsp").forward(request, response);
+            }
         } else {
-            request.setAttribute("atualizacao", resultadoDaAtualizacao);
+            request.setAttribute("resultadotransacao", resultadoDaAtualizacao);
+            if (usuarioValidado.equals("admin")) {
+                request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
+            } else if (usuarioValidado.equals("atendente")) {
+                request.getRequestDispatcher("WEB-INF/PaginaInicialAtendente.jsp").forward(request, response);
+            }
         }
-        request.getRequestDispatcher("Medico/ResultadoDaAtualizacao.jsp").forward(request, response);
-
     }
 }

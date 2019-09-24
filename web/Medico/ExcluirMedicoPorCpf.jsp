@@ -35,7 +35,7 @@
             <form action="../crudmedico" class="was-validated" method="post">
                     <div class="form-group">
                         <input type="hidden" id="excluir" name="excluir" value="excluir">
-                        <label for="cpfmedico">CNPJ</label>
+                        <label for="cpfmedico">CPF:</label>
                         <input type="text" class="form-control" id="cpf" name="cpfmedico" placeholder="Digite o CPF do médico"  style="border-color: gray" required onkeyup="maskIt(this, event, '###.###.###-##')">
                         <div class="valid-feedback">Valido.</div>
                         <div class="invalid-feedback" style = "color: black">Campo obrigatório.</div>

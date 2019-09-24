@@ -29,12 +29,12 @@ public class PesquisarEspecialidade extends HttpServlet {
             resultadoDaPesquisaPorNome = true;
             request.setAttribute("especialidadesBuscadas", especialidadesBuscadas);
             request.setAttribute("especialidadevoretornada", resultadoDaPesquisaPorNome);
-            request.getRequestDispatcher("Especialidade/PesquisarEspecialidadePorNome.jsp").forward(request, response);
+            request.getRequestDispatcher("Especialidade/AtualizarEspecialidade.jsp").forward(request, response);
 
         } else {
             System.out.println("O especialidade não foi encontrada!");
             request.setAttribute("especialidadevoretornada", resultadoDaPesquisaPorNome);
-            request.getRequestDispatcher("Especialidade/PesquisarEspecialidadePorNome.jsp").forward(request, response);
+            request.getRequestDispatcher("Especialidade/AtualizarEspecialidade.jsp").forward(request, response);
         }
 
         System.out.println("Resultado: " + resultadoDaPesquisaPorNome);

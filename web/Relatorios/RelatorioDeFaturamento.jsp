@@ -1,6 +1,4 @@
 <%@page import="model.vo.Consulta.ConsultaVO"%>
-%@page import="model.vo.Consulta.ConsultaVO"%>
-<%@page import="model.vo.Convenio.ConvenioVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -25,7 +23,7 @@
         </style> 
         <title>Sistema Avicena</title> 
     </head>
-    <body>  
+   <body>  
         <nav class="navbar navbar-expand-sm navbar-dark justify-content-left" 
              style= "background-color: #7986cb; font-size: 18px; color: #ffffff; ">
             <a class="navbar-brand">
@@ -44,6 +42,7 @@
                 </li>
             </ul>
         </nav>
+       
         <div class="container-fluid">
             <br><br><br>
         </div> 

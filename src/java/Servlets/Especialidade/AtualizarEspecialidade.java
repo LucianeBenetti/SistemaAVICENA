@@ -15,24 +15,35 @@ public class AtualizarEspecialidade extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        Object usuarioValidado = request.getSession().getAttribute("perfil");
+
         EspecialidadeVO especialidadeVO = new EspecialidadeVO();
         especialidadeVO.setCodigoEspecialidade(Integer.parseInt(request.getParameter("codigoespecialidade")));
         especialidadeVO.setNomeEspecialidade(request.getParameter("nomeespecialidade"));
         especialidadeVO.setInstituicao(request.getParameter("instituicaoespecialidade"));
-    
+
         EspecialidadeController especialidadecontroller = new EspecialidadeController();
         boolean atualizado = especialidadecontroller.atualizarEspecialidadeVO(especialidadeVO);
-        Boolean resultadoDaAtualizacao = false;
+        Boolean resultadoDoCadastro = false;
 
         if (atualizado) {
-            resultadoDaAtualizacao = true;
-            request.setAttribute("atualizacao", resultadoDaAtualizacao);
-            request.getRequestDispatcher("Especialidade/ResultadoDaAtualizacao.jsp").forward(request, response);
-        } else {
-            request.setAttribute("atualizacao", resultadoDaAtualizacao);
+            resultadoDoCadastro = true;
+
+            request.setAttribute("resultadotransacao", resultadoDoCadastro);
+            if (usuarioValidado.equals("admin")) {
+                request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
+            } else if (usuarioValidado.equals("atendente")) {
+                request.getRequestDispatcher("WEB-INF/PaginaInicialAtendente.jsp").forward(request, response);
+            } else {
+                request.setAttribute("resultadotransacao", resultadoDoCadastro);
+                if (usuarioValidado.equals("admin")) {
+                    request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
+                } else if (usuarioValidado.equals("atendente")) {
+                    request.getRequestDispatcher("WEB-INF/PaginaInicialAtendente.jsp").forward(request, response);
+                }
+            }
+
         }
-        System.out.println(resultadoDaAtualizacao);
-        request.getRequestDispatcher("Especialidade/ResultadoDaAtualizacao.jsp").forward(request, response);
 
     }
 }
