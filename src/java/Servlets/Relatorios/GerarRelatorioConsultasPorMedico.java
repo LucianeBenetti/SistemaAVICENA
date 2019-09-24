@@ -39,10 +39,10 @@ public class GerarRelatorioConsultasPorMedico extends HttpServlet {
         Object listaconsultas = request.getSession().getAttribute("listadeconsultas");
         ArrayList<ConsultaVO> consultas = (ArrayList<ConsultaVO>) listaconsultas;
         Document document = new Document();
-        PdfWriter.getInstance(document, new FileOutputStream("D:\\SENAC\\RelatorioMedico.pdf"));
+        PdfWriter.getInstance(document, new FileOutputStream("C:\\SENAC\\RelatorioMedico.pdf"));
         document.open();
 
-        Image figura = Image.getInstance("D:\\SENAC\\coracao.png");
+        Image figura = Image.getInstance("C:\\SENAC\\coracao.png");
         document.add(figura);
         Paragraph pTitulo = new Paragraph(new Phrase(20F, "AVICENA - Medicina Humanizada", FontFactory.getFont(FontFactory.HELVETICA, 18F)));
         pTitulo.setAlignment(Element.ALIGN_CENTER);

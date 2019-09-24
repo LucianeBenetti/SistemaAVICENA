@@ -92,7 +92,7 @@ public class GerarRelatorioConsultasPorConvenio extends HttpServlet {
         }
         //5) Escreve o arquivo em disco, no caminho informado
         FileOutputStream fileOut = null;
-        File arquivoRelatorio = new File("D:\\SENAC\\Relatorio" + nomeConvenio + ".xls");
+        File arquivoRelatorio = new File("C:\\SENAC\\Relatorio" + nomeConvenio + ".xls");
         try {
             fileOut = new FileOutputStream(arquivoRelatorio);
             //  abrirArquivo.writeBytes(planilha.toString());
@@ -111,7 +111,7 @@ public class GerarRelatorioConsultasPorConvenio extends HttpServlet {
                 }
             }
         }
-        Runtime.getRuntime().exec(new String[]{"cmd.exe", "/c", "start", "D://SENAC//Relatorio" + nomeConvenio + ".xls"});
+        Runtime.getRuntime().exec(new String[]{"cmd.exe", "/c", "start", "C://SENAC//Relatorio" + nomeConvenio + ".xls"});
         if (usuarioValidado.equals("admin")) {
             request.setAttribute("resultadotransacao", resultadoEmissaoRelatorio);
             request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);

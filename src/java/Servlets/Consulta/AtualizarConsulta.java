@@ -155,7 +155,7 @@ public class AtualizarConsulta extends HttpServlet {
 
                 //seta quatos anexos desejar
                 List<String> files = new ArrayList<String>();
-                files.add("D:\\SENAC\\coracao.png");
+                files.add("C:\\SENAC\\coracao.png");
 //        files.add("C:\images\hover_next.png");
 //        files.add("C:\images\hover_prev.png");
 

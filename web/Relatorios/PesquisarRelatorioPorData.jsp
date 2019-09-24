@@ -8,6 +8,8 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="jquery-ui.min.js"></script>
+        <link rel="stylesheet" href="jquery-ui.min.css"/>
 
         <style>
             /* Make the image fully responsive */
@@ -42,40 +44,42 @@
         </nav>
 
         <div class="container-fluid">
-            
-        <h3>Relatório de Faturamento</h3>
-        <h5>Por gentileza, escolher o período para gerar o relatório de faturamento</h5>
-        <br><br>
-        <form method="post" action="../pesquisarconsultapordata">
-            <script>
-                $(function () {
-                    $("#datainicial").datepicker({dateFormat: 'dd/mm/yy'});
-                });
-                $(function () {
-                    $("#datafinal").datepicker({dateFormat: 'dd/mm/yy'});
-                });
-            </script>
-            <div class="form-row">   
-                <div class="form-group col-md-4">
-                    <label for="inputdatainicial">Data Inicial:</label>
-                    <input type="text"  class="form-control" id="datainicial" name="datainicial">
+
+            <h3>Relatório de Faturamento</h3>
+            <h5>Por gentileza, escolher o período para gerar o relatório de faturamento</h5>
+            <br><br>
+            <form method="post" action="../pesquisarconsultapordata">
+
+                <div class="form-row">   
+                    
+                    <div class="form-group col-md-4">
+                        <script>
+                        $(function () {
+                            $("#datainicial").datepicker({dateFormat: 'dd/mm/yyyy'});
+                        });
+                        $(function () {
+                            $("#datafinal").datepicker({dateFormat: 'dd/mm/yyyy'});
+                        });
+                    </script>
+                        <label for="inputdatainicial">Data Inicial:</label>
+                        <input type="text"  class="form-control" id="datainicial" name="datainicial">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputdatafinal">Data Final: </label>
+                        <input type="text"  class="form-control" id="datafinal" name="datafinal">
+                    </div>                       
                 </div>
-                <div class="form-group col-md-4">
-                    <label for="inputdatafinal">Data Final: </label>
-                    <input type="text"  class="form-control" id="datafinal" name="datafinal">
-                </div>                       
-            </div>
-            <div class="form-row">
-                <input type="hidden" id="gerarrelatorio" name="gerarrelatorio" value="gerarrelatorio">
-                <button type="submit" class="btn btn-primary" style=" float: left; margin-left: 1.5%">Buscar Período Selecionado</button> 
-            </div>
+                <div class="form-row">
+                    <input type="hidden" id="gerarrelatorio" name="gerarrelatorio" value="gerarrelatorio">
+                    <button type="submit" class="btn btn-primary" style=" float: left; margin-left: 1.5%">Buscar Período Selecionado</button> 
+                </div>
 
-        </form>
-    </div>
+            </form>
+        </div>
 
-    <div class="jumbotron jumbotron-fluid text-center" style="clear: both; margin-bottom:0; margin-top: 45%;
-         background-color: #7986cb; padding: 4px; color: white; font-size: 10pt;">
-        &copy; Desenvolvido por Luciane Benetti e Marco Sena.
-    </div>
-</body>
+        <div class="jumbotron jumbotron-fluid text-center" style="clear: both; margin-bottom:0; margin-top: 45%;
+             background-color: #7986cb; padding: 4px; color: white; font-size: 10pt;">
+            &copy; Desenvolvido por Luciane Benetti e Marco Sena.
+        </div>
+    </body>
 </html>

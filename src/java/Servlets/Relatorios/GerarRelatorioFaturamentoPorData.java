@@ -85,7 +85,7 @@ public class GerarRelatorioFaturamentoPorData extends HttpServlet {
         }
         //5) Escreve o arquivo em disco, no caminho informado
         FileOutputStream fileOut = null;
-        File arquivoRelatorio = new File("D:\\SENAC\\RelatorioFaturamento.xls");
+        File arquivoRelatorio = new File("C:\\SENAC\\RelatorioFaturamento.xls");
         try {
             fileOut = new FileOutputStream(arquivoRelatorio);
             //  abrirArquivo.writeBytes(planilha.toString());
