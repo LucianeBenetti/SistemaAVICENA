@@ -99,7 +99,7 @@ public class GerarRelatorioConsultasPorMedico extends HttpServlet {
         }
         document.add(table);
         document.close();
-        Runtime.getRuntime().exec(new String[]{"cmd.exe", "/c", "start", "D://SENAC//RelatorioMedico.pdf"});
+        Runtime.getRuntime().exec(new String[]{"cmd.exe", "/c", "start", "C://SENAC//RelatorioMedico.pdf"});
         if (usuarioValidado.equals("admin")) {
             request.setAttribute("resultadotransacao", resultadoEmissaoRelatorio);
             request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);

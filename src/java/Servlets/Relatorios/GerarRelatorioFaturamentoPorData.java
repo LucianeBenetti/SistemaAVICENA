@@ -104,7 +104,7 @@ public class GerarRelatorioFaturamentoPorData extends HttpServlet {
                 }
             }
         }
-        Runtime.getRuntime().exec(new String[]{"cmd.exe", "/c", "start", "D://SENAC//RelatorioFaturamento.xls"});
+        Runtime.getRuntime().exec(new String[]{"cmd.exe", "/c", "start", "C://SENAC//RelatorioFaturamento.xls"});
         request.setAttribute("resultadotransacao", resultadoEmissaoRelatorio);
 
         request.getRequestDispatcher("WEB-INF//PaginaInicialAdmin.jsp").forward(request, response);

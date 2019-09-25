@@ -57,11 +57,11 @@ public class EmitirReceita extends HttpServlet {
         Document document = new Document();
         try {
 
-            PdfWriter.getInstance(document, new FileOutputStream("D:\\SENAC\\Receita.pdf"));
+            PdfWriter.getInstance(document, new FileOutputStream("C:\\SENAC\\Receita.pdf"));
             document.open();
             // adicionando um parágrafo no documento
 
-            Image figura = Image.getInstance("D:\\SENAC\\coracao.png");
+            Image figura = Image.getInstance("C:\\SENAC\\coracao.png");
             document.add(figura);
             Paragraph pTitulo = new Paragraph(new Phrase(20F, "AVICENA - Medicina Humanizada", FontFactory.getFont(FontFactory.HELVETICA, 18F)));
             pTitulo.setAlignment(Element.ALIGN_CENTER);
@@ -85,7 +85,7 @@ public class EmitirReceita extends HttpServlet {
         }
         document.close();
 
-        Runtime.getRuntime().exec(new String[]{"cmd.exe", "/c", "start", "D://SENAC//Receita.pdf"});
+        Runtime.getRuntime().exec(new String[]{"cmd.exe", "/c", "start", "C://SENAC//Receita.pdf"});
 
         request.setAttribute("codigoPaciente", codigoPaciente);
         request.setAttribute("nomepaciente", nomePaciente);
