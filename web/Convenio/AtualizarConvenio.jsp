@@ -42,7 +42,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-12">
                         <label for="inputnome">Nome:</label>
-                        <input type="text" class="form-control" id="inputnome" name="nomeconvenio" value="<%= request.getAttribute("nomeconvenio")%>"><br><br>
+                        <input type="text" class="form-control" id="inputnome" name="nomeconvenio" value="<%= request.getAttribute("nomeconvenio")%>">
                     </div>
                 </div>
 
@@ -57,9 +57,7 @@
                         <input type="text" class="form-control" id="inputvalor" name="valor" onkeyup="maskIt(this, event, '###.###.###,##', true, {pre: 'R$', pos: ''})" value="<%= request.getAttribute("valor")%>" required size="31">
                     </div>
                 </div>
-                <br><br>               
-
-                <br><br>
+            
 
                 <%}
                     }%>    

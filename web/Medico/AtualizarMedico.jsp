@@ -18,7 +18,7 @@
             Medicina Humanizada 
         </div>
 
-        <div class="form" style="float: left; width: 80%; margin-left: 10%; margin-top: 2%; background-color: #c8e6c9; 
+        <div class="form" style="float: left; background-color: #c8e6c9; padding: 10px; width: 80%; margin-left: 10%; margin-top: 2%; background-color: #c8e6c9; 
              padding: 20px; border-radius: 10px;">
 
             <h3 style="text-align: center;">Por gentileza, preencher os dados do médico a serem alterados</h3>            
@@ -82,7 +82,7 @@
                 </div>
             </form>
 
-            <form action="../controledenavegacao" method="POST">
+            <form action="controledenavegacao" method="POST">
                 <input type="hidden" id="voltarpaginainicial" name="voltarpaginainicial" value="voltarpaginainicial">
                 <input type="submit" value = "Voltar" class="btn btn-primary" 
                        style=" margin-left: 1%; float: left;">            

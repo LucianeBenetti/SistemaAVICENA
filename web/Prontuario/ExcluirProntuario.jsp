@@ -31,8 +31,8 @@
 
             <div class="container" style="padding: 3px; margin-top: 2%; margin-bottom: 10%;" >
 
-                <div class="form" style="background-color: #c8e6c9; padding: 10px; width: 60%;  
-                     border-radius: 10px; float: left; margin-left: 20%;">
+                <div class="form" style="float: left; background-color: #c8e6c9; padding: 10px; width: 80%; margin-left: 10%; margin-top: 2%; background-color: #c8e6c9; 
+                     padding: 20px; border-radius: 10px;">
 
                     <p style="text-align: center; font-weight: bold">Lista das especialidades cadastradas na clínica AVICENA:</p>
 

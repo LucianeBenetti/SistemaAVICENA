@@ -9,7 +9,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-       
+
 
         <style>
             .generico {border-color: transparent; color: red; padding: 10px; background-color: #c8e6c9}
@@ -55,46 +55,46 @@
             </div>
 
             <div class="form-row">
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-6">
                     <label for="inputmedico">Medico:</label>
                     <input type="text" class="form-control" id="inputmedico" name="nomemedico" 
                            value="<%= request.getAttribute("nomemedico")%>">
                 </div>
 
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-6">
                     <label for="inputespecialidade">Especialidade</label>
                     <input type="text" class="form-control" id="inputespecialidade" name="nomeespecialidade" 
                            value="<%= request.getAttribute("nomeespecialidade")%>">
                 </div>
 
             </div>
-            <div class="form-group col-md-4">
-                <label for="inputdataconsulta">Data da Consulta:</label>
-                <input type="text" class="form-control" id="inputdataconsulta" name="dataconsulta" value="<%= request.getAttribute("dataconsulta")%>">
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label for="inputdataconsulta">Data da Consulta:</label>
+                    <input type="text" class="form-control" id="inputdataconsulta" name="dataconsulta" value="<%= request.getAttribute("dataconsulta")%>">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="inputhorarioconsulta">Horário da Consulta:</label>
+                    <input type="text" class="form-control" id="inputhorarioconsulta" name="horarioconsulta" value="<%= request.getAttribute("horarioconsulta")%>">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputatencaoespecial">Atenção Especial:</label>
+                    <textarea readonly class="form-control" id="inputatencaoespecial" name="atencaoespecial" value="<%= request.getAttribute("atencaoespecial")%>"></textarea>
+                </div>
             </div>
-            <div class="form-group col-md-4">
-                <label for="inputhorarioconsulta">Horário da Consulta:</label>
-                <input type="text" class="form-control" id="inputhorarioconsulta" name="horarioconsulta" value="<%= request.getAttribute("horarioconsulta")%>">
-            </div>
-    
+            <% }
+                }%> 
+            <form action="controledenavegacao" method="POST">
+                <input type="hidden" id="voltarpaginainicial" name="voltarpaginainicial" value="voltarpaginainicial">
+                <input type="submit" value = "Voltar" class="btn btn-primary" 
+                       style="margin-top: 2%; margin-left: 1%; float: left;">            
+            </form>        
+        </div>    
 
-        <div class="form-group col-md-3">
-            <label for="inputatencaoespecial">Atenção Especial:</label>
-            <textarea disabled class="form-control" id="inputatencaoespecial" name="atencaoespecial" value="<%= request.getAttribute("atencaoespecial")%>"></textarea>
-        </div>
+        <div class="jumbotron jumbotron-fluid text-center" style="clear: both; margin-bottom:0;margin-top: 45%; 
+             background-color: #7986cb;padding: 4px; color: white; font-size: small; ">
+            &copy; Desenvolvido por Luciane Benetti e Marco Sena.
+        </div> 
 
-        <% }}%> 
-        <form action="controledenavegacao" method="POST">
-            <input type="hidden" id="voltarpaginainicial" name="voltarpaginainicial" value="voltarpaginainicial">
-            <input type="submit" value = "Voltar" class="btn btn-primary" 
-                   style="margin-top: 2%; margin-left: 1%; float: left;">            
-        </form>        
-    </div>    
-
-    <div class="jumbotron jumbotron-fluid text-center" style="clear: both; margin-bottom:0;margin-top: 45%; 
-         background-color: #7986cb;padding: 4px; color: white; font-size: small; ">
-        &copy; Desenvolvido por Luciane Benetti e Marco Sena.
-    </div> 
-
-</body>
+    </body>
 </html>

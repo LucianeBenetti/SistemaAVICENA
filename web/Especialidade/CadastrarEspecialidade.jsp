@@ -22,9 +22,8 @@
             Medicina Humanizada 
         </div>
 
-        <div class="form" style="float: left; width: 80%; margin-left: 10%; margin-top: 2%; background-color: #c8e6c9; 
+        <div class="form" style="float: left; background-color: #c8e6c9; padding: 10px; width: 80%; margin-left: 10%; margin-top: 2%; background-color: #c8e6c9; 
              padding: 20px; border-radius: 10px;">
-
             <h3 style="text-align: center; padding: 20px;">Por gentileza, preencher os dados da especialidade a ser cadastrada:</h3>            
 
             <form action="../crudespecialidade" method="POST">
