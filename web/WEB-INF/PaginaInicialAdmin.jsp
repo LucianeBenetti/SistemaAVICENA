@@ -123,7 +123,7 @@
                 </a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="Prontuario/PesquisarPacienteParaCadastrarProntuario.jsp">Cadastrar/Atualizar Prontuário</a>
-                    <a class="dropdown-item" href="Prontuario/PesquisarPacienteParaEmitirReceita.jsp">Emitir Receita</a>
+                    <a class="dropdown-item" href="Receita/PesquisarPacienteParaEmitirReceita.jsp">Emitir Receita</a>
                     <a class="dropdown-item" href="Prontuario/PesquisarProntuarioParaExcluir.jsp">Excluir Prontuário</a>
                     <a class="dropdown-item" href="listarprontuarios">Listar Todos Prontuários</a>
 
@@ -160,7 +160,7 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="pesquisarconvenio">Consultas por Convênio</a>
                     <a class="dropdown-item" href="pesquisarmedico">Consultas por Médico</a>
-                    <a class="dropdown-item" href="Relatorios/PesquisarRelatorioPorData.jsp">Faturamento Mensal</a>
+                    <a class="dropdown-item" href="Relatorios/PesquisarRelatorioPorData.jsp">Relatório de Faturamento</a>
 
                 </div>
             </li>

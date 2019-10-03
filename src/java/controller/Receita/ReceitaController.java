@@ -1,8 +1,8 @@
-package controller.Prontuario;
+package controller.Receita;
 import java.util.ArrayList;
 import java.util.List;
-import model.bo.Prontuario.ReceitaBO;
-import model.vo.Prontuario.ReceitaVO;
+import model.bo.Receita.ReceitaBO;
+import model.vo.Receita.ReceitaVO;
 
 public class ReceitaController {
 

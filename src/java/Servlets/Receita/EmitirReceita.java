@@ -1,4 +1,4 @@
-package Servlets.Prontuario;
+package Servlets.Receita;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -8,16 +8,17 @@ import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfWriter;
-import controller.Prontuario.ReceitaController;
+import controller.Receita.ReceitaController;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.vo.Consulta.ConsultaVO;
 import model.vo.Paciente.PacienteVO;
-import model.vo.Prontuario.ReceitaVO;
+import model.vo.Receita.ReceitaVO;
 
 public class EmitirReceita extends HttpServlet {
 
@@ -27,7 +28,7 @@ public class EmitirReceita extends HttpServlet {
 
         ReceitaVO receitaVO;
         ReceitaController receitaController;
-        java.util.List<ReceitaVO> listaReceitas = null;
+        ArrayList<ReceitaVO> listaReceitas = null;
         Object usuarioValidado = request.getSession().getAttribute("perfil");
 
         PacienteVO pacienteVO = new PacienteVO();
@@ -48,7 +49,7 @@ public class EmitirReceita extends HttpServlet {
         receitaVO.setObservacao(request.getParameter("registroobservacao"));
 
         receitaController = new ReceitaController();
-        listaReceitas = receitaController.buscarReceitasPorConsulta(codigoConsulta);
+        listaReceitas = (ArrayList<ReceitaVO>) receitaController.buscarReceitasPorConsulta(codigoConsulta);
 
         Boolean resultadoDoCadastro = false;
         receitaController.cadastrarReceitaVO(receitaVO);

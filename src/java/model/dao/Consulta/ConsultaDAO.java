@@ -23,7 +23,7 @@ import model.vo.Consulta.ConsultaVO;
 import model.vo.Convenio.ConvenioVO;
 import model.vo.Especializacao.EspecializacaoVO;
 import model.vo.Paciente.PacienteVO;
-import model.vo.Prontuario.ReceitaVO;
+import model.vo.Receita.ReceitaVO;
 
 public class ConsultaDAO {
 
@@ -283,7 +283,7 @@ public class ConsultaDAO {
         return consultaVO.getCodigoConsulta();
     }
 
-    public List<ConsultaVO> listarConsultasVOPorConvenio(int codigoConvenio) {
+    public ArrayList<ConsultaVO> listarConsultasVOPorConvenio(int codigoConvenio) {
 
         ArrayList<ConsultaVO> listaConsultas = new ArrayList<ConsultaVO>();
         String query = "SELECT * from consulta " + " where codigoConvenio = ?";
@@ -318,7 +318,7 @@ public class ConsultaDAO {
         return listaConsultas;
     }
 
-    public List<ConsultaVO> listarConsultasVOPorMedico(int codigoEspecializacao) {
+    public ArrayList<ConsultaVO> listarConsultasVOPorMedico(int codigoEspecializacao) {
         ArrayList<ConsultaVO> listaConsultas = new ArrayList<ConsultaVO>();
         String query = "SELECT * from consulta " + " where codigoEspecializacao = ?";
 
@@ -352,7 +352,7 @@ public class ConsultaDAO {
         return listaConsultas;
     }
 
-    public List<ConsultaVO> listarConsultasVOPorData(Date dataInicial, Date dataFinal) {
+    public ArrayList<ConsultaVO> listarConsultasVOPorData(Date dataInicial, Date dataFinal) {
 
         ArrayList<ConsultaVO> listaConsultas = new ArrayList<ConsultaVO>();
         String query = "SELECT * from consulta where dataConsulta between ? and ?";

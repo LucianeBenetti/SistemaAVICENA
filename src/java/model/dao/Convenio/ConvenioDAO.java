@@ -11,7 +11,7 @@ import model.vo.Convenio.ConvenioVO;
 
 public class ConvenioDAO {
 
-    public int inserir(ConvenioVO convenio) {
+    public int inserir(ConvenioVO convenioVO) {
 
         int novoId = 0;
 
@@ -22,9 +22,9 @@ public class ConvenioDAO {
 
         try {
 
-            prepStmt.setString(1, convenio.getNomeConvenio());
-            prepStmt.setString(2, convenio.getCnpjConvenio());
-            prepStmt.setString(3, convenio.getValor());
+            prepStmt.setString(1, convenioVO.getNomeConvenio());
+            prepStmt.setString(2, convenioVO.getCnpjConvenio());
+            prepStmt.setString(3, convenioVO.getValor());
 
             prepStmt.executeUpdate();
 
@@ -99,7 +99,7 @@ public class ConvenioDAO {
         return sucessoDelete;
     }
 
-    public boolean atualizarConvenioVO(ConvenioVO convenio) {
+    public boolean atualizarConvenioVO(ConvenioVO convenioVO) {
         boolean sucessoAtualizar = false;
 
         String query = "UPDATE convenio SET nomeConvenio=?, cnpjConvenio=?, valorConvenio=? " + " where cnpjConvenio = ?";
@@ -109,10 +109,10 @@ public class ConvenioDAO {
 
         try {
 
-            prepStmt.setString(1, convenio.getNomeConvenio());
-            prepStmt.setString(2, convenio.getCnpjConvenio());
-            prepStmt.setString(3, convenio.getValor());
-            prepStmt.setString(4, convenio.getCnpjConvenio());
+            prepStmt.setString(1, convenioVO.getNomeConvenio());
+            prepStmt.setString(2, convenioVO.getCnpjConvenio());
+            prepStmt.setString(3, convenioVO.getValor());
+            prepStmt.setString(4, convenioVO.getCnpjConvenio());
 
             int codigoRetorno = prepStmt.executeUpdate();
 

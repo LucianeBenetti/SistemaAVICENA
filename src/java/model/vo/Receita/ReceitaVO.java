@@ -1,4 +1,4 @@
-package model.vo.Prontuario;
+package model.vo.Receita;
 
 import model.vo.Consulta.ConsultaVO;
 import model.vo.Especializacao.EspecializacaoVO;

@@ -186,11 +186,11 @@
     </servlet>
     <servlet>
         <servlet-name>EmitirReceita</servlet-name>
-        <servlet-class>Servlets.Prontuario.EmitirReceita</servlet-class>
+        <servlet-class>Servlets.Receita.EmitirReceita</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>PesquisarDadosParaEmitirReceita</servlet-name>
-        <servlet-class>Servlets.Prontuario.PesquisarDadosParaEmitirReceita</servlet-class>
+        <servlet-class>Servlets.Receita.PesquisarDadosParaEmitirReceita</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>PesquisarConvenio</servlet-name>
@@ -404,7 +404,7 @@
         <servlet-name>GerarRelatorioFaturamentoPorData</servlet-name>
         <url-pattern>/gerarrelatoriofaturamentopordata</url-pattern>
     </servlet-mapping>
-     <welcome-file-list>
+    <welcome-file-list>
         <welcome-file>Index.html</welcome-file>
     </welcome-file-list>
     <session-config>

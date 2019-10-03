@@ -1,9 +1,9 @@
-package Servlets.Prontuario;
+package Servlets.Receita;
 
 import controller.Consulta.ConsultaController;
 import controller.Paciente.PacienteController;
 import controller.Prontuario.ProntuarioController;
-import controller.Prontuario.ReceitaController;
+import controller.Receita.ReceitaController;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.vo.Consulta.ConsultaVO;
 import model.vo.Paciente.PacienteVO;
 import model.vo.Prontuario.ProntuarioVO;
-import model.vo.Prontuario.ReceitaVO;
+import model.vo.Receita.ReceitaVO;
 
 public class PesquisarDadosParaEmitirReceita extends HttpServlet {
 
@@ -43,7 +43,7 @@ public class PesquisarDadosParaEmitirReceita extends HttpServlet {
 
             request.setAttribute("listaconsultas", listaConsultas);
             request.setAttribute("codigoPaciente", codigoPaciente);
-            request.getRequestDispatcher("Prontuario/EmitirReceita.jsp").forward(request, response);
+            request.getRequestDispatcher("Receita/EmitirReceita.jsp").forward(request, response);
         }
         request.setAttribute("resultadotransacao", resultadoDaPesquisaDeConsultas);
         if (usuarioValidado.equals("admin")) {

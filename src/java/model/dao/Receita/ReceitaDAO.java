@@ -1,4 +1,4 @@
-package model.dao.Prontuario;
+package model.dao.Receita;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,15 +15,15 @@ import model.vo.Convenio.ConvenioVO;
 import model.vo.Especializacao.EspecializacaoVO;
 import model.vo.Paciente.PacienteVO;
 import model.vo.Prontuario.ProntuarioVO;
-import model.vo.Prontuario.ReceitaVO;
+import model.vo.Receita.ReceitaVO;
 
 public class ReceitaDAO {
 
     private ConsultaDAO consultaDAO = new ConsultaDAO();
 
-    public List<ReceitaVO> buscarReceitasConsultaPaciente(int codigoConsulta) {
+    public ArrayList<ReceitaVO> buscarReceitasConsultaPaciente(int codigoConsulta) {
 
-        List<ReceitaVO> listaReceitas = new ArrayList<ReceitaVO>();
+        ArrayList<ReceitaVO> listaReceitas = new ArrayList<ReceitaVO>();
         String query = " SELECT * from receita where codigoConsulta = ?";
 
         Connection conn = ConexaoComBanco.getConnection();

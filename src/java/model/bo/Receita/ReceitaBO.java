@@ -1,11 +1,11 @@
-package model.bo.Prontuario;
+package model.bo.Receita;
 
 import java.util.ArrayList;
 import java.util.List;
 import model.dao.Consulta.ConsultaDAO;
-import model.dao.Prontuario.ReceitaDAO;
+import model.dao.Receita.ReceitaDAO;
 import model.vo.Consulta.ConsultaVO;
-import model.vo.Prontuario.ReceitaVO;
+import model.vo.Receita.ReceitaVO;
 
 public class ReceitaBO {
 
