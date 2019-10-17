@@ -36,7 +36,7 @@
 
                     if (PacienteVORetornado) {%>
 
-                 <form action="atualizarpaciente" method="post" style="padding: 10px;">               
+            <form action="atualizarpaciente" method="post" style="padding: 10px;">               
 
                 <div class="form-row">
                     <div class="form-group col-md-6">
@@ -153,25 +153,25 @@
                                value="<%= request.getAttribute("cep")%>"onkeyup="maskIt(this, event, '#####-###')">
                     </div>
                 </div><br><br>               
+                <%} }%>
+                <input type="submit" class="btn btn-primary" value="Atualizar" Paciente"
+                       style=" float: left; margin-left: 1.5%">              
+            </form>
 
-                <div class="form-row">
-                    <button type="submit" class="btn btn-primary" style=" float: left; margin-left: 1.5%">Alterar Paciente</button> 
-                </div>
-
-                <%}
-                    }%>
-            </form> 
-            <form action="controledenavegacao" method="POST">
+            <form action="../controledenavegacao" method="POST">
                 <input type="hidden" id="voltarpaginainicial" name="voltarpaginainicial" value="voltarpaginainicial">
-                <input type="submit" value = "Nova Pesquisa de Paciente" class="btn btn-primary" 
-                       style="margin-top: 2%; margin-left: 1%; float: left;">            
-            </form>        
+                <input type="submit" class="btn btn-primary" value = "Voltar"  
+                       style=" margin-left: 2%; float: left;">            
+            </form>            
 
-        </div>    
-        <div class="jumbotron jumbotron-fluid text-center" style="clear: both; margin-bottom:0;margin-top: 45%; 
-             background-color: #7986cb;padding: 4px; color: white; font-size: small; ">
-            &copy; Desenvolvido por Luciane Benetti e Marco Sena.
-        </div> 
+        </div>
 
-    </body>
+    </div>
+
+    <div class="jumbotron jumbotron-fluid text-center" style="clear: both; margin-bottom:0;
+         margin-top: 2%; background-color: #7986cb;padding: 4px; color: white; font-size: small; ">
+        &copy; Desenvolvido por Luciane Benetti e Marco Sena.
+    </div>
+
+</body>  
 </html>
