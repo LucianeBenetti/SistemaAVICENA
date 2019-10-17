@@ -1,4 +1,3 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 
@@ -16,13 +15,16 @@
 
     <body>
 
-        <div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0; background-color: #7986cb; padding: 5px; color: white">
+        <div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0; background-color: #7986cb;
+             padding: 5px; color: white">
             <h4>Sistema Avicena</h4>
-            Medicina Humanizada 
+            Medicina Humanizada
         </div>
 
         <div class="container" style="padding: 3px; margin-top: 2%; margin-bottom: 10%;" >
-            <div class="form" style="background-color: #c8e6c9; padding: 10px; width: 60%;border-radius: 10px; float: left; margin-left: 20%;">      
+           
+            <div class="form" style="background-color: #c8e6c9; padding: 10px;
+                 width: 60%;border-radius: 10px; float: left; margin-left: 20%;">      
 
                 <p style="text-align: center; font-weight: bold">Pesquisar Paciente por CPF:</p>      
 
@@ -30,18 +32,18 @@
 
                     <div class="form-group">
                         <label for="cpf">CPF:</label>
-                        <input type="text" class="form-control" id="cpf" name="cpfpaciente" placeholder="Digite o CPF do paciente" 
+                        <input type="text" class="form-control" id="cpf" name="cpfpaciente" placeholder="Digite o CPF do paciente"
                                style="border-color: gray" required onkeyup="maskIt(this, event, '###.###.###-##')">
                         <div class="valid-feedback">Valido.</div>
-                        <div class="invalid-feedback" style = "color: black">Campo obrigatÃ³rio.</div>
+                        <div class="invalid-feedback" style = "color: black">Campo obrigatório.</div>
                     </div>
 
                     <button type="submit" class="btn btn-primary" style="float: left">Pesquisar</button>
                 </form>
 
-               <form action="../controledenavegacao" method="POST">
+            <form action="../controledenavegacao" method="POST">
                 <input type="hidden" id="voltarpaginainicial" name="voltarpaginainicial" value="voltarpaginainicial">
-                <input type="submit" value = "Voltar" class="btn btn-primary" 
+                <input type="submit" value = "Voltar" class="btn btn-primary"
                        style=" margin-left: 1%; float: left;">            
             </form>
 
@@ -50,10 +52,11 @@
         </div>
 
 
-        <div class="jumbotron jumbotron-fluid text-center" style="clear: both; margin-bottom:0;margin-top: 25%; 
+        <div class="jumbotron jumbotron-fluid text-center" style="clear: both; margin-bottom:0;margin-top: 25%;
              background-color: #7986cb;padding: 4px; color: white; font-size: small; ">
             &copy; Desenvolvido por Luciane Benetti e Marco Sena.
         </div>        
 
     </body>
 </html>
+

@@ -1,6 +1,5 @@
 <%@page import="model.vo.Paciente.PacienteVO"%>
 <%@page import="java.util.ArrayList"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>    
@@ -10,10 +9,10 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-        <title>Sistema Avicena</title> 
+        <title>Sistema Avicena</title>
     </head>
     <body>  
-        <nav class="navbar navbar-expand-sm navbar-dark justify-content-left" 
+        <nav class="navbar navbar-expand-sm navbar-dark justify-content-left"
              style= "background-color: #7986cb; font-size: 18px; color: #ffffff; ">
             <a class="navbar-brand">
                 <img src="icon2.png" alt="logo" style="width:50px; height: 30px;">
@@ -32,25 +31,25 @@
             </ul>
         </nav>
         <div class="container-fluid">
-            <h4>Lista dos pacientes cadastrados na clÃ­nica AVICENA:</h4><br>
-
+           
+        <p style="font-size: medium; font-weight: bold">Lista dos pacientes cadastrados na clínica Avicena:</p>
             <div style="overflow-x:auto;">
                 <table class="table table-borderless table-sm table-hover table-primary table-striped">
                     <thead>
                         <tr class="table-success" >
                             <th>Id</th>
-                            <th>Nome</th> 
+                            <th>Nome</th>
                             <th>Celular</th>
                             <th>Fone Residencial</th>
-                            <th>Fone Comercial</th> 
+                            <th>Fone Comercial</th>
                             <th>e-mail</th>
                             <th>CPF</th>
                             <th>CNPJ</th>
-                            <th>Logradouro</th> 
-                            <th>NÃºmero</th>
+                            <th>Logradouro</th>
+                            <th>Número</th>
                             <th>Complemento</th>
                             <th>Bairro</th>
-                            <th>Cidade</th> 
+                            <th>Cidade</th>
                             <th>UF</th>
                             <th>CEP</th>
                         </tr>
@@ -58,7 +57,7 @@
                     <%
                         ArrayList<PacienteVO> pacientesVO = (ArrayList<PacienteVO>) request.getAttribute("pacientes");
 
-                        for (PacienteVO pacienteVO : pacientesVO) {%>   
+                        for (PacienteVO pacienteVO : pacientesVO) {%>  
                     <tr>
                         <td><%= pacienteVO.getCodigoPaciente()%></td>
                         <td><%= pacienteVO.getNomePaciente()%></td>
@@ -83,10 +82,9 @@
 
             </div>
         </div>  
-        <div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0; margin-top: 5%;
-             background-color: #7986cb; padding: 5px; color: white; font-size: 10pt;">
-            &copy; Desenvolvido por Luciane Benetti e Marco Sena.
-        </div>
+        <div class="jumbotron jumbotron-fluid text-center" style="clear: both; margin-bottom:0;
+                 margin-top: 35%; background-color: #7986cb;padding: 4px; color: white; font-size: small; ">
+                &copy; Desenvolvido por Luciane Benetti e Marco Sena.
+            </div>
     </body>
 </html>
-
