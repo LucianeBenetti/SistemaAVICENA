@@ -36,7 +36,7 @@
                         <input type="hidden" id="validar" name="validar" value="validar">
                         <input type="hidden" id="admin" name="admin" value="admin">
                         <label for="nome">Nome:</label>
-                        <input type="text" class="form-control" id="nome" placeholder="Digite seu login" name="nome" style="border-color: gray" required>
+                        <input type="text" class="form-control" id="nome" placeholder="Digite seu e-mail para efetuar login" name="nome" style="border-color: gray" required>
                         <div class="valid-feedback">Valido.</div>
                         <div class="invalid-feedback" style = "color: black">Campo obrigatório.</div>
                     </div>

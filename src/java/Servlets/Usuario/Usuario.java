@@ -13,6 +13,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.bo.Medico.MedicoBO;
+import model.dao.Medico.MedicoDAO;
+import model.vo.Medico.MedicoVO;
 import model.vo.Usuario.UsuarioVO;
 import sun.misc.BASE64Encoder;
 
@@ -88,7 +91,7 @@ public class Usuario extends HttpServlet {
 
                             session = request.getSession();
                             session.setAttribute("perfil", usuarioVO.getPerfil());
-                            
+
                             request.setAttribute("login", usuarioVO.getLogin());
                             request.setAttribute("senha", usuarioVO.getSenha());
                             request.setAttribute("perfil", usuarioVO.getPerfil());
@@ -99,13 +102,23 @@ public class Usuario extends HttpServlet {
                         usuarioValidadoVO = usuarioController.pesquisarUsuarioVO(usuarioVO);
                         if (usuarioValidadoVO != null && usuarioValidadoVO.getPerfil().equals(var5)) {
 
+                           
+                            MedicoDAO medicoDao = new MedicoDAO();
+                            List<MedicoVO> medicos = medicoDao.listarTodosOsMedicos();
+                            for (int k = 0; k < medicos.size(); k++) {
+                                if (usuarioVO.getLogin().equals(medicos.get(k).getEmailMedico())) {
+                                    request.setAttribute("codigomedico", medicos.get(k).getCodigoMedico());
+                                    System.out.println("codigoMedico " + medicos.get(k).getCodigoMedico());
+                                }
+                            }
                             session = request.getSession();
                             session.setAttribute("perfil", usuarioVO.getPerfil());
-                            
+
                             request.setAttribute("login", usuarioVO.getLogin());
                             request.setAttribute("senha", usuarioVO.getSenha());
                             request.setAttribute("perfil", usuarioVO.getPerfil());
                             request.getRequestDispatcher("WEB-INF/PaginaInicialMedico.jsp").forward(request, response);
+
                         }
 
                         usuarioVO.setPerfil(var4);
@@ -114,7 +127,7 @@ public class Usuario extends HttpServlet {
 
                             session = request.getSession();
                             session.setAttribute("perfil", usuarioVO.getPerfil());
-                            
+
                             request.setAttribute("login", usuarioVO.getLogin());
                             request.setAttribute("senha", usuarioVO.getSenha());
                             request.setAttribute("perfil", usuarioVO.getPerfil());
