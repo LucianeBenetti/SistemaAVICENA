@@ -19,7 +19,7 @@
             }
 
             .generico
-            {text-align: center; border-color: transparent; color: red; padding: 10px}
+            {text-align: center; border-color: transparent; color: blue; padding: 10px}
 
         </style> 
 
@@ -94,8 +94,8 @@
                     Prontuário
                 </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="Prontuario/PesquisarPacienteParaCadastrarProntuario.jsp">Cadastrar/Atualizar Prontuário</a>
-                    <a class="dropdown-item" href="Receita/PesquisarPacienteParaEmitirReceita.jsp">Emitir Receita</a>
+                    <a class="dropdown-item" href="prontuario/PesquisarPacienteParaCadastrarProntuario.jsp">Cadastrar/Atualizar Prontuário</a>
+                    <a class="dropdown-item" href="receita/PesquisarPacienteParaEmitirReceita.jsp">Emitir Receita</a>
                     <a class="dropdown-item" href="listarprontuarios">Listar Todos Prontuários</a>
 
                 </div>

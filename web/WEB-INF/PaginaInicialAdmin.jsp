@@ -18,7 +18,7 @@
             }
 
             .generico
-            {border-color: transparent; color: red; padding: 10px}
+            {border-color: transparent; color: blue; padding: 10px}
 
         </style> 
 
@@ -74,9 +74,9 @@
                     Pacientes
                 </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" target="_self" href="Paciente/CadastrarPaciente.jsp">Cadastrar Paciente</a>
-                    <a class="dropdown-item" href="Paciente/PesquisarPacientePorCpf.jsp">Pesquisar/Alterar Paciente</a>
-                    <a class="dropdown-item" href="Paciente/ExcluirPacientePorCpf.jsp">Excluir Paciente</a>
+                    <a class="dropdown-item" target="_self" href="paciente/CadastrarPaciente.jsp">Cadastrar Paciente</a>
+                    <a class="dropdown-item" href="paciente/PesquisarPacientePorCpf.jsp">Pesquisar/Alterar Paciente</a>
+                    <a class="dropdown-item" href="paciente/ExcluirPacientePorCpf.jsp">Excluir Paciente</a>
                     <a class="dropdown-item" href="listarpacientes">Listar Todos Pacientes</a>
 
                 </div>
@@ -86,9 +86,9 @@
                     Consultas
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="Consulta/PesquisarPacienteParaCadastrarConsulta.jsp">Cadastrar Consulta</a>
-                    <a class="dropdown-item" href="Consulta/PesquisarConsultaPorPaciente.jsp">Pesquisar/Alterar Consulta</a>
-                    <a class="dropdown-item" href="Consulta/PesquisarConsultaParaExcluir.jsp">Excluir Consulta</a>
+                    <a class="dropdown-item" href="consulta/PesquisarPacienteParaCadastrarConsulta.jsp">Cadastrar Consulta</a>
+                    <a class="dropdown-item" href="consulta/PesquisarConsultaPorPaciente.jsp">Pesquisar/Alterar Consulta</a>
+                    <a class="dropdown-item" href="consulta/PesquisarConsultaParaExcluir.jsp">Excluir Consulta</a>
                     <a class="dropdown-item" href="listarconsultas">Listar Todas Consultas</a>                             
 
                 </div>
@@ -98,9 +98,9 @@
                     Convênios
                 </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="Convenio/CadastrarConvenio.jsp">Cadastrar Convenio</a>
-                    <a class="dropdown-item" href="Convenio/PesquisarConvenioPorCnpj.jsp">Pesquisar/Alterar Convenio</a>
-                    <a class="dropdown-item" href="Convenio/ExcluirConvenioPorCnpj.jsp">Excluir Convenio</a>
+                    <a class="dropdown-item" href="convenio/CadastrarConvenio.jsp">Cadastrar Convenio</a>
+                    <a class="dropdown-item" href="convenio/PesquisarConvenioPorCnpj.jsp">Pesquisar/Alterar Convenio</a>
+                    <a class="dropdown-item" href="convenio/ExcluirConvenioPorCnpj.jsp">Excluir Convenio</a>
                     <a class="dropdown-item" href="listarconvenios">Listar Todos Convênios</a>                             
 
                 </div>
@@ -110,9 +110,9 @@
                     Médicos
                 </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="Medico/CadastrarMedico.jsp">Cadastrar Médico</a>
-                    <a class="dropdown-item" href="Medico/PesquisarMedicoPorCpf.jsp">Pesquisar/Alterar Médico</a>
-                    <a class="dropdown-item" href="Medico/ExcluirMedicoPorCpf.jsp">Excluir Médico</a>
+                    <a class="dropdown-item" href="medico/CadastrarMedico.jsp">Cadastrar Médico</a>
+                    <a class="dropdown-item" href="medico/PesquisarMedicoPorCpf.jsp">Pesquisar/Alterar Médico</a>
+                    <a class="dropdown-item" href="medico/ExcluirMedicoPorCpf.jsp">Excluir Médico</a>
                     <a class="dropdown-item" href="listarmedicos">Listar Todos Médicos</a>
 
                 </div>
@@ -122,9 +122,9 @@
                     Prontuário
                 </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="Prontuario/PesquisarPacienteParaCadastrarProntuario.jsp">Cadastrar/Atualizar Prontuário</a>
-                    <a class="dropdown-item" href="Receita/PesquisarPacienteParaEmitirReceita.jsp">Emitir Receita</a>
-                    <a class="dropdown-item" href="Prontuario/PesquisarProntuarioParaExcluir.jsp">Excluir Prontuário</a>
+                    <a class="dropdown-item" href="prontuario/PesquisarPacienteParaCadastrarProntuario.jsp">Cadastrar/Atualizar Prontuário</a>
+                    <a class="dropdown-item" href="receita/PesquisarPacienteParaEmitirReceita.jsp">Emitir Receita</a>
+                    <a class="dropdown-item" href="prontuario/PesquisarProntuarioParaExcluir.jsp">Excluir Prontuário</a>
                     <a class="dropdown-item" href="listarprontuarios">Listar Todos Prontuários</a>
 
                 </div>
@@ -134,9 +134,9 @@
                     Especialidades
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="Especialidade/CadastrarEspecialidade.jsp">Cadastrar Especialidade</a>
-                    <a class="dropdown-item" href="Especialidade/PesquisarEspecialidadePorNome.jsp">Pesquisar/Altear Especialidade</a>
-                    <a class="dropdown-item" href="Especialidade/PesquisarEspecialidadeParaExcluir.jsp">Excluir Especialidade</a>  
+                    <a class="dropdown-item" href="especialidade/CadastrarEspecialidade.jsp">Cadastrar Especialidade</a>
+                    <a class="dropdown-item" href="especialidade/PesquisarEspecialidadePorNome.jsp">Pesquisar/Altear Especialidade</a>
+                    <a class="dropdown-item" href="especialidade/PesquisarEspecialidadeParaExcluir.jsp">Excluir Especialidade</a>  
                     <a class="dropdown-item" href="listarespecialidades">Listar Todas Especialidades</a>
 
                 </div>
@@ -160,7 +160,7 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="pesquisarconvenio">Consultas por Convênio</a>
                     <a class="dropdown-item" href="pesquisarmedico">Consultas por Médico</a>
-                    <a class="dropdown-item" href="Relatorios/PesquisarRelatorioPorData.jsp">Relatório de Faturamento</a>
+                    <a class="dropdown-item" href="relatorios/PesquisarRelatorioPorData.jsp">Relatório de Faturamento</a>
 
                 </div>
             </li>

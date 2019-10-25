@@ -8,242 +8,234 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ConexaoComBanco {
-    
+
     /**
-	 * Estabelece a conexão JBDC considerando as configurações da classe Banco.
-	 * 
-	 * @return Connection um objeto de conexão JDBC.
-	 * 
-	 * @throws ClassNotFoundException
-	 *             caso o nome completo de DRIVER_MYSQL esteja incorreto ou o
-	 *             driver JDBC do banco selecionado não foi adicionado ao
-	 *             projeto (via .jar ou dependência no pom.xml).
-	 * 
-	 * @throws SQLException
-	 *             caso a URL_CONEXAO, USUARIO e/ou SENHA estejam incorretos.
-	 */         
-    
+     * Estabelece a conexão JBDC considerando as configurações da classe Banco.
+     *
+     * @return Connection um objeto de conexão JDBC.
+     *
+     * @throws ClassNotFoundException caso o nome completo de DRIVER_MYSQL
+     * esteja incorreto ou o driver JDBC do banco selecionado não foi adicionado
+     * ao projeto (via .jar ou dependência no pom.xml).
+     *
+     * @throws SQLException caso a URL_CONEXAO, USUARIO e/ou SENHA estejam
+     * incorretos.
+     */
     private static final String DRIVER_MYSQL = "com.mysql.jdbc.Driver";
     private static final String NOME_ESQUEMA = "AVICENA";
     private static final String URL_CONEXAO = "jdbc:mysql://localhost:3306/" + NOME_ESQUEMA;
     private static final String USUARIO = "root";
     private static final String SENHA = "";
-    
-	public static Connection getConnection() {   
-            
-        	try {
-			Connection conn = null;
-			Class.forName(DRIVER_MYSQL);
-			conn = DriverManager.getConnection(URL_CONEXAO, USUARIO, SENHA);
 
-			return conn;
+    public static Connection getConnection() {
 
-		} catch (ClassNotFoundException e) {
+        try {
+            Connection conn = null;
+            Class.forName(DRIVER_MYSQL);
+            conn = DriverManager.getConnection(URL_CONEXAO, USUARIO, SENHA);
 
-			System.out.println("Classe do Driver não foi encontrada. \n" + e.getMessage());
+            return conn;
 
-			return null;
+        } catch (ClassNotFoundException e) {
 
-                }catch (SQLException e) {
+            System.out.println("Classe do Driver não foi encontrada. \n" + e.getMessage());
 
-			System.out.println("Erro ao obter a Connection.\n" + e.getMessage());
+            return null;
 
-			return null;
+        } catch (SQLException e) {
 
-		}
-	}
+            System.out.println("Erro ao obter a Connection.\n" + e.getMessage());
 
-	/**
-	 * Fecha uma conexão informada pelo chamador.
-	 * 
-	 * @param conn o objeto do tipo Connection que deve ser fechado
-	 */
+            return null;
 
-	public static void closeConnection(Connection conn) {
+        }
+    }
 
-		try {
+    /**
+     * Fecha uma conexão informada pelo chamador.
+     *
+     * @param conn o objeto do tipo Connection que deve ser fechado
+     */
+    public static void closeConnection(Connection conn) {
 
-			if (conn != null) {
+        try {
 
-				conn.close();
+            if (conn != null) {
 
-			}
+                conn.close();
 
-		} catch (SQLException e) {
+            }
 
-			System.out.println("Problema no fechamento da conexão.");
+        } catch (SQLException e) {
 
-		}
-	}
+            System.out.println("Problema no fechamento da conexão.");
 
-	/**
-	 * 
-	 * Solicita um objeto Statement para uma conexão. Este objeto serve para
-	 * executar as operações SQL.
-	 * 
-	 * Este método deve ser sempre chamado nos DAOs após a criação da expressão
-	 * SQL, geralmente com os métodos execute(sql), executeUpdate(sql) ou
-	 * executeQuery(sql), onde "sql" é do tipo String.
-	 * 
-	 * @param conn uma conexão anteriormente criada.
-	 * @return stmt um objeto do tipo Statement
-	 * 
-	 * @throws SQLException
-	 * 
-	 */
+        }
+    }
 
-	public static Statement getStatement(Connection conn) {
+    /**
+     *
+     * Solicita um objeto Statement para uma conexão. Este objeto serve para
+     * executar as operações SQL.
+     *
+     * Este método deve ser sempre chamado nos DAOs após a criação da expressão
+     * SQL, geralmente com os métodos execute(sql), executeUpdate(sql) ou
+     * executeQuery(sql), onde "sql" é do tipo String.
+     *
+     * @param conn uma conexão anteriormente criada.
+     * @return stmt um objeto do tipo Statement
+     *
+     * @throws SQLException
+     *
+     */
+    public static Statement getStatement(Connection conn) {
 
-		try {
+        try {
 
-			Statement stmt = (Statement) conn.createStatement();
+            Statement stmt = (Statement) conn.createStatement();
 
-			return stmt;
+            return stmt;
 
-		} catch (SQLException e) {
+        } catch (SQLException e) {
 
-			System.out.println("Erro ao obter o Statement.");
+            System.out.println("Erro ao obter o Statement.");
 
-			return null;
+            return null;
 
-		}
-	}
+        }
+    }
 
-	/**
-	 * 
-	 * Fecha um objeto Statement anteriormente criado.
-	 * 
-	 * Este método deve ser sempre chamado nos DAOs após a execução da expressão
-	 * SQL.
-	 * 
-	 * @param stmt um objeto do tipo Statement
-	 * 
-	 * @throws SQLException
-	 * 
-	 */
+    /**
+     *
+     * Fecha um objeto Statement anteriormente criado.
+     *
+     * Este método deve ser sempre chamado nos DAOs após a execução da expressão
+     * SQL.
+     *
+     * @param stmt um objeto do tipo Statement
+     *
+     * @throws SQLException
+     *
+     */
+    public static void closeStatement(Connection conn) {
 
-	public static void closeStatement(Connection conn) {
+        try {
 
-		try {
+            if (conn != null) {
 
-			if (conn != null) {
+                conn.close();
 
-				conn.close();
+            }
 
-			}
+        } catch (SQLException e) {
 
-		} catch (SQLException e) {
+            System.out.println("Problema no fechamento do Statement.");
 
-			System.out.println("Problema no fechamento do Statement.");
+        }
 
-		}
+    }
 
-	}
+    /**
+     *
+     * Solicita um objeto PreparedStatement para uma conexão. Este objeto serve
+     * para executar as operações SQL.
+     *
+     * @param conn uma conexão anteriormente criada.
+     * @return stmt um objeto do tipo PreparedStatement
+     *
+     * @throws SQLException
+     *
+     */
+    public static PreparedStatement getPreparedStatement(Connection conn, String sql) {
 
-	/**
-	 * 
-	 * Solicita um objeto PreparedStatement para uma conexão. Este objeto serve
-	 * para executar as operações SQL.
-	 * 
-	 * @param conn uma conexão anteriormente criada.
-	 * @return stmt um objeto do tipo PreparedStatement
-	 * 
-	 * @throws SQLException
-	 * 
-	 */
+        try {
 
-	public static PreparedStatement getPreparedStatement(Connection conn, String sql) {
+            PreparedStatement stmt = conn.prepareStatement(sql);
 
-		try {
+            return stmt;
 
-			PreparedStatement stmt = conn.prepareStatement(sql);
+        } catch (Exception e) {
 
-			return stmt;
+            System.out.println("Erro ao obter o PreparedStatement.");
 
-		} catch (Exception e) {
+            return null;
 
-			System.out.println("Erro ao obter o PreparedStatement.");
+        }
+    }
 
-			return null;
+    public static PreparedStatement getPreparedStatement(Connection conn, String sql, int tipoRetorno) {
 
-		}
-	}
+        try {
 
-	public static PreparedStatement getPreparedStatement(Connection conn, String sql, int tipoRetorno) {
+            PreparedStatement stmt = conn.prepareStatement(sql, tipoRetorno);
 
-		try {
+            return stmt;
 
-			PreparedStatement stmt = conn.prepareStatement(sql, tipoRetorno);
+        } catch (Exception e) {
 
-			return stmt;
+            System.out.println("Erro ao obter o PreparedStatement.");
 
-		} catch (Exception e) {
+            return null;
 
-			System.out.println("Erro ao obter o PreparedStatement.");
+        }
+    }
 
-			return null;
+    /**
+     *
+     * Fecha um objeto PreparedStatement anteriormente criado.
+     *
+     * Este método deve ser sempre chamado nos DAOs após a execução da expressão
+     * SQL.
+     *
+     * @param stmt um objeto do tipo PreparedStatement
+     *
+     * @throws SQLException
+     *
+     */
+    public static void closePreparedStatement(PreparedStatement stmt) {
 
-		}
-	}
+        try {
 
-	/**
-	 * 
-	 * Fecha um objeto PreparedStatement anteriormente criado.
-	 * 
-	 * Este método deve ser sempre chamado nos DAOs após a execução da expressão
-	 * SQL.
-	 * 
-	 * @param stmt um objeto do tipo PreparedStatement
-	 * 
-	 * @throws SQLException
-	 * 
-	 */
+            if (stmt != null) {
 
-	public static void closePreparedStatement(PreparedStatement stmt) {
+                stmt.close();
 
-		try {
+            }
 
-			if (stmt != null) {
+        } catch (SQLException e) {
 
-				stmt.close();
+            System.out.println("Problema no fechamento do PreparedStatement.");
 
-			}
+        }
+    }
 
-		} catch (SQLException e) {
+    /**
+     *
+     * Fecha um objeto ResultSet anteriormente criado.
+     *
+     * Este método deve ser sempre chamado nos DAOs após a consulta de todos os
+     * resultados e conversão para objetos.
+     *
+     * @param result um objeto do tipo ResultSet
+     *
+     * @throws SQLException
+     *
+     */
+    public static void closeResultSet(ResultSet result) {
 
-			System.out.println("Problema no fechamento do PreparedStatement.");
+        try {
 
-		}
-	}
+            if (result != null) {
 
-	/**
-	 * 
-	 * Fecha um objeto ResultSet anteriormente criado.
-	 * 
-	 * Este método deve ser sempre chamado nos DAOs após a consulta de todos os
-	 * resultados e conversão para objetos.
-	 * 
-	 * @param result um objeto do tipo ResultSet
-	 * 
-	 * @throws SQLException
-	 * 
-	 */
+                result.close();
 
-	public static void closeResultSet(ResultSet result) {
+            }
 
-		try {
+        } catch (SQLException e) {
 
-			if (result != null) {
+            System.out.println("Problema no fechamento do ResultSet");
 
-				result.close();
+        }
+    }
 
-			}
-
-		} catch (SQLException e) {
-
-			System.out.println("Problema no fechamento do ResultSet");
-
-		}
-	}
-    
 }

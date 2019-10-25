@@ -2,207 +2,207 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
         <servlet-name>CrudPaciente</servlet-name>
-        <servlet-class>Servlets.Paciente.CrudPaciente</servlet-class>
+        <servlet-class>servlets.paciente.CrudPaciente</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>PesquisarPacientePorCpf</servlet-name>
-        <servlet-class>Servlets.Paciente.PesquisarPacientePorCpf</servlet-class>
+        <servlet-class>servlets.paciente.PesquisarPacientePorCpf</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>atualizarpaciente</servlet-name>
-        <servlet-class>Servlets.Paciente.AtualizarPaciente</servlet-class>
+        <servlet-class>servlets.paciente.AtualizarPaciente</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ListarPacientes</servlet-name>
-        <servlet-class>Servlets.Paciente.ListarPacientes</servlet-class>
+        <servlet-class>servlets.paciente.ListarPacientes</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Usuario</servlet-name>
-        <servlet-class>Servlets.Usuario.Usuario</servlet-class>
+        <servlet-class>servlets.usuario.Usuario</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ControleDeNavegacao</servlet-name>
-        <servlet-class>Servlets.ControleDeNavegacao</servlet-class>
+        <servlet-class>servlets.ControleDeNavegacao</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ListarMedicos</servlet-name>
-        <servlet-class>Servlets.Medico.ListarMedicos</servlet-class>
+        <servlet-class>servlets.medico.ListarMedicos</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CrudMedico</servlet-name>
-        <servlet-class>Servlets.Medico.CrudMedico</servlet-class>
+        <servlet-class>servlets.medico.CrudMedico</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>PesquisarMedicoPorCpf</servlet-name>
-        <servlet-class>Servlets.Medico.PesquisarMedicoPorCpf</servlet-class>
+        <servlet-class>servlets.medico.PesquisarMedicoPorCpf</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AtualizarMedico</servlet-name>
-        <servlet-class>Servlets.Medico.AtualizarMedico</servlet-class>
+        <servlet-class>servlets.medico.AtualizarMedico</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CrudConvenio</servlet-name>
-        <servlet-class>Servlets.Convenio.CrudConvenio</servlet-class>
+        <servlet-class>servlets.convenio.CrudConvenio</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ListarConvenios</servlet-name>
-        <servlet-class>Servlets.Convenio.ListarConvenios</servlet-class>
+        <servlet-class>servlets.convenio.ListarConvenios</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AtualizarConvenio</servlet-name>
-        <servlet-class>Servlets.Convenio.AtualizarConvenio</servlet-class>
+        <servlet-class>servlets.convenio.AtualizarConvenio</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>PesquisarConvenioPorCnpj</servlet-name>
-        <servlet-class>Servlets.Convenio.PesquisarConvenioPorCnpj</servlet-class>
+        <servlet-class>servlets.convenio.PesquisarConvenioPorCnpj</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CrudEspecialidade</servlet-name>
-        <servlet-class>Servlets.Especialidade.CrudEspecialidade</servlet-class>
+        <servlet-class>servlets.especialidade.CrudEspecialidade</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ListarEspecialidades</servlet-name>
-        <servlet-class>Servlets.Especialidade.ListarEspecialidades</servlet-class>
+        <servlet-class>servlets.especialidade.ListarEspecialidades</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>PesquisarParaExcluir</servlet-name>
-        <servlet-class>Servlets.Especialidade.PesquisarParaExcluir</servlet-class>
+        <servlet-class>servlets.especialidade.PesquisarParaExcluir</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AtualizarEspecialidade</servlet-name>
-        <servlet-class>Servlets.Especialidade.AtualizarEspecialidade</servlet-class>
+        <servlet-class>servlets.especialidade.AtualizarEspecialidade</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ListarEspecializacoes</servlet-name>
-        <servlet-class>Servlets.Especializacao.ListarEspecializacoes</servlet-class>
+        <servlet-class>servlets.especializacao.ListarEspecializacoes</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>BuscarEspecialidade</servlet-name>
-        <servlet-class>Servlets.Especializacao.BuscarEspecialidade</servlet-class>
+        <servlet-class>servlets.especializacao.BuscarEspecialidade</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CrudEspecializacao</servlet-name>
-        <servlet-class>Servlets.Especializacao.CrudEspecializacao</servlet-class>
+        <servlet-class>servlets.especializacao.CrudEspecializacao</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>PesquisarParaExcluirEspecializacao</servlet-name>
-        <servlet-class>Servlets.Especializacao.PesquisarParaExcluirEspecializacao</servlet-class>
+        <servlet-class>servlets.especializacao.PesquisarParaExcluirEspecializacao</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>BuscarMedico</servlet-name>
-        <servlet-class>Servlets.Especializacao.BuscarMedico</servlet-class>
+        <servlet-class>Servlets.especializacao.BuscarMedico</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>PesquisarEspecializacaoPorMedico</servlet-name>
-        <servlet-class>Servlets.Especializacao.PesquisarEspecializacaoPorMedico</servlet-class>
+        <servlet-class>servlets.especializacao.PesquisarEspecializacaoPorMedico</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>MostrarEspecializacaoPesquisada</servlet-name>
-        <servlet-class>Servlets.Especializacao.MostrarEspecializacaoPesquisada</servlet-class>
+        <servlet-class>servlets.especializacao.MostrarEspecializacaoPesquisada</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ListarConsultas</servlet-name>
-        <servlet-class>Servlets.Consulta.ListarConsultas</servlet-class>
+        <servlet-class>servlets.consulta.ListarConsultas</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ListarProntuarios</servlet-name>
-        <servlet-class>Servlets.Prontuario.ListarProntuarios</servlet-class>
+        <servlet-class>servlets.prontuario.ListarProntuarios</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>PesquisarMedicoParaExcluir</servlet-name>
-        <servlet-class>Servlets.Especializacao.PesquisarMedicoParaExcluir</servlet-class>
+        <servlet-class>servlets.especializacao.PesquisarMedicoParaExcluir</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>PesquisarMedicoEspecialidadeParaCadastrar</servlet-name>
-        <servlet-class>Servlets.Especializacao.PesquisarMedicoEspecialidadeParaCadastrar</servlet-class>
+        <servlet-class>servlets.especializacao.PesquisarMedicoEspecialidadeParaCadastrar</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>PesquisarEspecialidade</servlet-name>
-        <servlet-class>Servlets.Especialidade.PesquisarEspecialidade</servlet-class>
+        <servlet-class>servlets.especialidade.PesquisarEspecialidade</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AtualizarEspecializacao</servlet-name>
-        <servlet-class>Servlets.Especializacao.AtualizarEspecializacao</servlet-class>
+        <servlet-class>servlets.especializacao.AtualizarEspecializacao</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ExcluirConsulta</servlet-name>
-        <servlet-class>Servlets.Consulta.ExcluirConsulta</servlet-class>
+        <servlet-class>servlets.consulta.ExcluirConsulta</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>PesquisarDadosParaConsulta</servlet-name>
-        <servlet-class>Servlets.Consulta.PesquisarDadosParaConsulta</servlet-class>
+        <servlet-class>servlets.consulta.PesquisarDadosParaConsulta</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CadastrarConsulta</servlet-name>
-        <servlet-class>Servlets.Consulta.CadastrarConsulta</servlet-class>
+        <servlet-class>servlets.consulta.CadastrarConsulta</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>PesquisarConsultaParaAtualizar</servlet-name>
-        <servlet-class>Servlets.Consulta.PesquisarConsultaParaAtualizar</servlet-class>
+        <servlet-class>servlets.consulta.PesquisarConsultaParaAtualizar</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>PesquisarConsultaParaExcluir</servlet-name>
-        <servlet-class>Servlets.Consulta.PesquisarConsultaParaExcluir</servlet-class>
+        <servlet-class>servlets.consulta.PesquisarConsultaParaExcluir</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AtualizarConsulta</servlet-name>
-        <servlet-class>Servlets.Consulta.AtualizarConsulta</servlet-class>
+        <servlet-class>servlets.consulta.AtualizarConsulta</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>PesquisarDadosParaCadastrarProntuario</servlet-name>
-        <servlet-class>Servlets.Prontuario.PesquisarDadosParaCadastrarProntuario</servlet-class>
+        <servlet-class>servlets.prontuario.PesquisarDadosParaCadastrarProntuario</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>PesquisarConsultaPorConvenio</servlet-name>
-        <servlet-class>Servlets.Relatorios.PesquisarConsultaPorConvenio</servlet-class>
+        <servlet-class>servlets.relatorios.PesquisarConsultaPorConvenio</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>GerarRelatorioConsultasPorConvenio</servlet-name>
-        <servlet-class>Servlets.Relatorios.GerarRelatorioConsultasPorConvenio</servlet-class>
+        <servlet-class>servlets.relatorios.GerarRelatorioConsultasPorConvenio</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>PesquisarConsultaPorMedico</servlet-name>
-        <servlet-class>Servlets.Relatorios.PesquisarConsultaPorMedico</servlet-class>
+        <servlet-class>servlets.relatorios.PesquisarConsultaPorMedico</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>PesquisarMedico</servlet-name>
-        <servlet-class>Servlets.Relatorios.PesquisarMedico</servlet-class>
+        <servlet-class>servlets.relatorios.PesquisarMedico</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>GerarRelatorioConsultasPorMedico</servlet-name>
-        <servlet-class>Servlets.Relatorios.GerarRelatorioConsultasPorMedico</servlet-class>
+        <servlet-class>servlets.relatorios.GerarRelatorioConsultasPorMedico</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CadastrarProntuario</servlet-name>
-        <servlet-class>Servlets.Prontuario.CadastrarProntuario</servlet-class>
+        <servlet-class>servlets.prontuario.CadastrarProntuario</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>PesquisarProntuarioParaExcluir</servlet-name>
-        <servlet-class>Servlets.Prontuario.PesquisarProntuarioParaExcluir</servlet-class>
+        <servlet-class>servlets.prontuario.PesquisarProntuarioParaExcluir</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ExcluirProntuario</servlet-name>
-        <servlet-class>Servlets.Prontuario.ExcluirProntuario</servlet-class>
+        <servlet-class>servlets.prontuario.ExcluirProntuario</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>EmitirReceita</servlet-name>
-        <servlet-class>Servlets.Receita.EmitirReceita</servlet-class>
+        <servlet-class>servlets.receita.EmitirReceita</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>PesquisarDadosParaEmitirReceita</servlet-name>
-        <servlet-class>Servlets.Receita.PesquisarDadosParaEmitirReceita</servlet-class>
+        <servlet-class>servlets.receita.PesquisarDadosParaEmitirReceita</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>PesquisarConvenio</servlet-name>
-        <servlet-class>Servlets.Relatorios.PesquisarConvenio</servlet-class>
+        <servlet-class>servlets.relatorios.PesquisarConvenio</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>PesquisarConsultaPorData</servlet-name>
-        <servlet-class>Servlets.Relatorios.PesquisarConsultaPorData</servlet-class>
+        <servlet-class>servlets.relatorios.PesquisarConsultaPorData</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>GerarRelatorioFaturamentoPorData</servlet-name>
-        <servlet-class>Servlets.Relatorios.GerarRelatorioFaturamentoPorData</servlet-class>
+        <servlet-class>servlets.relatorios.GerarRelatorioFaturamentoPorData</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CrudPaciente</servlet-name>
