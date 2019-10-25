@@ -16,6 +16,9 @@ public class PesquisarConsultaParaAtualizar extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+
+        Object usuarioValidado = request.getSession().getAttribute("perfil");
+
         PacienteVO pacienteVO = new PacienteVO();
         pacienteVO.setCpfPaciente(request.getParameter("cpfpaciente"));
         PacienteController pacientecontroller = new PacienteController();
@@ -40,11 +43,23 @@ public class PesquisarConsultaParaAtualizar extends HttpServlet {
                 request.setAttribute("codigopaciente", pacienteVO.getCodigoPaciente());
                 request.setAttribute("nomepaciente", pacienteVO.getNomePaciente());
                 request.setAttribute("pacientevoretornado", resultadoDaPesquisaPorCpf);
+                request.getRequestDispatcher("consulta/AtualizarConsulta.jsp").forward(request, response);
             } else {
-                request.setAttribute("consultavoretornada", resultadoDaPesquisaDeConsultas);
+                request.setAttribute("resultadotransacao", resultadoDaPesquisaPorCpf);
+                if (usuarioValidado.equals("admin")) {
+                    request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
+                } else if (usuarioValidado.equals("atendente")) {
+                    request.getRequestDispatcher("WEB-INF/PaginaInicialAtendente.jsp").forward(request, response);
+                }
             }
-            request.getRequestDispatcher("consulta/AtualizarConsulta.jsp").forward(request, response);
-        }
+
+        }else {
+                request.setAttribute("resultadotransacao", resultadoDaPesquisaPorCpf);
+                if (usuarioValidado.equals("admin")) {
+                    request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
+                } else if (usuarioValidado.equals("atendente")) {
+                    request.getRequestDispatcher("WEB-INF/PaginaInicialAtendente.jsp").forward(request, response);
+                }}
     }
 
     @Override
