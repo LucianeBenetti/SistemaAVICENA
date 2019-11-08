@@ -1,3 +1,4 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="model.vo.consulta.ConsultaVO"%>
 <%@page import="model.vo.prontuario.ProntuarioVO"%>
 <%@page import="java.util.ArrayList"%>
@@ -81,7 +82,8 @@
                                         <th>Data da Consulta</th>
                                         <th>Horário da Consulta</th>
                                     </tr>        
-                                    <% for (ConsultaVO consultaVO : consultasVO) {%>  
+                                    <% for (ConsultaVO consultaVO : consultasVO) {
+                                    SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");%>  
 
                                     <tr onclick="clickLinhaTabelaConsulta(this)">
                                         <td><%= consultaVO.getCodigoConsulta()%></td>
@@ -92,7 +94,7 @@
                                         <td><%= consultaVO.getEspecializacaoVO().getEspecialidadeVO().getNomeEspecialidade()%></td>
                                         <td hidden><%= consultaVO.getConvenioVO().getCodigoConvenio()%></td>
                                         <td><%= consultaVO.getConvenioVO().getNomeConvenio()%></td>
-                                        <td ><%= consultaVO.getDataConsulta()%></td>
+                                        <td ><%= formatador.format(consultaVO.getDataConsulta())%></td>
                                         <td ><%= consultaVO.getHorarioConsulta()%></td>
                                     </tr>     
                                     <% }
@@ -151,16 +153,13 @@
                                 </div>
                             </div>
 
-                            <div class="form-row">
-                                <button type="submit" class="btn btn-primary" style=" float: left; margin-left: 1.5%">Cadastrar Prontuario</button> 
-                            </div>
-
-                        </form>
-                        <form action="controledenavegacao" method="post">
-                            <input type="hidden" id="voltarpaginainicial" name="voltarpaginainicial" value="voltarpaginainicial">
-                            <input type="submit" value = "Voltar" class="btn btn-primary" 
-                                   style=" margin-left: 20px; clear: both">            
-                        </form> 
+                               <button type="submit" class="btn btn-primary" style=" float: left; margin-left: 1.5%">Cadastrar Prontuario</button> 
+                                                  </form>
+                     <form action="controledenavegacao" method="post">
+                    <input type="hidden" id="voltarpaginainicial" name="voltarpaginainicial" value="voltarpaginainicial">
+                    <input type="submit" value = "Voltar" class="btn btn-primary"
+                           style=" margin-left: 20px; float: left">            
+                </form>
                     </div>
                 </div>
             </div>

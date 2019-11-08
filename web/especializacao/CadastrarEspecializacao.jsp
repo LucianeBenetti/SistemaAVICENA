@@ -20,17 +20,17 @@
     </head>
     <body>
 
-    <div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0; 
-         background-color: #7986cb; padding: 20px; color: white">
-        <h1>Sistema Avicena</h1>
-        <p>Medicina Humanizada</p> 
-    </div>
-    <div class="container" style="padding: 3px; margin-top: 2%; margin-bottom: 10%;" >
-
+        <div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0; 
+             background-color: #7986cb; padding: 20px; color: white">
+            <h1>Sistema Avicena</h1>
+            <p>Medicina Humanizada</p> 
+        </div>
         <div class="container" style="padding: 3px; margin-top: 2%; margin-bottom: 10%;" >
 
-            <div class="form" style="float: left; background-color: #c8e6c9; padding: 10px; width: 80%; margin-left: 10%; margin-top: 2%; background-color: #c8e6c9; 
-             padding: 20px; border-radius: 10px;">
+            <div class="container" style="padding: 3px; margin-top: 2%; margin-bottom: 10%;" >
+
+                <div class="form" style="float: left; background-color: #c8e6c9; padding: 10px; width: 80%; margin-left: 10%; margin-top: 2%; background-color: #c8e6c9; 
+                     padding: 20px; border-radius: 10px;">
 
                     <p style="text-align: center; font-weight: bold">Informe o ano da especialização para cadastrar na base de dados:</p>
 
@@ -42,7 +42,7 @@
 
                     <form action="crudespecializacao" method="POST">
                         <a>*</a>Campos de preenchimento obrigatório <br><br>
-                       
+
                         <% for (int i = 0; i < especializacoes.size(); i++) {%>
 
                         <input type="hidden" name="codigomedico" required readonly value="<%=(especializacoes.get(i).getMedicoVO().getCodigoMedico())%>">
@@ -74,10 +74,9 @@
                         <%}
                             }%>  
 
-                        <div class="form-row">
-                             <input type="hidden" id="cadastrar" name="cadastrar" value="cadastrar">
-                            <button type="submit" class="btn btn-primary" style=" float: left; margin-left: 1.5%">Cadastrar Especialização</button> 
-                        </div>
+                        <input type="hidden" id="cadastrar" name="cadastrar" value="cadastrar">
+                        <button type="submit" class="btn btn-primary" style=" float: left; margin-left: 1.5%">Cadastrar Especialização</button> 
+
                     </form>
 
                     <form action="controledenavegacao" method="post">

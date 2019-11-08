@@ -31,7 +31,7 @@
             <div class="container" style="padding: 3px; margin-top: 2%; margin-bottom: 10%;" >
 
                 <div class="form" style="float: left; background-color: #c8e6c9; padding: 10px; width: 80%; margin-left: 10%; margin-top: 2%; background-color: #c8e6c9; 
-             padding: 20px; border-radius: 10px;">
+                     padding: 20px; border-radius: 10px;">
 
                     <p style="text-align: center; font-weight: bold">Lista das especializações cadastradas para o médico selecionado:</p>
 
@@ -69,7 +69,7 @@
                                     </tr>     
                                     <% }  %>
                                 </table>
-                                                   
+
                                 <input type="hidden" name="codigoespecializacao" size="4" readonly> <br><br>
                                 <input type="hidden"  name="codigomedico" size="4" readonly>
                                 <input type="hidden" name="codigoespecialidade" size="4" readonly>
@@ -100,9 +100,9 @@
 
                             <%}
                                 }%>  
-                            <div class="form-row">
-                                <button type="submit" class="btn btn-primary" style=" float: left; margin-left: 1.5%" >Atualizar Especialização</button>
-                            </div>
+
+                            <button type="submit" class="btn btn-primary" style=" float: left; margin-left: 1.5%" >Atualizar Especialização</button>
+
                         </form>
 
                         <form action="controledenavegacao" method="post">

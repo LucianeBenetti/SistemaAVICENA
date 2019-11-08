@@ -96,7 +96,7 @@ public class CadastrarConsulta extends HttpServlet {
 
             resultadoDoCadastro = true;
 
-            //    if (consultaVO.getAtencaoEspecial() != null) {
+            if (consultaVO.getAtencaoEspecial() != null) {
             final String username = "clinicaavicena2@gmail.com";
             final String password = "TesteAvicena";
 
@@ -169,10 +169,10 @@ public class CadastrarConsulta extends HttpServlet {
         request.setAttribute("consultacadastrada", resultadoDoCadastro);
         request.getRequestDispatcher("consulta/MostrarConsultaCadastrada.jsp").forward(request, response);
 
-//        } else {
-//            request.setAttribute("consultacadastrada", resultadoDoCadastro);
-//            request.getRequestDispatcher("Consulta/MostrarConsultaCadastrada.jsp").forward(request, response);
-//        }
+        } else {
+            request.setAttribute("consultacadastrada", resultadoDoCadastro);
+            request.getRequestDispatcher("Consulta/MostrarConsultaCadastrada.jsp").forward(request, response);
+       }
     }
 
 }

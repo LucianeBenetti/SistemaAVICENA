@@ -32,9 +32,9 @@
 
             <div class="container" style="width: 100%; text-align: center; clear: both; padding: 2px; ">
                 <h4>Para agendar uma consulta, execute os passos a seguir:</h4>
-               
+
             </div>
-           
+
             <div class="table-responsive-sm" style="width: 48%; float: left; padding: 30px; ">
 
                 <p style="text-align: center;">Selecione o médico do paciente:</p>
@@ -52,10 +52,10 @@
                             <th>Especialidade</th>
                         </tr>
                     </thead>
-                        <% for (EspecializacaoVO especializacaoVO : especializacoesVO) {%>  
+                    <% for (EspecializacaoVO especializacaoVO : especializacoesVO) {%>  
 
-                        <tbody>
-                           
+                    <tbody>
+
                         <tr onclick="clickLinhaTabela(this)">
                             <td><%= especializacaoVO.getCodigoEspecializacao()%></td>
                             <td hidden><%= especializacaoVO.getMedicoVO().getCodigoMedico()%></td>
@@ -67,8 +67,8 @@
                         </tr>    
                         <% }     %>
                         <% }     %>
-                       
-                        </tbody>
+
+                    </tbody>
                 </table>
 
             </div>
@@ -79,11 +79,11 @@
                 if (conveniosVO != null) {%>
 
             <div class="table-responsive" style="width: 48%; float: left; padding: 30px; margin-left: 3%;">
-               
+
                 <p style="text-align: center;">Selecione o convênio do paciente:</p>
 
                 <table class="table table-borderless table-sm table-hover table-primary table-striped">
-                   
+
                     <thead>
                         <tr class="table-success" >
                             <th>Id</th>
@@ -91,9 +91,9 @@
                             <th>Valor (R$)</th>
                         </tr>
                     </thead>
-                        <%
-                                for (ConvenioVO convenioVO : conveniosVO) {%>
-                               
+                    <%
+                            for (ConvenioVO convenioVO : conveniosVO) {%>
+
                     <tbody>
                         <tr onclick="clickLinhaTabelaConvenio(this)">
                             <td><%= convenioVO.getCodigoConvenio()%></td>
@@ -102,13 +102,12 @@
                         </tr>    
                         <% }     %>
                         <% }%>
-                       
+
                     </tbody>
                 </table>
             </div>
 
-
-        <div class="form" style="width: 100%; float: left; padding: 20px; background-color: #c8e6c9; margin-bottom: 2%">  
+            <div class="form" style="width: 100%; float: left; padding: 20px; background-color: #c8e6c9; margin-bottom: 2%">  
 
                 <form name="cadastrarconsulta" action="cadastrarconsulta" method="post">
 
@@ -120,7 +119,7 @@
                     <input type="hidden"  name="codigomedico" size="4" readonly>
                     <input type="hidden" name="instituicao" size="50" readonly>
                     <input type="hidden" name="codigopaciente" value="<%= request.getAttribute("codigopaciente")%>">
-                   
+
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputnome">Nome:</label>
@@ -188,10 +187,10 @@
                         </div>
                     </div>
 
-                   
-                        <button type="submit" class="btn btn-primary" style=" float: left; margin-left: 1.5%">
-                            Cadastrar Consulta</button>
-                   
+
+                    <button type="submit" class="btn btn-primary" style=" float: left; margin-left: 1.5%">
+                        Cadastrar Consulta</button>
+
                 </form>
 
                 <form action="controledenavegacao" method="post">

@@ -20,131 +20,131 @@
         </div>
 
         <div class="container" style=" padding: 10px;  margin-top: 2%; margin-bottom: 10%;">                      
-           
-             <div class="container" style="background-color: #c8e6c9; padding: 10px;
+
+            <div class="container" style="background-color: #c8e6c9; padding: 10px;
                  width: 100%; border-radius: 10px; float: left;">
-                 <p style="font-weight: bold">Por gentileza, preencher os dados do paciente a ser cadastrado:</p>    
-                                   
-             <form action="../crudpaciente" method="post" style="padding: 10px;">
+                <p style="font-weight: bold">Por gentileza, preencher os dados do paciente a ser cadastrado:</p>    
 
-                <input type="hidden" id="cadastrarpaciente" name="cadastrarpaciente" value="cadastrarpaciente">
+                <form action="../crudpaciente" method="post" style="padding: 10px;">
 
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputnome">Nome:</label>
-                        <input type="text" class="form-control" id="inputnome" name="nomepaciente" placeholder="Digite o nome do paciente">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="inputemail">E-mail:</label>
-                        <input type="email" class="form-control" id="inputemail" name="emailpaciente" placeholder="Digite o email do paciente">
-                    </div>
-                </div>
+                    <input type="hidden" id="cadastrarpaciente" name="cadastrarpaciente" value="cadastrarpaciente">
 
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label for="inputcelular">Celular:</label>
-                        <input type="text" class="form-control" id="inputcelular" name="celularpaciente" placeholder="Digite o celular do paciente" required onkeyup="maskIt(this, event, '(##)#####-####')">
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="inputfoneresidencial">Fone Residencial:</label>
-                        <input type="text" class="form-control" id="inputfoneresidencial" name="foneresidencial" placeholder="Digite o fone residencial do paciente" onkeyup="maskIt(this, event, '(##)####-####')">
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="inputfonecomercial">Fone Comercial:</label>
-                        <input type="text" class="form-control" id="inputfonecomercial" name="fonecomercial" placeholder=" Digite o fone comercial do paciente" onkeyup="maskIt(this, event, '(##)####-####')">
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputcpf">CPF:</label>
-                        <input type="text" class="form-control" id="inputcpf" name="cpfpaciente" placeholder="Digite o CPF do paciente" required onkeyup="maskIt(this, event, '###.###.###-##')">
-                    </div>
-                    <div class="form-group col-md-6" style="size:30px">
-                        <label for="inputcnpj">CNPJ:</label>
-                        <input type="text" class="form-control" id="inputcnpj" name="cnpjpaciente" placeholder="Digite o CNPJ do paciente" onkeyup="maskIt(this, event, '##.###.###/####-##')">
-                    </div>            
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group col-md-7">
-                        <label for="inputendereco">Endereço:</label>
-                        <input type="text" class="form-control" id="inputendereco" name="logradouro" placeholder="Avenida, rua, travessa, servidão">
-                    </div>                  
-                    <div class="form-group col-md-1">
-                        <label for="inputnumlogradouro">Num.: </label>
-                        <input type="text" class="form-control" id="inputnumlogradouro" name="numlogradouro">
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="inputcomplemento">Complemento:</label>
-                        <input type="text" class="form-control" id="inputcomplemento" name="complemento" placeholder="Bloco, apartamento, nome do condomínio">
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label for="inputbairro">Bairro:</label>
-                        <input type="text" class="form-control" id="inputbairro" name="bairro" placeholder="Digite o bairro">
-                    </div>            
-                    <div class="form-group col-md-3">
-                        <label for="inputcidade">Cidade:</label>
-                        <input type="text" class="form-control" id="inputcidade" name="cidade" placeholder="Digite a cidade">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputnome">Nome:</label>
+                            <input type="text" class="form-control" id="inputnome" name="nomepaciente" placeholder="Digite o nome do paciente">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputemail">E-mail:</label>
+                            <input type="email" class="form-control" id="inputemail" name="emailpaciente" placeholder="Digite o email do paciente">
+                        </div>
                     </div>
 
-                    <div class="form-group col-md-2">
-                        <label for="inputuf">UF.: </label>
-                        <select style="width:157px;" class="form-contol" id="inputuf" name="uf">
-                            <option selected disabled>Selecione um estado</option>
-                            <option>AC</option>
-                            <option>AL</option>
-                            <option>AP</option>
-                            <option>AM</option>
-                            <option>BA</option>
-                            <option>CE</option>
-                            <option>DF</option>
-                            <option>ES</option>
-                            <option>GO</option>
-                            <option>MA</option>
-                            <option>MG</option>
-                            <option>MS</option>
-                            <option>MT</option>
-                            <option>PA</option>
-                            <option>PB</option>
-                            <option>PI</option>
-                            <option>PE</option>
-                            <option>PR</option>
-                            <option>RJ</option>
-                            <option>RN</option>
-                            <option>RS</option>
-                            <option>RO</option>
-                            <option>RR</option>
-                            <option>SC</option>
-                            <option>SE</option>
-                            <option>SP</option>
-                            <option>TO</option>
-
-                        </select>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="inputcelular">Celular:</label>
+                            <input type="text" class="form-control" id="inputcelular" name="celularpaciente" placeholder="Digite o celular do paciente" required onkeyup="maskIt(this, event, '(##)#####-####')">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputfoneresidencial">Fone Residencial:</label>
+                            <input type="text" class="form-control" id="inputfoneresidencial" name="foneresidencial" placeholder="Digite o fone residencial do paciente" onkeyup="maskIt(this, event, '(##)####-####')">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputfonecomercial">Fone Comercial:</label>
+                            <input type="text" class="form-control" id="inputfonecomercial" name="fonecomercial" placeholder=" Digite o fone comercial do paciente" onkeyup="maskIt(this, event, '(##)####-####')">
+                        </div>
                     </div>
 
-                    <div class="form-group col-md-3">
-                        <label for="inpucep">CEP.: </label>
-                        <input type="text" class="form-control" id="inputcep" name="cep"
-                               onkeyup="maskIt(this, event, '#####-###')">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputcpf">CPF:</label>
+                            <input type="text" class="form-control" id="inputcpf" name="cpfpaciente" placeholder="Digite o CPF do paciente" required onkeyup="maskIt(this, event, '###.###.###-##')">
+                        </div>
+                        <div class="form-group col-md-6" style="size:30px">
+                            <label for="inputcnpj">CNPJ:</label>
+                            <input type="text" class="form-control" id="inputcnpj" name="cnpjpaciente" placeholder="Digite o CNPJ do paciente" onkeyup="maskIt(this, event, '##.###.###/####-##')">
+                        </div>            
                     </div>
-                </div><br><br>              
 
-                <input type="submit" class="btn btn-primary" value="Cadastrar Paciente"
-                       style=" float: left; margin-left: 1.5%">              
-            </form>
+                    <div class="form-row">
+                        <div class="form-group col-md-7">
+                            <label for="inputendereco">Endereço:</label>
+                            <input type="text" class="form-control" id="inputendereco" name="logradouro" placeholder="Avenida, rua, travessa, servidão">
+                        </div>                  
+                        <div class="form-group col-md-1">
+                            <label for="inputnumlogradouro">Num.: </label>
+                            <input type="text" class="form-control" id="inputnumlogradouro" name="numlogradouro">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputcomplemento">Complemento:</label>
+                            <input type="text" class="form-control" id="inputcomplemento" name="complemento" placeholder="Bloco, apartamento, nome do condomínio">
+                        </div>
+                    </div>
 
-           
-            <form action="../controledenavegacao" method="POST">
-                <input type="hidden" id="voltarpaginainicial" name="voltarpaginainicial" value="voltarpaginainicial">
-                <input type="submit" class="btn btn-primary" value = "Voltar"  
-                            style=" margin-left: 2%; float: left;">            
-            </form>            
-             
-             </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="inputbairro">Bairro:</label>
+                            <input type="text" class="form-control" id="inputbairro" name="bairro" placeholder="Digite o bairro">
+                        </div>            
+                        <div class="form-group col-md-3">
+                            <label for="inputcidade">Cidade:</label>
+                            <input type="text" class="form-control" id="inputcidade" name="cidade" placeholder="Digite a cidade">
+                        </div>
+
+                        <div class="form-group col-md-2">
+                            <label for="inputuf">UF.: </label>
+                            <select style="width:157px;" class="form-contol" id="inputuf" name="uf">
+                                <option selected disabled>Selecione um estado</option>
+                                <option>AC</option>
+                                <option>AL</option>
+                                <option>AP</option>
+                                <option>AM</option>
+                                <option>BA</option>
+                                <option>CE</option>
+                                <option>DF</option>
+                                <option>ES</option>
+                                <option>GO</option>
+                                <option>MA</option>
+                                <option>MG</option>
+                                <option>MS</option>
+                                <option>MT</option>
+                                <option>PA</option>
+                                <option>PB</option>
+                                <option>PI</option>
+                                <option>PE</option>
+                                <option>PR</option>
+                                <option>RJ</option>
+                                <option>RN</option>
+                                <option>RS</option>
+                                <option>RO</option>
+                                <option>RR</option>
+                                <option>SC</option>
+                                <option>SE</option>
+                                <option>SP</option>
+                                <option>TO</option>
+
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label for="inpucep">CEP.: </label>
+                            <input type="text" class="form-control" id="inputcep" name="cep"
+                                   onkeyup="maskIt(this, event, '#####-###')">
+                        </div>
+                    </div><br><br>              
+
+                    <input type="submit" class="btn btn-primary" value="Cadastrar Paciente"
+                           style=" float: left; margin-left: 1.5%">              
+                </form>
+
+
+                <form action="../controledenavegacao" method="POST">
+                    <input type="hidden" id="voltarpaginainicial" name="voltarpaginainicial" value="voltarpaginainicial">
+                    <input type="submit" class="btn btn-primary" value = "Voltar"  
+                           style=" margin-left: 2%; float: left;">            
+                </form>            
+
+            </div>
 
         </div>
 

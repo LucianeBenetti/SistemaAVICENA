@@ -158,7 +158,7 @@
                        style=" float: left; margin-left: 1.5%">              
             </form>
 
-            <form action="../controledenavegacao" method="POST">
+            <form action="controledenavegacao" method="POST">
                 <input type="hidden" id="voltarpaginainicial" name="voltarpaginainicial" value="voltarpaginainicial">
                 <input type="submit" class="btn btn-primary" value = "Voltar"  
                        style=" margin-left: 2%; float: left;">            

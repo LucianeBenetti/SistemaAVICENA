@@ -33,7 +33,7 @@
             <div class="container" style="padding: 3px; margin-top: 2%; margin-bottom: 10%;" >
 
                 <div class="form" style="float: left; background-color: #c8e6c9; padding: 10px; width: 80%; margin-left: 10%; margin-top: 2%; background-color: #c8e6c9; 
-             padding: 20px; border-radius: 10px;">
+                     padding: 20px; border-radius: 10px;">
 
                     <p style="text-align: center; font-weight: bold">Lista das especialidades cadastradas na clínica AVICENA:</p>
 
@@ -44,7 +44,7 @@
                     <div class="container-fluid">
 
                         <div >
-                            
+
                             <table class="table table-borderless table-sm table-hover table-primary table-striped">
                                 <thead>
                                     <tr class="table-success" >
@@ -57,12 +57,9 @@
                                         <th>Horário da Consulta</th>
                                         <th>Atenção Especial</th>
                                     </tr>        
-                                    <% for (ConsultaVO consultaVO : consultasVO) { 
+                                    <% for (ConsultaVO consultaVO : consultasVO) {
 
-                                    SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
-                                   
-                                    
-                                    %> 
+                                            SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");%> 
                                     <tr onclick="clickAtualizarConsulta(this)">
                                         <td><%= consultaVO.getCodigoConsulta()%></td>
                                         <td hidden><%= consultaVO.getPacienteVO().getCodigoPaciente()%></td>
@@ -152,16 +149,16 @@
                             </div>
                         </div> 
 
-                        <div class="form-row">
-                            <button type="submit" class="btn btn-primary" style=" float: left; margin-left: 1.5%">Atualizar Consulta</button> 
-                        </div>
+
+                        <button type="submit" class="btn btn-primary" style=" float: left; margin-left: 1.5%">Atualizar Consulta</button> 
+
                     </form>
 
                     <form action="controledenavegacao" method="post">
                         <input type="hidden" id="voltarpaginainicial" name="voltarpaginainicial" value="voltarpaginainicial">
-                        <input type="submit" value = "Voltar" class="btn btn-primary" 
-                               style=" margin-left: 20px; clear: both">            
-                    </form>   
+                        <input type="submit" value = "Voltar" class="btn btn-primary"
+                               style=" margin-left: 20px; float: left">            
+                    </form> 
                 </div>
             </div>
         </div>

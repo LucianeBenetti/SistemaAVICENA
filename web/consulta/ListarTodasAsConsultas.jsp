@@ -1,3 +1,4 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="model.vo.consulta.ConsultaVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -50,14 +51,15 @@
                 <%
                     ArrayList<ConsultaVO> consultasVO = (ArrayList<ConsultaVO>) request.getAttribute("consultas");
 
-                    for (ConsultaVO consultaVO : consultasVO) {%>   
+                    for (ConsultaVO consultaVO : consultasVO) {
+                  SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");%>   
                 <tr>
                     <td><%= consultaVO.getCodigoConsulta()%></td>
                     <td><%= consultaVO.getPacienteVO().getNomePaciente()%></td>
                     <td><%= consultaVO.getEspecializacaoVO().getMedicoVO().getNomeMedico()%></td>
                     <td><%= consultaVO.getEspecializacaoVO().getEspecialidadeVO().getNomeEspecialidade()%></td>
                     <td><%= consultaVO.getConvenioVO().getNomeConvenio()%></td>
-                    <td><%= consultaVO.getDataConsulta()%></td>
+                    <td><%= formatador.format(consultaVO.getDataConsulta())%></td>
                     <td><%= consultaVO.getHorarioConsulta()%></td>
                     <td><%= consultaVO.getAtencaoEspecial()%></td>
                 </tr>                   

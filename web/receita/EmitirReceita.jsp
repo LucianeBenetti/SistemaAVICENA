@@ -1,3 +1,4 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="model.vo.consulta.ConsultaVO"%>
 <%@page import="model.vo.prontuario.ProntuarioVO"%>
 <%@page import="java.util.ArrayList"%>
@@ -25,7 +26,7 @@
 
         <div class="container" style="padding: 3px; margin-top: 2%; margin-bottom: 10%;" >
             <div class="form" style="float: left; background-color: #c8e6c9; padding: 10px; width: 80%; margin-left: 10%; margin-top: 2%; background-color: #c8e6c9; 
-             padding: 20px; border-radius: 10px;">      
+                 padding: 20px; border-radius: 10px;">      
 
                 <p style="text-align: center; font-weight: bold">Selecionar a Consulta para Emitir a Receita</p>      
 
@@ -45,7 +46,8 @@
                                     <th>Data da Consulta</th>
                                     <th>Horário da Consulta</th>
                                 </tr>        
-                                <% for (ConsultaVO consultaVO : consultasVO) {%>  
+                                <% for (ConsultaVO consultaVO : consultasVO) {
+                                SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");%>  
 
                                 <tr onclick="clickLinhaTabelaConsultaReceita(this)">
                                     <td><%= consultaVO.getCodigoConsulta()%></td>
@@ -54,7 +56,7 @@
                                     <td hidden><%= consultaVO.getEspecializacaoVO().getCodigoEspecializacao()%></td>
                                     <td><%= consultaVO.getEspecializacaoVO().getMedicoVO().getNomeMedico()%></td>
                                     <td><%= consultaVO.getEspecializacaoVO().getEspecialidadeVO().getNomeEspecialidade()%></td>
-                                    <td ><%= consultaVO.getDataConsulta()%></td>
+                                    <td ><%= formatador.format(consultaVO.getDataConsulta())%></td>
                                     <td ><%= consultaVO.getHorarioConsulta()%></td>
                                 </tr>     
                                 <% }%>
@@ -108,9 +110,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-row">
-                                <button type="submit" class="btn btn-primary" style=" float: left; margin-left: 1.5%">Emitir Receita</button> 
-                            </div>
+                            <button type="submit" class="btn btn-primary" style=" float: left; margin-left: 1.5%">Emitir Receita</button> 
 
                         </form>
                         <form action="controledenavegacao" method="post">

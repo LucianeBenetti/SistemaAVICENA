@@ -1,3 +1,4 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="model.vo.consulta.ConsultaVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -67,7 +68,8 @@
                                 <th>Data da Consulta</th>
                                 <th>Horário da Consulta</th>
                             </tr>        
-                            <% for (ConsultaVO consultaVO : consultasVO) {%>  
+                            <% for (ConsultaVO consultaVO : consultasVO) {
+                            SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");%>  
 
                             <tr onclick="clickAtualizarConsulta(this)">
                                 <td><%= consultaVO.getCodigoConsulta()%></td>
@@ -79,7 +81,7 @@
                                 <td hidden><%= consultaVO.getConvenioVO().getCodigoConvenio()%></td>
                                 <td><%= consultaVO.getConvenioVO().getNomeConvenio()%></td>
                                 <td><%= consultaVO.getValorConsulta()%></td>
-                                <td ><%= consultaVO.getDataConsulta()%></td>
+                                <td ><%= formatador.format(consultaVO.getDataConsulta())%></td>
                                 <td ><%= consultaVO.getHorarioConsulta()%></td>
                             </tr>     
                             <% }  %>
