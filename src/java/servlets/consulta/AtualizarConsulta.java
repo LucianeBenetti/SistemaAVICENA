@@ -114,7 +114,7 @@ public class AtualizarConsulta extends HttpServlet {
                 }
             }
         }
- //       if (!atencaoEspecial.equals("null") && atencaoEspecial != null && !atencaoEspecial.isEmpty()) {
+        if (!atencaoEspecial.equals("null") && atencaoEspecial != null && !atencaoEspecial.isEmpty()) {
 
             final String username = "clinicaavicena2@gmail.com";
             final String password = "TesteAvicena";
@@ -186,7 +186,7 @@ public class AtualizarConsulta extends HttpServlet {
             } catch (MessagingException e) {
                 e.printStackTrace();
             }
-       // }
+       }
         request.setAttribute("resultadotransacao", resultadoDaAtualizacao);
         if (usuarioValidado.equals("admin")) {
             request.getRequestDispatcher("WEB-INF/PaginaInicialAdmin.jsp").forward(request, response);
